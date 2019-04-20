@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.1)  3 APR 2019 22:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.1)  16 APR 2019 10:33
 entering extended mode
 **./bproj.tex
 (bproj.tex
@@ -1390,151 +1390,154 @@ image9.png>]
 <otaintegrator.png, id=64, 304.13625pt x 158.09062pt>
 File: otaintegrator.png Graphic file (type png)
 <use otaintegrator.png>
-Package pdftex.def Info: otaintegrator.png  used on input line 110.
+Package pdftex.def Info: otaintegrator.png  used on input line 108.
 (pdftex.def)             Requested size: 167.27545pt x 86.9501pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--114
+
+ []
+
 <damp.png, id=67, 437.38406pt x 197.23688pt>
 File: damp.png Graphic file (type png)
 <use damp.png>
 Package pdftex.def Info: damp.png  used on input line 119.
 (pdftex.def)             Requested size: 240.56197pt x 108.4806pt.
+
+Underfull \vbox (badness 1117) has occurred while \output is active []
+
  [2 <./image7.png> <./gmrc.png> <./otaintegrator.png>]
 <image6.png, id=89, 455.7025pt x 350.30875pt>
 File: image6.png Graphic file (type png)
 <use image6.png>
-Package pdftex.def Info: image6.png  used on input line 156.
+Package pdftex.def Info: image6.png  used on input line 155.
 (pdftex.def)             Requested size: 273.4236pt x 210.18686pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./damp.png>]
-<image5.png, id=100, 1211.52625pt x 760.8425pt>
+<image5.png, id=100, 362.85562pt x 231.11343pt>
 File: image5.png Graphic file (type png)
 <use image5.png>
-Package pdftex.def Info: image5.png  used on input line 162.
-(pdftex.def)             Requested size: 302.88081pt x 190.21016pt.
-<image11.png, id=103, 197.23688pt x 131.74219pt>
-File: image11.png Graphic file (type png)
-<use image11.png>
-Package pdftex.def Info: image11.png  used on input line 169.
-(pdftex.def)             Requested size: 157.78969pt x 105.39388pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4 <./image6.png> <./image5.png>]
-<RLC_low-pass.png, id=116, 963.6pt x 697.8572pt>
+Package pdftex.def Info: image5.png  used on input line 161.
+(pdftex.def)             Requested size: 290.28488pt x 184.89099pt.
+<RLC_low-pass.png, id=103, 963.6pt x 697.8572pt>
 File: RLC_low-pass.png Graphic file (type png)
 <use RLC_low-pass.png>
-Package pdftex.def Info: RLC_low-pass.png  used on input line 175.
+Package pdftex.def Info: RLC_low-pass.png  used on input line 169.
 (pdftex.def)             Requested size: 192.71658pt x 139.56895pt.
-<image10.png, id=119, 198.7425pt x 145.29282pt>
-File: image10.png Graphic file (type png)
-<use image10.png>
-Package pdftex.def Info: image10.png  used on input line 197.
-(pdftex.def)             Requested size: 139.11879pt x 101.70427pt.
- [5 <./image11.png> <./RLC_low-pass.png> <./image10.png>]
-<image12.png, id=140, 103.88812pt x 100.12407pt>
-File: image12.png Graphic file (type png)
-<use image12.png>
-Package pdftex.def Info: image12.png  used on input line 211.
-(pdftex.def)             Requested size: 103.88786pt x 100.12381pt.
-<lowpasszapojeni.png, id=143, 444.15938pt x 311.66437pt>
-File: lowpasszapojeni.png Graphic file (type png)
-<use lowpasszapojeni.png>
-Package pdftex.def Info: lowpasszapojeni.png  used on input line 241.
-(pdftex.def)             Requested size: 333.1187pt x 233.7477pt.
-<lowpass2.png, id=144, 579.66562pt x 388.45125pt>
-File: lowpass2.png Graphic file (type png)
-<use lowpass2.png>
-Package pdftex.def Info: lowpass2.png  used on input line 246.
-(pdftex.def)             Requested size: 434.74814pt x 291.3377pt.
- [6 <./image12.png>]
-<bandpasszapojeni.png, id=161, 474.27188pt x 289.08pt>
-File: bandpasszapojeni.png Graphic file (type png)
-<use bandpasszapojeni.png>
-Package pdftex.def Info: bandpasszapojeni.png  used on input line 253.
-(pdftex.def)             Requested size: 355.70303pt x 216.80946pt.
-<bandpass2.png, id=162, 605.26125pt x 367.3725pt>
-File: bandpass2.png Graphic file (type png)
-<use bandpass2.png>
-Package pdftex.def Info: bandpass2.png  used on input line 258.
-(pdftex.def)             Requested size: 453.94481pt x 275.52869pt.
- [7 <./lowpasszapojeni.png> <./lowpass2.png>]
-<uzkybpschema.png, id=171, 412.54124pt x 275.52937pt>
-File: uzkybpschema.png Graphic file (type png)
-<use uzkybpschema.png>
-Package pdftex.def Info: uzkybpschema.png  used on input line 264.
-(pdftex.def)             Requested size: 309.40517pt x 206.64651pt.
-<uzkybp.png, id=172, 617.30624pt x 417.81094pt>
-File: uzkybp.png Graphic file (type png)
-<use uzkybp.png>
-Package pdftex.def Info: uzkybp.png  used on input line 269.
-(pdftex.def)             Requested size: 462.97855pt x 313.35744pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./bandpasszapojeni.png> <./bandpass2.png>]
-<kaskadneschema.png, id=180, 516.42938pt x 249.18094pt>
-File: kaskadneschema.png Graphic file (type png)
-<use kaskadneschema.png>
-Package pdftex.def Info: kaskadneschema.png  used on input line 276.
-(pdftex.def)             Requested size: 387.32108pt x 186.88522pt.
-<kaskadne1.png, id=181, 618.81187pt x 419.31656pt>
-File: kaskadne1.png Graphic file (type png)
-<use kaskadne1.png>
-Package pdftex.def Info: kaskadne1.png  used on input line 281.
-(pdftex.def)             Requested size: 464.10777pt x 314.48663pt.
+ [4 <./image6.png> <./image5.png>] [5 <./RLC_low-pass.png>]
+<1503.png, id=136, 397.485pt x 273.27094pt>
+File: 1503.png Graphic file (type png)
+<use 1503.png>
+Package pdftex.def Info: 1503.png  used on input line 230.
+(pdftex.def)             Requested size: 298.113pt x 204.95268pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--232
+
+ []
+
+<15032.png, id=137, 643.6547pt x 420.82219pt>
+File: 15032.png Graphic file (type png)
+<use 15032.png>
+Package pdftex.def Info: 15032.png  used on input line 235.
+(pdftex.def)             Requested size: 482.73984pt x 315.61586pt.
+
+Underfull \vbox (badness 4403) has occurred while \output is active []
+
+ [6 <./1503.png>]
+<1606.png, id=150, 382.42876pt x 258.9675pt>
+File: 1606.png Graphic file (type png)
+<use 1606.png>
+Package pdftex.def Info: 1606.png  used on input line 242.
+(pdftex.def)             Requested size: 286.82085pt x 194.22513pt.
+<16063.png, id=151, 632.3625pt x 427.5975pt>
+File: 16063.png Graphic file (type png)
+<use 16063.png>
+Package pdftex.def Info: 16063.png  used on input line 247.
+(pdftex.def)             Requested size: 474.27072pt x 320.69733pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9 <./uzkybpschema.png> <./uzkybp.png>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 286.
+ [7 <./15032.png> <./1606.png>]
+<16064.png, id=159, 577.40718pt x 254.45062pt>
+File: 16064.png Graphic file (type png)
+<use 16064.png>
+Package pdftex.def Info: 16064.png  used on input line 253.
+(pdftex.def)             Requested size: 433.05432pt x 190.8375pt.
+<16065.png, id=160, 640.64343pt x 448.67625pt>
+File: 16065.png Graphic file (type png)
+<use 16065.png>
+Package pdftex.def Info: 16065.png  used on input line 258.
+(pdftex.def)             Requested size: 480.48138pt x 336.50636pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./16063.png> <./16064.png>]
+<1506.png, id=167, 482.55281pt x 223.58531pt>
+File: 1506.png Graphic file (type png)
+<use 1506.png>
+Package pdftex.def Info: 1506.png  used on input line 265.
+(pdftex.def)             Requested size: 361.91371pt x 167.68855pt.
+<15062.png, id=168, 641.39626pt x 426.84468pt>
+File: 15062.png Graphic file (type png)
+<use 15062.png>
+Package pdftex.def Info: 15062.png  used on input line 270.
+(pdftex.def)             Requested size: 481.046pt x 320.13272pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <./16065.png> <./1506.png>]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 275.
 
 
 ("C:\Users\klara.pacalova\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt
 .fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
 []\T1/lmr/m/n/10 MICHAL, Vra-ti-slav. \T1/lmr/m/it/10 Vy-brané vlast-nosti ob-v
 od· pra-cu-jí-cích v prou-do-vém módu a na-p¥-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
 \T1/lmr/m/it/10 ´o-vém módu \T1/lmr/m/n/10 [on-line]. Brno, 2017 [cit. 2019-03-
 30]. Do-stupné z: [][]$\T1/lmtt/m/n/10 https : / / docplayer . cz /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
 \T1/lmtt/m/n/10 43256146-[]Vybrane-[]vlastnosti-[]obvodu-[]pracujicich-[]v-[]pr
 oudovem-[]modu-[]a-[]napetovem-[]modu . html$[][]\T1/lmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--293
+Underfull \hbox (badness 10000) in paragraph at lines 281--282
 \T1/lmtt/m/n/10 Semiconductors / Integrated-[]Circuits-[]ICs / Amplifier-[]ICs 
 / Transconductance-[]Amplifiers / _ /
  []
 
-[10 <./kaskadneschema.png> <./kaskadne1.png>] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 302.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 302.
+[10 <./15062.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 289.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 289.
  (bproj.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 302.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 302.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 289.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 289.
 Package rerunfilecheck Info: File `bproj.out' has not changed.
 (rerunfilecheck)             Checksum: 25171083F3EEBD331F85AC6205724043;1680.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 302.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 289.
  ) 
 Here is how much of TeX's memory you used:
- 35386 strings out of 492970
- 670824 string characters out of 3122598
- 695040 words of memory out of 3000000
- 38706 multiletter control sequences out of 15000+200000
+ 35367 strings out of 492970
+ 670301 string characters out of 3122598
+ 696018 words of memory out of 3000000
+ 38693 multiletter control sequences out of 15000+200000
  595180 words of font info for 75 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,14n,77p,710b,868s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,14n,77p,673b,772s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/klara.pacalova/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm
 /lm-ec.enc}{C:/Users/klara.pacalova/AppData/Local/Programs/MiKTeX 2.9/fonts/enc
 /dvips/lm/lm-rm.enc}{C:/Users/klara.pacalova/AppData/Local/Programs/MiKTeX 2.9/
@@ -1557,9 +1560,9 @@ e1/public/lm/lmr7.pfb><C:/Users/klara.pacalova/AppData/Local/Programs/MiKTeX 2.
 ams/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/klara.pacalova/AppDat
 a/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Users/klara.pac
 alova/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
-Output written on bproj.pdf (11 pages, 563261 bytes).
+Output written on bproj.pdf (10 pages, 511787 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 68 named destinations out of 1000 (max. 500000)
- 164 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 258 PDF objects out of 1000 (max. 8388607)
+ 65 named destinations out of 1000 (max. 500000)
+ 149 words of extra memory for PDF output out of 10000 (max. 10000000)
 
