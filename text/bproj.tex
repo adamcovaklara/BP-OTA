@@ -78,12 +78,12 @@ Filtr je obvod, jehož přenosová funkce (poměr výstupu ku vstupu) je kmitoč
 \caption{Toleranční schéma pro dolní (LP), horní (HP), pásmovou propust (BP) a pásmovou zádrž (BS)\cite{1}}
 \end{figure}
 \noindent Filtry se používají k redukci šumu (např. pro efektivní reprodukci zvuku reproduktory), okolního rušení (např. vysílače blokují harmonické frekvence, které interferují) nebo jako anti-aliasing filtry (např. vzorkování u A/D převodníku).\\
-Podle rozložení nul a pólů rozlišujeme různé aproximace. Butterworthova má maximálně plochou amplitudovou charakteristiku v propustném pásmu. Frekvenční charakteristika má sklon daný počtem pólů a pro její posouzení je užíváno skupinové zpoždění (derivace fáze podle frekvence). Pro Butterworthovu aproximaci je supinové zpoždění nezvlněné v propustném pásmu. \\
+Podle rozložení nul a pólů rozlišujeme různé aproximace. Butterworthova má maximálně plochou amplitudovou charakteristiku v propustném pásmu. Frekvenční charakteristika má sklon daný počtem pólů a pro její posouzení je užíváno skupinové zpoždění (derivace fáze podle frekvence). Pro Butterworthovu aproximaci je skupinové zpoždění nezvlněné v propustném pásmu. \\
 Čebyševova aproximace má strmější pokles, což vede k užití nižšího řádu filtru. Zato má ale zvlěnou frekvenční charakteristiku v propustném pásmu. \\
 Besselova aproximace se používá v telekomunikační technice v případech, kdy je požadováno zachování tvaru signálu. Amplitudová charakteristika v nepropustném pásmu je velmi plochá. Koeficienty polynomu jsou zvoleny tak, aby fázová charakteristika v pásmu okolo kritické frekvence byla maximálně lineární.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.6]{LGA98.gif}
+\includegraphics[scale=0.4]{LGA98.png}
 \caption{Typy aproximací (LP)\cite{2}}
 \end{figure}
 \section{Transkonduktanční zesilovače (OTA)}
@@ -163,15 +163,15 @@ Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdř
 \includegraphics[scale=0.6]{image6.png}
 \caption{Konfigurace pinů na LM13700M \cite{6}}
 \end{figure}
-\noindent Vnitřní zapojení LM13700 na obrázku 7 obsahuje symetrický rozdílový stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Dvojice diod a tranzistorů tvoří proudová zrcadla (\textit{Current Mirror}) - referenční proud tekoucí v jedné větvi obvodu se "zrcadlí" v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem. 
+\noindent Vnitřní zapojení LM13700 na obrázku 8 obsahuje symetrický rozdílový stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Dvojice diod a tranzistorů tvoří proudová zrcadla (\textit{Current Mirror}) - referenční proud tekoucí v jedné větvi obvodu se "zrcadlí" v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{image5.png}
 \caption{Vnitřní chéma OTA \cite{6}}
 \end{figure}
-\section{Dolní propust 2. řádu - teoretické odvození}
+\section{Dolní propust 2. řádu - teorie}
 Využitím záporné zpětné vazby z výstupu a zapojením dvou OTA-C v sérii byl obdržen dolnopropustní filtr 2. řádu.
-\noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce, popisuje obrázek 8.
+\noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce, popisuje obrázek 9.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.2]{RLC_low-pass.png}
@@ -193,8 +193,13 @@ H(s) = \frac{R}{s^2LRC + sL + R} = \frac{\frac{1}{LC}}{s^2 + \frac{s}{RC} + \fra
 \begin{align}
 R_{in} = \frac{1}{g_{m1}},
 \end{align}
-kde $g_{m1}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu. \cite{8} \\
-Pro nahrazení indukčnosti o impedanci $Z_L = \frac{1}{sC}$ lze použít obvod s dvěma OTA. Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
+kde $g_{m1}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{image10.png}
+\caption{Obvod pro simulaci uzemněného rezistoru \cite{8}}
+\end{figure}
+\noindent Pro nahrazení indukčnosti o impedanci $Z_L = \frac{1}{sC}$ lze použít obvod s dvěma OTA. Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
 Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}
 V_C &= \frac{g_{m1}}{sC}V_1 \\
@@ -206,9 +211,14 @@ Z_{in}(s) = \frac{V_1}{I_1} = s\frac{C}{g_{m1}g_{m2}}
 \end{align}
 \noindent Byl obdržen induktor o hodnotě
 \begin{align}
-L = \frac{C}{g_{m1}g_{m2}}. \cite{8}
+L = \frac{C}{g_{m1}g_{m2}}.
 \end{align}
-\noindent Nyní je možno za odpor a indukčnost dosadit do vztahu (7). Byly uvažovány kapacitory o stejné hodnotě C.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{image13.png}
+\caption{Obvod pro simulaci indukčnosti \cite{8}}
+\end{figure}
+\noindent Nyní je možno za odpor a indukčnost dosadit do vztahu (8). Byly uvažovány kapacitory o stejné hodnotě C.
 \begin{align}
 H(s) = \frac{\frac{1}{\frac{C^2}{g_{m1}g_{m2}}}}{s^2 + \frac{s}{\frac{C}{g_{m2}}} + \frac{1}{\frac{C^2}{g_{m1}g_{m2}}}} = \frac{\frac{g_{m1}g_{m2}}{C^2}}{s^2 + \frac{sg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}} = \frac{g_{m1}g_{m2}}{s^2C^2 + sg_{m2}C + g_{m1}g_{m2}}.
 \end{align}
@@ -243,6 +253,18 @@ Zapojení dvou OTA-C v sérii vede na dolní propust druhého řádu. Bylo zvole
 \includegraphics[scale=0.75]{15032.png}
 \caption{Amplitudová a fázová charakteristika dolní propusti 2. řádu}
 \end{figure}
+\section{Dolní propust čtvrtého řádu}
+Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{1506.png}
+\caption{Schéma kaskádního zapojení dolní propusti 4. řádu}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{15062.png}
+\caption{Amplitudová a fázová charakteristika káskádního zapojení dolní propusti 4. řádu}
+\end{figure}
 \section{Pásmová propust}
 \noindent Nejprve byla získána horní propust kaskádním zapojením dvou RC článků.
 \begin{figure}[H]
@@ -266,17 +288,17 @@ Zapojení dvou OTA-C v sérii vede na dolní propust druhého řádu. Bylo zvole
 \includegraphics[scale=0.75]{16065.png}
 \caption{Amplitudová a fázová charakteristika pásmové propusti 2. řádu}
 \end{figure}
-\section{Dolní propust vyšších řádů - simulace}
-Kaskádním zapojením dvou dolních propusti ze sekce 4 byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
+\section{Pásmová propust čtvrtého řádu}
+Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.75]{1506.png}
-\caption{Schéma kaskádního zapojení dolní propusti 4. řádu}
+\includegraphics[scale=0.6]{kaskadnebandpass1.png}
+\caption{Schéma kaskádního zapojení pásmové propusti 4. řádu}
 \end{figure}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.75]{15062.png}
-\caption{Amplitudová a fázová charakteristika káskádního zapojení dolní propusti 4. řádu}
+\includegraphics[scale=0.75]{kaskadnebandpass.png}
+\caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 4. řádu}
 \end{figure}
 \begin{thebibliography}{999}
 \bibitem{1}
@@ -294,6 +316,6 @@ LM13700: Dual Operational Transconductance Amplifiers With Linearizing Diodes an
 \bibitem{7}
 Low-pass filter. In: \textit{Wikipedia: the free encyclopedia} [online]. San Francisco (CA): Wikimedia Foundation, 2001- [cit. 2019-03-30]. Dostupné z: \url{https://en.wikipedia.org/wiki/Low-pass_filter}
 \bibitem{8}
-SCHAUMANN, Rolf a Mac E. Van VALKENBURG. \textit{Design of Analog Filters}. New York: Oxford University Press, 2001. ISBN 0195118774. 
+SCHAUMANN, Rolf a Mac E. Van VALKENBURG. \textit{Design of Analog Filters}. New York: Oxford University Press, 2001. ISBN 0195118774. Pořadě obrázek 4-13, 4-36 b).
 \end{thebibliography}
 \end{document}
