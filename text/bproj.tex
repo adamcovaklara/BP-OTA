@@ -438,11 +438,11 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \end{figure}
 \section{Návrh v Maple}
 Byly zvoleny parametry tolerančního schématu 
-\MapleOutput{fm = 80000 Hz}
-\MapleOutput{delta\_{fp} = 130000 Hz}
-\MapleOutput{delta\_{fs} = 300000 Hz}
-\MapleOutput{ap = 20 dB}
-\MapleOutput{as = 80  dB,}
+\MapleOutput{fm := 80000 Hz}
+\MapleOutput{delta\_{fp} := 130000 Hz}
+\MapleOutput{delta\_{fs} := 300000 Hz}
+\MapleOutput{ap := 20 dB}
+\MapleOutput{as := 80  dB,}
 \noindent kde $fm$ značí geometrický střed propustného pásma [Hz], $delta\_{fp}$ šířku propustného pásma [Hz],
 $delta\_{fs} $ šířku nepropustného pásma [Hz], $ap$ maximální útlum v propustném pásmu [dB], $as$ minimální útlum v nepropustném pásmu [dB].
 Funkcí $BP22NLP$ byly spočteny spodní a horní hranice nepropustného pásma $f\_s,fs$ a spodní a horní hranice propustného pásma $f\_p,fp$.
@@ -463,6 +463,18 @@ fs &= \frac{\sqrt{delta\_{fs}^2+4f\_m ^2}+delta\_{fs}}{2}
 \includegraphics[scale=0.7]{tolsch.png}
 \caption{Toleranční schéma navrhované pásmové propusti}
 \end{figure}
+Řád fitru byl určen jako $order = 4$. Dále byla funkcí $Cauer_asnew$ určena nová hodnota útlumu v nepropustném pásmu NDP.
+\begin{align}
+asnew&= 10log10(1 + ( \frac{\epsilon}{kl\_new})^2)\\
+\epsilon &= \sqrt{10^{0.1ap} - 1)}\\
+k &= \frac{1}{Os}\\
+kl\_new &= k^{order}(\sum_{i=1}^{n}JacobiCD(\frac{(2i - 1 + m)EllipticK(k)}{order},k))^4,
+\end{align}
+\noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli přenosové funkce $Gc$, póly a nuly přenosové funkce $poles, zeros$ pomocí funkce $CauerCPolesZeros$. Počet pólů je dán řádem filtru $order$ a počet nul pro aproximaci typu C je roven $order - 2$. Dále byl spočten provozní činitel přenosu $G$ jako racionální lomená funkce $G(j\omega) = \frac{1}{H(j\omega)}$ a charakteristická funkce $\Phi(j\omega)$ s nulami a póly na imaginární ose. Tato funcke má shodný jmenovatel s $G(j\omega)$.
+\MapleOutput{asnew := 83.36289}
+\MapleOutput{Gc, poles, zeros := 457.20673,}
+\MapleOutput{[-0.10642 + 0.10392 I; -0.10642 - 0.10392 I; -0.01088 + 0.91538 I; -0.01089 -  0.91538 I],}
+\MapleOutput{ [2.91159I -2.91159 I]}
 \begin{thebibliography}{999}
 \bibitem{1}
 KAŠPER, Ladislav. \textit{Návrh kmitočtového filtru} [online]. Ostrava, 2012 [cit. 2019-04-28]. Dostupné z: \url{https://dspace.vsb.cz/bitstream/handle/10084/92901/KAS279_FEI_N2647_2601T013_2012.pdf?sequence=1&isAllowed=y}. Diplomová práce. VŠB-TU Ostrava, FEI. Strana 18/69.
