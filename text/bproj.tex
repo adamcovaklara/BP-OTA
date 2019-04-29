@@ -11,6 +11,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[czech]{babel}
 \usepackage{siunitx}
+\usepackage{listings}
 \usepackage{graphicx} %graphics files inclusion
 \usepackage{amsmath} %advanced maths
 \usepackage{amssymb} %additional math symbols
@@ -64,6 +65,8 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \date{\today}
 
 \begin{document}
+\definecolor{MapleBlue}{rgb}{0,0,1}
+\def\MapleOutput#1{{\begin{center}\begin{math}\color{MapleBlue}{#1}\end{math}\end{center}}}
 
 \maketitle
 
@@ -433,7 +436,33 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \includegraphics[scale=0.08]{tclanky.png}
 \caption{Pasivní dolní propust n-tého řády s T články \cite{10}}
 \end{figure}
-\section{Maple}
+\section{Návrh v Maple}
+Byly zvoleny parametry tolerančního schématu 
+\MapleOutput{fm = 80000 Hz}
+\MapleOutput{delta\_{fp} = 130000 Hz}
+\MapleOutput{delta\_{fs} = 300000 Hz}
+\MapleOutput{ap = 20 dB}
+\MapleOutput{as = 80  dB,}
+\noindent kde $fm$ značí geometrický střed propustného pásma [Hz], $delta\_{fp}$ šířku propustného pásma [Hz],
+$delta\_{fs} $ šířku nepropustného pásma [Hz], $ap$ maximální útlum v propustném pásmu [dB], $as$ minimální útlum v nepropustném pásmu [dB].
+Funkcí $BP22NLP$ byly spočteny spodní a horní hranice nepropustného pásma $f\_s,fs$ a spodní a horní hranice propustného pásma $f\_p,fp$.
+\begin{align}
+f\_s &= \frac{\sqrt{delta\_{fs}^2+4f\_m ^2}-delta\_{fs}}{2}\\
+f\_p &= \frac{\sqrt{delta\_{fp}^2+4f\_m ^2}-delta\_{fp}}{2}\\
+fp &= \frac{\sqrt{delta\_{fp}^2+4f\_m ^2}+delta\_{fp}}{2}\\
+fs &= \frac{\sqrt{delta\_{fs}^2+4f\_m ^2}+delta\_{fs}}{2}
+\end{align}
+\MapleOutput{f\_s = 20000 Hz}
+\MapleOutput{f\_p = 38077 Hz}
+\MapleOutput{fp = 168077 Hz}
+\MapleOutput{fs = 320000 Hz}
+\noindent Byl obdržen kmitočet hranice nepropustného pásma normované dolní propusti (NDP) $Os$ [1/s].
+\MapleOutput{Os = 2.307692 1/s}.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{tolsch.png}
+\caption{Toleranční schéma navrhované pásmové propusti}
+\end{figure}
 \begin{thebibliography}{999}
 \bibitem{1}
 KAŠPER, Ladislav. \textit{Návrh kmitočtového filtru} [online]. Ostrava, 2012 [cit. 2019-04-28]. Dostupné z: \url{https://dspace.vsb.cz/bitstream/handle/10084/92901/KAS279_FEI_N2647_2601T013_2012.pdf?sequence=1&isAllowed=y}. Diplomová práce. VŠB-TU Ostrava, FEI. Strana 18/69.
