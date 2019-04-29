@@ -295,27 +295,27 @@ H(s) = \frac{\frac{1}{\frac{C^2}{g_{m1}g_{m2}}}}{s^2 + \frac{s}{\frac{C}{g_{m2}}
 \end{align}
 Porovnáním jmenovatele se jmenovatelem přenosu filtru 2. řádu byl obdržen vztah
 \begin{align}
-s^2 + s\frac{\omega _0}{Q} + \omega _0^2 &= s^2C^2 + sg_{m2}C + g_{m1}g_{m2}\\
-s^2 + s\frac{\omega _0}{Q} + \omega _0^2 &= s^2 + \frac{sg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}.
+s^2 + s\frac{\omega _c}{Q} + \omega _c^2 &= s^2C^2 + sg_{m2}C + g_{m1}g_{m2}\\
+s^2 + s\frac{\omega _c}{Q} + \omega _c^2 &= s^2 + \frac{sg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}.
 \end{align}
 Z tohoto vztahu byl vyjádřen mezní kmitočet jako 
 \begin{align}
-\omega _0^2 &= \frac{g_{m1}g_{m2}}{C^2} \\
-\omega _0 &= \sqrt{\frac{g_{m1}g_{m2}}{C^2}}
+\omega _c^2 &= \frac{g_{m1}g_{m2}}{C^2} \\
+\omega _c &= \sqrt{\frac{g_{m1}g_{m2}}{C^2}}
 \end{align}
-a činitel jakosti dosazením za $\omega _0$
+a činitel jakosti dosazením za $\omega _c$
 \begin{align}
-Q = \frac{\omega _0}{\frac{g_{m2}}{C}} = \sqrt{\frac{g_{m1}}{g_{m2}}}.
+Q = \frac{\omega _c}{\frac{g_{m2}}{C}} = \sqrt{\frac{g_{m1}}{g_{m2}}}.
 \end{align}
 Pokud navíc byly uvažovány stejné transkonduktance $g_{m1},g_{m2} = g_m$, byl obdržen výsledek
 \begin{align}
-\omega _0 &= \sqrt{\frac{g_m^2}{C^2}},\\
+\omega _c &= \sqrt{\frac{g_m^2}{C^2}},\\
 Q &= \sqrt{1} = 1.
 \end{align}
 \section{Dolní propust 2. řádu}
 Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. Přenosová funkce je
 \begin{align}
-H(j\omega) = \frac{H_0 \omega_0 ^2}{(j\omega)^2 + \frac{\omega _0}{Q}(j\omega) + \omega _0 ^2}.
+H(j\omega) = \frac{H_0 \omega_c ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
 \end{align}
 Obvodová simulace byla realizována v programu Multisim. Zapojení dvou OTA-C v sérii vede na dolní propust druhého řádu. Bylo zvoleno symetrické napájení OZ $V_{DD},V_{SS} = \pm 15$ V. Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Vstupní externí proud $I_{ABC} = 0.5$ $\mu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100 kHz. Externím proudem $I_{ABC} \in$ $<5$ $\mu$A ; 500 $\mu$A> je výrobcem garantováno minimální výstupní napětí $U_{OUT} = \pm 12$ V, standardně $V_{peak 1} = 14.2$ V a $V_{peak 2} = -14.4$ V. Při výstupním napětí v tomto intervalu je šum vzhledem k signálu zanedbatelný a nezkreslí výsledky simulace.\\
 \begin{figure}[H]
@@ -336,7 +336,7 @@ Obvodová simulace byla realizována v programu Multisim. Zapojení dvou OTA-C v
 \end{figure}
 \noindent Mezní frekvence a činitel jakosti tohoto obvodu byly spočítány jako 
 \begin{align}
-\omega _0 &= \sqrt{\frac{1}{LC}}\\
+\omega _c &= \sqrt{\frac{1}{LC}}\\
 Q &= \frac{L\sqrt{\frac{C}{L}}}{RC}.
 \end{align}
 Zapojení obvodu v Multisimu ilustruje Obrázek 15.
@@ -380,7 +380,7 @@ Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. �
 \section{Pásmová propust}
 Horní propust druhého řádu má přenos v nule nulový $H_{0} = 0$. Přenosová funkce je
 \begin{align}
-H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _0}{Q}(j\omega) + \omega _0 ^2}.
+H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
 \end{align}
 \noindent Nejprve byla získána horní propust kaskádním zapojením dvou RC článků.
 \begin{figure}[H]
@@ -395,7 +395,7 @@ H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _0}{Q}(j\
 \end{figure}
 Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Přenosová funkce je
 \begin{align}
-H(j\omega) = \frac{H_{B} \frac{\omega _0}{Q} (j\omega) }{(j\omega)^2 + \frac{\omega _0}{Q}(j\omega) + \omega _0 ^2}.
+H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
 \end{align}
 \noindent Následně byla sériovým zapojením dolní a horní propusti 2. řádu obdržena pásmová propust 2. řádu.
 \begin{figure}[H]
@@ -422,7 +422,7 @@ Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4
 \end{figure}
 \section{LC filtry}
 Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
-K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _0 = \frac{1}{\sqrt{LC}}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
+K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = \frac{1}{\sqrt{LC}}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{piclanky.png}
