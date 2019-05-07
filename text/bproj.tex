@@ -87,12 +87,12 @@ Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty.
 \noindent Filtry se používají k redukci nežádoucích frekvencí např. pro efektivní reprodukci zvuku reproduktory, k redkci okolního rušení např. vysílače blokují harmonické frekvence, které interferují, jako filtry v obvodech rekonstrukce signálů u D/A převodníků, nebo jako anti-aliasing filtry např předvzorkování u A/D převodníku).\\\\
 Obecná přenosová funkce filtru typu dolní propust je
 \begin{align}
-H(j\omega) = \frac{H_0}{\sum_{i=1}^{n} 1 + a_i s + b_i s^2},
+H(j\omega) = \frac{H_0}{\prod_{i=1}^{\frac{n}{2}} (1 + a_i s + b_i s^2)},
 \end{align}
 kde $n$ je řád filtru.\\
 Obecná přenosová funkce filtru typu horní propust je
 \begin{align}
-H(j\omega) = \frac{H_{\infty}}{\sum_{i=1}^{n} 1 + \frac{a_i}{s} + \frac{b_i}{s^2}},
+H(j\omega) = \frac{H_{\infty}}{\prod_{i=1}^{\frac{n}{2}} (1 + \frac{a_i}{s} + \frac{b_i}{s^2})},
 \end{align}
 kde $n$ je řád filtru.\\
 Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koeficienty filtru $a_i, b_i$ určují zesílení v propustném pásmu. Činitel jakosti je definován jako $Q = \frac{\sqrt{b_i}}{a_i}$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní.
@@ -367,7 +367,7 @@ H_k(j\omega) = \frac{U_k (j\omega)}{U_{k-1}(j\omega)}.
 \end{align}
 Přenos posledního bloku je dán vztahem
 \begin{align}
-H_{1 \rightarrow k}(j\omega) = \frac{U_k (j\omega)}{U_{in}(j\omega)} = \sum_{n=1}^{k} H_n(j\omega).
+H_{1 \rightarrow k}(j\omega) = \frac{U_k (j\omega)}{U_{in}(j\omega)} = \prod _{n=1}^{k} H_n(j\omega).
 \end{align}
 Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
 \begin{figure}[H]
@@ -378,6 +378,17 @@ Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. �
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{15062.png}
+\caption{Amplitudová a fázová charakteristika káskádního zapojení dolní propusti 4. řádu}
+\end{figure}
+\noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti z bloků OTA byly obdrženy následující průběhy.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{lrcx2.png}
+\caption{Schéma kaskádního zapojení dolní propusti 4. řádu}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{lrcx2ampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení dolní propusti 4. řádu}
 \end{figure}
 \section{Pásmová propust}
@@ -396,7 +407,7 @@ H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\
 \includegraphics[scale=0.75]{16063.png}
 \caption{Amplitudová a fázová charakteristika horní propusti 2. řádu}
 \end{figure}
-Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Přenosová funkce je
+\noindent Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Přenosová funkce je
 \begin{align}
 H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
 \end{align}
@@ -411,6 +422,17 @@ H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\om
 \includegraphics[scale=0.75]{16065.png}
 \caption{Amplitudová a fázová charakteristika pásmové propusti 2. řádu}
 \end{figure}
+\noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti 2. řádu z bloků OTA a následným zapojením horní propusti 2. řádu byly obdrženy následující průběhy.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{lrcbandpass.png}
+\caption{Schéma kaskádního zapojení pásmové propusti 2. řádu}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{lrcbandpassampl.png}
+\caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 2. řádu}
+\end{figure}
 \section{Pásmová propust čtvrtého řádu}
 Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
 \begin{figure}[H]
@@ -421,6 +443,17 @@ Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{kaskadnebandpass.png}
+\caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 4. řádu}
+\end{figure}
+\noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti 4. řádu a následným zapojením dvou horních propustí 2. řádu byla obdržena pásmová propust 4.řádu. Průběh v okolí 0 dB není zcela hladký, protože hodnoty prvků v obvodu nebyly zvoleny přesně.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{lrcbandpass4.png}
+\caption{Schéma kaskádního zapojení pásmové propusti 4. řádu}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{lrcbandpass4ampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 4. řádu}
 \end{figure}
 \section{LC filtry}
@@ -463,12 +496,12 @@ fs &= \frac{\sqrt{delta\_{fs}^2+4f\_m ^2}+delta\_{fs}}{2}
 \includegraphics[scale=0.7]{tolsch.png}
 \caption{Toleranční schéma navrhované pásmové propusti}
 \end{figure}
-Řád fitru byl určen jako $order = 4$. Dále byla funkcí $Cauer_asnew$ určena nová hodnota útlumu v nepropustném pásmu NDP.
+\noindent Řád fitru byl určen jako $order = 4$. Dále byla funkcí $Cauer_asnew$ určena nová hodnota útlumu v nepropustném pásmu NDP.
 \begin{align}
 asnew&= 10log10(1 + ( \frac{\epsilon}{kl\_new})^2)\\
 \epsilon &= \sqrt{10^{0.1ap} - 1)}\\
 k &= \frac{1}{Os}\\
-kl\_new &= k^{order}(\sum_{i=1}^{n}JacobiCD(\frac{(2i - 1 + m)EllipticK(k)}{order},k))^4,
+kl\_new &= k^{order}(\prod_{i=1}^{n}JacobiCD(\frac{(2i - 1 + m)EllipticK(k)}{order},k))^4,
 \end{align}
 \noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli přenosové funkce $Gc$, póly a nuly přenosové funkce $poles, zeros$ pomocí funkce $CauerCPolesZeros$. Počet pólů je dán řádem filtru $order$ a počet nul pro aproximaci typu C je roven $order - 2$. Dále byl spočten provozní činitel přenosu $G$ jako racionální lomená funkce $G(j\omega) = \frac{1}{H(j\omega)}$ a charakteristická funkce $\Phi(j\omega)$ s nulami a póly na imaginární ose. Tato funcke má shodný jmenovatel s $G(j\omega)$.
 \MapleOutput{asnew := 83.36289}
