@@ -73,11 +73,17 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 % ---------------------------------
 % ---------------------------------
 % název sekce je generován automaticky jako: Úkol X
-\section{Typy filtrů a jejich aplikace}
+Klíčová slova: \textit{transkonduktance, OTA, OTA-C, analogový filtr, pásmová propust, dolní propust}
+\section{Motivace}
+\noindent Cílem práce je navrhout zapojení analogového filtru typu pásmová propust 4. řádu s OTA. Hlavním nástrojem je Maple s knihovnou Syntfil, obvodová simulace je poté realizována v prostředí Multisim.
+\section{Analogové filtry}
 Filtry jsou určeny k potlačení nebo zvýraznění určité části kmitočtového spektra signálu. Jsou to obvody s kmitočtově závislou přenosovou funkcí (pro napěťový přenos $H_s(j \omega) = \frac{U_{out}(j \omega)}{U_{in}(j \omega)}$). Základní rozdělení je na dolní propust (\textit{low-pass} - LP), horní propust(\textit{high-pass} - HP), pásmovou propust (\textit{band-pass} - BP) a pásmovou zádrž (\textit{band-stop} - BS). \\
+\\
 Dolní propust nepropouští na výstup vstupní signál nad frekvencí $f_s$, signál v propustném pásmu zůstává beze změny nebo zesílený. Základní pasivní dvojbranné zapojení je ke vstupu sériově zapojený rezistor a k této větvi paralelně kapacitor. Tento RC člen se zvyšující se frekvencí snižuje svou vstupní impedanci. Přenosová funkce má nulu v nekonečnu a pól v levé polorovině s-roviny. Ideální integrátor má pól v nule. \\
 Horní propust nepropouští signály o nízkých frekvencích. Nejjednodušší zapojení je RC člen, kdy kapacitor je zapojen sériově se zdrojem a k této větvi paralelně rezistor. Pro toto zapojení reaktance kapacitoru se zvyšující se frekvencí klesá. Přenosová funkce ideálního derivátoru má pól v nekonečnu a nulu v nule. Horní propust má nulu v nule a pól v levé polorovině s-roviny.\\
-Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC - dolní propust) a derivačního článku (CR - horní propust)\\
+\\
+Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC - dolní propust) a derivačního článku (CR - horní propust).\\
+\\
 Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty. Pasivní zapojení je složeno ze dvou rezistorů a kapacitorů. Má vždy ztrátový přenos.
 \begin{figure}[H]
 \centering
@@ -144,9 +150,12 @@ G(\omega) = |H(j\omega)| = \frac{3}{\sqrt{\omega ^4 + 3\omega ^2 + 9}}.
 G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 R_n ^2(\zeta, \frac{\omega}{\omega _c})}},
 \end{align}
 kde $\epsilon$ je faktor zvlnění, $R_n$ eliptická racionální funkce n-tého řádu, $\zeta$ selektivní faktor a $\omega _c$ mezní frekvence. Pokud pro selektivní faktor platí $\zeta \rightarrow \infty$, filtr se stává Čebyševovým (typ I). 
+\newpage
 \section{Transkonduktanční zesilovače (OTA)}
 V telekomunikacích se používají filtry v rozsahu kmitočtů desítek až stovek megahertz, v bezdrátové komunikaci až v řádu gigahertz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5-10$\%$ $\omega _c$ - tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
+\\
 Pro nízké frekvence se ke splnění těchto požadavků používají obvody se spínanými kapacitory (SC). Přepínaný kapacitor se chová jako rezistor, tudíž časová konstanta RC je definována poměrem kapacitorů a hodinovou (CLK) frekvencí, se kterou jsou přepínány. Pro vysokofrekvenční aplikace (až v řádu gigahertz) se používají MOSFET-C filtry.\\
+\\
 Další z možných prvků, které jsou dostupné jak pro nízkofrekvenční aplikace, tak pro kmitočtový rozsah stovek megahertz, jsou transkonduktanční zesilovače.\\\\
 Transkonduktanční zesilovače (označují se též jako OTA (\textit{Operational Transconductance Amplifiers}) jsou napětím řízené zesilovače s proudovým výstupem - zdroje proudu
 \begin{align}
@@ -188,7 +197,8 @@ v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-)
 \includegraphics[scale=0.5]{damp.png}
 \caption{Ztrátový OTA-C \cite{4}}
 \end{figure}
-\section{Integrované obvody s OTA zesilovači}
+\newpage
+\section{Integrované obvody s OTA}
 Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OZ mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 75-280 Kč. Integrované obvody s dvěma OZ v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\mu$s), mnohem menší výstupní proud (650 $\mu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí je 25-65 Kč.
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[H]
@@ -230,7 +240,8 @@ Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdř
 \includegraphics[scale=0.75]{image5.png}
 \caption{Vnitřní chéma OTA \cite{6}}
 \end{figure}
-\section{Odvození}
+\newpage
+\section{Odvození DP 2. řádu}
 Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje obrázek 9.
 \begin{figure}[H]
 \centering
@@ -315,6 +326,7 @@ Pokud navíc byly uvažovány stejné transkonduktance $g_{m1},g_{m2} = g_m$, by
 \omega _c &= \sqrt{\frac{g_m^2}{C^2}},\\
 Q &= \sqrt{1} = 1.
 \end{align}
+\newpage
 \section{Dolní propust 2. řádu}
 Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. Přenosová funkce je
 \begin{align}
@@ -354,7 +366,8 @@ Zapojení obvodu v Multisimu ilustruje Obrázek 15.
 \caption{Amplitudová a fázová charakteristika dolní propusti 2. řádu}
 \end{figure}
 \noindent Lze použít i zapojení z kapitoly 4 s uzemněným kapacitorem a odporem, avšak při této realizaci dochází v amplitudové charakteristice k překmitu. Proto bylo zvoleno řešení zmíněné výše.
-\section{Dolní propust čtvrtého řádu - kaskádně}
+\newpage
+\section{Dolní propust 4. řádu}
 Kaskádní zapojení je realizováno násobením sériově zapojených bloků.
 \begin{figure}[H]
 \centering
@@ -391,7 +404,8 @@ Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. �
 \includegraphics[scale=0.75]{lrcx2ampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení dolní propusti 4. řádu}
 \end{figure}
-\section{Pásmová propust}
+\newpage
+\section{Pásmová propust 2. řádu}
 Horní propust druhého řádu má přenos v nule nulový $H_{0} = 0$. Přenosová funkce je
 \begin{align}
 H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
@@ -433,7 +447,8 @@ H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\om
 \includegraphics[scale=0.75]{lrcbandpassampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 2. řádu}
 \end{figure}
-\section{Pásmová propust čtvrtého řádu}
+\newpage
+\section{Pásmová propust 4. řádu}
 Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
 \begin{figure}[H]
 \centering
@@ -456,7 +471,8 @@ Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4
 \includegraphics[scale=0.75]{lrcbandpass4ampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 4. řádu}
 \end{figure}
-\section{LC filtry}
+\newpage
+\section{Příčkové LC filtry}
 Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
 K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = \frac{1}{\sqrt{LC}}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
 \begin{figure}[H]
@@ -469,8 +485,14 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \includegraphics[scale=0.08]{tclanky.png}
 \caption{Pasivní dolní propust n-tého řády s T články \cite{10}}
 \end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.1]{Bandpass_Filter.png}
+\caption{Zapojení pásmové propusti \cite{11}}
+\end{figure}
+\newpage
 \section{Návrh v Maple}
-Byly zvoleny parametry tolerančního schématu 
+Pro návrh pásmové propusti 4. řádu s Cauerovou aproximací typu C byly zvoleny parametry tolerančního schématu 
 \MapleOutput{fm := 80000 Hz}
 \MapleOutput{delta\_{fp} := 130000 Hz}
 \MapleOutput{delta\_{fs} := 300000 Hz}
@@ -478,42 +500,141 @@ Byly zvoleny parametry tolerančního schématu
 \MapleOutput{as := 80  dB,}
 \noindent kde $fm$ značí geometrický střed propustného pásma [Hz], $delta\_{fp}$ šířku propustného pásma [Hz],
 $delta\_{fs} $ šířku nepropustného pásma [Hz], $ap$ maximální útlum v propustném pásmu [dB], $as$ minimální útlum v nepropustném pásmu [dB].
-Funkcí $BP22NLP$ byly spočteny spodní a horní hranice nepropustného pásma $f\_s,fs$ a spodní a horní hranice propustného pásma $f\_p,fp$.
+Funkcí $BP22NLP$ byla provedena transformace tolerančního schematu symetrické pásmové propusti (PP) na toleranční schema normované dolní propusti (NDP). Byly spočteny spodní a horní hranice nepropustného pásma $f\_s,fs$ a spodní a horní hranice propustného pásma $f\_p,fp$. 
 \begin{align}
 f\_s &= \frac{\sqrt{delta\_{fs}^2+4f\_m ^2}-delta\_{fs}}{2}\\
 f\_p &= \frac{\sqrt{delta\_{fp}^2+4f\_m ^2}-delta\_{fp}}{2}\\
 fp &= \frac{\sqrt{delta\_{fp}^2+4f\_m ^2}+delta\_{fp}}{2}\\
 fs &= \frac{\sqrt{delta\_{fs}^2+4f\_m ^2}+delta\_{fs}}{2}
 \end{align}
+\MapleOutput{x:=BP22NLP(80e3,130e3,300e3,20,80)}
 \MapleOutput{f\_s = 20000 Hz}
 \MapleOutput{f\_p = 38077 Hz}
 \MapleOutput{fp = 168077 Hz}
 \MapleOutput{fs = 320000 Hz}
 \noindent Byl obdržen kmitočet hranice nepropustného pásma normované dolní propusti (NDP) $Os$ [1/s].
-\MapleOutput{Os = 2.307692 1/s}.
+\MapleOutput{Os = 2.30769 1/s}.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.7]{tolsch.png}
+\includegraphics[scale=0.6]{tolsch.png}
 \caption{Toleranční schéma navrhované pásmové propusti}
 \end{figure}
-\noindent Řád fitru byl určen jako $order = 4$. Dále byla funkcí $Cauer_asnew$ určena nová hodnota útlumu v nepropustném pásmu NDP.
+\noindent Stupeň Cauerovy aproximace normované dolní propusti byl určen jako $order = 4$.
+\MapleOutput{Nc:=CauerNLPOrder(Os)}
+\MapleOutput{Nc := 4, 2.30769, 20}
+\noindent Dále byla funkcí $Cauer\_asnew$ určena nová hodnota útlumu v nepropustném pásmu NDP $asnew$.
+\MapleOutput{asnew := Cauer\_asnew(Nc)}
+\MapleOutput{asnew := 83.3624}
 \begin{align}
 asnew&= 10log10(1 + ( \frac{\epsilon}{kl\_new})^2)\\
 \epsilon &= \sqrt{10^{0.1ap} - 1)}\\
 k &= \frac{1}{Os}\\
 kl\_new &= k^{order}(\prod_{i=1}^{n}JacobiCD(\frac{(2i - 1 + m)EllipticK(k)}{order},k))^4,
 \end{align}
-\noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli přenosové funkce $Gc$, póly a nuly přenosové funkce $poles, zeros$ pomocí funkce $CauerCPolesZeros$. Počet pólů je dán řádem filtru $order$ a počet nul pro aproximaci typu C je roven $order - 2$. Dále byl spočten provozní činitel přenosu $G$ jako racionální lomená funkce $G(j\omega) = \frac{1}{H(j\omega)}$ a charakteristická funkce $\Phi(j\omega)$ s nulami a póly na imaginární ose. Tato funcke má shodný jmenovatel s $G(j\omega)$.
-\MapleOutput{asnew := 83.36289}
-\MapleOutput{Gc, poles, zeros := 457.20673,}
-\MapleOutput{[-0.10642 + 0.10392 I; -0.10642 - 0.10392 I; -0.01088 + 0.91538 I; -0.01089 -  0.91538 I],}
+\noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Jakobiho eliptických funkcí je 12 a vycházejí ze škálování na jednotkové elipse (cos $\phi$, sin $\phi$ se neváží k jednotkovému kruhu, ale k elipse). JacobiCD funkce je definována jako podíl cosinu Jakobiho funkce s dvěma parametry (JacobiAM(z,k)) a derivace této funkce podle prvního parametru z.
+\begin{align}
+EllipticK(k) = \int _0 ^1(\frac{1}{\sqrt{(-\_ \alpha _1^2+1)}\sqrt{(-k^2 \_ \alpha _1^2+1})})d \_ \alpha _1
+\end{align}
+Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli přenosové funkce $Gc$, póly a nuly přenosové funkce $poles, zeros$ pomocí funkce $CauerCPolesZeros$. Počet pólů je dán řádem filtru $order$ a počet nul pro aproximaci typu C je roven $order - 2$. Dále byla spočtena Caurerova aproximace typu C - provozní činitel přenosu $G$ jako racionální lomená funkce $G(j\omega) = \frac{1}{H(j\omega)}$, charakteristická funkce $chf$ jako $\Phi(j\omega)$ s nulami a póly na imaginární ose a nuly přenosu. Charakteristická funcke má shodný jmenovatel s $G(j\omega)$.
+\MapleOutput{Gc,poles,zeros:=CauerCPolesZeros(Nc)}
+\MapleOutput{G,chf,zer:=CauerC(Nc,p)}
+\MapleOutput{Gc, poles, zeros := 459.404,}
+\MapleOutput{[-0.106147+0.103691 I,-0.106147-0.103691 I,-0.0119965+0.915370 I,-0.0119965-0.915370 I],}
 \MapleOutput{ [2.91159I -2.91159 I]}
-\section{Návrh funkční simulací}
+\MapleOutput{G,chf,zer := \frac{459.404p^4+108.551p^3+397.458p^2+81.9762p+8.47734}{p^2+8.47736}, \frac{(459.404p^2+384.647)p^2}{p^2+8.47736}, [2.91159I -2.91159 I]}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.1]{Bandpass_Filter.png}
-\caption{Zapojení pásmové propusti \cite{11}}
+\includegraphics[scale=0.6]{sch.png}
+\caption{Modulová frekvenční charakteristika NDP}
 \end{figure}
+\noindent Charakteristika byla vykreslena z přenosu funkcí $MagnitudeHdB$, která vypočte modul přenosu podle předpisu |H(j$\omega)$|.
+\newpage
+\section{Výpočet prvků LC filtru}
+\noindent Funkcí DroppNLP byly vypočteny prvky LC příčkového filtru typu normovaná dolní propust (NDP). Zakončení bylo zvoleno standardní (common), odpory o hodnotě 1 $\Omega$, směr zpracování od posledního prvku (rear), s T strukturou (začíná zepředu podélným induktorem). Standardní (common) zakončení je oboustranné ($R_1 != 0, R_1 != \infty$). Výstupem funkce je LC struktura s orientací prvků ve větvi podélně (direct) nebo příčně (shunt).
+\MapleOutput{elems\_NLP:=DroppNLP('common',1,rear,T,G,chf,zer)}
+\MapleOutput{             
+Rem\_matrix = \begin{pmatrix} 1.00624  &  0 \\
+0.  &  1.00150
+\end{pmatrix}}
+\MapleOutput{type = LC\_NLP\_common}
+\MapleOutput{R1 = 1}
+\MapleOutput{R2 = 1.004}
+\MapleOutput{block (1), [orientation = direct, elements = {L1 = 27.298}, Z = p L1]}
+\MapleOutput{block (2), [orientation = shunt, elements = {C1 = 1.6705}, Z = \frac{1}{pC1}]}
+\MapleOutput{block (3), [orientation = direct, elements = {C1 = 0.14180, L1 = 0.83190}, Z = \frac{1}{\frac{1}{pL1} + pC1}]}
+\MapleOutput{block (4), [orientation = shunt, elements = {C1 = 8.3068}, Z = \frac{1}{pC1}]}
+\noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí MakeH. Byl spočten  napěťový i výkonový přenos.
+\MapleOutput{H\_NLPV := MakeH(elems\_NLP, V)}
+\MapleOutput{H\_NLPV := \frac{p^2  + 8.47735}{2943.77 p^4  + 455.340 p^3  + 2381.21^2  + 322.099 p + 16.9209}   }
+\MapleOutput{H\_NLP := MakeH(elems\_NLP, P)}
+\MapleOutput{H\_NLP := \frac{0.999999 p^2  + 8.4773}{1474.83 p^4  + 228.125 p^3  + 1192.99 p^2  + 161.371 p + 8.47736}}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{sch2.png}
+\caption{Modulová frekvenční charakteristika NDP - LC příčkový filtr}
+\end{figure}
+\noindent Hodnota přenosové funkce v 1 byla vyhodnocena jako $-32.006$.\\
+Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na pásmovou propust (PP). Zakončovací rezistor byl zvolen 1 $\Omega$, další dva parametry funkce značí spodní a horní hranici propustného pásma.
+\MapleOutput{elems\_BP := ElemsBP(elems\_NLP, 1, 38077.640640, 168077.640640)}
+\MapleOutput{type = LC\_BP\_common}
+\MapleOutput{R1 = 1}
+\MapleOutput{R2 = 1.004}
+\MapleOutput{block (1), [Z = p L1 + \frac{1}{pC1}, orientation = direct, elements = { C1 = 1.1843*10^{-7}  , L1 = 3.3420*10^{-5}}]}
+\MapleOutput{block (2), [Z = \frac{1}{\frac{1}{pL1}+pC1}, orientation = shunt, elements = {C1 = 2.0451 *10^{-6}, L1 = 1.9353*10^{-6}}]}
+\MapleOutput{block (3), [Z = \frac{1}{pC1 + \frac{1}{pL1}+\frac{1}{pL2 + \frac{1}{pC2}}} orientation = direct, elements = { C1 = 1.7360*10^{-7} ,}}
+\MapleOutput{C2 = 3.8861*10^{-6}, L1 = 2.2799*10^{-5}, L2 = 1.0185*10^{-6}]}
+\MapleOutput{block (4), [Z = \frac{1}{\frac{1}{pL1}+pC1}, orientation = shunt, elements = { C1 = 1.0170 *10^{-5}, L1 = 3.8918*10^{-7}}]}
+\noindent Byly nastaveny jakosti cívek v LC příčkové struktuře na konečnou hodnotu. Funkce $MakeRealL$ zařadí do výsledné LC příčkové struktury sériově rezistory k induktorům podle zadaného činitele jakosti $Q$ a zadaného kmitočtu (ten odpovídá u pásmové propusti geometrickému středu propustného pásma - nebo je možno zadat obě hranice propustného pásma). Výpočet sériového odporu je proveden podle předpisu $R_s = \frac{L1 . 2 \pi f}{Q}$.
+\MapleOutput{Q:=50:}
+\MapleOutput{elems\_BPQ:=MakeRealL(elems\_BP,Q,38077.640640, 168077.640640):}
+\MapleOutput{type = LC\_BP\_common\_Q}
+\MapleOutput{R1 = 1}
+\MapleOutput{R2 = 1.004}
+\MapleOutput{block (1), [Z = p L1 + Rs1 + \frac{1}{pC1}, orientation = direct, elements = { C1 = 1.1843*10^{-7}  , L1 = 3.3420*10^{-5}, }}
+\MapleOutput{Rs1 = 0.33598]}
+\MapleOutput{block (2), [Z = \frac{1}{\frac{1}{pL1 + Rs1}+pC1}, orientation = shunt, elements = {C1 = 2.0451 *10^{-6}, L1 = 1.9353*10^{-6},}}
+\MapleOutput{Rs1 = 0.019455]}
+\MapleOutput{block (3), [Z = \frac{1}{pC1 + \frac{1}{pL1 + Rs1}+\frac{1}{pL2 + Rs2 + \frac{1}{pC2}}} orientation = direct, elements = { C1 = 1.7360*10^{-7} ,}}
+\MapleOutput{C2 = 3.8861*10^{-6}, L1 = 2.2799*10^{-5}, L2 = 1.0185*10^{-6}, }
+\MapleOutput{Rs1 = 0.2292, Rs2 = 0.010239]}
+\MapleOutput{block (4), [Z = \frac{1}{\frac{1}{pL1 + Rs1}+pC1}, orientation = shunt, elements = { C1 = 1.0170 *10^{-5}, L1 = 3.8918*10^{-7}, }}
+\MapleOutput{Rs1 = 0.0039125]}
+\noindent Byl spočten přenos pro LC strukturu bez a s přidanými sériovými rezistory. Pro oba přenosy byla vykreslena modulová frekvenční charakteristika.
+\MapleOutput{H\_BP:=MakeH(elems\_BP);}
+\MapleOutput{H\_BPQ:=MakeH(elems\_BPQ);}
+\MapleOutput{H\_BP := \frac{ p^6  + 6.1612* 10^{12}   p^4  + 6.38385 *10^{22}  p^2}{2.21053
+  10^{-9}  p^8  + 0.000279286 p^7  + 3427.09 p^6  + 3.43505 *10^{8}   p^5 + 1.45520* 10^{15} p^4  + 8.67913 10^{19} p^3  + 2.18778*10^{26} p^2 + 4.50478 *10^{30} p + 9.00862 *10^{36} }}
+\MapleOutput{H\_BPQ := \frac{p^7  + 40212.3 p^6 + 6.16193*10^{12}  p^5 + 1.85826*10^{17}p^4+6.57069*10^{22}p^3+1.28981*10^{27}p^2 + 6.45184 10^{30} p}{2.21053*10^{-9}p^9 +0.000390400 p^8+3442.71 p^7+4.81598*10^8 p^6+1.47026*10^{15} p^5+1.30876*10^{20} p^4+2.21624*10^{26} p^3+8.92708*10^{30} p^2+9.11067*10^{36} p +9.09122*10^{40} }}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{modul1.png}
+\caption{Modulová frekvenční charakteristika z přenosu LC struktury}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{modul2.png}
+\caption{Modulová frekvenční charakteristika z přenosu LC struktury se sériovými rezistory k induktorům}
+\end{figure}
+\noindent Vyčíslením v $100*10^3*2 \pi$ Hz byl obdržen útlum -20 dB.\\
+Odnormované prvky byly vyčísleny následovně:
+\MapleOutput{ele\_BP:={L1=subs(eval(elems\_BPQ[1][elements]),L1), C1=subs(eval(elems\_BPQ[1][elements]),C1),}}
+\MapleOutput{C2=subs(eval(elems\_BPQ[2][elements]),C1), L2=subs(eval(elems\_BPQ[2][elements]),L1),}
+\MapleOutput{L3=subs(eval(elems\_BPQ[3][elements]),L1), L4=subs(eval(elems\_BPQ[3][elements]),L2),} \MapleOutput{C3=subs(eval(elems\_BPQ[3][elements]),C1), C4=subs(eval(elems\_BPQ[3][elements]),C2),}
+\MapleOutput{C5=subs(eval(elems\_BPQ[4][elements]),C1),L5=subs(eval(elems\_BPQ[4][elements]),L1),}
+\MapleOutput{R1=subs(eval(elems_BPQ[1][elements]),Rs1),R2=subs(eval(elems_BPQ[2][elements]),Rs1),}\MapleOutput{R3=subs(eval(elems_BPQ[3][elements]),Rs1),R4=subs(eval(elems_BPQ[3][elements]),Rs2),}\MapleOutput{R5=subs(eval(elems_BPQ[4][elements]),Rs1),}
+\MapleOutput{R0=eval(elems\_BPQ)[R1], Rz=eval(elems\_BPQ)[R2];}
+\MapleOutput{ele\_BP := { C1 = 1.18426*10^{-7}  , C2 = 0.00000204513,  C3 = 1.73599 *10^{-7} , C4 = 0.00000388609,}}
+\MapleOutput{ C5 = 0.0000101698, L1 = 0.0000334204, L2 = 0.00000193526, L3 = 0.0000227988, L4 = 0.00000101846, }
+\MapleOutput{L5 = 3.89179 *10^{-7} ,}
+\MapleOutput{R0 = 1, R1 = 0.335978, R2 = 0.0194554, R3 = 0.229198, R4 = 0.0102387, R5 = 0.00391246, Rz = 1.004}
+\newpage
+\section{Závěr}
+\noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce 6), poté byl kaskádním zapojením obdržen filtr typu dolní propust 4. řádu (Sekce 7). Následně byla pomocí kaskádního zapojení horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce 8) a 4. řádu (Sekce 9).\\
+\\
+Pomocí knihovny Syntfil navržena pásmová propust 4. řádu a její zapojení pomocí LC příčkové struktury. Mezikrokem byl převod pásmové propusti na normovanou dolní propust. Pro LC strukturu byly obdrženy odnormované hodnoty prvků. LC struktura poté byla převedena na zapojení s gyrátory, přičemž hodnoty prvků zůstaly nezměněny.\\
+\\
+Cíl práce byl částečně splněn, dále bude realizována simulace LC příčkového filtru v Multisimu s výsledky obdrženými z knihovny Syntfil. Dalším krokem bude pak praktická realizace a odzkoušení navrhnutého obvodu.
+\newpage
 \begin{thebibliography}{999}
 \bibitem{1}
 KAŠPER, Ladislav. \textit{Návrh kmitočtového filtru} [online]. Ostrava, 2012 [cit. 2019-04-28]. Dostupné z: \url{https://dspace.vsb.cz/bitstream/handle/10084/92901/KAS279_FEI_N2647_2601T013_2012.pdf?sequence=1&isAllowed=y}. Diplomová práce. VŠB-TU Ostrava, FEI. Strana 18/69.
