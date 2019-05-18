@@ -243,7 +243,7 @@ Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos f
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.15]{RLC_low-pass.png}
-\caption{Dolní propust 2. řádu (RLC obvod) \cite{7}}
+\caption{Dolní propust 2. řádu \cite{7}}
 \end{figure}
 \noindent Přenos obvodu byl vyjádřen jako
 \begin{align}
@@ -328,22 +328,12 @@ Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$
 \begin{align}
 H(j\omega) = \frac{H_0 \omega_c ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
 \end{align}
-Obvodová simulace byla realizována v programu Multisim. Zapojení dvou OTA-C v sérii vede na dolní propust druhého řádu. Bylo zvoleno symetrické napájení OZ $V_{DD},V_{SS} = \pm 15$ V. Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Vstupní externí proud $I_{ABC} = 0.5$ $\mu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100 kHz. Externím proudem $I_{ABC} \in$ $<5$ $\mu$A ; 500 $\mu$A> je výrobcem garantováno minimální výstupní napětí $U_{OUT} = \pm 12$ V, standardně $V_{peak 1} = 14.2$ V a $V_{peak 2} = -14.4$ V. Při výstupním napětí v tomto intervalu je šum vzhledem k signálu zanedbatelný a nezkreslí výsledky simulace.\\
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{1503.png}
-\caption{Schéma zapojení dolní propusti 2. řádu}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{15032.png}
-\caption{Amplitudová a fázová charakteristika dolní propusti 2. řádu}
-\end{figure}
-\noindent Obvod lze realizovat i zapojením indukčnosti(náhradní schéma pro OTA - Obrázek 11), odporu (náhradní schéma - Obrázek 10) a uzemněného kapacitoru. 
+Obvodová simulace byla realizována v programu Multisim. Bylo zvoleno symetrické napájení OZ $V_{DD},V_{SS} = \pm 15$ V. Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Vstupní externí proud $I_{ABC} = 0.5$ $\mu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100 kHz. Externím proudem $I_{ABC} \in$ $<5$ $\mu$A ; 500 $\mu$A> je výrobcem garantováno minimální výstupní napětí $U_{OUT} = \pm 12$ V, standardně $V_{peak 1} = 14.2$ V a $V_{peak 2} = -14.4$ V. Při výstupním napětí v tomto intervalu je šum vzhledem k signálu zanedbatelný a nezkreslí výsledky simulace.\\
+\noindent Obvod je realizován zapojením indukčnosti(Obrázek 11), odporu (Obrázek 10) a uzemněného kapacitoru. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{171.png}
-\caption{RLC obvod \cite{9}}
+\caption{Dolní propust \cite{9}}
 \end{figure}
 \noindent Mezní frekvence a činitel jakosti tohoto obvodu byly spočítány jako 
 \begin{align}
@@ -380,17 +370,6 @@ H_{1 \rightarrow k}(j\omega) = \frac{U_k (j\omega)}{U_{in}(j\omega)} = \prod _{n
 Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.75]{1506.png}
-\caption{Schéma kaskádního zapojení dolní propusti 4. řádu}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{15062.png}
-\caption{Amplitudová a fázová charakteristika káskádního zapojení dolní propusti 4. řádu}
-\end{figure}
-\noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti z bloků OTA byly obdrženy následující průběhy.
-\begin{figure}[H]
-\centering
 \includegraphics[scale=0.6]{lrcx2.png}
 \caption{Schéma kaskádního zapojení dolní propusti 4. řádu}
 \end{figure}
@@ -404,6 +383,12 @@ Horní propust druhého řádu má přenos v nule nulový $H_{0} = 0$. Přenosov
 \begin{align}
 H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
 \end{align}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.9]{fig9.png}
+\caption{Násobení přenosů \cite{10}}
+\end{figure}
+\noindent Pásmovou propust lze získat kaskádním zapojením dolní a horní propusti.
 \noindent Nejprve byla získána horní propust kaskádním zapojením dvou RC článků.
 \begin{figure}[H]
 \centering
@@ -422,17 +407,6 @@ H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\om
 \noindent Následně byla sériovým zapojením dolní a horní propusti 2. řádu obdržena pásmová propust 2. řádu.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.75]{16064.png}
-\caption{Schéma zapojení pásmové propusti 2. řádu}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{16065.png}
-\caption{Amplitudová a fázová charakteristika pásmové propusti 2. řádu}
-\end{figure}
-\noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti 2. řádu z bloků OTA a následným zapojením horní propusti 2. řádu byly obdrženy následující průběhy.
-\begin{figure}[H]
-\centering
 \includegraphics[scale=0.75]{lrcbandpass.png}
 \caption{Schéma kaskádního zapojení pásmové propusti 2. řádu}
 \end{figure}
@@ -441,19 +415,23 @@ H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\om
 \includegraphics[scale=0.75]{lrcbandpassampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 2. řádu}
 \end{figure}
+\noindent Obvod je realizován zapojením odporu (Obrázek 10), kapacitoru a uzemněné indukčnosti(Obrázek 12).
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{RlcHiPass.png}
+\caption{Horní propust \cite{11}}
+\end{figure}
+\noindent Mezní frekvence a činitel jakosti tohoto obvodu byly spočítány jako 
+\begin{align}
+\omega _c &= \frac{1}{2 \pi \sqrt{LC}}\\
+Q &= \frac{1}{2 \zeta},
+\end{align}
+\noindent kde $\zeta$ je relativní útlum vyjádřený z přenosové funkce
+\begin{align}
+H(s) = \frac{s^2}{s^2 + 2 \zeta (2 \pi \omega _c)s + (2 \pi \omega _c)^2}
+\end{align}
 \section{Pásmová propust 4. řádu}
-Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{kaskadnebandpass1.png}
-\caption{Schéma kaskádního zapojení pásmové propusti 4. řádu}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{kaskadnebandpass.png}
-\caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 4. řádu}
-\end{figure}
-\noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti 4. řádu a následným zapojením dvou horních propustí 2. řádu byla obdržena pásmová propust 4.řádu. Průběh v okolí 0 dB není zcela hladký, protože hodnoty prvků v obvodu nebyly zvoleny přesně.
+\noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti 4. řádu a následným zapojením dvou horních propustí 2. řádu byla obdržena pásmová propust 4.řádu. Byl obdržen filtr 4. řádu s poklesem -80 dB/dek. Průběh v okolí 0 dB není zcela hladký, protože hodnoty prvků v obvodu nebyly zvoleny přesně.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{lrcbandpass4.png}
@@ -470,17 +448,17 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{piclanky.png}
-\caption{Pasivní dolní propust n-tého řády s $\pi$ články \cite{10}}
+\caption{Pasivní dolní propust n-tého řády s $\pi$ články \cite{12}}
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.08]{tclanky.png}
-\caption{Pasivní dolní propust n-tého řády s T články \cite{10}}
+\caption{Pasivní dolní propust n-tého řády s T články \cite{12}}
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{Bandpass_Filter.png}
-\caption{Zapojení pásmové propusti \cite{11}}
+\caption{Zapojení pásmové propusti \cite{13}}
 \end{figure}
 \section{Návrh v Maple}
 Pro návrh pásmové propusti 4. řádu s Cauerovou aproximací typu C byly zvoleny parametry tolerančního schématu 
@@ -646,8 +624,12 @@ SCHAUMANN, Rolf a Mac E. Van VALKENBURG. \textit{Design of Analog Filters}. New 
 \bibitem{9}
 WADE, Augustus. Presentation on theme: \textit{Circuits for sensors Ideal OP Amps Basic OP Amp Circuit Blocks} [online]. In: . 2015 [cit. 2019-04-26]. Dostupné z: \url{https://slideplayer.com/slide/4458062} Prezentace. Slide 20/48.
 \bibitem{10}
-VEDRAL, Josef a Jakub SVATOŠ. \textit{Zpracování a digitalizace analogových signálů v měřící technice}. Praha: Česká technika - nakladatelství ČVUT, 2018. ISBN 978-80-01-06424-5. Strana 136, Obrázek 5.3.9, 5.3.10.
+RAMSDEN, Ed. \textit{An Introduction to Analog Filters}. Sensors Online [online]. 3 Speen Street, Suite 300, Framingham, MA 01701: Questex, 2019, 1/7/2001 [cit. 2019-05-18]. Dostupné z: \url{https://www.sensorsmag.com/components/introduction-to-analog-filters}
 \bibitem{11}
-Band-pass filter. In: \textit{Wikipedia: the free encyclopedia} [online]. San Francisco (CA): Wikimedia Foundation, 2001- [cit. 2019-04-29]. Dostupné z: \url{https://en.wikipedia.org/wiki/Band-pass_filter}
+\textit{RLC High-Pass Filter Design Tool}. OKAWA Electric Design [online]. 2019 [cit. 2019-05-18]. Dostupné z: \url{http://sim.okawa-denshi.jp/en/RLChikeisan.htm}
+\bibitem{12}
+VEDRAL, Josef a Jakub SVATOŠ. \textit{Zpracování a digitalizace analogových signálů v měřící technice}. Praha: Česká technika - nakladatelství ČVUT, 2018. ISBN 978-80-01-06424-5. Strana 136, Obrázek 5.3.9, 5.3.10.
+\bibitem{13}
+Band-pass filter. In: \textit{Wikipedia: the free encyclopedia} [online]. San Francisco (CA): Wikimedia Foundation, 2001- [cit. 2RLC High-Pass Filter Design Tool. OKAWA Electric Design [online]. 2019 [cit. 2019-05-18]. Dostupné z: http://sim.okawa-denshi.jp/en/RLChikeisan.htm019-04-29]. Dostupné z: \url{https://en.wikipedia.org/wiki/Band-pass_filter}
 \end{thebibliography}
 \end{document}
