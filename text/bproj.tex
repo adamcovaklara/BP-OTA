@@ -150,7 +150,6 @@ G(\omega) = |H(j\omega)| = \frac{3}{\sqrt{\omega ^4 + 3\omega ^2 + 9}}.
 G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 R_n ^2(\zeta, \frac{\omega}{\omega _c})}},
 \end{align}
 kde $\epsilon$ je faktor zvlnění, $R_n$ eliptická racionální funkce n-tého řádu, $\zeta$ selektivní faktor a $\omega _c$ mezní frekvence. Pokud pro selektivní faktor platí $\zeta \rightarrow \infty$, filtr se stává Čebyševovým (typ I). 
-\newpage
 \section{Transkonduktanční zesilovače (OTA)}
 V telekomunikacích se používají filtry v rozsahu kmitočtů desítek až stovek megahertz, v bezdrátové komunikaci až v řádu gigahertz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5-10$\%$ $\omega _c$ - tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
 \\
@@ -197,7 +196,6 @@ v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-)
 \includegraphics[scale=0.5]{damp.png}
 \caption{Ztrátový OTA-C \cite{4}}
 \end{figure}
-\newpage
 \section{Integrované obvody s OTA}
 Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OZ mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 75-280 Kč. Integrované obvody s dvěma OZ v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\mu$s), mnohem menší výstupní proud (650 $\mu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí je 25-65 Kč.
 \renewcommand{\arraystretch}{1.5}
@@ -240,7 +238,6 @@ Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdř
 \includegraphics[scale=0.75]{image5.png}
 \caption{Vnitřní chéma OTA \cite{6}}
 \end{figure}
-\newpage
 \section{Odvození DP 2. řádu}
 Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje obrázek 9.
 \begin{figure}[H]
@@ -326,7 +323,6 @@ Pokud navíc byly uvažovány stejné transkonduktance $g_{m1},g_{m2} = g_m$, by
 \omega _c &= \sqrt{\frac{g_m^2}{C^2}},\\
 Q &= \sqrt{1} = 1.
 \end{align}
-\newpage
 \section{Dolní propust 2. řádu}
 Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. Přenosová funkce je
 \begin{align}
@@ -366,7 +362,6 @@ Zapojení obvodu v Multisimu ilustruje Obrázek 15.
 \caption{Amplitudová a fázová charakteristika dolní propusti 2. řádu}
 \end{figure}
 \noindent Lze použít i zapojení z kapitoly 4 s uzemněným kapacitorem a odporem, avšak při této realizaci dochází v amplitudové charakteristice k překmitu. Proto bylo zvoleno řešení zmíněné výše.
-\newpage
 \section{Dolní propust 4. řádu}
 Kaskádní zapojení je realizováno násobením sériově zapojených bloků.
 \begin{figure}[H]
@@ -404,7 +399,6 @@ Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. �
 \includegraphics[scale=0.75]{lrcx2ampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení dolní propusti 4. řádu}
 \end{figure}
-\newpage
 \section{Pásmová propust 2. řádu}
 Horní propust druhého řádu má přenos v nule nulový $H_{0} = 0$. Přenosová funkce je
 \begin{align}
@@ -447,7 +441,6 @@ H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\om
 \includegraphics[scale=0.75]{lrcbandpassampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 2. řádu}
 \end{figure}
-\newpage
 \section{Pásmová propust 4. řádu}
 Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
 \begin{figure}[H]
@@ -471,7 +464,6 @@ Kaskádním zapojením dvou pásmových propustí 2. řádu byl obdržen filtr 4
 \includegraphics[scale=0.75]{lrcbandpass4ampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 4. řádu}
 \end{figure}
-\newpage
 \section{Příčkové LC filtry}
 Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
 K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = \frac{1}{\sqrt{LC}}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
@@ -490,7 +482,6 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \includegraphics[scale=0.1]{Bandpass_Filter.png}
 \caption{Zapojení pásmové propusti \cite{11}}
 \end{figure}
-\newpage
 \section{Návrh v Maple}
 Pro návrh pásmové propusti 4. řádu s Cauerovou aproximací typu C byly zvoleny parametry tolerančního schématu 
 \MapleOutput{fm := 80000 Hz}
@@ -548,7 +539,6 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \caption{Modulová frekvenční charakteristika NDP}
 \end{figure}
 \noindent Charakteristika byla vykreslena z přenosu funkcí $MagnitudeHdB$, která vypočte modul přenosu podle předpisu |H(j$\omega)$|.
-\newpage
 \section{Výpočet prvků LC filtru}
 \noindent Funkcí DroppNLP byly vypočteny prvky LC příčkového filtru typu normovaná dolní propust (NDP). Zakončení bylo zvoleno standardní (common), odpory o hodnotě 1 $\Omega$, směr zpracování od posledního prvku (rear), s T strukturou (začíná zepředu podélným induktorem). Standardní (common) zakončení je oboustranné ($R_1 != 0, R_1 != \infty$). Výstupem funkce je LC struktura s orientací prvků ve větvi podélně (direct) nebo příčně (shunt).
 \MapleOutput{elems\_NLP:=DroppNLP('common',1,rear,T,G,chf,zer)}
@@ -602,9 +592,12 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
 \noindent Byl spočten přenos pro LC strukturu bez a s přidanými sériovými rezistory. Pro oba přenosy byla vykreslena modulová frekvenční charakteristika.
 \MapleOutput{H\_BP:=MakeH(elems\_BP);}
 \MapleOutput{H\_BPQ:=MakeH(elems\_BPQ);}
+\begingroup
+    \fontsize{5pt}{12pt}
 \MapleOutput{H\_BP := \frac{ p^6  + 6.1612* 10^{12}   p^4  + 6.38385 *10^{22}  p^2}{2.21053
   10^{-9}  p^8  + 0.000279286 p^7  + 3427.09 p^6  + 3.43505 *10^{8}   p^5 + 1.45520* 10^{15} p^4  + 8.67913 10^{19} p^3  + 2.18778*10^{26} p^2 + 4.50478 *10^{30} p + 9.00862 *10^{36} }}
 \MapleOutput{H\_BPQ := \frac{p^7  + 40212.3 p^6 + 6.16193*10^{12}  p^5 + 1.85826*10^{17}p^4+6.57069*10^{22}p^3+1.28981*10^{27}p^2 + 6.45184 10^{30} p}{2.21053*10^{-9}p^9 +0.000390400 p^8+3442.71 p^7+4.81598*10^8 p^6+1.47026*10^{15} p^5+1.30876*10^{20} p^4+2.21624*10^{26} p^3+8.92708*10^{30} p^2+9.11067*10^{36} p +9.09122*10^{40} }}
+\endgroup
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{modul1.png}
@@ -627,14 +620,12 @@ Odnormované prvky byly vyčísleny následovně:
 \MapleOutput{ C5 = 0.0000101698, L1 = 0.0000334204, L2 = 0.00000193526, L3 = 0.0000227988, L4 = 0.00000101846, }
 \MapleOutput{L5 = 3.89179 *10^{-7} ,}
 \MapleOutput{R0 = 1, R1 = 0.335978, R2 = 0.0194554, R3 = 0.229198, R4 = 0.0102387, R5 = 0.00391246, Rz = 1.004}
-\newpage
 \section{Závěr}
 \noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce 6), poté byl kaskádním zapojením obdržen filtr typu dolní propust 4. řádu (Sekce 7). Následně byla pomocí kaskádního zapojení horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce 8) a 4. řádu (Sekce 9).\\
 \\
 Pomocí knihovny Syntfil navržena pásmová propust 4. řádu a její zapojení pomocí LC příčkové struktury. Mezikrokem byl převod pásmové propusti na normovanou dolní propust. Pro LC strukturu byly obdrženy odnormované hodnoty prvků. LC struktura poté byla převedena na zapojení s gyrátory, přičemž hodnoty prvků zůstaly nezměněny.\\
 \\
 Cíl práce byl částečně splněn, dále bude realizována simulace LC příčkového filtru v Multisimu s výsledky obdrženými z knihovny Syntfil. Dalším krokem bude pak praktická realizace a odzkoušení navrhnutého obvodu.
-\newpage
 \begin{thebibliography}{999}
 \bibitem{1}
 KAŠPER, Ladislav. \textit{Návrh kmitočtového filtru} [online]. Ostrava, 2012 [cit. 2019-04-28]. Dostupné z: \url{https://dspace.vsb.cz/bitstream/handle/10084/92901/KAS279_FEI_N2647_2601T013_2012.pdf?sequence=1&isAllowed=y}. Diplomová práce. VŠB-TU Ostrava, FEI. Strana 18/69.
