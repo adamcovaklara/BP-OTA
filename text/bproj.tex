@@ -423,12 +423,12 @@ H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\om
 \end{figure}
 \noindent Mezní frekvence a činitel jakosti tohoto obvodu byly spočítány jako 
 \begin{align}
-\omega _c &= \frac{1}{2 \pi \sqrt{LC}}\\
+\omega _c &= \frac{1}{\sqrt{LC}}\\
 Q &= \frac{1}{2 \zeta},
 \end{align}
 \noindent kde $\zeta$ je relativní útlum vyjádřený z přenosové funkce
 \begin{align}
-H(s) = \frac{s^2}{s^2 + 2 \zeta (2 \pi \omega _c)s + (2 \pi \omega _c)^2}
+H(s) = \frac{s^2}{s^2 + 2 \zeta \omega _c s + \omega _c^2}.
 \end{align}
 \section{Pásmová propust 4. řádu}
 \noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti 4. řádu a následným zapojením dvou horních propustí 2. řádu byla obdržena pásmová propust 4.řádu. Byl obdržen filtr 4. řádu s poklesem -80 dB/dek. Průběh v okolí 0 dB není zcela hladký, protože hodnoty prvků v obvodu nebyly zvoleny přesně.
@@ -517,7 +517,7 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \caption{Modulová frekvenční charakteristika NDP}
 \end{figure}
 \noindent Charakteristika byla vykreslena z přenosu funkcí $MagnitudeHdB$, která vypočte modul přenosu podle předpisu |H(j$\omega)$|.
-\section{Výpočet prvků LC filtru}
+\section{Výpočet prvků LC}
 \noindent Funkcí DroppNLP byly vypočteny prvky LC příčkového filtru typu normovaná dolní propust (NDP). Zakončení bylo zvoleno standardní (common), odpory o hodnotě 1 $\Omega$, směr zpracování od posledního prvku (rear), s T strukturou (začíná zepředu podélným induktorem). Standardní (common) zakončení je oboustranné ($R_1 != 0, R_1 != \infty$). Výstupem funkce je LC struktura s orientací prvků ve větvi podélně (direct) nebo příčně (shunt).
 \MapleOutput{elems\_NLP:=DroppNLP('common',1,rear,T,G,chf,zer)}
 \MapleOutput{             
@@ -533,8 +533,8 @@ Rem\_matrix = \begin{pmatrix} 1.00624  &  0 \\
 \MapleOutput{block (4), [orientation = shunt, elements = {C1 = 8.3068}, Z = \frac{1}{pC1}]}
 \noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí MakeH. Byl spočten  napěťový i výkonový přenos.
 \MapleOutput{H\_NLPV := MakeH(elems\_NLP, V)}
-\MapleOutput{H\_NLPV := \frac{p^2  + 8.47735}{2943.77 p^4  + 455.340 p^3  + 2381.21^2  + 322.099 p + 16.9209}   }
 \MapleOutput{H\_NLP := MakeH(elems\_NLP, P)}
+\MapleOutput{H\_NLPV := \frac{p^2  + 8.47735}{2943.77 p^4  + 455.340 p^3  + 2381.21^2  + 322.099 p + 16.9209}   }
 \MapleOutput{H\_NLP := \frac{0.999999 p^2  + 8.4773}{1474.83 p^4  + 228.125 p^3  + 1192.99 p^2  + 161.371 p + 8.47736}}
 \begin{figure}[H]
 \centering
@@ -563,8 +563,7 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
 \MapleOutput{block (2), [Z = \frac{1}{\frac{1}{pL1 + Rs1}+pC1}, orientation = shunt, elements = {C1 = 2.0451 *10^{-6}, L1 = 1.9353*10^{-6},}}
 \MapleOutput{Rs1 = 0.019455]}
 \MapleOutput{block (3), [Z = \frac{1}{pC1 + \frac{1}{pL1 + Rs1}+\frac{1}{pL2 + Rs2 + \frac{1}{pC2}}} orientation = direct, elements = { C1 = 1.7360*10^{-7} ,}}
-\MapleOutput{C2 = 3.8861*10^{-6}, L1 = 2.2799*10^{-5}, L2 = 1.0185*10^{-6}, }
-\MapleOutput{Rs1 = 0.2292, Rs2 = 0.010239]}
+\MapleOutput{C2 = 3.8861*10^{-6}, L1 = 2.2799*10^{-5}, L2 = 1.0185*10^{-6}, Rs1 = 0.2292, Rs2 = 0.010239]}
 \MapleOutput{block (4), [Z = \frac{1}{\frac{1}{pL1 + Rs1}+pC1}, orientation = shunt, elements = { C1 = 1.0170 *10^{-5}, L1 = 3.8918*10^{-7}, }}
 \MapleOutput{Rs1 = 0.0039125]}
 \noindent Byl spočten přenos pro LC strukturu bez a s přidanými sériovými rezistory. Pro oba přenosy byla vykreslena modulová frekvenční charakteristika.
@@ -579,25 +578,24 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{modul1.png}
-\caption{Modulová frekvenční charakteristika z přenosu LC struktury}
+\caption{Modulová frekvenční charakteristika LC struktury (červená) a LC struktury s končnou hodntou jakostí cívek (zelená)}
 \end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{modul2.png}
-\caption{Modulová frekvenční charakteristika z přenosu LC struktury se sériovými rezistory k induktorům}
-\end{figure}
-\noindent Vyčíslením v $100*10^3*2 \pi$ Hz byl obdržen útlum -20 dB.\\
+\noindent Vyčíslením v $168077*2 \pi$ Hz byl obdržen útlum 32 dB.\\
+\\
 Odnormované prvky byly vyčísleny následovně:
 \MapleOutput{ele\_BP:={L1=subs(eval(elems\_BPQ[1][elements]),L1), C1=subs(eval(elems\_BPQ[1][elements]),C1),}}
 \MapleOutput{C2=subs(eval(elems\_BPQ[2][elements]),C1), L2=subs(eval(elems\_BPQ[2][elements]),L1),}
 \MapleOutput{L3=subs(eval(elems\_BPQ[3][elements]),L1), L4=subs(eval(elems\_BPQ[3][elements]),L2),} \MapleOutput{C3=subs(eval(elems\_BPQ[3][elements]),C1), C4=subs(eval(elems\_BPQ[3][elements]),C2),}
 \MapleOutput{C5=subs(eval(elems\_BPQ[4][elements]),C1),L5=subs(eval(elems\_BPQ[4][elements]),L1),}
-\MapleOutput{R1=subs(eval(elems_BPQ[1][elements]),Rs1),R2=subs(eval(elems_BPQ[2][elements]),Rs1),}\MapleOutput{R3=subs(eval(elems_BPQ[3][elements]),Rs1),R4=subs(eval(elems_BPQ[3][elements]),Rs2),}\MapleOutput{R5=subs(eval(elems_BPQ[4][elements]),Rs1),}
 \MapleOutput{R0=eval(elems\_BPQ)[R1], Rz=eval(elems\_BPQ)[R2];}
 \MapleOutput{ele\_BP := { C1 = 1.18426*10^{-7}  , C2 = 0.00000204513,  C3 = 1.73599 *10^{-7} , C4 = 0.00000388609,}}
 \MapleOutput{ C5 = 0.0000101698, L1 = 0.0000334204, L2 = 0.00000193526, L3 = 0.0000227988, L4 = 0.00000101846, }
-\MapleOutput{L5 = 3.89179 *10^{-7} ,}
-\MapleOutput{R0 = 1, R1 = 0.335978, R2 = 0.0194554, R3 = 0.229198, R4 = 0.0102387, R5 = 0.00391246, Rz = 1.004}
+\MapleOutput{L5 = 3.89179 *10^{-7}, R0 = 1, Rz = 1.004}
+\noindent Kapacita kondenzátoru použitého při zapojení indukčnosti s OTA je rovna $C_L = L g_m ^2$. Byla uvažována minimální transkonduktance z datasheetu LM13700. Byly získány kapacity $C_{L1} = 3.080024064*10^{-9}, C_{L2} = 1.783535616*10^{-10}, C_{L3} = 2.101137408 *10^{-9}, C_{L4} = 9.38612736*10^{-11}, C_{L5} = 3.586673664*10^{-11}$. Převrácenou hodnotou transkonduktance byly vypočteny frekvenčně a impedančně odnormované odpory
+\begin{align}
+R_N = R_0 = R_z = \frac{1}{g_m} = 104.16667 \Omega.
+\end{align}
+\noindent Kapacity vyšly odnormovány již se Syntfilu $C1 = 1.18426*10^{-7}  , C2 = 2.04513*10^{-6},  C3 = 1.73599 *10^{-7} , C4 = 3.88609*10^{-6}, C5 = 10.1698*10^{-6}$.
 \section{Závěr}
 \noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce 6), poté byl kaskádním zapojením obdržen filtr typu dolní propust 4. řádu (Sekce 7). Následně byla pomocí kaskádního zapojení horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce 8) a 4. řádu (Sekce 9).\\
 \\
