@@ -74,10 +74,10 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 % ---------------------------------
 % název sekce je generován automaticky jako: Úkol X
 Klíčová slova: \textit{transkonduktance, OTA, OTA-C, analogový filtr, pásmová propust, dolní propust}
-\section{Motivace}
-\noindent Cílem práce je navrhout zapojení analogového filtru typu pásmová propust 4. řádu s OTA. Hlavním nástrojem je Maple s knihovnou Syntfil, obvodová simulace je poté realizována v prostředí Multisim.
+\section{Úvod}
+\noindent Cílem práce je navrhout zapojení analogového filtru typu pásmová propust 4. řádu s OTA za použití knihovny Syntfil, simulace v Multisimu.
 \section{Analogové filtry}
-Filtry jsou určeny k potlačení nebo zvýraznění určité části kmitočtového spektra signálu. Jsou to obvody s kmitočtově závislou přenosovou funkcí (pro napěťový přenos $H_s(j \omega) = \frac{U_{out}(j \omega)}{U_{in}(j \omega)}$). Základní rozdělení je na dolní propust (\textit{low-pass} - LP), horní propust(\textit{high-pass} - HP), pásmovou propust (\textit{band-pass} - BP) a pásmovou zádrž (\textit{band-stop} - BS). \\
+Filtry jsou určeny k potlačení nebo zvýraznění určité části kmitočtového spektra signálu. Jsou to obvody s kmitočtově závislou přenosovou funkcí (pro napěťový přenos $H_s(j \omega) = U_{out}(j \omega)/U_{in}(j \omega)$). Základní rozdělení je na dolní propust (\textit{low-pass} - LP), horní propust(\textit{high-pass} - HP), pásmovou propust (\textit{band-pass} - BP) a pásmovou zádrž (\textit{band-stop} - BS). \\
 \\
 Dolní propust nepropouští na výstup vstupní signál nad frekvencí $f_s$, signál v propustném pásmu zůstává beze změny nebo zesílený. Základní pasivní dvojbranné zapojení je ke vstupu sériově zapojený rezistor a k této větvi paralelně kapacitor. Tento RC člen se zvyšující se frekvencí snižuje svou vstupní impedanci. Přenosová funkce má nulu v nekonečnu a pól v levé polorovině s-roviny. Ideální integrátor má pól v nule. \\
 Horní propust nepropouští signály o nízkých frekvencích. Nejjednodušší zapojení je RC člen, kdy kapacitor je zapojen sériově se zdrojem a k této větvi paralelně rezistor. Pro toto zapojení reaktance kapacitoru se zvyšující se frekvencí klesá. Přenosová funkce ideálního derivátoru má pól v nekonečnu a nulu v nule. Horní propust má nulu v nule a pól v levé polorovině s-roviny.\\
@@ -323,7 +323,7 @@ Pokud navíc byly uvažovány stejné transkonduktance $g_{m1},g_{m2} = g_m$, by
 \omega _c &= \sqrt{\frac{g_m^2}{C^2}},\\
 Q &= \sqrt{1} = 1.
 \end{align}
-\section{Dolní propust 2. řádu}
+\section{Dolní propust 2. řádu}\label{s:DP2}
 Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. Přenosová funkce je
 \begin{align}
 H(j\omega) = \frac{H_0 \omega_c ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
@@ -340,7 +340,7 @@ Obvodová simulace byla realizována v programu Multisim. Bylo zvoleno symetrick
 \omega _c &= \sqrt{\frac{1}{LC}}\\
 Q &= \frac{L\sqrt{\frac{C}{L}}}{RC}.
 \end{align}
-Zapojení obvodu v Multisimu ilustruje Obrázek 15.
+Zapojení obvodu v Multisimu ilustruje Obrázek 14.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{1707.png}
@@ -352,7 +352,7 @@ Zapojení obvodu v Multisimu ilustruje Obrázek 15.
 \caption{Amplitudová a fázová charakteristika dolní propusti 2. řádu}
 \end{figure}
 \noindent Lze použít i zapojení z kapitoly 4 s uzemněným kapacitorem a odporem, avšak při této realizaci dochází v amplitudové charakteristice k překmitu. Proto bylo zvoleno řešení zmíněné výše.
-\section{Dolní propust 4. řádu}
+\section{Dolní propust 4. řádu}\label{s:DP4}
 Kaskádní zapojení je realizováno násobením sériově zapojených bloků.
 \begin{figure}[H]
 \centering
@@ -378,7 +378,7 @@ Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. �
 \includegraphics[scale=0.6]{lrcx2ampl.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení dolní propusti 4. řádu}
 \end{figure}
-\section{Pásmová propust 2. řádu}
+\section{Pásmová propust 2. řádu}\label{s:PP2}
 Horní propust druhého řádu má přenos v nule nulový $H_{0} = 0$. Přenosová funkce je
 \begin{align}
 H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
@@ -449,8 +449,8 @@ H(s) = \frac{s^2}{s^2 + 2 \zeta \omega _c s + \omega _c^2}.
 \includegraphics[scale=0.6]{bp22.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 2. řádu}
 \end{figure}
-\section{Pásmová propust 4. řádu}
-\noindent Sériovým zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti 4. řádu a následným zapojením dvou horních propustí 2. řádu byla obdržena pásmová propust 4.řádu. Byl obdržen filtr 4. řádu s poklesem -80 dB/dek. Průběh v okolí 0 dB není zcela hladký, protože hodnoty prvků v obvodu nebyly zvoleny přesně.
+\section{Pásmová propust 4. řádu}\label{s:PP4}
+\noindent  Zapojením indukčnosti, odporu a uzemněného kapacitoru jako dolní propusti 4. řádu a následným zapojením dvou horních propustí 2. řádu byla obdržena pásmová propust 4.řádu. Byl obdržen filtr 4. řádu s poklesem -80 dB/dek. Průběh v okolí 0 dB není zcela hladký, protože hodnoty prvků v obvodu nebyly zvoleny přesně.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{lrcbandpass4.png}
@@ -647,16 +647,7 @@ R_N = R_0 = R_z = \frac{1}{g_m} = 104.16667 \Omega.
 \includegraphics[scale=0.6]{maple2.png}
 \caption{Amplitudová a fázová charakteristika pásmové propusti (Syntfil)}
 \end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.55]{maple4.png}
-\caption{Zapojení pásmové propusti (Syntfil)}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{maple42.png}
-\caption{Amplitudová a fázová charakteristika pásmové propusti (Syntfil)}
-\end{figure}
+\newpage
 \section{Návrh funkční simulací}
 \begin{figure}[H]
 \centering
@@ -689,19 +680,18 @@ H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
 H & = \frac{gm}{sc + gm}
 \end{align}
 a porovnáním s předchozími přenosy $H_1...H_5$ byly obdrženy následující hodnoty
-\MapleOutput{CI := [{CI1 = -\frac{gm*(H1-1)}{(H1*s)}, CI2 =\frac{ gm*(C1*L1*R1*p^2-L1^2*p^2+R1)}{(L1^2*p^2*s)}, CI3 = \frac{gm*(C3*L3*p^2-C3*R1*p+1)}{(C3*R1*p*s)}, }}
+\MapleOutput{CI := [{CI1 = -\frac{gm *(\frac{R}{R1+p*L1+1/(p*C1)}-1)* (R1+p*L1+\frac{1}{(p*C1)})}{(R*p)}, CI2 =\frac{ gm*(C1*L1*R1*p^2-L1^2*p^2+R1)}{(L1^2*p^2*s)}, }}
+\MapleOutput{CI3 = \frac{gm*(C3*L3*p^2-C3*R1*p+1)}{(C3*R1*p*s)}, }
 \MapleOutput{CI4 = \frac{gm*(C4*L4*R1*p^2-L4*p+R1)}{(L4*p*s)}, CI5 = \frac{gm*(C5*L5*R1*Rz*p^2+L5*R1*p-L5*Rz*p+R1*Rz)}{(L5*Rz*p*s)}]}
 \noindent Zohledněním paralelního zapojení kondenzátoru C2, C4 a C5 k indukčnosti bylo dosazeno za původní hodnoty dosazeno $Cg=C*gm*R$.
 \MapleOutput{CI\_{all} := [{C2g = C2*gm}][{C4g = C4*gm}][{C5g = C5*gm}] union CI}
 \noindent Následně byly substitucí za gm = 9600 $\mu$S vypočteny výsledné kapacity.
-\MapleOutput{CI\_{all\_n} := subs({gm = 0.9600e-2} , union_elems\_{BP}, CI\_{all})}
-\section{Analýza systémové struktury}
 \section{Závěr}
-\noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce 6), poté byl kaskádním zapojením obdržen filtr typu dolní propust 4. řádu (Sekce 7). Následně byla pomocí kaskádního zapojení horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce 8) a 4. řádu (Sekce 9).\\
+\noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce \ref{s:DP2}), poté byl kaskádním zapojením obdržen filtr typu dolní propust 4. řádu (Sekce \ref{s:DP4}). Následně byla pomocí kaskádního zapojení horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce \ref{s:PP2}) a 4. řádu (Sekce \ref{s:PP4}).\\
 \\
-Pomocí knihovny Syntfil navržena pásmová propust 4. řádu a její zapojení pomocí LC příčkové struktury. Mezikrokem byl převod pásmové propusti na normovanou dolní propust. Pro LC strukturu byly obdrženy odnormované hodnoty prvků. LC struktura poté byla převedena na zapojení s OTA, přičemž hodnoty prvků zůstaly nezměněny. Simulace s výsledky obdrženými z knihovny Syntfil byla provedena v Multisimu.\\
+Pomocí knihovny Syntfil navržena pásmová propust 4. řádu a její zapojení pomocí LC příčkové struktury. Mezikrokem byl převod pásmové propusti na normovanou dolní propust. Pro LC strukturu byly obdrženy odnormované hodnoty prvků. \\
 \\
-Cíl práce byl částečně splněn. Bude třeba spravit schéma v Multisimu s výsledky ze Syntfilu, dokončit návrh funkční simulací a analyzovat výslednou strukturu pomocí Pracanu. Dalším krokem bude pak praktická realizace a odzkoušení navrhnutého obvodu.
+Cíl práce byl částečně splněn. Bude třeba převést správně LC strukturu na zapojení s OTA, opravit následnou simulaci v Multisimu a analyzovat výslednou strukturu pomocí Pracanu. Dalším krokem bude pak praktická realizace a odzkoušení navrhnutého obvodu.
 \begin{thebibliography}{999}
 \bibitem{1}
 KAŠPER, Ladislav. \textit{Návrh kmitočtového filtru} [online]. Ostrava, 2012 [cit. 2019-04-28]. Dostupné z: \url{https://dspace.vsb.cz/bitstream/handle/10084/92901/KAS279_FEI_N2647_2601T013_2012.pdf?sequence=1&isAllowed=y}. Diplomová práce. VŠB-TU Ostrava, FEI. Strana 18/69.
