@@ -468,6 +468,12 @@ H(s) = \frac{s^2}{s^2 + 2 \zeta \omega _c s + \omega _c^2}.
 \end{figure}
 \begin{figure}[H]
 \centering
+\includegraphics[scale=0.6]{bp42.png}
+\caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 4. řádu}
+\end{figure}
+\noindent Přeladěním na vyšší frekvenci byl obdržen následující průběh.
+\begin{figure}[H]
+\centering
 \includegraphics[scale=0.6]{bp4.png}
 \caption{Amplitudová a fázová charakteristika káskádního zapojení pásmové propusti 4. řádu}
 \end{figure}
@@ -620,11 +626,15 @@ Odnormované prvky byly vyčísleny následovně:
 \MapleOutput{ele\_BP := { C1 = 1.18426*10^{-7}  , C2 = 0.00000204513,  C3 = 1.73599 *10^{-7} , C4 = 0.00000388609,}}
 \MapleOutput{ C5 = 0.0000101698, L1 = 0.0000334204, L2 = 0.00000193526, L3 = 0.0000227988, L4 = 0.00000101846, }
 \MapleOutput{L5 = 3.89179 *10^{-7}, R0 = 1, Rz = 1.004}
-\noindent Kapacita kondenzátoru použitého při zapojení indukčnosti s OTA je rovna $C_L = L g_m ^2$. Byla uvažována minimální transkonduktance z datasheetu LM13700. Byly získány kapacity $C_{L1} = 3.080024064*10^{-9}, C_{L2} = 1.783535616*10^{-10}, C_{L3} = 2.101137408 *10^{-9}, C_{L4} = 9.38612736*10^{-11}, C_{L5} = 3.586673664*10^{-11}$. Převrácenou hodnotou transkonduktance byly vypočteny frekvenčně a impedančně odnormované odpory
+\noindent Kapacita kondenzátoru použitého při zapojení indukčnosti s OTA je rovna $C_L = L g_m ^2$. Byla uvažována minimální transkonduktance z datasheetu LM13700. Byly získány kapacity
+\MapleOutput{C_{L1} = 3.080024064*10^{-9}, C_{L2} = 1.783535616*10^{-10}, C_{L3} = 2.101137408 *10^{-9}, C_{L4} = 9.38612736*10^{-11},}
+\MapleOutput{C_{L5} = 3.586673664*10^{-11}},
+\noindent tedy $C_{L1} = 3.08002$ nF, $C_{L2} = 178.35356$ pF, $C_{L3} = 2.10114$ nF, $C_{L4} = 93.86127$ pF, $C_{L5} = 35.86674$ pF.
+\noindent Převrácenou hodnotou transkonduktance byly vypočteny frekvenčně a impedančně odnormované odpory
 \begin{align}
 R_N = R_0 = R_z = \frac{1}{g_m} = 104.16667 \Omega.
 \end{align}
-\noindent Kapacity vyšly odnormovány již se Syntfilu $C1 = 1.18426*10^{-7}  , C2 = 2.04513*10^{-6},  C3 = 1.73599 *10^{-7} , C4 = 3.88609*10^{-6}, C5 = 10.1698*10^{-6}$.
+\noindent Kapacity vyšly odnormovány již se Syntfilu $C1 = 118.426$ nF, $C2 = 2.04513$ uF,  $C3 = 173.599$ nF, $C4 = 3.88609$ uF, $C5 = 10.1698$ uF.
 \section{Simulace s výsledky ze Syntfilu}
 \noindent Vypočtené prvky byly dosazeny do schématu v Multisimu. 
 \begin{figure}[H]
