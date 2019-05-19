@@ -684,6 +684,17 @@ H_3 &= \frac{R}{pL_3 + \frac{1}{pC_3}}\\
 H_4 &= \frac{1}{\frac{R}{pL_4}+RpC_4}\\
 H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
 \end{align}
+\noindent Dosazením za přenos ztrátového integrátoru (byly uvažovány stejné gm)
+\begin{align}
+H & = \frac{gm}{sc + gm}
+\end{align}
+a porovnáním s předchozími přenosy $H_1...H_5$ byly obdrženy následující hodnoty
+\MapleOutput{CI := [{CI1 = -\frac{gm*(H1-1)}{(H1*s)}, CI2 =\frac{ gm*(C1*L1*R1*p^2-L1^2*p^2+R1)}{(L1^2*p^2*s)}, CI3 = \frac{gm*(C3*L3*p^2-C3*R1*p+1)}{(C3*R1*p*s)}, }}
+\MapleOutput{CI4 = \frac{gm*(C4*L4*R1*p^2-L4*p+R1)}{(L4*p*s)}, CI5 = \frac{gm*(C5*L5*R1*Rz*p^2+L5*R1*p-L5*Rz*p+R1*Rz)}{(L5*Rz*p*s)}]}
+\noindent Zohledněním paralelního zapojení kondenzátoru C2, C4 a C5 k indukčnosti bylo dosazeno za původní hodnoty dosazeno $Cg=C*gm*R$.
+\MapleOutput{CI\_{all} := [{C2g = C2*gm}][{C4g = C4*gm}][{C5g = C5*gm}] union CI}
+\noindent Následně byly substitucí za gm = 9600 $\mu$S vypočteny výsledné kapacity.
+\MapleOutput{CI\_{all\_n} := subs({gm = 0.9600e-2} , union_elems\_{BP}, CI\_{all})}
 \section{Analýza systémové struktury}
 \section{Závěr}
 \noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce 6), poté byl kaskádním zapojením obdržen filtr typu dolní propust 4. řádu (Sekce 7). Následně byla pomocí kaskádního zapojení horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce 8) a 4. řádu (Sekce 9).\\
