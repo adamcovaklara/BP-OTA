@@ -109,9 +109,9 @@ Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koef
 \end{figure}
 \subsection{Butterworthova aproximace}
 Butterworthova má maximálně plochou amplitudovou charakteristiku v propustném pásmu. Frekvenční charakteristika má sklon daný počtem pólů a pro její posouzení je užíváno skupinové zpoždění (derivace fáze podle frekvence). Pro Butterworthovu aproximaci je skupinové zpoždění nezvlněné v propustném pásmu. Přechodová charakteristika má mírný překmit, zvyšující se s řádem filtru. Zesílení $G(\omega)$ je kmitočtově závislé a odpovídá absolutní hodnotě přenosové funkce $H(j\omega)$.
-\begin{align*}
+\begin{align}
 G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 \frac{\omega}{\omega _c}^{2n}}},
-\end{align*}
+\end{align}
 kde $\epsilon$ je poměrné zvlnění kmitočtové charakteristiky v propustném pásmu (\textit{faktor zvlnění}), $n$ je řád filtru a $\omega _c$ mezní frekvence. Mezní frekvence je definována jako frekvence, která nastává při útlumu -3 dB. Pro $\omega _c = 1$ je faktor zvlnění $\epsilon = 1$. 
 \subsection{Čebyševova aproximace}
 Čebyševova aproximace má strmější pokles, což vede k užití nižšího řádu filtru. Zato má ale zvlněnou frekvenční charakteristiku v propustném pásmu. 
@@ -493,7 +493,7 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{Bandpass_Filter.png}
-\caption{Zapojení pásmové propusti \cite{13}}
+\caption{Zapojení pásmové propusti (T-článek) \cite{13}}
 \end{figure}
 \section{Návrh v Maple}
 Pro návrh pásmové propusti 4. řádu s Cauerovou aproximací typu C byly zvoleny parametry tolerančního schématu 
@@ -552,7 +552,7 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \caption{Modulová frekvenční charakteristika NDP}
 \end{figure}
 \noindent Charakteristika byla vykreslena z přenosu funkcí $MagnitudeHdB$, která vypočte modul přenosu podle předpisu |H(j$\omega)$|.
-\section{Výpočet prvků LC}
+\section{Výpočet prvků LC filtru}
 \noindent Funkcí DroppNLP byly vypočteny prvky LC příčkového filtru typu normovaná dolní propust (NDP). Zakončení bylo zvoleno standardní (common), odpory o hodnotě 1 $\Omega$, směr zpracování od posledního prvku (rear), s T strukturou (začíná zepředu podélným induktorem). Standardní (common) zakončení je oboustranné ($R_1 != 0, R_1 != \infty$). Výstupem funkce je LC struktura s orientací prvků ve větvi podélně (direct) nebo příčně (shunt).
 \MapleOutput{elems\_NLP:=DroppNLP('common',1,rear,T,G,chf,zer)}
 \MapleOutput{             
@@ -647,12 +647,40 @@ R_N = R_0 = R_z = \frac{1}{g_m} = 104.16667 \Omega.
 \includegraphics[scale=0.6]{maple2.png}
 \caption{Amplitudová a fázová charakteristika pásmové propusti (Syntfil)}
 \end{figure}
+\section{Návrh funkční simulací}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.1]{LCstruktura.png}
+\caption{Schéma LC příčkové struktury}
+\end{figure}
+\noindent Analýzou LC struktury z Maplu byly obdrženy obvodové rovnice, kde R je volitelný (fiktivní) rezistor:
+\begin{align}
+I_1 &= \frac{1}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_2)\\
+v_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_2)\\
+U_2 &= \frac{pL_1}{\frac{1}{pL_1} + pC_1}(I_1 - I_{L3} - I_{L4} - pC_4 v_{L4})\\
+U_2 &= \frac{pL_1}{\frac{R}{pL_1} + RpC_1}(v_1 - v_{L3} - v_{L4} - RpC_4 U_{L4})\\
+I_{L3} &= \frac{1}{pL_3 + \frac{1}{pC_3}}(U_2 - U_3)\\
+v_{L3} &= \frac{R}{pL_3 + \frac{1}{pC_3}}(U_2 - U_3)\\
+v_{L4} &= \frac{1}{\frac{1}{pL_4}+pC_4}(I_1 - I_{L2} - pC_2U_2 - I_{L3} - pC_4 (U_2 - U_3))\\
+v_{L4} &= \frac{1}{\frac{R}{pL_4}+RpC_4}(v_1 - v_{L2} - RpC_2U_2 - v_{L3} - RpC_4 (U_2 - U_3))\\
+U_3 &= \frac{1}{\frac{1}{R_z}+pC_5 + \frac{1}{pL_5}}(I_1 - I_{L2} - pC_2U_2 - I_{L3} - I_{L4} - pC_4 v_{L4})\\
+U_3 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}(v_1 - U_2 - RpC_2 U_2 - v_{L3} - v_{L4} - RpC_4 v_{L4}).
+\end{align}
+\noindent To odpovídá realizační struktuře s pěti gyrátory o přenosech $H_1...H_5$
+\begin{align}
+H_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}\\
+H_2 &= \frac{pL_1}{\frac{R}{pL_1} + RpC_1}\\
+H_3 &= \frac{R}{pL_3 + \frac{1}{pC_3}}\\
+H_4 &= \frac{1}{\frac{R}{pL_4}+RpC_4}\\
+H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
+\end{align}
+\section{Analýza systémové struktury}
 \section{Závěr}
 \noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce 6), poté byl kaskádním zapojením obdržen filtr typu dolní propust 4. řádu (Sekce 7). Následně byla pomocí kaskádního zapojení horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce 8) a 4. řádu (Sekce 9).\\
 \\
 Pomocí knihovny Syntfil navržena pásmová propust 4. řádu a její zapojení pomocí LC příčkové struktury. Mezikrokem byl převod pásmové propusti na normovanou dolní propust. Pro LC strukturu byly obdrženy odnormované hodnoty prvků. LC struktura poté byla převedena na zapojení s OTA, přičemž hodnoty prvků zůstaly nezměněny. Simulace s výsledky obdrženými z knihovny Syntfil byla provedena v Multisimu.\\
 \\
-Cíl práce byl částečně splněn. Bude třeba spravit schéma v Multisimu s výsledky ze Syntfilu a opravit překmit v zapojení horní propusti a následném zapojení v pásmové propusti. Dalším krokem bude pak praktická realizace a odzkoušení navrhnutého obvodu.
+Cíl práce byl částečně splněn. Bude třeba spravit schéma v Multisimu s výsledky ze Syntfilu, dokončit návrh funkční simulací a analyzovat výslednou strukturu pomocí Pracanu. Dalším krokem bude pak praktická realizace a odzkoušení navrhnutého obvodu.
 \begin{thebibliography}{999}
 \bibitem{1}
 KAŠPER, Ladislav. \textit{Návrh kmitočtového filtru} [online]. Ostrava, 2012 [cit. 2019-04-28]. Dostupné z: \url{https://dspace.vsb.cz/bitstream/handle/10084/92901/KAS279_FEI_N2647_2601T013_2012.pdf?sequence=1&isAllowed=y}. Diplomová práce. VŠB-TU Ostrava, FEI. Strana 18/69.
