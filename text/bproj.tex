@@ -620,7 +620,7 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
 Odnormované prvky byly vyčísleny následovně:
 \MapleOutput{ele\_BP:={L1=subs(eval(elems\_BPQ[1][elements]),L1), C1=subs(eval(elems\_BPQ[1][elements]),C1),}}
 \MapleOutput{C2=subs(eval(elems\_BPQ[2][elements]),C1), L2=subs(eval(elems\_BPQ[2][elements]),L1),}
-\MapleOutput{L3=subs(eval(elems\_BPQ[3][elements]),L1), L4=subs(eval(elems\_BPQ[3][elements]),L2),} \MapleOutput{C3=subs(eval(elems\_BPQ[3][elements]),C1), C4=subs(eval(elems\_BPQ[3][elements]),C2),}
+\MapleOutput{L3=subs(eval(elems\_BPQ[3][elements]),L2), L4=subs(eval(elems\_BPQ[3][elements]),L1),} \MapleOutput{C3=subs(eval(elems\_BPQ[3][elements]),C2), C4=subs(eval(elems\_BPQ[3][elements]),C1),}
 \MapleOutput{C5=subs(eval(elems\_BPQ[4][elements]),C1),L5=subs(eval(elems\_BPQ[4][elements]),L1),}
 \MapleOutput{R0=eval(elems\_BPQ)[R1], Rz=eval(elems\_BPQ)[R2];}
 \MapleOutput{ele\_BP := { C1 = 1.18426*10^{-7}  , C2 = 2.04513*10^{-6},  C3 = 3.88609*10^{-6} , C4 = 1.73599 *10^{-7},}}
@@ -636,7 +636,7 @@ R_N = R_0 = R_z = \frac{1}{g_m} = 104.16667 \Omega.
 \end{align}
 \noindent Kapacity vyšly odnormovány již se Syntfilu $C1 = 118.426$ nF, $C2 = 2.04513$ uF, $C3 = 3.88609$ uF, $C4 = 173.599$ nF, $C5 = 10.1698$ uF.
 \section{Simulace s výsledky ze Syntfilu}
-\noindent Vypočtené prvky byly dosazeny do schématu v Multisimu. 
+\noindent Vypočtené prvky byly dosazeny do schématu v Multisimu. Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann (2001) str. 656/758). Napětí na zdroji poté bude $\frac{V_0}{R_0}$.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.55]{maple.png}
@@ -645,6 +645,16 @@ R_N = R_0 = R_z = \frac{1}{g_m} = 104.16667 \Omega.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{maple2.png}
+\caption{Amplitudová a fázová charakteristika pásmové propusti (Syntfil)}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{maple4.png}
+\caption{Zapojení pásmové propusti (Syntfil)}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{maple42.png}
 \caption{Amplitudová a fázová charakteristika pásmové propusti (Syntfil)}
 \end{figure}
 \section{Návrh funkční simulací}
