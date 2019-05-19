@@ -101,7 +101,7 @@ Obecná přenosová funkce filtru typu horní propust je
 H(j\omega) = \frac{H_{\infty}}{\prod_{i=1}^{\frac{n}{2}} (1 + \frac{a_i}{s} + \frac{b_i}{s^2})},
 \end{align}
 kde $n$ je řád filtru.\\
-Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koeficienty filtru $a_i, b_i$ určují zesílení v propustném pásmu. Činitel jakosti je definován jako $Q = \frac{\sqrt{b_i}}{a_i}$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní.
+Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koeficienty filtru $a_i, b_i$ určují zesílení v propustném pásmu. Činitel jakosti je definován jako $Q = \sqrt{b_i}/a_i$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.3]{LGA98.png}
@@ -132,7 +132,7 @@ G(\omega, \omega _c) = \frac{1}{\sqrt{1 + \frac{1}{\epsilon ^2 T_n ^2 \frac{\ome
 \end{align}
 kde $T_n$ je Čebyševův polynom, $\epsilon$ je poměrné zvlnění, $n$ je řád filtru a $\omega _c$ mezní kmitočet.
 \subsection{Besselova aproximace}
-Besselova aproximace se používá v telekomunikační technice v případech, kdy je požadováno zachování tvaru signálu. Amplitudová charakteristika v nepropustném pásmu je velmi plochá. Koeficienty polynomu jsou zvoleny tak, aby fázová charakteristika v pásmu okolo kritické frekvence byla maximálně lineární. Nevýhodou je poměrně malá strmost modulové charakteristiky. Ta je pro Besselovu aproximaci je dána vztahem
+Besselova aproximace se používá v telekomunikační technice v případech, kdy je požadováno zachování tvaru signálu. Amplitudová charakteristika v nepropustném pásmu je velmi plochá. Koeficienty polynomu jsou zvoleny tak, aby fázová charakteristika v pásmu okolo kritické frekvence byla maximálně lineární. Nevýhodou je poměrně malá strmost modulové charakteristiky. Ta je pro Besselovu aproximaci dána vztahem
 \begin{align}
 G(\omega) = |H(j\omega)| = \frac{\Theta _n(0)}{\Theta _n(\frac{j\omega}{\omega _c})},
 \end{align}
@@ -151,7 +151,7 @@ G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 R_n ^2(\zeta, \frac{\o
 \end{align}
 kde $\epsilon$ je faktor zvlnění, $R_n$ eliptická racionální funkce n-tého řádu, $\zeta$ selektivní faktor a $\omega _c$ mezní kmitočet. Pokud pro selektivní faktor platí $\zeta \rightarrow \infty$, filtr se stává Čebyševovým (typ I). 
 \section{Transkonduktanční zesilovače (OTA)}
-V telekomunikacích se používají filtry v rozsahu kmitočtů desítek až stovek megahertz, v bezdrátové komunikaci až v řádu gigahertz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5-10$\%$ $\omega _c$ - tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
+V telekomunikacích se používají filtry v rozsahu kmitočtů desítek až stovek megahertz, v bezdrátové komunikaci až v řádu gigahertz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5--10 $\%$ $\omega _c$ - tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
 \\
 Pro nízké frekvence se ke splnění těchto požadavků používají obvody se spínanými kapacitory (SC). Přepínaný kapacitor se chová jako rezistor, tudíž časová konstanta RC je definována poměrem kapacitorů a hodinovou (CLK) frekvencí, se kterou jsou přepínány. Pro vysokofrekvenční aplikace (až v řádu gigahertz) se používají MOSFET-C filtry.\\
 \\
@@ -177,7 +177,10 @@ u_{out} = R_zg_m(u_+ - u_-) = G_0(u_+ - u_-),
 \end{align}
 kde $G_0$ je zesílení. Ze vztahu (13) plyne, že zesílení je konečné a mezi vstupy je nenulové napětí. Připojením kondenzátoru jako zátěže byl získán bezeztrátový integrátor s přenosem
 \begin{align}
-H(s) &= \frac{v_2}{v_1} = \frac{g_m}{sC} \\
+H(s) &= \frac{v_2}{v_1} = \frac{g_m}{sC}
+\end{align}
+\noindent a napětím na výstupu
+\begin{align}
 v_0(t) &= \frac{1}{C}\int i(t)dt = \frac{1}{C}\int g_mv_1(t)dt.
 \end{align}
 \begin{figure}[H]
@@ -197,16 +200,16 @@ v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-)
 \caption{Ztrátový OTA-C \cite{4}}
 \end{figure}
 \section{Integrované obvody s OTA}
-Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 75-280 Kč. Integrované obvody s dvěma zesilovači v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\mu$s), mnohem menší výstupní proud (650 $\mu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí je 25-65 Kč.
+Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 75--280 Kč. Integrované obvody s dvěma zesilovači v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\mu$s), mnohem menší výstupní proud (650 $\mu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí je 25--65 Kč.
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[H]
 \scalebox{0.9}{%
   \begin{tabular}{ | c | >{\centering\arraybackslash}p{2cm}| >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.75cm} | >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{1.75cm} |}
     \hline
       & GBP - Gain Bandwidth Product & SR - Slew Rate & Output Current per Channel & $I_b$ - Input Bias Current & $V_{os}$ - Input Offset Voltage & Operating Supply Current & Forward Transconductance Min & Supply Voltage\\ \hline
-    OPA615 & 710 MHz & 2.5 kV/$\mu$s & 5 mA & 3 $\mu$A & 40 mV & 13 mA & 65 mA/V & 8-12.4 V \\ \hline
-    OPA860 & 470 MHz & 3.5 kV/$\mu$s & 15 mA & 5 $\mu$A & 12 mV & 11.2 mA & 80 mA/V & 5-13 V \\ \hline
-    OPA861 & 400 MHz & 900 V/$\mu$s & 15 mA & 1 $\mu$A & 12 mV & 5.4 mA & 65 mA/V & 4-12.6 V  \\
+    OPA615 & 710 MHz & 2.5 kV/$\mu$s & 5 mA & 3 $\mu$A & 40 mV & 13 mA & 65 mA/V & 8--12.4 V \\ \hline
+    OPA860 & 470 MHz & 3.5 kV/$\mu$s & 15 mA & 5 $\mu$A & 12 mV & 11.2 mA & 80 mA/V & 5--13 V \\ \hline
+    OPA861 & 400 MHz & 900 V/$\mu$s & 15 mA & 1 $\mu$A & 12 mV & 5.4 mA & 65 mA/V & 4--12.6 V  \\
     \hline
   \end{tabular}}
   \caption{\label{tab:Porovnání integrovaných obvodů s jedním OTA}orovnání integrovaných obvodů s jedním OTA \cite{5}}
@@ -217,9 +220,9 @@ Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdř
   \begin{tabular}{ | c | >{\centering\arraybackslash}p{2cm}| >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.75cm} | >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{1.75cm} |}
     \hline
       & GBP - Gain Bandwidth Product & SR  - Slew Rate & Output Current per Channel & $I_b$ - Input Bias Current & $V_{os}$ - Input Offset Voltage & Operating Supply Current & Forward Transconductance - Min & Supply Voltage\\ \hline
-    LM13700 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 1.3 mA & 6700 $\mu$S & 10-36 V \\ \hline
-    NE5517 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4-44 V \\ \hline
-    AU5517 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4-44 V  \\ \hline
+    LM13700 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 1.3 mA & 6700 $\mu$S & 10--36 V \\ \hline
+    NE5517 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V \\ \hline
+    AU5517 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V  \\ \hline
     NJM13600 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 6700 $\mu$S & 36 V  \\ \hline
     NJM13700 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 2.6 mA & 6700 $\mu$S & 36 V  \\ \hline
   \end{tabular}}
@@ -232,13 +235,13 @@ Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdř
 \includegraphics[scale=0.55]{image6.png}
 \caption{Konfigurace pinů na LM13700M \cite{6}}
 \end{figure}
-\noindent Vnitřní zapojení LM13700 na obrázku 8 obsahuje symetrický rozdílový stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Dvojice diod a tranzistorů tvoří proudová zrcadla (\textit{Current Mirror}) - referenční proud tekoucí v jedné větvi obvodu se "zrcadlí" v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem. 
+\noindent Vnitřní zapojení LM13700 na obrázku 8 obsahuje symetrický rozdílový stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Dvojice diod a tranzistorů tvoří proudová zrcadla (\textit{Current Mirror}) - referenční proud tekoucí v jedné větvi obvodu se \uv{zrcadlí} ~v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{image5.png}
-\caption{Vnitřní chéma OTA \cite{6}}
+\caption{Vnitřní schéma OTA \cite{6}}
 \end{figure}
-\section{Odvození DP 2. řádu}
+\section{Odvození DP 2. řádu}\label{sec:ODV}
 Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje obrázek 9.
 \begin{figure}[H]
 \centering
@@ -247,27 +250,27 @@ Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos f
 \end{figure}
 \noindent Přenos obvodu byl vyjádřen jako
 \begin{align}
-H(s) = \frac{U_{out}}{U_{in}} = \frac{Z_2}{Z_1},
+H(s) = \frac{U_{out}}{U_{in}} = \frac{Z_2}{Z_1}, \quad Z_1 = sL,\quad Z_2 = \frac{\frac{R}{sC}}{R + \frac{1}{sC}}.
 \end{align}
-kde $Z_1 = sL$ a $Z_2 = \frac{\frac{R}{sC}}{R + \frac{1}{sC}}$. Tedy
+Výsledný přenos je roven 
 \begin{align}
 H(s) = \frac{\frac{\frac{R}{sC}}{R + \frac{1}{sC}}}{sL + \frac{\frac{R}{sC}}{R + \frac{1}{sC}}}.
 \end{align}
-Elementárními algebraickými úpravami a následným vynásobením členem $\frac{1}{LRC}$ byl získán výsledný přenos.
+Elementárními algebraickými úpravami a následným vynásobením členem $1/(LRC)$ byl získán výsledný přenos.
 \begin{align}
 H(s) = \frac{R}{s^2LRC + sL + R} = \frac{\frac{1}{LC}}{s^2 + \frac{s}{RC} + \frac{1}{LC}}.
 \end{align}
 \noindent Pro ideální OTA zesilovač (vstupní i výstupní impedance nulové) je možno odpor nahradit obvodem s uzemněným neinvertujícím vstupem a zpětnou vazbou z invertujícího vstupu na výstup a to hodnotou
 \begin{align}
-R_{in} = \frac{1}{g_{m1}},
+R_{in} = \frac{1}{g_{m}},
 \end{align}
-kde $g_{m1}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu.
+kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{image10.png}
 \caption{Obvod pro simulaci uzemněného rezistoru \cite{8}}
 \end{figure}
-\noindent Pro nahrazení indukčnosti o impedanci $Z_L = \frac{1}{sC}$ lze použít obvod s třemi OTA. Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
+\noindent Pro nahrazení indukčnosti o impedanci $Z_L = 1/(sC)$ lze použít obvod s třemi OTA. Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
 Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}
 V_C &= \frac{g_{m1}}{sC}V_1 \\
@@ -286,7 +289,7 @@ L = \frac{C}{g_{m1}g_{m2}}.
 \includegraphics[scale=0.55]{image13.png}
 \caption{Obvod pro simulaci indukčnosti \cite{8}}
 \end{figure}
-\noindent Pro uzemněnou indukčnosti o impedanci $Z_L = \frac{1}{sC}$ byl použit obvod na obrázku 12. Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
+\noindent Pro uzemněnou indukčnosti o impedanci $Z_L = 1/(sC)$ byl použit obvod na obrázku 12. Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}
 V_C &= \frac{g_{m1}}{sC}V_1 \\
 I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{sC}V_1.
@@ -318,7 +321,7 @@ a činitel jakosti dosazením za $\omega _c$
 \begin{align}
 Q = \frac{\omega _c}{\frac{g_{m2}}{C}} = \sqrt{\frac{g_{m1}}{g_{m2}}}.
 \end{align}
-Pokud navíc byly uvažovány stejné transkonduktance $g_{m1},g_{m2} = g_m$, byl obdržen výsledek
+Pokud navíc byly uvažovány stejné transkonduktance $g_{m1}, \ g_{m2} = g_m$, byl obdržen výsledek
 \begin{align}
 \omega _c &= \sqrt{\frac{g_m^2}{C^2}},\\
 Q &= \sqrt{1} = 1.
@@ -328,8 +331,8 @@ Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$
 \begin{align}
 H(j\omega) = \frac{H_0 \omega_c ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
 \end{align}
-Obvodová simulace byla realizována v programu Multisim. Bylo zvoleno symetrické napájení OZ $V_{DD},V_{SS} = \pm 15$ V. Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Vstupní externí proud $I_{ABC} = 0.5$ $\mu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100 kHz. Externím proudem $I_{ABC} \in$ $<5$ $\mu$A ; 500 $\mu$A> je garantováno minimální výstupní napětí $U_{OUT} = \pm 12$ V, standardně $V_{peak 1} = 14.2$ V a $V_{peak 2} = -14.4$ V. Při výstupním napětí v tomto intervalu je šum vzhledem k signálu zanedbatelný a nezkreslí výsledky simulace.\\
-\noindent Obvod je realizován zapojením indukčnosti(Obrázek 11), odporu (Obrázek 10) a uzemněného kapacitoru. 
+Obvodová simulace byla realizována v programu Multisim. Bylo zvoleno symetrické napájení OZ $V_{DD},V_{SS} = \pm 15$ V. Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Vstupní externí proud $I_{ABC} = 0.5$ $\mu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100 kHz. Externím proudem $I_{ABC} \in$ $[5$ $\mu$A ; 500 $\mu$A] je garantováno minimální výstupní napětí $U_{OUT} = \pm 12$ V, standardně $V_{peak 1} = 14.2$ V a $V_{peak 2} = -14.4$ V. Při výstupním napětí v tomto intervalu je šum vzhledem k signálu zanedbatelný a nezkreslí výsledky simulace.\\
+\noindent Obvod je realizován zapojením indukčnosti (Obrázek 11), odporu (Obrázek 10) a uzemněného kapacitoru. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.9]{171.png}
@@ -351,7 +354,7 @@ Zapojení obvodu v Multisimu ilustruje Obrázek 14.
 \includegraphics[scale=0.6]{17072.png}
 \caption{Amplitudová a fázová charakteristika dolní propusti 2. řádu}
 \end{figure}
-\noindent Lze použít i zapojení z kapitoly 4 s uzemněným kapacitorem a odporem, avšak při této realizaci dochází v amplitudové charakteristice k překmitu. Proto bylo zvoleno řešení zmíněné výše.
+\noindent Lze použít i zapojení ze sekce \ref{sec:ODV} s uzemněným kapacitorem a odporem, avšak při této realizaci dochází v amplitudové charakteristice k překmitu. Proto bylo zvoleno řešení zmíněné výše.
 \section{Dolní propust 4. řádu}\label{s:DP4}
 Kaskádní zapojení sestává ze sériově zapojených bloků.
 \begin{figure}[H]
@@ -359,7 +362,7 @@ Kaskádní zapojení sestává ze sériově zapojených bloků.
 \includegraphics[scale=0.4]{schemata.png}
 \caption{Kaskádní zapojení \cite{4}}
 \end{figure}
-Přenosové funkce jednotlivých bloků se násobí
+\noindent Přenosové funkce jednotlivých bloků se násobí
 \begin{align}
 H_k(j\omega) = \frac{U_k (j\omega)}{U_{k-1}(j\omega)}.
 \end{align}
@@ -367,7 +370,7 @@ Přenos posledního bloku je dán vztahem
 \begin{align}
 H_{1 \rightarrow k}(j\omega) = \frac{U_k (j\omega)}{U_{in}(j\omega)} = \prod _{n=1}^{k} H_n(j\omega).
 \end{align}
-Kaskádním zapojením dvou dolních propusti ze sekce 5 byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
+Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s poklesem -80 dB/dek. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{lrcx2.png}
@@ -397,22 +400,22 @@ H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\om
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{1606.png}
-\caption{Schéma zapojení horní propusti 2. řádu (2xCR článek)}
+\caption{Schéma zapojení horní propusti 2. řádu (2x CR článek)}
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{16063.png}
-\caption{Amplitudová a fázová charakteristika horní propusti 2. řádu (2xCR článek)}
+\caption{Amplitudová a fázová charakteristika horní propusti 2. řádu (2x CR článek)}
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{lrcbandpass.png}
-\caption{Schéma zapojení pásmové propusti 2. řádu (HP - 2xCR článek)} 
+\caption{Schéma zapojení pásmové propusti 2. řádu (HP - 2x CR článek)} 
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{lrcbandpassampl.png}
-\caption{Amplitudová a fázová charakteristika pásmové propusti 2. řádu (HP - 2xCR článek)}
+\caption{Amplitudová a fázová charakteristika pásmové propusti 2. řádu (HP - 2x CR článek)}
 \end{figure}
 \noindent Nebo lze zapojit odpor (Obrázek 10), kapacitor a uzemněnou indukčnost (Obrázek 12).
 \begin{figure}[H]
@@ -454,12 +457,12 @@ H(s) = \frac{s^2}{s^2 + 2 \zeta \omega _c s + \omega _c^2}.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{lrcbandpass4.png}
-\caption{Schéma zapojení pásmové propusti 4. řádu (HP - 2xCR článek)}
+\caption{Schéma zapojení pásmové propusti 4. řádu (HP - 2x CR článek)}
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{lrcbandpass4ampl.png}
-\caption{Amplitudová a fázová charakteristika pásmové propusti 4. řádu (HP - 2xCR článek)}
+\caption{Amplitudová a fázová charakteristika pásmové propusti 4. řádu (HP - 2x CR článek)}
 \end{figure}
 \begin{figure}[H]
 \centering
@@ -479,7 +482,7 @@ H(s) = \frac{s^2}{s^2 + 2 \zeta \omega _c s + \omega _c^2}.
 \end{figure}
 \section{Příčkové LC filtry}
 Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
-K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = \frac{1}{\sqrt{LC}}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
+K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{piclanky.png}
@@ -493,7 +496,7 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{Bandpass_Filter.png}
-\caption{Zapojení pásmové propusti (T-článek) \cite{13}}
+\caption{Zapojení pásmové propusti (T článek) \cite{13}}
 \end{figure}
 \section{Návrh v Maple}
 Pro návrh pásmové propusti 4. řádu s Cauerovou aproximací typu C byly zvoleny parametry tolerančního schématu 
@@ -535,11 +538,11 @@ asnew&= 10log10(1 + ( \frac{\epsilon}{kl\_new})^2)\\
 k &= \frac{1}{Os}\\
 kl\_new &= k^{order}(\prod_{i=1}^{n}JacobiCD(\frac{(2i - 1 + m)EllipticK(k)}{order},k))^4,
 \end{align}
-\noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Jakobiho eliptických funkcí je 12 a vycházejí ze škálování na jednotkové elipse (cos $\phi$, sin $\phi$ se neváží k jednotkovému kruhu, ale k elipse). JacobiCD funkce je definována jako podíl cosinu Jakobiho funkce s dvěma parametry (JacobiAM(z,k)) a derivace této funkce podle prvního parametru z.
+\noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Jakobiho eliptických funkcí je 12 a vycházejí ze škálování na jednotkové elipse (cos $\phi$, sin $\phi$ se neváží k jednotkovému kruhu, ale k elipse). $JacobiCD$ funkce je definována jako podíl cosinu Jakobiho funkce s dvěma parametry ($JacobiAM(z,k)$) a derivace této funkce podle prvního parametru z.
 \begin{align}
 EllipticK(k) = \int _0 ^1(\frac{1}{\sqrt{(-\_ \alpha _1^2+1)}\sqrt{(-k^2 \_ \alpha _1^2+1})})d \_ \alpha _1
 \end{align}
-Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli přenosové funkce $Gc$, póly a nuly přenosové funkce $poles, zeros$ pomocí funkce $CauerCPolesZeros$. Počet pólů je dán řádem filtru $order$ a počet nul pro aproximaci typu C je roven $order - 2$. Dále byla spočtena Caurerova aproximace typu C - provozní činitel přenosu $G$ jako racionální lomená funkce $G(j\omega) = \frac{1}{H(j\omega)}$, charakteristická funkce $chf$ jako $\Phi(j\omega)$ s nulami a póly na imaginární ose a nuly přenosu. Charakteristická funcke má shodný jmenovatel s $G(j\omega)$.
+Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli přenosové funkce $Gc$, póly a nuly přenosové funkce $poles, zeros$ pomocí funkce $CauerCPolesZeros$. Počet pólů je dán řádem filtru $order$ a počet nul pro aproximaci typu C je roven $order - 2$. Dále byla spočtena Caurerova aproximace typu C - provozní činitel přenosu $G$ jako racionální lomená funkce $G(j\omega) = 1/H(j\omega)$, charakteristická funkce $chf$ jako $\Phi(j\omega)$ s nulami a póly na imaginární ose a nuly přenosu. Charakteristická funcke má shodný jmenovatel s $G(j\omega)$.
 \MapleOutput{Gc,poles,zeros:=CauerCPolesZeros(Nc)}
 \MapleOutput{G,chf,zer:=CauerC(Nc,p)}
 \MapleOutput{Gc, poles, zeros := 459.404,}
@@ -553,7 +556,7 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \end{figure}
 \noindent Charakteristika byla vykreslena z přenosu funkcí $MagnitudeHdB$, která vypočte modul přenosu podle předpisu |H(j$\omega)$|.
 \section{Výpočet prvků LC filtru}
-\noindent Funkcí DroppNLP byly vypočteny prvky LC příčkového filtru typu normovaná dolní propust (NDP). Zakončení bylo zvoleno standardní (common), odpory o hodnotě 1 $\Omega$, směr zpracování od posledního prvku (rear), s T strukturou (začíná zepředu podélným induktorem). Standardní (common) zakončení je oboustranné ($R_1 \neq 0, R_z \neq \infty$). Výstupem funkce je LC struktura s orientací prvků ve větvi podélně (direct) nebo příčně (shunt).
+\noindent Funkcí $DroppNLP$ byly vypočteny prvky LC příčkového filtru typu normovaná dolní propust (NDP). Zakončení bylo zvoleno standardní (common), odpory o hodnotě 1 $\Omega$, směr zpracování od posledního prvku (rear), s T strukturou (začíná zepředu podélným induktorem). Standardní (common) zakončení je oboustranné ($R_1 \neq 0, R_z \neq \infty$). Výstupem funkce je LC struktura s orientací prvků ve větvi podélně (direct) nebo příčně (shunt).
 \MapleOutput{elems\_NLP:=DroppNLP('common',1,rear,T,G,chf,zer)}
 \MapleOutput{             
 Rem\_matrix = \begin{pmatrix} 1.00624  &  0 \\
@@ -566,7 +569,7 @@ Rem\_matrix = \begin{pmatrix} 1.00624  &  0 \\
 \MapleOutput{block (2), [orientation = shunt, elements = {C1 = 1.6705}, Z = \frac{1}{pC1}]}
 \MapleOutput{block (3), [orientation = direct, elements = {C1 = 0.14180, L1 = 0.83190}, Z = \frac{1}{\frac{1}{pL1} + pC1}]}
 \MapleOutput{block (4), [orientation = shunt, elements = {C1 = 8.3068}, Z = \frac{1}{pC1}]}
-\noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí MakeH. Byl spočten  napěťový i výkonový přenos.
+\noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí $MakeH$. Byl spočten  napěťový i výkonový přenos.
 \MapleOutput{H\_NLPV := MakeH(elems\_NLP, V)}
 \MapleOutput{H\_NLP := MakeH(elems\_NLP, P)}
 \MapleOutput{H\_NLPV := \frac{p^2  + 8.47735}{2943.77 p^4  + 455.340 p^3  + 2381.21^2  + 322.099 p + 16.9209}   }
@@ -587,7 +590,7 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
 \MapleOutput{block (3), [Z = \frac{1}{pC1 + \frac{1}{pL1}+\frac{1}{pL2 + \frac{1}{pC2}}} orientation = direct, elements = { C1 = 1.7360*10^{-7} ,}}
 \MapleOutput{C2 = 3.8861*10^{-6}, L1 = 2.2799*10^{-5}, L2 = 1.0185*10^{-6}]}
 \MapleOutput{block (4), [Z = \frac{1}{\frac{1}{pL1}+pC1}, orientation = shunt, elements = { C1 = 1.0170 *10^{-5}, L1 = 3.8918*10^{-7}}]}
-\noindent Byly nastaveny jakosti cívek v LC příčkové struktuře na konečnou hodnotu. Funkce $MakeRealL$ zařadí do výsledné LC příčkové struktury sériově rezistory k induktorům podle zadaného činitele jakosti $Q$ a zadaného kmitočtu (ten odpovídá u pásmové propusti geometrickému středu propustného pásma - nebo je možno zadat obě hranice propustného pásma). Výpočet sériového odporu je proveden podle předpisu $R_s = \frac{L1 . 2 \pi f}{Q}$.
+\noindent Byly nastaveny jakosti cívek v LC příčkové struktuře na konečnou hodnotu. Funkce $MakeRealL$ zařadí do výsledné LC příčkové struktury sériově rezistory k induktorům podle zadaného činitele jakosti $Q$ a zadaného kmitočtu (ten odpovídá u pásmové propusti geometrickému středu propustného pásma - nebo je možno zadat obě hranice propustného pásma). Výpočet sériového odporu je proveden podle předpisu $R_s =L1 \cdot 2 \pi f/Q$.
 \MapleOutput{Q:=50:}
 \MapleOutput{elems\_BPQ:=MakeRealL(elems\_BP,Q,38077.640640, 168077.640640):}
 \MapleOutput{type = LC\_BP\_common\_Q}
@@ -615,7 +618,7 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
 \includegraphics[scale=0.6]{modul1.png}
 \caption{Modulová frekvenční charakteristika LC struktury (červená) a LC struktury s končnou hodntou jakostí cívek (zelená)}
 \end{figure}
-\noindent Vyčíslením v $168077*2 \pi$ Hz byl obdržen útlum 32 dB.\\
+\noindent Vyčíslením v $168077\cdot 2 \pi$ Hz byl obdržen útlum 32 dB.\\
 \\
 Odnormované prvky byly vyčísleny následovně:
 \MapleOutput{ele\_BP:={L1=subs(eval(elems\_BPQ[1][elements]),L1), C1=subs(eval(elems\_BPQ[1][elements]),C1),}}
@@ -628,15 +631,15 @@ Odnormované prvky byly vyčísleny následovně:
 \MapleOutput{L5 = 3.89179 *10^{-7}, R1 = 1, Rz = 1.004}
 \noindent Kapacita kondenzátoru použitého při zapojení indukčnosti s OTA je rovna $C_L = L g_m ^2$. Byla uvažována minimální transkonduktance z datasheetu LM13700. Byly získány kapacity
 \MapleOutput{C_{L1} = 3.080024064*10^{-9}, C_{L2} = 1.783535616*10^{-10}, C_{L3} = 9.38612736*10^{-11}, C_{L4} = 2.101137408 *10^{-9},}
-\MapleOutput{C_{L5} = 3.586673664*10^{-11}},
+\MapleOutput{C_{L5} = 3.586673664*10^{-11},}
 \noindent tedy $C_{L1} = 3.08002$ nF, $C_{L2} = 178.35356$ pF, $C_{L3} = 93.86127$ pF, $C_{L4} = 2.10114$ nF, $C_{L5} = 35.86674$ pF.
 \noindent Převrácenou hodnotou transkonduktance byly vypočteny frekvenčně a impedančně odnormované odpory
 \begin{align}
-R_N = R_1 = R_z = \frac{1}{g_m} = 104.16667 \Omega.
+R_N = R_1 = R_z = \frac{1}{g_m} = 104.16667 \ \Omega.
 \end{align}
-\noindent Kapacity vyšly odnormovány již se Syntfilu $C1 = 118.426$ nF, $C2 = 2.04513$ uF, $C3 = 3.88609$ uF, $C4 = 173.599$ nF, $C5 = 10.1698$ uF.
+\noindent Kapacity vyšly odnormovány již se Syntfilu $C1 = 118.426$ nF, $C2 = 2.04513 \  \mu$F, $C3 = 3.88609 \ \mu$F, $C4 = 173.599$ nF, $C5 = 10.1698 \  \mu$F.
 \section{Simulace s výsledky ze Syntfilu}
-\noindent Vypočtené prvky byly dosazeny do schématu v Multisimu. Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci). Napětí na zdroji poté bude $\frac{V_0}{R_0}$.
+\noindent Vypočtené prvky byly dosazeny do schématu v Multisimu. Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci). Napětí na zdroji poté bude $V_0/R_0$.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.55]{maple.png}
@@ -667,7 +670,7 @@ v_{L4} &= \frac{1}{\frac{R}{pL_4}+RpC_4}(v_1 - v_{L2} - RpC_2U_2 - v_{L3} - RpC_
 U_3 &= \frac{1}{\frac{1}{R_z}+pC_5 + \frac{1}{pL_5}}(I_1 - I_{L2} - pC_2U_2)\\
 U_3 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}(v_1 - U_2 - RpC_2 U_2).
 \end{align}
-\noindent To odpovídá realizační struktuře s pěti gyrátory o přenosech $H_1...H_5$
+\noindent To odpovídá realizační struktuře s pěti OTA integrátory o přenosech $H_1, \ldots,H_5$
 \begin{align}
 H_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}\\
 H_2 &= \frac{1}{\frac{R}{pL_2} + RpC_2}\\
@@ -675,15 +678,15 @@ H_3 &= \frac{R}{pL_3 + \frac{1}{pC_3}}\\
 H_4 &= \frac{1}{\frac{R}{pL_4}+RpC_4}\\
 H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
 \end{align}
-\noindent Dosazením za přenos ztrátového integrátoru (byly uvažovány stejné gm)
+\noindent Dosazením za přenos ztrátového integrátoru (byly uvažovány stejné $gm$)
 \begin{align}
 H & = \frac{gm}{sc + gm}
 \end{align}
-a porovnáním s předchozími přenosy $H_1...H_5$ byly obdrženy následující hodnoty
+a porovnáním s předchozími přenosy $H_1,  \ldots, H_5$ byly obdrženy následující hodnoty kapacit
 \MapleOutput{CI := [{CI1 = -\frac{gm *(\frac{R}{R1+p*L1+1/(p*C1)}-1)* (R1+p*L1+\frac{1}{(p*C1)})}{(R*p)}, CI2 =\frac{ gm*(C2*L2*R1*p^2-L2*p+R1)}{(L2*p^2)}, }}
 \MapleOutput{CI3 = \frac{gm*(C3*L3*p^2-C3*R1*p+1)}{(C3*R1*p^2)}, }
 \MapleOutput{CI4 = \frac{gm*(C4*L4*R1*p^2-L4*p+R1)}{(L4*p^2)}, CI5 = \frac{gm*(C5*L5*R1*Rz*p^2+L5*R1*p-L5*Rz*p+R1*Rz)}{(L5*Rz*p^2)}]}
-\noindent Zohledněním paralelního zapojení kondenzátoru C2, C4 a C5 k indukčnosti bylo dosazeno za původní hodnoty dosazeno $Cg=C*gm*R$.
+\noindent Zohledněním paralelního zapojení kondenzátoru C2, C4 a C5 k indukčnosti bylo dosazeno za původní hodnoty dosazeno $Cg=C \cdot gm \cdot R$.
 \MapleOutput{CI\_{all} := [{C2g = C2*gm}][{C4g = C4*gm}][{C5g = C5*gm}] union CI}
 \noindent Následně byly substitucí za gm = 9600 $\mu$S vypočteny výsledné kapacity.
 \section{Závěr}
