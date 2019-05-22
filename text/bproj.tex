@@ -516,15 +516,12 @@ Odnormované prvky byly vyčísleny následovně:
 \MapleOutput{ele\_BP := { C1 = 1.18426*10^{-7}  , C2 = 2.04513*10^{-6},  C3 = 3.88609*10^{-6} , C4 = 1.73599 *10^{-7},}}
 \MapleOutput{ C5 = 10.1698*10^{-6}, L1 = 0.0000334204, L2 = 0.00000193526, L3 = 0.00000101846, L4 = 0.0000227988, }
 \MapleOutput{L5 = 3.89179 *10^{-7}, R1 = 1, Rz = 1.004}
-\noindent Kapacita kondenzátoru použitého při zapojení indukčnosti s OTA je rovna $C_L = L g_m ^2$. Byla uvažována minimální transkonduktance z datasheetu LM13700. Byly získány kapacity
-\MapleOutput{C_{L1} = 3.080024064*10^{-9}, C_{L2} = 1.783535616*10^{-10}, C_{L3} = 9.38612736*10^{-11}, C_{L4} = 2.101137408 *10^{-9},}
-\MapleOutput{C_{L5} = 3.586673664*10^{-11},}
-\noindent tedy $C_{L1} = 3.08002$ nF, $C_{L2} = 178.35356$ pF, $C_{L3} = 93.86127$ pF, $C_{L4} = 2.10114$ nF, $C_{L5} = 35.86674$ pF.
+\noindent Kapacita kondenzátoru použitého při zapojení indukčnosti s OTA je rovna $C_L = L g_m ^2$. Byla uvažována minimální transkonduktance z datasheetu LM13700. Byly získány kapacity $C_{L1} = 3.08002$ nF, $C_{L2} = 178.35356$ pF, $C_{L3} = 93.86127$ pF, $C_{L4} = 2.10114$ nF, $C_{L5} = 35.86674$ pF.
 \noindent Převrácenou hodnotou transkonduktance byly vypočteny frekvenčně a impedančně odnormované odpory
 \begin{align}
 R_N = R_1 = R_z = \frac{1}{g_m} = 104.16667 \ \Omega.
 \end{align}
-\noindent Kapacity vyšly odnormovány již se Syntfilu $C1 = 118.426$ nF, $C2 = 2.04513 \  \mu$F, $C3 = 3.88609 \ \mu$F, $C4 = 173.599$ nF, $C5 = 10.1698 \  \mu$F.
+\noindent Kapacity vyšly již se Syntfilu $C1 = 118.426$ nF, $C2 = 2.04513 \  \mu$F, $C3 = 3.88609 \ \mu$F, $C4 = 173.599$ nF, $C5 = 10.1698 \  \mu$F.
 \section{Návrh funkční simulací}
 \begin{figure}[H]
 \centering
@@ -559,12 +556,8 @@ H & = \frac{gm}{sc + gm}
 \begin{align}
 H & = \frac{s gm C}{s^2 C^2+ s gm c + gm^2}
 \end{align}
-a porovnáním s předchozími přenosy $H_1,  \ldots, H_5$ byly obdrženy následující hodnoty kapacit
-\MapleOutput{CI := [{CI1 = -\frac{gm *(\frac{R}{R1+p*L1+1/(p*C1)}-1)* (R1+p*L1+\frac{1}{(p*C1)})}{(R*p)}, CI2 =\frac{ gm*(C2*L2*R1*p^2-L2*p+R1)}{(L2*p^2)}, }}
-\MapleOutput{CI3 = \frac{gm*(C3*L3*p^2-C3*R1*p+1)}{(C3*R1*p^2)}, }
-\MapleOutput{CI4 = \frac{gm*(C4*L4*R1*p^2-L4*p+R1)}{(L4*p^2)}, CI5 = \frac{gm*(C5*L5*R1*Rz*p^2+L5*R1*p-L5*Rz*p+R1*Rz)}{(L5*Rz*p^2)}]}
+a porovnáním s předchozími přenosy $H_1,  \ldots, H_5$ byly obdrženy symbolické hodnoty kapacit.
 \noindent Zohledněním paralelního zapojení kondenzátoru C2, C4 a C5 k indukčnosti bylo dosazeno za původní hodnoty dosazeno $Cg=C \cdot gm \cdot R$.
-\MapleOutput{CI\_{all} := [{C2g = C2*gm}][{C4g = C4*gm}][{C5g = C5*gm}] union CI}
 \noindent Následně byly substitucí za gm = 9600 $\mu$S vypočteny výsledné kapacity.
 \section{Závěr}
 \noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce \ref{s:DP2}), poté byl kaskádním zapojením filtrů 2. řádu obdržen filtr typu dolní propust 4. řádu (Sekce \ref{s:DP4}). Následně byla zapojením horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce \ref{s:PP2}) a 4. řádu (Sekce \ref{s:PP4}).\\
