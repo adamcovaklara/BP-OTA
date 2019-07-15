@@ -1,0 +1,53 @@
+\RequirePackage{ifpdf}
+%\ifpdf 
+%  \relax
+%\else
+%  \special{header=blok.ps}
+%\fi
+
+\newlength{\xxxf}
+\newlength{\yyyf}
+\newlength{\wwwf}
+\newcounter{xf}
+\newcounter{wf}
+\newcounter{zf}
+
+\def\figppp#1#2#3#4#5{%
+\setlength{\xxxf}{#2in}\setcounter{xf}{\xxxf}\divide\value{xf} by 100
+\addtolength{\xxxf}{0.25in}%
+\setlength{\yyyf}{#3in}\addtolength{\yyyf}{0.25in}%
+\if:#4:
+\mbox{#5%
+\ifpdf 
+\includegraphics{#1}%
+\else
+\includegraphics{#1.eps}%
+\fi
+\kern-#2in
+\setlength{\unitlength}{1in}%
+\begin{picture}(#2,#3)
+\input{#1.ppp}
+\end{picture}}%
+\else%
+\mbox{#5%
+\ifpdf 
+\includegraphics[width=#4]{#1}%
+\else
+\includegraphics[width=#4]{#1.eps}%
+\fi
+\kern-#4%
+\setlength{\wwwf}{#4}%
+\setcounter{wf}{\wwwf}%
+\setcounter{zf}{\value{wf}}%
+\divide\value{wf} by \value{xf}%
+\setlength{\wwwf}{\value{wf}in}\divide\wwwf by100%
+\multiply \value{wf} by \value{xf}%
+\advance\value{zf} by-\value{wf}\divide\value{xf} by 100%
+\divide\value{zf} by \value{xf}%
+\setlength{\xxxf}{\value{zf}in}\divide\xxxf by 10000%
+\addtolength{\wwwf}{\xxxf}%
+\setlength{\unitlength}{\wwwf}%
+\begin{picture}(#2,#3)
+\input{#1.ppp}%
+\end{picture}}%
+\fi}
