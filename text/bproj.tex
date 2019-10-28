@@ -20,20 +20,16 @@
 \usepackage[T1]{fontenc}
 \usepackage{float}
 \usepackage{xcolor}
+\usepackage{authblk}
+\graphicspath{{../Images/}}
 
 % odkazy
 \usepackage{url}
 
 % vícesloupcové tabulky
 \usepackage{multirow}
-\usepackage{listings}
 
-% vnořené popisky obrázků
-\usepackage{subcaption}
-
-% automatická konverze EPS 
-\usepackage{graphicx} 
-\usepackage{epstopdf}
+% automatická konverze schematu
 \usepackage{pppfig}
 
 % odkazy a záložky
@@ -41,660 +37,67 @@
 bookmarksopen=false, breaklinks=false,pdfborder={0 0 0},
 pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 
-% Poznámky při překladu
-\usepackage{xkeyval}	% Inline todonotes
-\usepackage[textsize = footnotesize]{todonotes}
-\presetkeys{todonotes}{inline}{}
-
-% Zacni sekci slovem ukol
-
-% enumerate zacina s pismenem
-\renewcommand{\theenumi}{\alph{enumi}}
-
 % smaz aktualni page layout
 \fancyhf{}
+
 % zahlavi
 \usepackage{titling}
 \fancyhf[HC]{\thetitle}
 \fancyhf[HLE,HRO]{\theauthor}
 \fancyhf[HRE,HLO]{\today}
+
  %zapati
 \fancyhf[FLE,FRO]{\thepage}
 
-% údaje o autorovi
-\title{Analogový přeladitelný filtr se zesilovači OTA}
-\author{Klára Pacalová}
-\date{\today}
+% nastavi novou stranku u sekce
+\newcommand{\sekce}[1]{\newpage \section{#1}}
+\newcommand{\nadpis}[1]{\newpage \section*{#1}}
 
-\begin{document}
+% Maple Output
 \definecolor{MapleBlue}{rgb}{0,0,1}
 \def\MapleOutput#1{{\begin{center}\begin{math}\color{MapleBlue}{#1}\end{math}\end{center}}}
 
-\maketitle
+% titulni strana
+\begin{document}
 
-% ---------------------------------
-% ---------------------------------
-% název sekce je generován automaticky jako: Úkol X
-Klíčová slova: \textit{transkonduktance, OTA, OTA-C, analogový filtr, pásmová propust, dolní propust}
-\section{Úvod}
-\noindent Cílem práce je navrhout zapojení analogového přeladitelného filtru se zesilovači OTA. Filtr je zvolen typu pásmová propust 4. řádu s Cauerovou aproximací.
-\section{Analogové filtry}
-Filtry jsou určeny k potlačení nebo zvýraznění určité části kmitočtového spektra signálu. Jsou to obvody s kmitočtově závislou přenosovou funkcí (pro napěťový přenos $H_s(j \omega) = U_{out}(j \omega)/U_{in}(j \omega)$). Základní rozdělení je na dolní propust (DP, anglicky \textit{low-pass} - LP), horní propust (HP, \textit{high-pass} - HP), pásmovou propust (PP, \textit{band-pass} - BP) a pásmovou zádrž (PZ, \textit{band-stop} - BS). \\
-\\
-Dolní propust nepropouští na výstup vstupní signál nad frekvencí $f_s$, signál v propustném pásmu zůstává beze změny nebo zesílený. Základní pasivní dvojbranné zapojení je ke vstupu sériově zapojený rezistor a k této větvi paralelně kapacitor. Tento RC člen (integrační článek) se zvyšující se frekvencí snižuje svou vstupní impedanci. Přenosová funkce má nulu v nekonečnu a pól v levé polorovině s-roviny. Ideální integrátor má pól v nule. \\
-Horní propust nepropouští signály o nízkých frekvencích. Nejjednodušší zapojení je RC člen (derivační článek), kdy kapacitor je zapojen sériově se zdrojem a k této větvi paralelně rezistor. Pro toto zapojení reaktance kapacitoru se zvyšující se frekvencí klesá. Přenosová funkce ideálního derivátoru má pól v nekonečnu a nulu v nule. Horní propust má nulu v nule a pól v levé polorovině s-roviny.\\
-\\
-Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC - dolní propust) a derivačního článku (CR - horní propust).\\
-\\
-Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty. Pasivní zapojení je složeno ze dvou rezistorů a kapacitorů. Má vždy ztrátový přenos.
-\begin{figure}[H]
+\begin{titlepage}
 \centering
-\includegraphics[scale=0.55]{tolerancnischemata.png}
-\caption{Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)\cite{1}}
-\end{figure}
-\noindent Filtry se používají k redukci nežádoucích frekvencí např. pro efektivní reprodukci zvuku reproduktory, k redukci okolního rušení - vysílače blokují harmonické frekvence, které interferují. Také v obvodech rekonstrukce signálů u D/A převodníků, k předvzorkování u A/D převodníku nebo jako anti-aliasing filtry.\\\\
-Obecná přenosová funkce filtru typu dolní propust je
-\begin{align}
-H(j\omega) = \frac{H_0}{\prod_{i=1}^{\frac{n}{2}} (1 + a_i s + b_i s^2)},
-\end{align}
-kde $n$ je řád filtru.\\
-Obecná přenosová funkce filtru typu horní propust je
-\begin{align}
-H(j\omega) = \frac{H_{\infty}}{\prod_{i=1}^{\frac{n}{2}} (1 + \frac{a_i}{s} + \frac{b_i}{s^2})},
-\end{align}
-kde $n$ je řád filtru.\\
-Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koeficienty filtru $a_i, b_i$ určují zesílení v propustném pásmu. Činitel jakosti je definován jako $Q = \sqrt{b_i}/a_i$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.3]{LGA98.png}
-\caption{Typy aproximací (DP)\cite{2}}
-\end{figure}
-\subsection{Butterworthova aproximace}
-Butterworthova má maximálně plochou amplitudovou charakteristiku v propustném pásmu. Frekvenční charakteristika má sklon daný počtem pólů a pro její posouzení je užíváno skupinové zpoždění (derivace fáze podle frekvence). Pro Butterworthovu aproximaci je skupinové zpoždění nezvlněné v propustném pásmu. Přechodová charakteristika má mírný překmit, zvyšující se s řádem filtru. Zesílení $G(\omega)$ je kmitočtově závislé a odpovídá absolutní hodnotě přenosové funkce $H(j\omega)$.
-\begin{align}
-G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 \frac{\omega}{\omega _c}^{2n}}},
-\end{align}
-kde $\epsilon$ je poměrné zvlnění kmitočtové charakteristiky v propustném pásmu (\textit{faktor zvlnění}), $n$ je řád filtru a $\omega _c$ mezní kmitočet (nastává při útlumu -3 dB). Pro $\omega _c = 1$ je faktor zvlnění $\epsilon = 1$. 
-\subsection{Čebyševova aproximace}
-Čebyševova aproximace má strmější pokles, což vede k užití nižšího řádu filtru. Zato má ale zvlněnou frekvenční charakteristiku v propustném pásmu. 
-\subsubsection{Typ I}
-Vyjádření modulové charakteristiky pro tuto aproximaci je dáno jako
-\begin{align}
-G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 T_n ^2 \frac{\omega}{\omega _c}^{2n}}},
-\end{align}
-kde $T_n$ je Čebyševův polynom, $\epsilon$ je poměrné zvlnění, $n$ je řád filtru a $\omega _c$ mezní kmitočet. Čebyševův polynom je definován vztahem $2 \omega ^2 - 1$ pro $n = 2$. Obecně jsou to kořeny Chebyshevových diferenciálních rovnic
-\begin{align}
-(1 - x^2)y" - xy' + n^2y = 0\\
-(1 - x^2)y" - 3xy' + n(n+2)y = 0.
-\end{align}
-\subsubsection{Typ II}
-Typ II je nazýván také jako inverzní Čebeševova aproximace. V praxi není příliš používaný, jelikož nemá tak rychlý pokles jako typ I a k jeho realizaci je třeba více prvků. Nemá zvlnění v propustném pásmu, zato v zádržném ano. Zesílení je definováno jako
-\begin{align}
-G(\omega, \omega _c) = \frac{1}{\sqrt{1 + \frac{1}{\epsilon ^2 T_n ^2 \frac{\omega _c}{\omega}^{2n}}}},
-\end{align}
-kde $T_n$ je Čebyševův polynom, $\epsilon$ je poměrné zvlnění, $n$ je řád filtru a $\omega _c$ mezní kmitočet.
-\subsection{Besselova aproximace}
-Besselova aproximace se používá v telekomunikační technice v případech, kdy je požadováno zachování tvaru signálu. Amplitudová charakteristika v nepropustném pásmu je velmi plochá. Koeficienty polynomu jsou zvoleny tak, aby fázová charakteristika v pásmu okolo kritické frekvence byla maximálně lineární. Nevýhodou je poměrně malá strmost modulové charakteristiky. Ta je pro Besselovu aproximaci dána vztahem
-\begin{align}
-G(\omega) = |H(j\omega)| = \frac{\Theta _n(0)}{\Theta _n(\frac{j\omega}{\omega _c})},
-\end{align}
-kde $\Phi _n$ je Besselův polynom a $\omega _c$ mezní kmitočet. Besselův polynom je definován součtem řady (Grosswald 1978, Berg 2000)
-\begin{align}
-\Theta _n (x) = x^n y_n (\frac{1}{x}) = \sum_{k=0}^{n}\frac{(n+k)!}{(n-k)!k!}\frac{x^{n-k}}{2^k}.
-\end{align}
-Pro filtr druhého řádu platí
-\begin{align}
-G(\omega) = |H(j\omega)| = \frac{3}{\sqrt{\omega ^4 + 3\omega ^2 + 9}}.
-\end{align}
-\subsection{Cauerova (eliptická) aproximace}
-\noindent Cauerova aproximace (eliptická) má nejstrmější pokles, při jejím užití jsou voleny nižší řády filtru. Pokud se zvlnění v zádržném pásmu blíží nule, filtr se stává Čebyševovým (výše zmíněný - typ I). Opačně je tomu v propustném pásmu - přiblížením k nule se filtr stává inverzním Čebyševovým (typ II).  Pokud se obě hodnoty zvlnění blíží k nule, filtr se stává Butterworthovým. Kmitočtová charakteristika je dána vztahem
-\begin{align}
-G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 R_n ^2(\zeta, \frac{\omega}{\omega _c})}},
-\end{align}
-kde $\epsilon$ je faktor zvlnění, $R_n$ eliptická racionální funkce n-tého řádu, $\zeta$ selektivní faktor a $\omega _c$ mezní kmitočet. Pokud pro selektivní faktor platí $\zeta \rightarrow \infty$, filtr se stává Čebyševovým (typ I).\\
-Protože se, podobně jako u Čebyševovy aproximace, liší odvození pro liché a sudé stupně, jsou pro ně různé postupy. Pro lichý stupeň existuje pouze jedna varianta, pro sudý tři varianty (A, B, C), které se liší průběhem aproximační funkce.
-\subsubsection{Cauerova (eliptická) aproximace typu A}
-Má stejný počet pólů a nul aproximující funkce. Je realizována jako LC filtr (Sekce \ref{s:LC}) pouze s vázanými induktory.
-\subsubsection{Cauerova (eliptická) aproximace typu B}
-Jedná se o posun útlumového pólu z konečného kmitočtu k nekonečnu, tedy dále od propustného pásma. Tato úprava vede ke snížení strmosti přechodu od propustného k nepropustnému pásmu. Je to obdoba postupu u inverzní Čebyševovy aproximace.
-\subsubsection{Cauerova (eliptická) aproximace typu C}
-Vhodnou transformací, která vede na nulovou hodnotu přenosu v nulovém kmitočtu, získáme navíc proti variantám A, B i shodné zakončovací odpory v případě LC realizace (Sekce \ref{s:LC}). Je to obdoba postupu u Čebyševovy aproximace.
-\subsection{Srovnání typů aproximací}
-Z hlediska zápisu přenosové funkce není rozdíl mezi Butterworthovou a Čebyševovou aproximací, přestože jedna má v propustném pásmu hladký a druhá zvlněný průběh. Přenosová funkce má v čitateli konstantu a ve jmenovateli polynom (odtud společné označení polynomiální aproximace).\\
-Oproti tomu volba průběhu v nepropustném pásmu tvar přenosové funkce mění. Pokud je průběh monotónní (Butterworthova, Čebyševova aproximace), jedná se o podíl konstanty a polynomu. Je-li průběh v nepropustném pásmu zvlněný, tvoří přenosovou funkci podíl dvou polynomů. Pro běžné aproximace (Cauerova, inverzní Čebyševova) je v čitateli sudý polynom ve tvaru $\prod _{i} (p^2 + \omega_i^2)$.\\
-Volbou kombinace hladkého a zvlěného průběhu v propustném a nepropustném pásmu získáme různé vlastnosti.\\
- \begin{table}[H]
- \caption{\label{tab:Přehled aproximací podle tvaru aproximační funkce v propustném i nepropustném pásmu}Přehled aproximací podle tvaru aproximační funkce v propustném i nepropustném pásmu \cite{3}}
-  \end{table}
-\begin{center}
-\begin{table}[H]
-\centering
-  \begin{tabular}{ | c | c | c | }
-    \hline
-    Propustné pásmo & Nepropustné pásmo & Příklad aproximace \\ \hline
-    hladká & hladká & Butterworthova \\ \hline
-    zvlněná & hladká & Čebyševova \\ \hline
-    hladká & zvlněná & inverzní Čebyševova \\ \hline
-    zvlněná & zvlněná & Cauerova \\ \hline
-  \end{tabular}
-   \end{table}
-   \end{center}
-\section{Transkonduktanční zesilovače (OTA)}
-V telekomunikacích se používají filtry v rozsahu kmitočtů desítek až stovek megahertz, v bezdrátové komunikaci až v řádu gigahertz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5--10 $\%$ $\omega _c$ - tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
-\\
-Pro nízké frekvence se ke splnění těchto požadavků používají obvody se spínanými kapacitory (SC). Přepínaný kapacitor se chová jako rezistor, tudíž časová konstanta RC je definována poměrem kapacitorů a hodinovou (CLK) frekvencí, se kterou jsou přepínány. Pro vysokofrekvenční aplikace (až v řádu gigahertz) se používají MOSFET-C filtry.\\
-\\
-Další z možných prvků, které jsou dostupné jak pro nízkofrekvenční aplikace, tak pro kmitočtový rozsah stovek megahertz, jsou transkonduktanční zesilovače.\\
-\\
-Transkonduktanční zesilovače (označují se též jako OTA (\textit{Operational Transconductance Amplifiers}) jsou napětím řízené zesilovače s proudovým výstupem - zdroje proudu
-\begin{align}
-i_{out} = g_m(u_+ - u_-),
-\end{align}
-kde $u_+$ a $u_-$ jsou napětí invertujícího a neinvertujícího vstupu.  Transkonduktance je řízena externím proudem $I_{ABC}$ (\textit{Bias Current}). Ideální OTA má kmitočtově nezávislou transkonduktanci $g_m$ (na rozdíl od reálného, který je kmitočtově závislý).
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.7]{image7.png}
-\caption{OTA - schematické značky \cite{4}}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{gmrc.png}
-\caption{Linearizovaný model reálného OTA \cite{5}}
-\end{figure}
-\noindent Připojením zátěže $R_z$ na výstup bylo získáno napětí naprázdno
-\begin{align}\label{s:vzt}
-u_{out} = R_zg_m(u_+ - u_-) = G_0(u_+ - u_-),
-\end{align}
-kde $G_0$ je zesílení. Ze vztahu \ref{s:vzt} plyne, že zesílení je konečné a mezi vstupy je nenulové napětí. Připojením kondenzátoru jako zátěže byl získán bezeztrátový integrátor s přenosem
-\begin{align}
-H(s) &= \frac{v_2}{v_1} = \frac{g_m}{sC}
-\end{align}
-\noindent a napětím na výstupu
-\begin{align}
-v_0(t) &= \frac{1}{C}\int i(t)dt = \frac{1}{C}\int g_mv_1(t)dt.
-\end{align}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{otaintegrator.png}
-\caption{OTA-C \cite{5}}
-\end{figure}
-\noindent Toto zapojení integrátoru s uzemněným kondenzátorem se označuje jako OTA-C.\\
-\\
-Ztrátový integrátor lze utvořit sériovým zapojením dalšího OTA jako odporu se zápornou zpětnou vazbou. Rozdíl mezi ideálním a ztrátovým integrátorem lze pozorovat i v modulové charakteristice - pro ztrátový je konstantní a pak teprve lineárně klesá se sklonem -20 dB/dek.
-\begin{align}
-v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-)
-\end{align}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{damp.png}
-\caption{Ztrátový OTA-C \cite{5}}
-\end{figure}
-\subsection{Current Conveyor of Second Generation (CCII) s OTA}
-Jeden z nejzákladnějších bloků v oblasti analogov obvodů v proudovém módu je \textit{current conveyor (CC)}. Princip CC první generace byl popsán v roce 1968 (K. C. Smith, A. S. Sedra \cite{6}). \textit{CCI} byl následně nahrazen univerzálnější druhou generací v roce 1970 (\textit{CCII})\cite{7}. Obvody s CC se používaly především v zapojeních s bipolárními tranzistory kvůli jejich vysoké transkonduktanci (v porovnání s CMOS). Jsou to operační zesilovače s proudovou zpětnou vazbou (např. MAX477, MAX4112). \textit{Current conveyors} jsou používány ve vysokofrekvenčních obvodech, kde je problematické použití běžných operačních zesilovačů, protože jsou limitovány násobkem šířky pásma a zesílení (\textit{gain-bandwidth product}). Je to struktura s třemi vstupy.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{ccii.png}
-\caption{CCII symbol \cite{8}}
-\end{figure}
-\noindent Vstupní impedance na vstupu Y je nekonečná (tedy proud tekoucí skrz Y je nulový) a impedance na vstupu X je nulová ($R_Y = \infty, I_Y = 0, R_X = 0$). Napětí na vstupu X je ekvivalentní k napětí na vstupu Y ($V_X = V_Y$). Proud procházející vstupem X je ekvivalentní k proudu vstupem Z ($I_Z = I_X$). Výstupní impedance vstupu Z je nekonečná ($R_Z = \infty$).
-Charakteristika ideálního \textit{CC} je reprezentována maticí
-\begin{align}
-\begin{bmatrix}
-I_Y \\ V_X \\ I_Z
-\end{bmatrix}
-&=
-\begin{bmatrix}
-0 & 0 & 0 \\
-1 & 0 & 0 \\
-0 & \pm 1 & 0 
-\end{bmatrix}
-\begin{bmatrix}
-V_Y \\
-I_X \\
-V_Z
-\end{bmatrix}.
-\end{align}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.45]{cciiota.png}
-\caption{CCII s $\pm$ výstupem založený na OTA \cite{8}}
-\end{figure}
-\noindent Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma.\\
-\newline
-Využitím zapojení na Obrázku \ref{s:OTA} a principů \textit{CCII} lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu).
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{siso.png}
-\caption{Single input single output OTA (SISO) založený na CCII \cite{8}}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{dido.png}
-\caption{\textit{fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu \cite{8}}
-\end{figure}
+\includegraphics[scale=0.7]{logo_FEL_cb.jpg}
+% údaje o autorovi
+\title{Analogový přeladitelný filtr se zesilovači OTA}
+\author{Klára Pacalová}
+\affil{Doc. Dr. Ing. Jiří Hospodka}
+\affil{
+	Katedra teorie obvodů\\
+	Fakulta elektrotechnická\\
+	České vysoké učení technické v Praze\\
+	Technická 2\\
+	160 00 Praha 6\\
+	Česká republika}
+\date{Praha, Prosinec 2019}
+\maketitle
+\end{titlepage}
+
+\tableofcontents
 \newpage
-\section{Integrované obvody s OTA}
-Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 75--280 Kč. Integrované obvody s dvěma zesilovači v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\mu$s), mnohem menší výstupní proud (650 $\mu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí je 25--65 Kč.
-\renewcommand{\arraystretch}{1.5}
-\begin{table}[H]
-\scalebox{0.9}{%
-  \begin{tabular}{ | c | >{\centering\arraybackslash}p{2cm}| >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.75cm} | >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{1.75cm} |}
-    \hline
-      & GBP - Gain Bandwidth Product & SR - Slew Rate & Output Current per Channel & $I_b$ - Input Bias Current & $V_{os}$ - Input Offset Voltage & Operating Supply Current & Forward Transconductance Min & Supply Voltage\\ \hline
-    OPA615 & 710 MHz & 2.5 kV/$\mu$s & 5 mA & 3 $\mu$A & 40 mV & 13 mA & 65 mA/V & 8--12.4 V \\ \hline
-    OPA860 & 470 MHz & 3.5 kV/$\mu$s & 15 mA & 5 $\mu$A & 12 mV & 11.2 mA & 80 mA/V & 5--13 V \\ \hline
-    OPA861 & 400 MHz & 900 V/$\mu$s & 15 mA & 1 $\mu$A & 12 mV & 5.4 mA & 65 mA/V & 4--12.6 V  \\
-    \hline
-  \end{tabular}}
-  \caption{\label{tab:Porovnání integrovaných obvodů s jedním OTA}Porovnání integrovaných obvodů s jedním OTA \cite{9}}
-  \end{table}
-\begin{center}
-\begin{table}[H]
-\scalebox{0.9}{%
-  \begin{tabular}{ | c | >{\centering\arraybackslash}p{2cm}| >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.75cm} | >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{1.75cm} |}
-    \hline
-      & GBP - Gain Bandwidth Product & SR  - Slew Rate & Output Current per Channel & $I_b$ - Input Bias Current & $V_{os}$ - Input Offset Voltage & Operating Supply Current & Forward Transconductance - Min & Supply Voltage\\ \hline
-    LM13700 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 1.3 mA & 6700 $\mu$S & 10--36 V \\ \hline
-    NE5517 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V \\ \hline
-    AU5517 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V  \\ \hline
-    NJM13600 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 6700 $\mu$S & 36 V  \\ \hline
-    NJM13700 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 2.6 mA & 6700 $\mu$S & 36 V  \\ \hline
-  \end{tabular}}
-  \caption{\label{tab:Porovnání integrovaných obvodů se dvěma OTA}Porovnání integrovaných obvodů se dvěma OTA \cite{9}}
-  \end{table}
-\end{center}
-\noindent Pro realizaci přeladitelného filtru byl zvolen LM13700.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.55]{image6.png}
-\caption{Konfigurace pinů na LM13700M \cite{10}}
-\end{figure}
-\noindent Vnitřní zapojení LM13700 na Obrázku \ref{s:OTA} obsahuje symetrický rozdílový stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Dvojice diod a tranzistorů tvoří proudová zrcadla (\textit{Current Mirror}) - referenční proud tekoucí v jedné větvi obvodu se \uv{zrcadlí} ~v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem. 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{image5.png}
-\caption{Vnitřní schéma OTA \cite{10}\label{sec:OTA}}
-\end{figure}
-\section{Náhrada prvků}\label{s:NAH}
-\noindent Pro ideální OTA zesilovač (vstupní i výstupní impedance nulové) je možno odpor nahradit obvodem s uzemněným neinvertujícím vstupem a zpětnou vazbou z invertujícího vstupu na výstup a to hodnotou
-\begin{align}
-R_{in} = \frac{1}{g_{m}},
-\end{align}
-kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.7]{image10.png}
-\caption{Náhradní obvod pro uzemněný rezistor \cite{12}}
-\end{figure}
-\noindent Pro nahrazení indukčnosti o impedanci $Z_L = 1/(sC)$ lze použít obvod s třemi OTA. Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
-Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
-\begin{align}\label{s:vzt2}
-V_C &= \frac{g_{m1}}{sC}V_1 \\
-I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{sC}V_1.
-\end{align}
-Výsledná indukčnost - impedance vstupu byla vyjádřena vztahem \ref{s:vzt2}.
-\begin{align}
-Z_{in}(s) = \frac{V_1}{I_1} = s\frac{C}{g_{m1}g_{m2}}
-\end{align}
-\noindent Byl obdržen induktor o hodnotě
-\begin{align}
-L = \frac{C}{g_{m1}g_{m2}}.
-\end{align}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.55]{image13.png}
-\caption{Náhradní obvod pro indukčnost \cite{12} \label{s:IND}}
-\end{figure}
-\noindent Pro uzemněnou indukčnosti o impedanci $Z_L = 1/(sC)$ byl použit obvod na Obrázku \ref{s:IND}. Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
-\begin{align}
-V_C &= \frac{g_{m1}}{sC}V_1 \\
-I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{sC}V_1.
-\end{align}
-Výsledná indukčnost - impedance vstupu byla vyjádřena vztahem
-\begin{align}
-Z_{in}(s) = \frac{V_1}{I_1} = s\frac{C}{g_{m1}g_{m2}}.
-\end{align}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=1]{image12.png}
-\caption{Náhradní obvod pro neuzemněnou indukčnost pro $g_{m1} = g_{m2}$\cite{12}}
-\end{figure}
-\section{Odvození DP 2. řádu}\label{s:ODV}
-\noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje Obrázek \ref{s:DPO}.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.15]{RLC_low-pass.png}
-\caption{Dolní propust 2. řádu \cite{11} \label{s:DPO}}
-\end{figure}
-\noindent Přenos obvodu byl vyjádřen jako
-\begin{align}
-H(s) = \frac{U_{out}}{U_{in}} = \frac{Z_2}{Z_1}, \quad Z_1 = sL,\quad Z_2 = \frac{\frac{R}{sC}}{R + \frac{1}{sC}}.
-\end{align}
-Výsledný přenos je roven 
-\begin{align}
-H(s) = \frac{\frac{\frac{R}{sC}}{R + \frac{1}{sC}}}{sL + \frac{\frac{R}{sC}}{R + \frac{1}{sC}}}.
-\end{align}
-Elementárními algebraickými úpravami a následným vynásobením členem $1/(LRC)$ byl získán výsledný přenos.
-\begin{align}\label{s:vzt4}
-H(s) = \frac{R}{s^2LRC + sL + R} = \frac{\frac{1}{LC}}{s^2 + \frac{s}{RC} + \frac{1}{LC}}.
-\end{align}
-\noindent Využitím poznatků ze Sekce \ref{s:NAH} je možno za odpor a indukčnost dosadit do vztahu \ref{s:vzt4}. Byly uvažovány kapacitory o stejné hodnotě C.
-\begin{align}
-H(s) = \frac{\frac{1}{\frac{C^2}{g_{m1}g_{m2}}}}{s^2 + \frac{s}{\frac{C}{g_{m2}}} + \frac{1}{\frac{C^2}{g_{m1}g_{m2}}}} = \frac{\frac{g_{m1}g_{m2}}{C^2}}{s^2 + \frac{sg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}} = \frac{g_{m1}g_{m2}}{s^2C^2 + sg_{m2}C + g_{m1}g_{m2}}.
-\end{align}
-Porovnáním jmenovatele se jmenovatelem přenosu filtru 2. řádu byl obdržen vztah
-\begin{align}
-s^2 + s\frac{\omega _c}{Q} + \omega _c^2 &= s^2C^2 + sg_{m2}C + g_{m1}g_{m2}\\
-s^2 + s\frac{\omega _c}{Q} + \omega _c^2 &= s^2 + \frac{sg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}.
-\end{align}
-Z tohoto vztahu byl vyjádřen mezní kmitočet jako 
-\begin{align}
-\omega _c^2 &= \frac{g_{m1}g_{m2}}{C^2} \\
-\omega _c &= \sqrt{\frac{g_{m1}g_{m2}}{C^2}}
-\end{align}
-a činitel jakosti dosazením za $\omega _c$
-\begin{align}
-Q = \frac{\omega _c}{\frac{g_{m2}}{C}} = \sqrt{\frac{g_{m1}}{g_{m2}}}.
-\end{align}
-Pokud navíc byly uvažovány stejné transkonduktance $g_{m1}, \ g_{m2} = g_m$, byl obdržen výsledek
-\begin{align}
-\omega _c &= \sqrt{\frac{g_m^2}{C^2}},\\
-Q &= \sqrt{1} = 1.
-\end{align}
-\section{Dolní propust 2. řádu}\label{s:DP2}
-Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. Přenosová funkce je
-\begin{align}
-H(j\omega) = \frac{H_0 \omega_c ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
-\end{align}
-\noindent Obvodová simulace byla realizována v programu Multisim. Bylo zvoleno symetrické napájení OZ $V_{DD},V_{SS} = \pm 15$ V. Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Vstupní externí proud $I_{ABC} = 0.5$ $\mu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100 kHz. Externím proudem $I_{ABC} \in$ $[5$ $\mu$A ; 500 $\mu$A] je garantováno minimální výstupní napětí $U_{OUT} = \pm 12$ V, standardně $V_{peak 1} = 14.2$ V a $V_{peak 2} = -14.4$ V. Při výstupním napětí v tomto intervalu je šum vzhledem k signálu zanedbatelný a nezkreslí výsledky simulace.\\
-\noindent Bylo použito zapojení s paralelně řazeným uzemněným kapacitorem a odporem a indukčností. Na výstupu 2. OTA (V1) byl obdržen filtr typu PP 1. řádu. Na výstupu 3. OTA (V2) pak DP 2. řádu.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.3]{bplp.png}
-\caption{Schéma zapojení DP 2. řádu}
-\end{figure}\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{bplp2.png}
-\caption{Amplitudová a fázová charakteristika DP 2. řádu, PP}
-\end{figure}
-\section{Dolní propust 4. řádu}\label{s:DP4}
-Kaskádní zapojení sestává ze sériově zapojených bloků.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{schemata.png}
-\caption{Kaskádní zapojení \cite{5}}
-\end{figure}
-\noindent Přenosové funkce jednotlivých bloků se násobí
-\begin{align}
-H_k(j\omega) = \frac{U_k (j\omega)}{U_{k-1}(j\omega)}.
-\end{align}
-Přenos posledního bloku je dán vztahem
-\begin{align}
-H_{1 \rightarrow k}(j\omega) = \frac{U_k (j\omega)}{U_{in}(j\omega)} = \prod _{n=1}^{k} H_n(j\omega).
-\end{align}
-Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s poklesem -80 dB/dek.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{lpbp32.png}
-\caption{Schéma zapojení DP 4. řádu}
-\end{figure}\begin{figure}[H]
-\centering
-\includegraphics[scale=0.45]{bplp3.png}
-\caption{Amplitudová a fázová charakteristika DP 4. řádu}
-\end{figure}
-\section{Pásmová propust 2. řádu}\label{s:PP2}
-Horní propust druhého řádu má přenos v nule nulový $H_{0} = 0$. Přenosová funkce je
-\begin{align}
-H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
-\end{align}
-\noindent Pásmovou propust lze získat zapojením dolní a horní propusti.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.9]{fig9.png}
-\caption{Násobení přenosů \cite{13}}
-\end{figure}
-\noindent Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Přenosová funkce je
-\begin{align}
-H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
-\end{align}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{PP2O.png}
-\caption{Schéma zapojení PP 2. řádu}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{PP2O2.png}
-\caption{Amplitudová a fázová charakteristika PP 2. řádu}
-\end{figure}
-\section{Pásmová propust 4. řádu}\label{s:PP4}
-\noindent Zapojením dvou PP 2. řádu byla obdržena PP 4.řádu s poklesem -80 dB/dek. 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{PP4O.png}
-\caption{Schéma zapojení PP 4. řádu}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{PP4O2.png}
-\caption{Amplitudová a fázová charakteristika PP 4. řádu}
-\end{figure}
-\section{Návrh v Maple}\label{s:MAPLE}
-Pro návrh pásmové propusti 4. řádu s Cauerovou aproximací typu C byly zvoleny parametry tolerančního schématu 
-\MapleOutput{f\_s := 80000 Hz}
-\MapleOutput{f\_p := 100000 Hz}
-\MapleOutput{fp := 877778 Hz}
-\MapleOutput{fs := 100000 Hz}
-\MapleOutput{ap := 1 dB}
-\MapleOutput{as := 80  dB,}
-\noindent kde všechny parametry musí být kladná reálná čísla a f\_s <  f\_p < fp < fs a ap < as. Zadána byla spodní a horní hranice nepropustného pásma $f\_s,fs$ [Hz], spodní a horní hranice propustného pásma $f\_p,fp$ [Hz], maximální útlum v propustném pásmu $ap$ [dB] a minimální útlum v nepropustném pásmu $as$ [dB].
-\begin{align}
-f\_s &= \frac{\sqrt{\Delta{fs}^2+4f\_m ^2}-\Delta{fs}}{2}\\
-f\_p &= \frac{\sqrt{\Delta{fp}^2+4f\_m ^2}-\Delta{fp}}{2}\\
-fp &= \frac{\sqrt{\Delta{fp}^2+4f\_m ^2}+\Delta{fp}}{2}\\
-fs &= \frac{\sqrt{\Delta{fs}^2+4f\_m ^2}+\Delta{fs}}{2}
-\end{align}
-Funkcí $BP2NLP$ byla provedena transformace tolerančního schematu nesymetrické pásmové propusti (PP) na toleranční schema normované dolní propusti (NDP). Byl spočten geometrický střed propustného pásma $fm$ [Hz], šířka propustného pásma $\Delta{fp}$ [Hz] a šířka nepropustného pásma $\Delta{fs} $[Hz].
-\MapleOutput{fm = 141421 Hz}
-\MapleOutput{\Delta{fp} = 100000 Hz}
-\MapleOutput{\Delta{fp} = 877778 Hz}
-\noindent Byl obdržen kmitočet hranice nepropustného pásma normované dolní propusti (NDP) $Os$ [1/s].
-\MapleOutput{Os = 8.77778 1/s}.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{tolsch2.png}
-\caption{Toleranční schéma navrhované pásmové propusti}
-\end{figure}
-\noindent Stupeň Cauerovy aproximace normované dolní propusti byl určen jako $order = 4$.
-\noindent Dále byla funkcí $Cauer\_asnew$ určena nová hodnota útlumu v nepropustném pásmu NDP.
-\MapleOutput{asnew := 105.613}
-\begin{align}
-asnew&= 10log10(1 + ( \frac{\epsilon}{kl\_new})^2)\\
-\epsilon &= \sqrt{10^{0.1ap} - 1)}\\
-k &= \frac{1}{Os}\\
-kl\_new &= k^{order}(\prod_{i=1}^{n}JacobiCD(\frac{(2i - 1 + m)EllipticK(k)}{order},k))^4,
-\end{align}
-\noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Jakobiho eliptických funkcí je 12 a vycházejí ze škálování na jednotkové elipse (cos $\phi$, sin $\phi$ se neváží k jednotkovému kruhu, ale k elipse). $JacobiCD$ funkce je definována jako podíl cosinu Jakobiho funkce s dvěma parametry ($JacobiAM(z,k)$) a derivace této funkce podle prvního parametru z.
-\begin{align}
-EllipticK(k) = \int _0 ^1(\frac{1}{\sqrt{(-\_ \alpha _1^2+1)}\sqrt{(-k^2 \_ \alpha _1^2+1})})d \_ \alpha _1
-\end{align}
-Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli přenosové funkce $Gc$, póly a nuly přenosové funkce $poles, zeros$ pomocí funkce $CauerCPolesZeros$. Počet pólů je dán řádem filtru $order$ a počet nul pro aproximaci typu C je roven $order - 2$. Dále byla spočtena Caurerova aproximace typu C - provozní činitel přenosu $G$ jako racionální lomená funkce $G(j\omega) = 1/H(j\omega)$, charakteristická funkce $chf$ jako $\Phi(j\omega)$ s nulami a póly na imaginární ose a nuly přenosu. Charakteristická funcke má shodný jmenovatel s $G(j\omega)$.
-\MapleOutput{Gc, poles, zeros := 376.020,}
-\MapleOutput{[-0.475024+0.340009I, -0.475024-0.340009I, -0.162709+0.982758I, -0.162709-0.982758I]),}
-\MapleOutput{[11.2840I, -11.2840I],}
-\MapleOutput{G,chf,zer := \frac{376.020p^4+479.601p^3+617.689p^2+396.239p+127.328}{p^2+127.329}, \frac{(376.020p^2+311.716)p^2}{p^2+127.329}, [11.2840I, -11.2840I]}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{sch02.png}
-\caption{Modulová frekvenční charakteristika NDP}
-\end{figure}
-\noindent Charakteristika byla vykreslena z přenosu funkcí $MagnitudeHdB$, která vypočte modul přenosu podle předpisu |H(j$\omega)$|.
-\section{Příčkové LC filtry}\label{s:LC}
-Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
-K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.1]{piclanky.png}
-\caption{Pasivní dolní propust n-tého řády s $\pi$ články \cite{14}}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.08]{tclanky.png}
-\caption{Pasivní dolní propust n-tého řády s T články \cite{14}}
-\end{figure}
+\listoffigures
 \newpage
-\section{Gyrátory}\label{s:GYR}
-\noindent K převodu induktoru na zapojení s kapacitorem byla použita struktura označovaná jako gyrátor. Jde o náhradu původního obvodu s induktorem vhodným uspořádáním rezistorů a kapacitorů tak, že výsledná impedance vypadá jako induktor. Gyrátor nelze dobře realizovat s obyčejnými operačními zesilovači, běžně se používají /textit{General Impedance Converters (GIC)}. Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na Obrázku \ref{s:GO} jsou znázorněny dva gyrátory s kapacitorem. 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{gyrator.png}
-\caption{Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory \cite{12} \label{s:GO}}
-\end{figure}
-Obvodovou analýzou v uzlu V byla obdržena rovnice
-\begin{align}
-pCV &= g_mV_1 - g_mV_2
-\end{align}
-a dva proudy na výstupu
-\begin{align}
-I_1 = I_2 = g_mV.
-\end{align}
-Zkombinování rovnic a eliminace V vede k rovnici neuzemněného induktoru mezi napětími $V_1$ a $V_2$.
-\begin{align}
-I_1 = I_2 = \frac{g_m^2}{pC}(V_1 - V_2) = \frac{1}{pL}(V_1 - V_2)
-\end{align}
-Z rovnice lze snadno odvodit, že kapacita kondenzátoru použitého při zapojení induktoru s OTA je rovna $C_L = L g_m ^2$. \\
-\section{Výpočet prvků LC filtru}\label{s:VYP}
-\noindent Funkcí $DroppNLP$ byly vypočteny prvky LC příčkového filtru typu normovaná dolní propust (NDP). Zakončení bylo zvoleno standardní (common), odpory o hodnotě 1 $\Omega$, směr zpracování od posledního prvku (rear), s T strukturou (začíná zepředu podélným induktorem). Standardní (common) zakončení je oboustranné ($R_1 \neq 0, R_z \neq \infty$). Výstupem funkce je LC struktura s orientací prvků ve větvi podélně (direct) nebo příčně (shunt).
-\MapleOutput{block (1), [orientation = direct, elements = {L1 = -0.40652}, Z = p L1]}
-\MapleOutput{block (2), [orientation = shunt, elements = {C1 = 2.4732}, Z = \frac{1}{pC1}]}
-\MapleOutput{block (3), [orientation = direct, elements = {C1 = 0.0081309, L1 = 0.96591}, Z = \frac{1}{\frac{1}{pL1} + pC1}]}
-\MapleOutput{block (4), [orientation = shunt, elements = {C1 = 1.5489}, Z = \frac{1}{pC1}]}
-Vygenerovaná struktura je popsána na Obrázku \ref{s:SCHEM}.
-\begin{figure}[H]
-\centering
-\figppp{Circuit(1)}{5.566}{2.075}{}{}
-\caption{Schéma LC příčkové struktury \label{s:SCHEM}}
-\end{figure}
-\noindent Analýzou LC struktury z Maplu byly obdrženy obvodové rovnice, kde R je volitelný (fiktivní) rezistor:
-\begin{align}
-I_1 &= \frac{1}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_2)\\
-v_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_2)\\
-U_2 &= \frac{1}{\frac{1}{pL_2} + pC_2}(I_1 - I_{3} - I_{L4} - pC_4 v_{L4})\\
-U_2 &= \frac{1}{\frac{R}{pL_2} + RpC_2}(v_1 - v_{L3} - v_{L4} - RpC_4 U_{L4})\\
-I_{3} &= \frac{1}{pL_3 + \frac{1}{pC_3}}(U_2 - U_3)\\
-v_{L3} &= \frac{R}{pL_3 + \frac{1}{pC_3}}(U_2 - U_3)\\
-v_{L4} &= \frac{1}{\frac{1}{pL_4}+pC_4}(I_1 - I_{L2} - pC_2U_2 - I_{3} - pC_4 (U_2 - U_3))\\
-v_{L4} &= \frac{1}{\frac{R}{pL_4}+RpC_4}(v_1 - v_{L2} - RpC_2U_2 - v_{L3} - RpC_4 (U_2 - U_3))\\
-U_3 &= \frac{1}{\frac{1}{R_z}+pC_5 + \frac{1}{pL_5}}(I_1 - I_{L2} - pC_2U_2)\\
-U_3 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}(v_1 - U_2 - RpC_2 U_2).
-\end{align}
-\noindent To odpovídá realizační struktuře s pěti bloky o přenosech $H_1, \ldots,H_5$
-\begin{align}
-H_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}\\
-H_2 &= \frac{1}{\frac{R}{pL_2} + RpC_2}\\
-H_3 &= \frac{R}{pL_3 + \frac{1}{pC_3}}\\
-H_4 &= \frac{1}{\frac{R}{pL_4}+RpC_4}\\
-H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
-\end{align}
-\noindent Uvedené přenosy budou použity v analýze Pracanem.
-\noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí $MakeH$. Byl spočten  napěťový i výkonový přenos.
-\MapleOutput{H\_NLPV := \frac{p^2  + 127.329}{-193.159 p^4  + 352.072 p^3  + 286.065 p^2  + 582.791 p + 253.653}   }
-\MapleOutput{H\_NLP := \frac{p^2  + 127.330}{-96.9631 p^4  + 176.735 p^3  + 143.601 p^2  + 292.553 p + 127.330}}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{sch022.png}
-\caption{Modulová frekvenční charakteristika NDP - LC příčkový filtr}
-\end{figure}
-\noindent Hodnota přenosové funkce v 1 byla vyhodnocena jako $-2.15882$.\\
-Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na pásmovou propust (PP). Zakončovací rezistor byl zvolen 1 $\Omega$, další dva parametry funkce značí spodní a horní hranici propustného pásma.
-\MapleOutput{block (1), [Z = p L1 + \frac{1}{pC1}, orientation = direct, elements = { C1 = -7.8301*10^{-6}  , L1 = -3.2350*10^{-7}}]}
-\MapleOutput{block (2), [Z = \frac{1}{\frac{1}{pL1}+pC1}, orientation = shunt, elements = {C1 = 1.9681 *10^{-6}, L1 = 1.2871*10^{-6}}]}
-\MapleOutput{block (3), [Z = \frac{1}{pC1 + \frac{1}{pL1}+\frac{1}{pL2 + \frac{1}{pC2}}} orientation = direct, elements = { C1 = 6.4704*10^{-9} ,}}
-\MapleOutput{C2 = 3.2954*10^{-6}, L1 = 3.9148*10^{-4}, L2 = 7.6864*10^{-7}]}
-\MapleOutput{block (4), [Z = \frac{1}{\frac{1}{pL1}+pC1}, orientation = shunt, elements = { C1 = 1.2326 *10^{-6}, L1 = 2.0551*10^{-6}}]}
-\noindent Byly nastaveny jakosti cívek v LC příčkové struktuře na konečnou hodnotu. Funkce $MakeRealL$ zařadí do výsledné LC příčkové struktury sériově rezistory k induktorům podle zadaného činitele jakosti $Q$ a zadaného kmitočtu (ten odpovídá u pásmové propusti geometrickému středu propustného pásma - nebo je možno zadat obě hranice propustného pásma). Výpočet sériového odporu je proveden podle předpisu $R_s =L1 \cdot 2 \pi f/Q$.
-\MapleOutput{block (1), [Z = p L1 + Rs1 + \frac{1}{pC1}, orientation = direct, elements = { C1 = -7.8301 *10^{-6}, L1 = -3.2350*10^{-7},}}
-\MapleOutput{Rs1 = -0.57490*10^{-2}]}
-\MapleOutput{block (2), [Z = \frac{1}{\frac{1}{pL1 + Rs1}+pC1}, orientation = shunt, elements = {C1 = 1.9681*10^{-6}, L1 = 1.2871*10^{-6},}}
-\MapleOutput{Rs1 = 0.22873*10^{-1}]}
-\MapleOutput{block (3), [Z = \frac{1}{pC1 + \frac{1}{pL1 + Rs1}+\frac{1}{pL2 + Rs2 + \frac{1}{pC2}}} orientation = direct, elements = { C1 = 6.4704*10^{-9} ,}}
-\MapleOutput{C2 = 3.2954*10^{-6}, L1 = 0.39148*10^{-3}, L2 = 7.6864*10^{-7}, Rs1 = 6.9572, Rs2 = 0.13660*10^{-1}]}
-\MapleOutput{block (4), [Z = \frac{1}{\frac{1}{pL1 + Rs1}+pC1}, orientation = shunt, elements = { C1 = 1.2326 *10^{-6}, L1 = 2.0551*10^{-6}, }}
-\MapleOutput{Rs1 = 0.36522*10^{-1}]}
-\noindent Byl spočten přenos pro LC strukturu bez a s přidanými sériovými rezistory. Pro oba přenosy byla vykreslena modulová frekvenční charakteristika.
-\begingroup
-    \fontsize{5pt}{12pt}
-\MapleOutput{H\_BP := \frac{ p^6  + 2.01858* 10^{14}   p^4  + 1.55854 *10^{23}  p^2}{-6.14026
-  10^{-11}  p^8  + 0.000140640 p^7  + 46.6376 p^6  + 5.34196 *10^{8}   p^5 + 2.57033* 10^{14} p^4  + 2.10893 10^{20} p^3  + 7.26886*10^{24} p^2 + 8.65337 *10^{30} p - 1.49149 *10^{36} }}
-\MapleOutput{H\_BPQ := \frac{p^7  + 71085.7 p^6 + 2.01860*10^{14}  p^5 + 1.07620*10^{19}p^4+3.47110*10^{23}p^3+6.67244*10^{27}p^2 + 4.92223*10^{31} p}{-6.14027*10^{-11}p^9 +0.000135185 p^8+55.5676 p^7+5.37714*10^8 p^6+2.85360*10^{14} p^5+2.25089*10^{20} p^4+1.49149*10^{25} p^3+8.97641*10^{30} p^2 - 1.38919*10^{36} p - 2.74611*10^{40} }}
-\endgroup
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{modul12.png}
-\caption{Modulová frekvenční charakteristika LC struktury (červená) a LC struktury s konečnou hodntou jakostí cívek (zelená)}
-\end{figure}
-\noindent Vyčíslením v $200000 \cdot 2 \pi$ Hz byl obdržen útlum 1.21022 dB.\\
-\\
-\noindent Odnormované prvky byly vyčísleny následovně:
-\MapleOutput{ele\_BP := { C1 = -7.83010*10^{-6}  , C2 = 1.96808*10^{-6},  C3 = 3.29545*10^{-6} , C4 = 6.47035*10^{-9},}}
-\MapleOutput{ C5 = 1.23258*10^{-6}, L1 = -3.235*10^{-7}, L2 = 1.28706*10^{-6}, L3 = 7.68645*10^{-7}, L4 = 0.391484*10^{-3}, }
-\MapleOutput{L5 = 2.05508 *10^{-6}, R1 = 1, Rz = 1.00796}
-\noindent Využitím poznatků ze Sekce \ref{s:GYR} byly s uvažováním minimální transkonduktance z datasheetu LM13700 (gm = 9600 $\mu$S) získány kapacity $C_{L1} = 3.08002 $ nF, $C_{L2} = 17.8354$ nF, $C_{L3} = 938.613 $ nF, $C_{L4} = 2.10114$ nF, $C_{L5} = 358.667$ nF.
-\noindent Převrácenou hodnotou transkonduktance byly vypočteny frekvenčně a impedančně odnormované odpory
-\begin{align}
-R_N = R_1 = R_z = \frac{1}{g_m} = 104.16667 \ \Omega.
-\end{align}
-\noindent Kapacity vyšly již se Syntfilu $C1 = -7.8301 \  \mu$F, $C2 = 1.96808 \  \mu$F, $C3 = 3.29545 \  \mu$F, $C4 = 6.47035$ nF, $C5 = 1.23258 \  \mu$F.
-\newpage
-\section{Návrh funkční simulací}
-\noindent  Zapojení s OTA vychází z již uvedených principů v Sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze Sekce \ref{s:VYP}. Mezní kmitočet lze přeladit změnou vstupního proudu.
-\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann (2001) str. 656/758). Napětí na zdroji poté bude $\frac{V_0}{R_0}$.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.55]{maple.png}
-\caption{Výsledné schéma}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{maple2.png}
-\caption{Amplitudová a fázová charakteristika PP 4. řádu}
-\end{figure}
-\section{Závěr}
-\noindent Cílem práce bylo navrhnout pásmovou propust 4. řádu. Prvním krokem bylo odzkoušení zapojení OTA v Multisimu. Bylo realizováno zapojení filtru typu dolní propust 2. řádu (Sekce \ref{s:DP2}), poté byl kaskádním zapojením filtrů 2. řádu obdržen filtr typu dolní propust 4. řádu (Sekce \ref{s:DP4}). Následně byla zapojením horní a dolní propusti obdržena pásmová propust 2. řádu (Sekce \ref{s:PP2}) a 4. řádu (Sekce \ref{s:PP4}).\\
-\\
-Pomocí knihovny Syntfil navržena pásmová propust 4. řádu a její zapojení pomocí LC příčkové struktury. Mezikrokem byl převod pásmové propusti na normovanou dolní propust. Pro LC strukturu byly obdrženy odnormované hodnoty prvků. LC struktura byla převedena na zapojení s OTA a byla provedena simulace s vypočtenými prvky. \\
-\\
-Bude třeba analyzovat výslednou strukturu popsanou přenosy gyrátorů (Sekce \ref{s:MAPLE}) s využitím knihovny Pracan a Maplu. Dalším krokem bude pak praktická realizace a odzkoušení navrhnutého obvodu.
-\begin{thebibliography}{999}
-\bibitem{1}
-KAŠPER, Ladislav. \textit{Návrh kmitočtového filtru} [online]. Ostrava, 2012 [cit. 2019-04-28]. Dostupné z: \url{https://dspace.vsb.cz/bitstream/handle/10084/92901/KAS279_FEI_N2647_2601T013_2012.pdf?sequence=1&isAllowed=y}. Diplomová práce. VŠB-TU Ostrava, FEI. Strana 18/69.
-\bibitem{2}
-\textit{High-pass filtering pre-processing before computing audio features}. Stack Exchange Inc [online]. 2019 [cit. 2019-04-22]. Dostupné z: \url{https://dsp.stackexchange.com/questions/27586/high-pass-filtering-pre-processing-before-computing-audio-features}
-\bibitem{3}
-MARTINEK, Pravoslav, Petr BOREŠ a Jiří HOSPODKA. \textit{Elektrické filtry}. Praha: Vydavatelství ČVUT, 2003. ISBN 80-01-02765-1.
-\bibitem{4}
-MICHAL, Vratislav. \textit{Vybrané vlastnosti obvodů pracujících v proudovém módu a napěťovém módu} [online]. Brno, 2017 [cit. 2019-03-30]. Dostupné z: \url{https://docplayer.cz/43256146-Vybrane-vlastnosti-obvodu-pracujicich-v-proudovem-modu-a-napetovem-modu.html}. Článek. Brno University of Technology. Strana 5/6.
-\bibitem{5}
-HOSPODKA, Jiří. \textit{Úvod do analogových filtrů} [online]. Praha, 2018 [cit. 2019-03-30]. Dostupné z: \url{https://moodle.fel.cvut.cz/course/view.php?id=1434}. Přednáška. ČVUT FEL. Pořadě slide 24/41, 21/41.
-\bibitem{6}
-SMITH, K.C., SEDRA, A.S. \textit{The current conveyor: a new circuit building block}. IEEE Proc. CAS, 1968,
-vol. 56, no. 3, pp. 1368-1369.
-\bibitem{7}
-SMITH, K.C., SEDRA, A.S. \textit{A second generation current conveyor and its application}. IEEE Trans.,
-1970, CT-17, pp. 132-134.
-\bibitem{8}
-SHAKTOUR, Mahmoud. \textit{Nekonvenční obvodové prvky pro návrh příčkových filtrů} [online]. Brno, 2010 [cit. 2019-10-25]. Dostupné z: \url{https://www.vutbr.cz/www_base/zav_prace_soubor_verejne.php?file_id=35975}. Disertační práce. Vysoké učení technické v Brně. Vedoucí práce Dalibor Biolek. Strana 8/39 - Obrázek 3-1 (a).
-\bibitem{9}
-\textit{Transconductance Amplifiers} [online]. 2019 [cit. 2019-03-30]. Dostupné z: \url{https://cz.mouser.com/Semiconductors/Integrated-Circuits-ICs/Amplifier-ICs/Transconductance-Amplifiers/_/N-6j73l?P=1y95od0}
-\bibitem{10}
-LM13700: Dual Operational Transconductance Amplifiers With Linearizing Diodes and Buffers. In: \textit{Texas Instruments} [online]. Dallas, Texas: Texas Instruments Incorporated, 2018 [cit. 2019-03-30]. Dostupné z: \url{www.ti.com/lit/ds/symlink/lm13700.pdf} Strana 1/37. Strana 9/37 - Obrázek 16.
-\bibitem{11}
-Low-pass filter. In: \textit{Wikipedia: the free encyclopedia} [online]. San Francisco (CA): Wikimedia Foundation, 2001- [cit. 2019-03-30]. Dostupné z: \url{https://en.wikipedia.org/wiki/Low-pass_filter}
-\bibitem{12}
-SCHAUMANN, Rolf a Mac E. Van VALKENBURG. \textit{Design of Analog Filters}. New York: Oxford University Press, 2001. ISBN 0195118774. Pořadě obrázek 4-13, 4-36 a),b).
-\bibitem{13}
-RAMSDEN, Ed. \textit{An Introduction to Analog Filters}. Sensors Online [online]. 3 Speen Street, Suite 300, Framingham, MA 01701: Questex, 2019, 1/7/2001 [cit. 2019-05-18]. Dostupné z: \url{https://www.sensorsmag.com/components/introduction-to-analog-filters}
-\bibitem{14}
-VEDRAL, Josef a Jakub SVATOŠ. \textit{Zpracování a digitalizace analogových signálů v měřící technice}. Praha: Česká technika - nakladatelství ČVUT, 2018. ISBN 978-80-01-06424-5. Strana 136, Obrázek 5.3.9, 5.3.10.
-\end{thebibliography}
+\listoftables
+\nadpis{Abstrakt}
+\input{abstrakt.tex}
+\nadpis{Zkratky}
+\input{zkratky.tex}
+\sekce{Úvod}
+\input{uvod.tex}
+\sekce{Transkonduktanční zesilovače (OTA)}
+\input{ota.tex}
+\sekce{Náhrada prvků}\label{s:NAH}
+\input{nahrada_prvku.tex}
+\sekce{Simulace}
+\input{simulace.tex}
+\sekce{Návrh v Maple}\label{s:MAPLE}
+\input{navrh.tex}
+\sekce{Závěr}
+\input{zaver.tex}
+\input{bibliography.tex}
 \end{document}

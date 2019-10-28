@@ -1,0 +1,135 @@
+V telekomunikacích se používají filtry v rozsahu kmitočtů desítek až stovek megahertz, v bezdrátové komunikaci až v řádu gigahertz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5--10 $\%$ $\omega _c$ - tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
+\\
+Pro nízké frekvence se ke splnění těchto požadavků používají obvody se spínanými kapacitory (SC). Přepínaný kapacitor se chová jako rezistor, tudíž časová konstanta RC je definována poměrem kapacitorů a hodinovou (CLK) frekvencí, se kterou jsou přepínány. Pro vysokofrekvenční aplikace (až v řádu gigahertz) se používají MOSFET-C filtry.\\
+\\
+Další z možných prvků, které jsou dostupné jak pro nízkofrekvenční aplikace, tak pro kmitočtový rozsah stovek megahertz, jsou transkonduktanční zesilovače.\\
+\\
+Transkonduktanční zesilovače (označují se též jako OTA (\textit{Operational Transconductance Amplifiers}) jsou napětím řízené zesilovače s proudovým výstupem - zdroje proudu
+\begin{equation}
+i_{out} = g_m(u_+ - u_-),
+\end{equation}
+kde $u_+$ a $u_-$ jsou napětí invertujícího a neinvertujícího vstupu.  Transkonduktance je řízena externím proudem $I_{ABC}$ (\textit{Bias Current}). Ideální OTA má kmitočtově nezávislou transkonduktanci $g_m$ (na rozdíl od reálného, který je kmitočtově závislý).
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{image7.png}
+\caption{OTA - schematické značky \cite{4}}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{gmrc.png}
+\caption{Linearizovaný model reálného OTA \cite{5}}
+\end{figure}
+\noindent Připojením zátěže $R_z$ na výstup bylo získáno napětí naprázdno
+\begin{equation}\label{s:vzt}
+u_{out} = R_zg_m(u_+ - u_-) = G_0(u_+ - u_-),
+\end{equation}
+kde $G_0$ je zesílení. Ze vztahu \ref{s:vzt} plyne, že zesílení je konečné a mezi vstupy je nenulové napětí. Připojením kondenzátoru jako zátěže byl získán bezeztrátový integrátor s přenosem
+\begin{equation}
+H(s) = \frac{v_2}{v_1} = \frac{g_m}{sC}
+\end{equation}
+\noindent a napětím na výstupu
+\begin{equation}
+v_0(t) = \frac{1}{C}\int i(t)dt = \frac{1}{C}\int g_mv_1(t)dt.
+\end{equation}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{otaintegrator.png}
+\caption{OTA-C \cite{5}}
+\end{figure}
+\noindent Toto zapojení integrátoru s uzemněným kondenzátorem se označuje jako OTA-C.\\
+\\
+Ztrátový integrátor lze utvořit sériovým zapojením dalšího OTA jako odporu se zápornou zpětnou vazbou. Rozdíl mezi ideálním a ztrátovým integrátorem lze pozorovat i v modulové charakteristice - pro ztrátový je konstantní a pak teprve lineárně klesá se sklonem -20 dB/dek.
+\begin{equation}
+v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-)
+\end{equation}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{damp.png}
+\caption{Ztrátový OTA-C \cite{5}}
+\end{figure}
+\subsection{Current Conveyor of Second Generation (CCII) s OTA}
+Jeden z nejzákladnějších bloků v oblasti analogov obvodů v proudovém módu je \textit{current conveyor (CC)}. Princip CC první generace byl popsán v roce 1968 (K. C. Smith, A. S. Sedra \cite{6}). \textit{CCI} byl následně nahrazen univerzálnější druhou generací v roce 1970 (\textit{CCII})\cite{7}. Obvody s CC se používaly především v zapojeních s bipolárními tranzistory kvůli jejich vysoké transkonduktanci (v porovnání s CMOS). Jsou to operační zesilovače s proudovou zpětnou vazbou (např. MAX477, MAX4112). \textit{Current conveyors} jsou používány ve vysokofrekvenčních obvodech, kde je problematické použití běžných operačních zesilovačů, protože jsou limitovány násobkem šířky pásma a zesílení (\textit{gain-bandwidth product}). Je to struktura s třemi vstupy.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{ccii.png}
+\caption{CCII symbol \cite{8}}
+\end{figure}
+\noindent Vstupní impedance na vstupu Y je nekonečná (tedy proud tekoucí skrz Y je nulový) a impedance na vstupu X je nulová ($R_Y = \infty, I_Y = 0, R_X = 0$). Napětí na vstupu X je ekvivalentní k napětí na vstupu Y ($V_X = V_Y$). Proud procházející vstupem X je ekvivalentní k proudu vstupem Z ($I_Z = I_X$). Výstupní impedance vstupu Z je nekonečná ($R_Z = \infty$).
+Charakteristika ideálního \textit{CC} je reprezentována maticí
+\begin{equation}
+\begin{bmatrix}
+I_Y \\ V_X \\ I_Z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 0 & 0 \\
+1 & 0 & 0 \\
+0 & \pm 1 & 0 
+\end{bmatrix}
+\begin{bmatrix}
+V_Y \\
+I_X \\
+V_Z
+\end{bmatrix}.
+\end{equation}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.45]{cciiota.png}
+\caption{CCII s $\pm$ výstupem založený na OTA \cite{8}}
+\end{figure}
+\noindent Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma.\\
+\newline
+Využitím zapojení na obrázku \ref{s:OTA} a principů \textit{CCII} lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu).
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{siso.png}
+\caption{Single input single output OTA (SISO) založený na CCII \cite{8}}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{dido.png}
+\caption{\textit{fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu \cite{8}}
+\end{figure}
+\newpage
+\subsection{Integrované obvody s OTA}
+Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 75--280 Kč. Integrované obvody s dvěma zesilovači v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\mu$s), mnohem menší výstupní proud (650 $\mu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí je 25--65 Kč.
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[H]
+\scalebox{0.9}{%
+  \begin{tabular}{ | c | >{\centering\arraybackslash}p{2cm}| >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.75cm} | >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{1.75cm} |}
+    \hline
+      & GBP - Gain Bandwidth Product & SR - Slew Rate & Output Current per Channel & $I_b$ - Input Bias Current & $V_{os}$ - Input Offset Voltage & Operating Supply Current & Forward Transconductance Min & Supply Voltage\\ \hline
+    OPA615 & 710 MHz & 2.5 kV/$\mu$s & 5 mA & 3 $\mu$A & 40 mV & 13 mA & 65 mA/V & 8--12.4 V \\ \hline
+    OPA860 & 470 MHz & 3.5 kV/$\mu$s & 15 mA & 5 $\mu$A & 12 mV & 11.2 mA & 80 mA/V & 5--13 V \\ \hline
+    OPA861 & 400 MHz & 900 V/$\mu$s & 15 mA & 1 $\mu$A & 12 mV & 5.4 mA & 65 mA/V & 4--12.6 V  \\
+    \hline
+  \end{tabular}}
+  \caption{\label{tab:Porovnání integrovaných obvodů s jedním OTA}Porovnání integrovaných obvodů s jedním OTA \cite{9}}
+  \end{table}
+\begin{center}
+\begin{table}[H]
+\scalebox{0.9}{%
+  \begin{tabular}{ | c | >{\centering\arraybackslash}p{2cm}| >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.5cm} | >{\centering\arraybackslash}p{1.75cm} | >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{1.75cm} |}
+    \hline
+      & GBP - Gain Bandwidth Product & SR  - Slew Rate & Output Current per Channel & $I_b$ - Input Bias Current & $V_{os}$ - Input Offset Voltage & Operating Supply Current & Forward Transconductance - Min & Supply Voltage\\ \hline
+    LM13700 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 1.3 mA & 6700 $\mu$S & 10--36 V \\ \hline
+    NE5517 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V \\ \hline
+    AU5517 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V  \\ \hline
+    NJM13600 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 6700 $\mu$S & 36 V  \\ \hline
+    NJM13700 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 2.6 mA & 6700 $\mu$S & 36 V  \\ \hline
+  \end{tabular}}
+  \caption{\label{tab:Porovnání integrovaných obvodů se dvěma OTA}Porovnání integrovaných obvodů se dvěma OTA \cite{9}}
+  \end{table}
+\end{center}
+\noindent Pro realizaci přeladitelného filtru byl zvolen LM13700.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{image6.png}
+\caption{Konfigurace pinů na LM13700M \cite{10}}
+\end{figure}
+\noindent Vnitřní zapojení LM13700 na obrázku \ref{s:OTA} obsahuje symetrický rozdílový stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Dvojice diod a tranzistorů tvoří proudová zrcadla (\textit{Current Mirror}) - referenční proud tekoucí v jedné větvi obvodu se \uv{zrcadlí} ~v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{image5.png}
+\caption{Vnitřní schéma OTA \cite{10}\label{sec:OTA}}
+\end{figure}
