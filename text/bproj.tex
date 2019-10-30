@@ -50,7 +50,7 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \fancyhf[FLE,FRO]{\thepage}
 
 % nastavi novou stranku u sekce
-\newcommand{\sekce}[1]{\newpage \section{#1}}
+\newcommand{\sekce}[1]{\clearpage \section{#1}}
 \newcommand{\nadpis}[1]{\newpage \section*{#1}}
 
 % Maple Output
@@ -60,33 +60,25 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 % titulni strana
 \begin{document}
 
-\begin{titlepage}
-\centering
-\includegraphics[scale=0.7]{logo_FEL_cb.jpg}
 % údaje o autorovi
 \title{Analogový přeladitelný filtr se zesilovači OTA}
 \author{Klára Pacalová}
-\affil{Doc. Dr. Ing. Jiří Hospodka}
-\affil{
-	Katedra teorie obvodů\\
-	Fakulta elektrotechnická\\
-	České vysoké učení technické v Praze\\
-	Technická 2\\
-	160 00 Praha 6\\
-	Česká republika}
-\date{Praha, Prosinec 2019}
-\maketitle
-\end{titlepage}
 
+% titulni strana
+\input{titulka.tex}
+\nadpis{Abstrakt}
+\input{abstrakt.tex}
+\nadpis{Zkratky}
+\input{zkratky.tex}
+
+% seznamy
+\newpage
 \tableofcontents
 \newpage
 \listoffigures
 \newpage
 \listoftables
-\nadpis{Abstrakt}
-\input{abstrakt.tex}
-\nadpis{Zkratky}
-\input{zkratky.tex}
+
 \sekce{Úvod}
 \input{uvod.tex}
 \sekce{Transkonduktanční zesilovače (OTA)}

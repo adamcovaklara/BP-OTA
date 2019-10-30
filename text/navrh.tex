@@ -18,7 +18,7 @@ Funkcí $BP2NLP$ byla provedena transformace tolerančního schematu nesymetrick
 \MapleOutput{\Delta{fp} = 877778 Hz}
 \noindent Byl obdržen kmitočet hranice nepropustného pásma normované dolní propusti (NDP) $Os$ [1/s].
 \MapleOutput{Os = 8.77778 1/s}.
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{tolsch2.png}
 \caption{Toleranční schéma navrhované pásmové propusti}
@@ -41,7 +41,7 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \MapleOutput{[-0.475024+0.340009I, -0.475024-0.340009I, -0.162709+0.982758I, -0.162709-0.982758I]),}
 \MapleOutput{[11.2840I, -11.2840I],}
 \MapleOutput{G,chf,zer := \frac{376.020p^4+479.601p^3+617.689p^2+396.239p+127.328}{p^2+127.329}, \frac{(376.020p^2+311.716)p^2}{p^2+127.329}, [11.2840I, -11.2840I]}
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{sch02.png}
 \caption{Modulová frekvenční charakteristika NDP}
@@ -50,12 +50,12 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \subsection{Příčkové LC filtry}\label{s:LC}
 Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
 K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.1]{piclanky.png}
 \caption{Pasivní dolní propust n-tého řády s $\pi$ články \cite{14}}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.08]{tclanky.png}
 \caption{Pasivní dolní propust n-tého řády s T články \cite{14}}
@@ -63,7 +63,7 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \newpage
 \subsection{Gyrátory}\label{s:GYR}
 \noindent K převodu induktoru na zapojení s kapacitorem byla použita struktura označovaná jako gyrátor. Jde o náhradu původního obvodu s induktorem vhodným uspořádáním rezistorů a kapacitorů tak, že výsledná impedance vypadá jako induktor. Gyrátor nelze dobře realizovat s obyčejnými operačními zesilovači, běžně se používají /textit{General Impedance Converters (GIC)}. Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na Obrázku \ref{s:GO} jsou znázorněny dva gyrátory s kapacitorem. 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{gyrator.png}
 \caption{Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory \cite{12} \label{s:GO}}
@@ -88,7 +88,7 @@ Z rovnice lze snadno odvodit, že kapacita kondenzátoru použitého při zapoje
 \MapleOutput{block (3), [orientation = direct, elements = {C1 = 0.0081309, L1 = 0.96591}, Z = \frac{1}{\frac{1}{pL1} + pC1}]}
 \MapleOutput{block (4), [orientation = shunt, elements = {C1 = 1.5489}, Z = \frac{1}{pC1}]}
 Vygenerovaná struktura je popsána na Obrázku \ref{s:SCHEM}.
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \figppp{Circuit(1)}{5.566}{2.075}{}{}
 \caption{Schéma LC příčkové struktury \label{s:SCHEM}}
@@ -118,7 +118,7 @@ H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
 \noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí $MakeH$. Byl spočten  napěťový i výkonový přenos.
 \MapleOutput{H\_NLPV := \frac{p^2  + 127.329}{-193.159 p^4  + 352.072 p^3  + 286.065 p^2  + 582.791 p + 253.653}   }
 \MapleOutput{H\_NLP := \frac{p^2  + 127.330}{-96.9631 p^4  + 176.735 p^3  + 143.601 p^2  + 292.553 p + 127.330}}
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{sch022.png}
 \caption{Modulová frekvenční charakteristika NDP - LC příčkový filtr}
@@ -146,7 +146,7 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
   10^{-11}  p^8  + 0.000140640 p^7  + 46.6376 p^6  + 5.34196 *10^{8}   p^5 + 2.57033* 10^{14} p^4  + 2.10893 10^{20} p^3  + 7.26886*10^{24} p^2 + 8.65337 *10^{30} p - 1.49149 *10^{36} }}
 \MapleOutput{H\_BPQ := \frac{p^7  + 71085.7 p^6 + 2.01860*10^{14}  p^5 + 1.07620*10^{19}p^4+3.47110*10^{23}p^3+6.67244*10^{27}p^2 + 4.92223*10^{31} p}{-6.14027*10^{-11}p^9 +0.000135185 p^8+55.5676 p^7+5.37714*10^8 p^6+2.85360*10^{14} p^5+2.25089*10^{20} p^4+1.49149*10^{25} p^3+8.97641*10^{30} p^2 - 1.38919*10^{36} p - 2.74611*10^{40} }}
 \endgroup
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{modul12.png}
 \caption{Modulová frekvenční charakteristika LC struktury (červená) a LC struktury s konečnou hodntou jakostí cívek (zelená)}
@@ -167,12 +167,12 @@ R_N = R_1 = R_z = \frac{1}{g_m} = 104.16667 \ \Omega.
 \subsection{Návrh funkční simulací}
 \noindent  Zapojení s OTA vychází z již uvedených principů v Sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze Sekce \ref{s:VYP}. Mezní kmitočet lze přeladit změnou vstupního proudu.
 \noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann (2001) str. 656/758). Napětí na zdroji poté bude $\frac{V_0}{R_0}$.
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{maple.png}
 \caption{Výsledné schéma}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{maple2.png}
 \caption{Amplitudová a fázová charakteristika PP 4. řádu}

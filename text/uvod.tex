@@ -7,7 +7,7 @@ Horní propust nepropouští signály o nízkých frekvencích. Nejjednodušší
 Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC - dolní propust) a derivačního článku (CR - horní propust).\\
 \\
 Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty. Pasivní zapojení je složeno ze dvou rezistorů a kapacitorů. Má vždy ztrátový přenos.
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{tolerancnischemata.png}
 \caption{Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)\cite{1}}
@@ -24,7 +24,7 @@ H(j\omega) = \frac{H_{\infty}}{\prod_{i=1}^{\frac{n}{2}} (1 + \frac{a_i}{s} + \f
 \end{align}
 kde $n$ je řád filtru.\\
 Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koeficienty filtru $a_i, b_i$ určují zesílení v propustném pásmu. Činitel jakosti je definován jako $Q = \sqrt{b_i}/a_i$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní.
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.3]{LGA98.png}
 \caption{Typy aproximací (DP)\cite{2}}
@@ -83,11 +83,11 @@ Vhodnou transformací, která vede na nulovou hodnotu přenosu v nulovém kmito�
 Z hlediska zápisu přenosové funkce není rozdíl mezi Butterworthovou a Čebyševovou aproximací, přestože jedna má v propustném pásmu hladký a druhá zvlněný průběh. Přenosová funkce má v čitateli konstantu a ve jmenovateli polynom (odtud společné označení polynomiální aproximace).\\
 Oproti tomu volba průběhu v nepropustném pásmu tvar přenosové funkce mění. Pokud je průběh monotónní (Butterworthova, Čebyševova aproximace), jedná se o podíl konstanty a polynomu. Je-li průběh v nepropustném pásmu zvlněný, tvoří přenosovou funkci podíl dvou polynomů. Pro běžné aproximace (Cauerova, inverzní Čebyševova) je v čitateli sudý polynom ve tvaru $\prod _{i} (p^2 + \omega_i^2)$.\\
 Volbou kombinace hladkého a zvlěného průběhu v propustném a nepropustném pásmu získáme různé vlastnosti.\\
- \begin{table}[H]
+ \begin{table}[h]
  \caption{\label{tab:Přehled aproximací podle tvaru aproximační funkce v propustném i nepropustném pásmu}Přehled aproximací podle tvaru aproximační funkce v propustném i nepropustném pásmu \cite{3}}
   \end{table}
 \begin{center}
-\begin{table}[H]
+\begin{table}[h]
 \centering
   \begin{tabular}{ | c | c | c | }
     \hline
