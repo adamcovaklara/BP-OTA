@@ -22,6 +22,7 @@
 \usepackage{xcolor}
 \usepackage{authblk}
 \graphicspath{{../Images/}}
+\usepackage{titling}
 
 % odkazy
 \usepackage{url}
@@ -40,14 +41,8 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 % smaz aktualni page layout
 \fancyhf{}
 
-% zahlavi
-\usepackage{titling}
-\fancyhf[HC]{\thetitle}
-\fancyhf[HLE,HRO]{\theauthor}
-\fancyhf[HRE,HLO]{\today}
-
  %zapati
-\fancyhf[FLE,FRO]{\thepage}
+\fancyhf[FC]{\thepage}
 
 % nastavi novou stranku u sekce
 \newcommand{\sekce}[1]{\clearpage \section{#1}}
@@ -65,8 +60,22 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \author{Klára Pacalová}
 
 % titulni strana
+\pagenumbering{roman}
+
+% zahlavi
+\fancyhf[HC]{\bfseries\leftmark}
+
 \input{titulka.tex}
+\thispagestyle{empty} 
+\nadpis{}
+\input{prohlaseni.tex}
+\thispagestyle{empty} 
+\nadpis{}
+\input{katedra.tex}
+\thispagestyle{empty} 
 \nadpis{Abstrakt}
+
+\renewcommand{\headrulewidth}{0.5pt}
 \input{abstrakt.tex}
 \nadpis{Zkratky}
 \input{zkratky.tex}
@@ -80,6 +89,7 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \listoftables
 
 \sekce{Úvod}
+\pagenumbering{arabic}
 \input{uvod.tex}
 \sekce{Transkonduktanční zesilovače (OTA)}
 \input{ota.tex}
@@ -92,4 +102,6 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \sekce{Závěr}
 \input{zaver.tex}
 \input{bibliography.tex}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
 \end{document}
