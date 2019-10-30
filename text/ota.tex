@@ -12,12 +12,12 @@ kde $u_+$ a $u_-$ jsou napětí invertujícího a neinvertujícího vstupu.  Tra
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{image7.png}
-\caption{OTA - schematické značky \cite{4}}
+\caption[OTA - schematické značky]{OTA - schematické značky \cite{4}}
 \end{figure}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{gmrc.png}
-\caption{Linearizovaný model reálného OTA \cite{5}}
+\caption[Linearizovaný model reálného OTA]{Linearizovaný model reálného OTA \cite{5}}
 \end{figure}
 \noindent Připojením zátěže $R_z$ na výstup bylo získáno napětí naprázdno
 \begin{equation}\label{s:vzt}
@@ -34,7 +34,7 @@ v_0(t) = \frac{1}{C}\int i(t)dt = \frac{1}{C}\int g_mv_1(t)dt.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{otaintegrator.png}
-\caption{OTA-C \cite{5}}
+\caption[OTA-C]{OTA-C \cite{5}}
 \end{figure}
 \noindent Toto zapojení integrátoru s uzemněným kondenzátorem se označuje jako OTA-C.\\
 \\
@@ -45,14 +45,14 @@ v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-)
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{damp.png}
-\caption{Ztrátový OTA-C \cite{5}}
+\caption[Ztrátový OTA-C]{Ztrátový OTA-C \cite{5}}
 \end{figure}
 \subsection{Current Conveyor of Second Generation (CCII) s OTA}
 Jeden z nejzákladnějších bloků v oblasti analogov obvodů v proudovém módu je \textit{current conveyor (CC)}. Princip CC první generace byl popsán v roce 1968 (K. C. Smith, A. S. Sedra \cite{6}). \textit{CCI} byl následně nahrazen univerzálnější druhou generací v roce 1970 (\textit{CCII})\cite{7}. Obvody s CC se používaly především v zapojeních s bipolárními tranzistory kvůli jejich vysoké transkonduktanci (v porovnání s CMOS). Jsou to operační zesilovače s proudovou zpětnou vazbou (např. MAX477, MAX4112). \textit{Current conveyors} jsou používány ve vysokofrekvenčních obvodech, kde je problematické použití běžných operačních zesilovačů, protože jsou limitovány násobkem šířky pásma a zesílení (\textit{gain-bandwidth product}). Je to struktura s třemi vstupy.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{ccii.png}
-\caption{CCII symbol \cite{8}}
+\caption[CCII symbol]{CCII symbol \cite{8}}
 \end{figure}
 \noindent Vstupní impedance na vstupu Y je nekonečná (tedy proud tekoucí skrz Y je nulový) a impedance na vstupu X je nulová ($R_Y = \infty, I_Y = 0, R_X = 0$). Napětí na vstupu X je ekvivalentní k napětí na vstupu Y ($V_X = V_Y$). Proud procházející vstupem X je ekvivalentní k proudu vstupem Z ($I_Z = I_X$). Výstupní impedance vstupu Z je nekonečná ($R_Z = \infty$).
 Charakteristika ideálního \textit{CC} je reprezentována maticí
@@ -75,7 +75,7 @@ V_Z
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{cciiota.png}
-\caption{CCII s $\pm$ výstupem založený na OTA \cite{8}}
+\caption[CCII s $\pm$ výstupem založený na OTA]{CCII s $\pm$ výstupem založený na OTA \cite{8}}
 \end{figure}
 \noindent Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma.\\
 \newline
@@ -83,12 +83,12 @@ Využitím zapojení na obrázku \ref{s:OTA} a principů \textit{CCII} lze získ
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{siso.png}
-\caption{Single input single output OTA (SISO) založený na CCII \cite{8}}
+\caption[Single input single output OTA (SISO) založený na CCII]{Single input single output OTA (SISO) založený na CCII \cite{8}}
 \end{figure}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{dido.png}
-\caption{\textit{fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu \cite{8}}
+\caption[\textit{Fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu]{\textit{Fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu \cite{8}}
 \end{figure}
 \newpage
 \subsection{Integrované obvody s OTA}
@@ -104,7 +104,7 @@ Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdř
     OPA861 & 400 MHz & 900 V/$\mu$s & 15 mA & 1 $\mu$A & 12 mV & 5.4 mA & 65 mA/V & 4--12.6 V  \\
     \hline
   \end{tabular}}
-  \caption{\label{tab:Porovnání integrovaných obvodů s jedním OTA}Porovnání integrovaných obvodů s jedním OTA \cite{9}}
+  \caption[Porovnání integrovaných obvodů s jedním OTA]{\label{tab:Porovnání integrovaných obvodů s jedním OTA}Porovnání integrovaných obvodů s jedním OTA \cite{9}}
   \end{table}
 \begin{center}
 \begin{table}[h]
@@ -118,18 +118,18 @@ Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdř
     NJM13600 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 6700 $\mu$S & 36 V  \\ \hline
     NJM13700 & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 2.6 mA & 6700 $\mu$S & 36 V  \\ \hline
   \end{tabular}}
-  \caption{\label{tab:Porovnání integrovaných obvodů se dvěma OTA}Porovnání integrovaných obvodů se dvěma OTA \cite{9}}
+  \caption[Porovnání integrovaných obvodů se dvěma OTA]{\label{tab:Porovnání integrovaných obvodů se dvěma OTA}Porovnání integrovaných obvodů se dvěma OTA \cite{9}}
   \end{table}
 \end{center}
 \noindent Pro realizaci přeladitelného filtru byl zvolen LM13700.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{image6.png}
-\caption{Konfigurace pinů na LM13700M \cite{10}}
+\caption[Konfigurace pinů na LM13700M]{Konfigurace pinů na LM13700M \cite{10}}
 \end{figure}
 \noindent Vnitřní zapojení LM13700 na obrázku \ref{s:OTA} obsahuje symetrický rozdílový stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Dvojice diod a tranzistorů tvoří proudová zrcadla (\textit{Current Mirror}) - referenční proud tekoucí v jedné větvi obvodu se \uv{zrcadlí} ~v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem. 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.75]{image5.png}
-\caption{Vnitřní schéma OTA \cite{10}\label{sec:OTA}}
+\caption[Vnitřní schéma OTA]{Vnitřní schéma OTA \cite{10}\label{sec:OTA}}
 \end{figure}
