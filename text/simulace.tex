@@ -1,15 +1,47 @@
 \subsection{Dolní propust 2. řádu}\label{s:DP2}
 Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. Přenosová funkce je
-\begin{align}
+\begin{equation}
 H(j\omega) = \frac{H_0 \omega_c ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
-\end{align}
+\end{equation}
 \noindent Obvodová simulace byla realizována v programu Multisim. Bylo zvoleno symetrické napájení OZ $V_{DD},V_{SS} = \pm 15$ V. Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Vstupní externí proud $I_{ABC} = 0.5$ $\mu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100 kHz. Externím proudem $I_{ABC} \in$ $[5$ $\mu$A ; 500 $\mu$A] je garantováno minimální výstupní napětí $U_{OUT} = \pm 12$ V, standardně $V_{peak 1} = 14.2$ V a $V_{peak 2} = -14.4$ V. Při výstupním napětí v tomto intervalu je šum vzhledem k signálu zanedbatelný a nezkreslí výsledky simulace.\\
-\noindent Bylo použito zapojení s paralelně řazeným uzemněným kapacitorem a odporem a indukčností. Na výstupu 2. OTA (V1) byl obdržen filtr typu PP 1. řádu. Na výstupu 3. OTA (V2) pak DP 2. řádu.
+\noindent Bylo použito zapojení s paralelně řazeným uzemněným kapacitorem, odporem a indukčností (RLC rezonanční obvod), kde $R = 1/g_m$ a $L = C/(g_{m1}g_{m2})$ a vstupní proud $I = g_mV$. Podobně jako v sekci \ref{s:ODV} bylo obrženo analogií k pasivnímu obvodu
+\begin{align}
+\frac{V_{BP}}{g_{m3}V_i} &= \frac{1}{pC + g_m^2/(pC) + g_{m3}}\\
+\frac{V_{BP}}{V_i} &= \frac{pg_{m3}C}{p^2C^2 + pg_{m3}C + g_m^2}.
+\end{align}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{biquad.png}
+\caption[Obecná OTA struktura pro bikvad]{Obecná OTA struktura pro bikvad \cite{12} \label{s:BIK}}
+\end{figure}
+\noindent Uvažováním napětí $V_a, V_b, V_c$ na obrázku \ref{s:BIK} jako vstupy byly obdrženy výstupní napětí
+\begin{align}
+V_1 &= \frac{pC_2g_{m1}(g_{m5}V_a - g_{m4}V_c) + g_{m1}g_{m2}g_{m4}V_b}{D(s)}\\
+V_2 &= \frac{(pC_1g_{m2}g_{m5} + g_{m1}g_{m2}g_{m3})V_b + g_{m1}g_{m2}(g_{m4}V_c - g_{m5}V_a)}{D(s)}\\
+V_3 &= \frac{p^2C_1C_2g_{m4}V_c + p(C_2g_{m1}g_{m3}V_a - C_1g_{m2}g_{m4}V_b) + g_{m1}g_{m2}g_{m4}V_a}{D(s)},
+\end{align}\label{s:V3}
+kde
+\begin{equation}
+D(s) = C_1C_2g_{m5}(p^2 + p\frac{1}{C_1}\frac{g_{m1}g_{m3}}{g_{m5}} + \frac{g_{m1}g_{m2}g_{m4}}{C_1C_2g_{m5}}).
+\end{equation}\label{s:DS}
+\noindent Zvolením $V_a = V_b = 0$ a $V_c = V_i$ byly obdrženy následující přenosové funkce
+\begin{align}
+H_{BP}(p) &= \frac{V_1}{V_i} = - \frac{sC_2g_{m1}g_{m4}}{D(s)}\\
+H_{LP}(p) &= \frac{V_2}{V_i} = \frac{g_{m1}g_{m2}g_{m4}}{D(s)}\\
+H_{HP}(p) &= \frac{V_3}{V_i} = \frac{s^2C_1C_2g_{m4}}{D(s)},
+\end{align}
+kde $D_s$ odpovídá rovnici \ref{s:DS}.\\
+Obecná přenosová funkce bikvadu může být obdržena položením $V_a = V_b = V_c = V_i$ a úpravami vztahu \ref{s:V3} bylo obdrženo
+\begin{equation}
+\frac{V_3}{V_i} = \frac{p^2C_1C_2g_{m4} + p(C_2g_{m1}g_{m3} - C_1g_{m2}g_{m4}) + g_{m1}g_{m2}g_{m4}}{D(s)}.
+\end{equation}
+Na výstupu 2. OTA (V1) byl obdržen filtr typu PP 1. řádu. Na výstupu 3. OTA (V2) pak DP 2. řádu.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.3]{bplp.png}
 \caption{Schéma zapojení DP 2. řádu}
-\end{figure}\begin{figure}[h]
+\end{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{bplp2.png}
 \caption{Amplitudová a fázová charakteristika DP 2. řádu, PP}
@@ -22,28 +54,29 @@ Kaskádní zapojení sestává ze sériově zapojených bloků.
 \caption[Kaskádní zapojení]{Kaskádní zapojení \cite{5}}
 \end{figure}
 \noindent Přenosové funkce jednotlivých bloků se násobí
-\begin{align}
+\begin{equation}
 H_k(j\omega) = \frac{U_k (j\omega)}{U_{k-1}(j\omega)}.
-\end{align}
+\end{equation}
 Přenos posledního bloku je dán vztahem
-\begin{align}
+\begin{equation}
 H_{1 \rightarrow k}(j\omega) = \frac{U_k (j\omega)}{U_{in}(j\omega)} = \prod _{n=1}^{k} H_n(j\omega).
-\end{align}
+\end{equation}
 Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s poklesem -80 dB/dek.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{lpbp32.png}
 \caption{Schéma zapojení DP 4. řádu}
-\end{figure}\begin{figure}[h]
+\end{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{bplp3.png}
 \caption{Amplitudová a fázová charakteristika DP 4. řádu}
 \end{figure}
 \subsection{Pásmová propust 2. řádu}\label{s:PP2}
 Horní propust druhého řádu má přenos v nule nulový $H_{0} = 0$. Přenosová funkce je
-\begin{align}
+\begin{equation}
 H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
-\end{align}
+\end{equation}
 \noindent Pásmovou propust lze získat zapojením dolní a horní propusti.
 \begin{figure}[h]
 \centering
@@ -51,9 +84,9 @@ H(j\omega) = \frac{H_{\infty} (j\omega) ^2}{(j\omega)^2 + \frac{\omega _c}{Q}(j\
 \caption[Násobení přenosů]{Násobení přenosů \cite{13}}
 \end{figure}
 \noindent Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Přenosová funkce je
-\begin{align}
+\begin{equation}
 H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\omega _c}{Q}(j\omega) + \omega _c ^2}.
-\end{align}
+\end{equation}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{PP2O.png}

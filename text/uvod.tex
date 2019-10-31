@@ -10,18 +10,18 @@ Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{tolerancnischemata.png}
-\caption[Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)]{Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)\cite{1}}
+\caption[Toleranční schéma]{Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)\cite{1}}
 \end{figure}
 \noindent Filtry se používají k redukci nežádoucích frekvencí např. pro efektivní reprodukci zvuku reproduktory, k redukci okolního rušení - vysílače blokují harmonické frekvence, které interferují. Také v obvodech rekonstrukce signálů u D/A převodníků, k předvzorkování u A/D převodníku nebo jako anti-aliasing filtry.\\\\
 Obecná přenosová funkce filtru typu dolní propust je
-\begin{align}
+\begin{equation}
 H(j\omega) = \frac{H_0}{\prod_{i=1}^{\frac{n}{2}} (1 + a_i s + b_i s^2)},
-\end{align}
+\end{equation}
 kde $n$ je řád filtru.\\
 Obecná přenosová funkce filtru typu horní propust je
-\begin{align}
+\begin{equation}
 H(j\omega) = \frac{H_{\infty}}{\prod_{i=1}^{\frac{n}{2}} (1 + \frac{a_i}{s} + \frac{b_i}{s^2})},
-\end{align}
+\end{equation}
 kde $n$ je řád filtru.\\
 Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koeficienty filtru $a_i, b_i$ určují zesílení v propustném pásmu. Činitel jakosti je definován jako $Q = \sqrt{b_i}/a_i$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní.
 \begin{figure}[h]
@@ -31,9 +31,9 @@ Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koef
 \end{figure}
 \subsection{Butterworthova aproximace}
 Butterworthova má maximálně plochou amplitudovou charakteristiku v propustném pásmu. Frekvenční charakteristika má sklon daný počtem pólů a pro její posouzení je užíváno skupinové zpoždění (derivace fáze podle frekvence). Pro Butterworthovu aproximaci je skupinové zpoždění nezvlněné v propustném pásmu. Přechodová charakteristika má mírný překmit, zvyšující se s řádem filtru. Zesílení $G(\omega)$ je kmitočtově závislé a odpovídá absolutní hodnotě přenosové funkce $H(j\omega)$.
-\begin{align}
+\begin{equation}
 G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 \frac{\omega}{\omega _c}^{2n}}},
-\end{align}
+\end{equation}
 kde $\epsilon$ je poměrné zvlnění kmitočtové charakteristiky v propustném pásmu (\textit{faktor zvlnění}), $n$ je řád filtru a $\omega _c$ mezní kmitočet (nastává při útlumu -3 dB). Pro $\omega _c = 1$ je faktor zvlnění $\epsilon = 1$. 
 \subsection{Čebyševova aproximace}
 Čebyševova aproximace má strmější pokles, což vede k užití nižšího řádu filtru. Zato má ale zvlněnou frekvenční charakteristiku v propustném pásmu. 
@@ -44,33 +44,33 @@ G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 T_n ^2 \frac{\omega}{\
 \end{align}
 kde $T_n$ je Čebyševův polynom, $\epsilon$ je poměrné zvlnění, $n$ je řád filtru a $\omega _c$ mezní kmitočet. Čebyševův polynom je definován vztahem $2 \omega ^2 - 1$ pro $n = 2$. Obecně jsou to kořeny Chebyshevových diferenciálních rovnic
 \begin{align}
-(1 - x^2)y" - xy' + n^2y = 0\\
-(1 - x^2)y" - 3xy' + n(n+2)y = 0.
+(1 - x^2)y" - xy' + n^2y &= 0\\
+(1 - x^2)y" - 3xy' + n(n+2)y &= 0.
 \end{align}
 \subsubsection{Typ II}
 Typ II je nazýván také jako inverzní Čebeševova aproximace. V praxi není příliš používaný, jelikož nemá tak rychlý pokles jako typ I a k jeho realizaci je třeba více prvků. Nemá zvlnění v propustném pásmu, zato v zádržném ano. Zesílení je definováno jako
-\begin{align}
+\begin{equation}
 G(\omega, \omega _c) = \frac{1}{\sqrt{1 + \frac{1}{\epsilon ^2 T_n ^2 \frac{\omega _c}{\omega}^{2n}}}},
-\end{align}
+\end{equation}
 kde $T_n$ je Čebyševův polynom, $\epsilon$ je poměrné zvlnění, $n$ je řád filtru a $\omega _c$ mezní kmitočet.
 \subsection{Besselova aproximace}
 Besselova aproximace se používá v telekomunikační technice v případech, kdy je požadováno zachování tvaru signálu. Amplitudová charakteristika v nepropustném pásmu je velmi plochá. Koeficienty polynomu jsou zvoleny tak, aby fázová charakteristika v pásmu okolo kritické frekvence byla maximálně lineární. Nevýhodou je poměrně malá strmost modulové charakteristiky. Ta je pro Besselovu aproximaci dána vztahem
-\begin{align}
+\begin{equation}
 G(\omega) = |H(j\omega)| = \frac{\Theta _n(0)}{\Theta _n(\frac{j\omega}{\omega _c})},
-\end{align}
+\end{equation}
 kde $\Phi _n$ je Besselův polynom a $\omega _c$ mezní kmitočet. Besselův polynom je definován součtem řady (Grosswald 1978, Berg 2000)
-\begin{align}
+\begin{equation}
 \Theta _n (x) = x^n y_n (\frac{1}{x}) = \sum_{k=0}^{n}\frac{(n+k)!}{(n-k)!k!}\frac{x^{n-k}}{2^k}.
-\end{align}
+\end{equation}
 Pro filtr druhého řádu platí
-\begin{align}
+\begin{equation}
 G(\omega) = |H(j\omega)| = \frac{3}{\sqrt{\omega ^4 + 3\omega ^2 + 9}}.
-\end{align}
+\end{equation}
 \subsection{Cauerova (eliptická) aproximace}
 \noindent Cauerova aproximace (eliptická) má nejstrmější pokles, při jejím užití jsou voleny nižší řády filtru. Pokud se zvlnění v zádržném pásmu blíží nule, filtr se stává Čebyševovým (výše zmíněný - typ I). Opačně je tomu v propustném pásmu - přiblížením k nule se filtr stává inverzním Čebyševovým (typ II).  Pokud se obě hodnoty zvlnění blíží k nule, filtr se stává Butterworthovým. Kmitočtová charakteristika je dána vztahem
-\begin{align}
+\begin{equation}
 G(\omega) = |H(j\omega)| = \frac{1}{\sqrt{1 + \epsilon ^2 R_n ^2(\zeta, \frac{\omega}{\omega _c})}},
-\end{align}
+\end{equation}
 kde $\epsilon$ je faktor zvlnění, $R_n$ eliptická racionální funkce n-tého řádu, $\zeta$ selektivní faktor a $\omega _c$ mezní kmitočet. Pokud pro selektivní faktor platí $\zeta \rightarrow \infty$, filtr se stává Čebyševovým (typ I).\\
 Protože se, podobně jako u Čebyševovy aproximace, liší odvození pro liché a sudé stupně, jsou pro ně různé postupy. Pro lichý stupeň existuje pouze jedna varianta, pro sudý tři varianty (A, B, C), které se liší průběhem aproximační funkce.
 \subsubsection{Cauerova (eliptická) aproximace typu A}

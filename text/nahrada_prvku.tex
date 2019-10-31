@@ -2,7 +2,7 @@
 \begin{align}
 R_{in} = \frac{1}{g_{m}},
 \end{align}
-kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu.
+kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu. Tato konfigurace jako odpor je užitečná např. k návrhu monolitických $g_m$-RC filtrů pouze s transkonduktancemi a kapacitami ($g_m$-C filtry - viz \ref{s:OTA}, \ref{s:GM-C}), také k náhradě velmi velkých odporů.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{image10.png}
@@ -41,6 +41,26 @@ Z_{in}(s) = \frac{V_1}{I_1} = s\frac{C}{g_{m1}g_{m2}}.
 \includegraphics[scale=1]{image12.png}
 \caption[Náhradní obvod pro neuzemněnou indukčnost]{Náhradní obvod pro neuzemněnou indukčnost pro $g_{m1} = g_{m2}$\cite{12}}
 \end{figure}
+\subsection{Základní bloky}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{otos.png}
+\caption[Základní bloky s OTA]{Základní bloky s OTA a) integrující b) srovnávací c) sčítací \cite{12} \label{s:BLO}}
+\end{figure}
+\noindent Blok a) na obrázku \ref{s:BLO} slouží k realizaci invertujícího/neinvertujícího integrátoru s výsledným napětím
+\begin{equation}
+V_O = \frac{g_{m1}}{pC}(V_1 - V_2).
+\end{equation}
+Blok b) na obrázku \ref{s:BLO} je komparátor s různou polaritou a napětím na výstupu
+\begin{equation}
+V_O = \frac{g_{m1}}{g_{m2}}(V_1 - V_2).
+\end{equation}
+Blok c) na obrázku \ref{s:BLO} realizuje sčítací nebo rozdílový obvod s napětím na výstupu
+\begin{equation}
+V_O = -\frac{g_{m1}}{g_{m3}}V_1 + \frac{g_{m2}}{g_{m3}}V_2.
+\end{equation}
+\noindent Spojením těchto základních stavebních bloků se správnými znaménky lze získat různé funkční bloky.\\
+Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC (\textit{Integrated Circuit}) jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20 -- 20 000 Hz) lze chyby způsobené parazitními součástkami zanedbat, rovněž lze zanedbat chyby způsobené konečnou šířkou pásma.
 \subsection{Odvození DP 2. řádu}\label{s:ODV}
 \noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje Obrázek \ref{s:DPO}.
 \begin{figure}[h]
