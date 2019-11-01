@@ -64,7 +64,7 @@ H(p) &= \frac{U_2}{U_1} = \frac{1}{pCR}.
 \noindent Konvejorový integrátor pracuje jako invertující nebo neinvertující.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{ccii_int.png}
+\includegraphics[scale=0.075]{ccii_int1.png}
 \caption[Integrátor s CCII a OTA]{Integrátor s CCII a OTA \cite{3}}
 \end{figure}
 \noindent Vstupní impedance na vstupu Y je nekonečná (tedy proud tekoucí skrz Y je nulový) a impedance na vstupu X je nulová ($R_Y = \infty, I_Y = 0, R_X = 0$). Napětí na vstupu X je ekvivalentní k napětí na vstupu Y ($V_X = V_Y$). Proud procházející vstupem X je ekvivalentní k proudu vstupem Z ($I_Z = I_X$). Výstupní impedance vstupu Z je nekonečná ($R_Z = \infty$).
@@ -90,9 +90,14 @@ V_Z
 \includegraphics[scale=0.45]{cciiota.png}
 \caption[CCII s $\pm$ výstupem založený na OTA]{CCII s $\pm$ výstupem založený na OTA \cite{8}}
 \end{figure}
-\noindent Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma.\\
 \newline
-Využitím zapojení na obrázku \ref{s:OTA} a principů \textit{CCII} lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu).
+V analogových IC je preferováno diferenční zpracování signálů, protože redukuje zkreslení a šum (diferenční stupeň vyruší kladné a záporné výchylky napětí/proudu např. na zdroji a také vyruší nelinearity způsobené zesilovačem).\\
+Využitím zapojení na obrázku \ref{s:OTA} a principů \textit{CCII} lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu). Provodení diferenčního stupně na výstupu je znázorněno na obrázku \ref{s:CMOS}. Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma. Také má menší transkonduktanci, protože každou polovinou diferenčního obvodu teče jen polovina vstupního proudu (\textit{bias current}). Problémem je také relativně nízké stejnosměrné zesílení, proto se v praxi se zapojením s OTA nepoužívá. \\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{diff.png}
+\caption[Základní CMOS transkonduktance a) jeden výstup b) diferenční výstup]{Základní CMOS transkonduktance a) jeden výstup b) diferenční výstup \cite{12} \label{s:CMOS}}
+\end{figure}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{siso.png}

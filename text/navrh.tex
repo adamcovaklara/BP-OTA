@@ -62,7 +62,7 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \end{figure}
 \newpage
 \subsection{Gyrátory}\label{s:GYR}
-\noindent K převodu induktoru na zapojení s kapacitorem byla použita struktura označovaná jako gyrátor. Jde o náhradu původního obvodu s induktorem vhodným uspořádáním rezistorů a kapacitorů tak, že výsledná impedance vypadá jako induktor. Gyrátor nelze dobře realizovat s obyčejnými operačními zesilovači, běžně se používají /textit{General Impedance Converters (GIC)}. Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na Obrázku \ref{s:GO} jsou znázorněny dva gyrátory s kapacitorem. 
+\noindent K převodu induktoru na zapojení s kapacitorem byla použita struktura označovaná jako gyrátor. Jde o náhradu původního obvodu s induktorem vhodným uspořádáním rezistorů a kapacitorů tak, že výsledná impedance vypadá jako induktor. Gyrátor nelze dobře realizovat s obyčejnými operačními zesilovači, běžně se používají /textit{General Impedance Converters (GIC)}. Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku \ref{s:GO} jsou znázorněny dva gyrátory s kapacitorem. 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{gyrator.png}
@@ -87,7 +87,7 @@ Z rovnice lze snadno odvodit, že kapacita kondenzátoru použitého při zapoje
 \MapleOutput{block (2), [orientation = shunt, elements = {C1 = 2.4732}, Z = \frac{1}{pC1}]}
 \MapleOutput{block (3), [orientation = direct, elements = {C1 = 0.0081309, L1 = 0.96591}, Z = \frac{1}{\frac{1}{pL1} + pC1}]}
 \MapleOutput{block (4), [orientation = shunt, elements = {C1 = 1.5489}, Z = \frac{1}{pC1}]}
-Vygenerovaná struktura je popsána na Obrázku \ref{s:SCHEM}.
+Vygenerovaná struktura je popsána na obrázku \ref{s:SCHEM}.
 \begin{figure}[h]
 \centering
 \figppp{Circuit(1)}{5.566}{2.075}{}{}
@@ -157,7 +157,7 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
 \MapleOutput{ele\_BP := { C1 = -7.83010*10^{-6}  , C2 = 1.96808*10^{-6},  C3 = 3.29545*10^{-6} , C4 = 6.47035*10^{-9},}}
 \MapleOutput{ C5 = 1.23258*10^{-6}, L1 = -3.235*10^{-7}, L2 = 1.28706*10^{-6}, L3 = 7.68645*10^{-7}, L4 = 0.391484*10^{-3}, }
 \MapleOutput{L5 = 2.05508 *10^{-6}, R1 = 1, Rz = 1.00796}
-\noindent Využitím poznatků ze Sekce \ref{s:GYR} byly s uvažováním minimální transkonduktance z datasheetu LM13700 (gm = 9600 $\mu$S) získány kapacity $C_{L1} = 3.08002 $ nF, $C_{L2} = 17.8354$ nF, $C_{L3} = 938.613 $ nF, $C_{L4} = 2.10114$ nF, $C_{L5} = 358.667$ nF.
+\noindent Využitím poznatků ze sekce \ref{s:GYR} byly s uvažováním minimální transkonduktance z datasheetu LM13700 (gm = 9600 $\mu$S) získány kapacity $C_{L1} = 3.08002 $ nF, $C_{L2} = 17.8354$ nF, $C_{L3} = 938.613 $ nF, $C_{L4} = 2.10114$ nF, $C_{L5} = 358.667$ nF.
 \noindent Převrácenou hodnotou transkonduktance byly vypočteny frekvenčně a impedančně odnormované odpory
 \begin{align}
 R_N = R_1 = R_z = \frac{1}{g_m} = 104.16667 \ \Omega.
@@ -165,8 +165,8 @@ R_N = R_1 = R_z = \frac{1}{g_m} = 104.16667 \ \Omega.
 \noindent Kapacity vyšly již se Syntfilu $C1 = -7.8301 \  \mu$F, $C2 = 1.96808 \  \mu$F, $C3 = 3.29545 \  \mu$F, $C4 = 6.47035$ nF, $C5 = 1.23258 \  \mu$F.
 \newpage
 \subsection{Návrh funkční simulací}
-\noindent  Zapojení s OTA vychází z již uvedených principů v Sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze Sekce \ref{s:VYP}. Mezní kmitočet lze přeladit změnou vstupního proudu.
-\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann (2001) str. 656/758). Napětí na zdroji poté bude $\frac{V_0}{R_0}$.
+\noindent  Zapojení s OTA vychází z již uvedených principů v Sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:VYP}. Mezní kmitočet lze přeladit změnou vstupního proudu.
+\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann (2001) str. 639). Napětí na zdroji poté bude $V_0/R_0$.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{maple.png}

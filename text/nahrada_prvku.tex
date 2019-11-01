@@ -70,24 +70,24 @@ Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a
 \end{figure}
 \noindent Přenos obvodu byl vyjádřen jako
 \begin{align}
-H(s) = \frac{U_{out}}{U_{in}} = \frac{Z_2}{Z_1}, \quad Z_1 = sL,\quad Z_2 = \frac{\frac{R}{sC}}{R + \frac{1}{sC}}.
+H(s) = \frac{U_{out}}{U_{in}} = \frac{Z_2}{Z_1}, \quad Z_1 = sL,\quad Z_2 = \frac{\frac{R}{pC}}{R + \frac{1}{pC}}.
 \end{align}
 Výsledný přenos je roven 
 \begin{align}
-H(s) = \frac{\frac{\frac{R}{sC}}{R + \frac{1}{sC}}}{sL + \frac{\frac{R}{sC}}{R + \frac{1}{sC}}}.
+H(s) = \frac{\frac{\frac{R}{pC}}{R + \frac{1}{pC}}}{pL + \frac{\frac{R}{pC}}{R + \frac{1}{pC}}}.
 \end{align}
 Elementárními algebraickými úpravami a následným vynásobením členem $1/(LRC)$ byl získán výsledný přenos.
 \begin{align}\label{s:vzt4}
-H(s) = \frac{R}{s^2LRC + sL + R} = \frac{\frac{1}{LC}}{s^2 + \frac{s}{RC} + \frac{1}{LC}}.
+H(s) = \frac{R}{p^2LRC + sL + R} = \frac{\frac{1}{LC}}{p^2 + \frac{p}{RC} + \frac{1}{LC}}.
 \end{align}
 \noindent Využitím poznatků ze Sekce \ref{s:NAH} je možno za odpor a indukčnost dosadit do vztahu \ref{s:vzt4}. Byly uvažovány kapacitory o stejné hodnotě C.
 \begin{align}
-H(s) = \frac{\frac{1}{\frac{C^2}{g_{m1}g_{m2}}}}{s^2 + \frac{s}{\frac{C}{g_{m2}}} + \frac{1}{\frac{C^2}{g_{m1}g_{m2}}}} = \frac{\frac{g_{m1}g_{m2}}{C^2}}{s^2 + \frac{sg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}} = \frac{g_{m1}g_{m2}}{s^2C^2 + sg_{m2}C + g_{m1}g_{m2}}.
+H(s) = \frac{\frac{1}{\frac{C^2}{g_{m1}g_{m2}}}}{p^2 + \frac{p}{\frac{C}{g_{m2}}} + \frac{1}{\frac{C^2}{g_{m1}g_{m2}}}} = \frac{\frac{g_{m1}g_{m2}}{C^2}}{p^2 + \frac{pg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}} = \frac{g_{m1}g_{m2}}{p^2C^2 + pg_{m2}C + g_{m1}g_{m2}}.
 \end{align}
 Porovnáním jmenovatele se jmenovatelem přenosu filtru 2. řádu byl obdržen vztah
 \begin{align}
-s^2 + s\frac{\omega _c}{Q} + \omega _c^2 &= s^2C^2 + sg_{m2}C + g_{m1}g_{m2}\\
-s^2 + s\frac{\omega _c}{Q} + \omega _c^2 &= s^2 + \frac{sg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}.
+p^2 + p\frac{\omega _c}{Q} + \omega _c^2 &= p^2C^2 + pg_{m2}C + g_{m1}g_{m2}\\
+p^2 + p\frac{\omega _c}{Q} + \omega _c^2 &= p^2 + \frac{pg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}.
 \end{align}
 Z tohoto vztahu byl vyjádřen mezní kmitočet jako 
 \begin{align}
