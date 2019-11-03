@@ -12,14 +12,14 @@ Obsahuje obrazky pouzite v textu.
 Slozka KiCad:
 Obsahuje schema DPS.
 
+Slozka LaTeX:
+Obsahuje LaTeX zdrojove kody.
+
 Slozka Maple:
 Obsahuje Maple skript.
 
 Slozka Multisim:
 Obsahuje soubory se schematy v Multisimu.
-
-Slozka Text:
-Obsahuje LaTeX zdrojove kody.
 
 Slozka Thesis Text:
 Obsahuje text prace v PDF formatu: BP_Pacalova_Klara_2019.pdf.
