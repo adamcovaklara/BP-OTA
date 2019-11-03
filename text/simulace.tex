@@ -36,7 +36,7 @@ Obecná přenosová funkce bikvadu může být obdržena položením $V_a = V_b 
 \frac{V_3}{V_i} = \frac{p^2C_1C_2g_{m4} + p(C_2g_{m1}g_{m3} - C_1g_{m2}g_{m4}) + g_{m1}g_{m2}g_{m4}}{D(s)}.
 \end{equation}
 \noindent 
-V simulaci byl dle výše popsaných poznatků na výstupu 2. OTA (V1) obdržen filtr typu PP 1. řádu a na výstupu 3. OTA (V2) DP 2. řádu.
+V simulaci byl dle výše popsaných poznatků na výstupu 2. OTA (V1) obdržen filtr typu PP 1. řádu s poklesem 20 dB/dek a na výstupu 3. OTA (V2) DP 2. řádu s poklesem 40 dB/dek.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.3]{bplp.png}
@@ -45,7 +45,7 @@ V simulaci byl dle výše popsaných poznatků na výstupu 2. OTA (V1) obdržen 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{bplp2.png}
-\caption{Amplitudová a fázová charakteristika DP 2. řádu, PP}
+\caption{Amplitudová a fázová charakteristika DP 2. řádu, PP 1. řádu}
 \end{figure}
 \noindent V případě realizace těchto základních přenosů (PP, DP) lze zapojení dále zjednodušit až na obvod obsahující pouze 3 zesilovače, viz obrázek \ref{s:BIK2}. Přenos tohoto obvodu s výstupem pořadě v bodu D a P je dán rovnicemi
 \begin{align}
@@ -57,7 +57,7 @@ U_P(p) &= \frac{p\frac{g_{m1}}{C_1}U_1 + \frac{g_{m1}}{C_1C_2}(g_{m3}U_1+g_{m2}-
 U_D(p) &= \frac{pC_1(g_{m3}U_3 - g_{m2}U_2) + g_{m1}g_{m2}U_1}{p^2C_1C_2 + pC_1g_{m3} + g_{m1}g_{m2}}\\
 U_P(p) &= \frac{pC_2g_{m1}U_1 + g_{m1}(g_{m3}U_1 + g_{m2} - g_{m3}U_3)}{p^2C_1C_2 + pC_1g_{m3} + g_{m1}g_{m2}}.
 \end{align}
-\noindent Toto zapojení k realizaci použito nebylo, protože generovalo překmit.
+\noindent
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.075]{biquad1.png}
@@ -106,7 +106,7 @@ H(j\omega) = \frac{H_{B} \frac{\omega _c}{Q} (j\omega) }{(j\omega)^2 + \frac{\om
 \includegraphics[scale=0.6]{PP2O2.png}
 \caption{Amplitudová a fázová charakteristika PP 2. řádu}
 \end{figure}
-\noindent Kaskádním zapojením dvou PP 2. řádu byla obdržena PP 4. řádu s poklesem 80 dB/dek. 
+\noindent Kaskádním zapojením dvou PP 2. řádu byla obdržena PP 4. řádu s poklesem 80 dB/dek. Zapojení spočívá ve spojení dvou integrátorů, přičemž jeden z nich je neinvertující ztrátový a druhý invertující bezeztrátový.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{PP4O.png}
