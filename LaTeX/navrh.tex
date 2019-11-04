@@ -23,7 +23,7 @@ Funkcí $BP2NLP$ byla provedena transformace tolerančního schematu nesymetrick
 \includegraphics[scale=0.5]{tolsch2.png}
 \caption{Toleranční schéma navrhované pásmové propusti}
 \end{figure}
-\noindent Stupeň Cauerovy aproximace normované dolní propusti byl určen jako $order = 4$.
+\noindent Stupeň Cauerovy aproximace normované dolní propusti byl určen jako $order = 4$. Pro sudý stupeň Cauerovy aproximace jsou definovány tři typy - A,B,C. Tyto typy se od sebe liší průběhem aproximační funkce. Byla zvolena aproximace typu C se shodnými zakončovacími odpory.
 \noindent Dále byla funkcí $Cauer\_asnew$ určena nová hodnota útlumu v nepropustném pásmu NDP.
 \MapleOutput{asnew := 105.613}
 \begin{align}
@@ -49,16 +49,16 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \noindent Charakteristika byla vykreslena z přenosu funkcí $MagnitudeHdB$, která vypočte modul přenosu podle předpisu |H(j$\omega)$|.
 \subsection{Příčkové LC filtry}\label{s:LC}
 Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
-K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Při návrhu filtru musí být zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
+K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Podle literatury \cite{17} musí být při návrhu filtru zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. \\
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.1]{piclanky.png}
-\caption[Pasivní dolní propust n-tého řády s $\pi$ články]{Pasivní dolní propust n-tého řády s $\pi$ články \cite{14}}
+\caption[Pasivní dolní propust n-tého řády s $\pi$ články]{Pasivní dolní propust n-tého řády s $\pi$ články \cite{17}}
 \end{figure}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.08]{tclanky.png}
-\caption[Pasivní dolní propust n-tého řády s T články]{Pasivní dolní propust n-tého řády s T články \cite{14}}
+\caption[Pasivní dolní propust n-tého řády s T články]{Pasivní dolní propust n-tého řády s T články \cite{17}}
 \end{figure}
 \newpage
 \subsection{Gyrátory}\label{s:GYR}
@@ -66,7 +66,7 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{gyrator.png}
-\caption[Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory]{Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory \cite{12} \label{s:GO}}
+\caption[Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory]{Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory \cite{16} \label{s:GO}}
 \end{figure}
 Obvodovou analýzou v uzlu V byla obdržena rovnice
 \begin{align}
@@ -115,7 +115,7 @@ H_4 &= \frac{1}{\frac{R}{pL_4}+RpC_4}\\
 H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
 \end{align}
 \noindent Uvedené přenosy budou použity v analýze Pracanem.
-\noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí $MakeH$. Byl spočten  napěťový i výkonový přenos.
+\noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí $MakeH$. Byl spočten  napěťový i výkonový přenos. Z rozložení pólů je patrné, že všechny přenosové funkce jsou stabilní.
 \MapleOutput{H\_NLPV := \frac{p^2  + 127.329}{-193.159 p^4  + 352.072 p^3  + 286.065 p^2  + 582.791 p + 253.653}   }
 \MapleOutput{H\_NLP := \frac{p^2  + 127.330}{-96.9631 p^4  + 176.735 p^3  + 143.601 p^2  + 292.553 p + 127.330}}
 \begin{figure}[h]
@@ -165,15 +165,35 @@ R_N = R_1 = R_z = \frac{1}{g_m} = 104.16667 \ \Omega.
 \noindent Kapacity vyšly již se Syntfilu $C1 = -7.8301 \  \mu$F, $C2 = 1.96808 \  \mu$F, $C3 = 3.29545 \  \mu$F, $C4 = 6.47035$ nF, $C5 = 1.23258 \  \mu$F.
 \newpage
 \subsection{Návrh funkční simulací}
-\noindent  Zapojení s OTA vychází z již uvedených principů v Sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:VYP}. Mezní kmitočet lze přeladit změnou vstupního proudu.
-\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann (2001) str. 639). Napětí na zdroji poté bude $V_0/R_0$.
+\noindent  Zapojení s OTA vychází z již uvedených principů v Sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:VYP} pomocí kaskádní syntézy. Mezní kmitočet lze přeladit změnou vstupního proudu, nebo transkonduktance.
+\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann (2001) str. 639). Napětí na zdroji poté bude $V_0/R_0$. Výsledné napětí bylo odebíráno z uzlu $V_1$ označeného na obrázku \ref{s:V1}.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{maple.png}
-\caption{Výsledné schéma}
+\caption{Výsledné schéma\label{s:V1}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{maple2.png}
+\includegraphics[scale=0.6]{output1.png}
 \caption{Amplitudová a fázová charakteristika PP 4. řádu}
 \end{figure}
+\subsection{Vliv zátěže na funkci obvodu}
+\noindent V simulaci se samozřejmě předpokládá, že všechny OTA zesilovače jsou ideální. Chování filtru ve výsledku ovlivní nedokonalosti reálných OTA (ztráty, parazitní chyby). Z literatury \cite{16} také víme, že reálné transkonduktance nejsou idální zdroje proudu (s nulovou výstupní admitancí) a že většina $gm$-C bloků použitých v obvodu má nenulové výstupní admitance. Jejich chování bude tedy extrémně závislé na zátěži, což může úplně změnit zamýšlenou funkci obvodu. Například ve sčítacím obvodu na obrázku \ref{s:BLO}, popsaným rovnicí \ref{s:BLO3}, zátěžová admitance $Y_L$ změní $g_{m3}$ na $g_{m3} + Y_L$. Podobně zátěž $Y_L$ na ztrátovém integrátoru na obrázku \ref{s:OTA-INT} (popsaný rovnicí \ref{s:OTA-INT1}) způsobí změnu $g_m$ na $g_m + Y_L$ v přenosové funkci integrátoru. Proto by transkonduktanční obvody obecně měly být navrženy tak, aby základní bloky řídily vysoko-impedanční uzly (např. vstupy jiných OTA). Pokud mají být řízeny velké zátěže, obvod s OTA musí být řízen \textit{bufferem} (v pinoutu LM13700 na obrázku \ref{s:PIN} pin 7,8 pro první OTA zesilovač a 9,10 pro druhý OTA zesilovač). Případně lze jako \textit{buffer} použít operační zesilovač s jednotkovým zesílením.\\
+\noindent K určení chování obvodu musíme mít podle literatury \cite{16} na paměti, že parazitní admitance $y_p = y_i + y_o$ je přítomna na každém uzlu spojujícím dva OTA zesilovače. Pokud pro jednoduchost předpokládáme, že všechny OTA jsou stejné a výstup $V_{out}$ je zatížen $Y_L$, dostaneme vztah
+\begin{equation}
+V_{out} = \frac{g_{m1}}{y_p}\frac{g_{m2}}{y_p}\frac{g_{m3}}{y_p} \ldots \frac{g_{mn}}{Y_L + y_p}(V_{in} - V_{out}).
+\end{equation}
+\noindent Po úpravě
+\begin{align}
+\frac{V_{out}}{V_{in}} &= \frac{1}{1 + (\frac{y_p}{g_m})^n(1 + \frac{Y_L}{y_p})} \simeq 1 \\
+\lvert \frac{y_p}{g_m} \rvert ^n &\ll 1.
+\end{align}
+\noindent Podobně pro výstupní impedanci $Z_{out}(p)$ platí
+\begin{align}
+Z_{out}(p) &= \frac{\frac{1}{y_p}}{1 + (\frac{g_m}{y_p})^n} \simeq \frac{1}{y_p}(\frac{y_p}{g_m})^n \\
+\lvert \frac{y_p}{g_m} \rvert ^n &\ll 1.
+\end{align}
+\noindent Navrhnout transkonduktance tak, aby platilo $g_m \gg \lvert y_p \rvert$, $\lvert V_{out}/V_{in} \rvert  \simeq 1$ a $\lvert Z_{out} \rvert \simeq \lvert 1/y_p \rvert$ pro dostatečně velká n, je poměrně snadné. Obvykle se volí $n = 2$ nebo $n = 3$.
+\subsection{Ladění filtru}
+\noindent Pokud se analogový filtr má chovat podle specifikací, musí být navržen s přesnými hodnotami komponent. Podle literatury \cite{16} přenosová funkce závisí na frekvencích nul a pólů, Q faktoru pólů (Q faktor definuje, jak moc je systém podtlumený), zesílení -- tyto parametry zase závisí na přesné hodnotě součástek. Kritické frekvence s jednotkami 1/čas jsou určeny absolutními hodnotami kapacitorů a rezistorů. Zesílení a Q faktor je určen poměrem kapacitorů a rezistorů. V diskrétních obvodech můžou být problémy vyřešeny laděním - buď před, nebo po dokončení návrhu. Pokud například máme časovou konstantu $T = RC$, můžeme změřit T a přizpůsobit rezistor (trimmerem), dokud neobdržíme požadovanou časovou konstantu $T_0$.\\
+Hlavním problémem ladění je přesné nalezení časové konstanty $C_U/g_m$. Časovou konstanta může být obdržena změnou $g_m$. Pokud je zesílení integrátoru jednotkové, časová konstanta bude nastavena na $1/\omega _ref$. Pokud bude referenční signál poslán na vstup integrátoru a oba vstupní a výstupní signály přes dva indentické špičkové detektory (\textit{peak detectors}), naladíme $g_m$ dokud jednotkové zesílení frekvence integrátoru nebude $f_{ref}$. Tomuto zapojení se říká \textit{master-slave tuning}. Také lze použít ladění pomocí Q-faktoru. 
