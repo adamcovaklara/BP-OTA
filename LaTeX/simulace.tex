@@ -9,20 +9,10 @@ Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitoč
 \end{align}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{biquad.png}
-\caption[Obecná OTA struktura pro bikvad]{Obecná OTA struktura pro bikvad \cite{19} \label{s:BIK}}
+\includegraphics[scale=0.45]{biquad.png}
+\caption[Obecná OTA struktura pro bikvad]{Obecná OTA struktura pro bikvad \cite{18} \label{s:BIK}}
 \end{figure}
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.55]{bplphp.png}
-\caption{Obecná OTA struktura pro bikvad - Multisim \label{s:BIK1}}
-\end{figure}
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.55]{bplphp2.png}
-\caption{Obecná OTA struktura pro bikvad - Multisim \label{s:BIK2}}
-\end{figure}
-\noindent Zapojení podle literatury \cite{19} je popsáno na obrázku \ref{s:BIK}. Výstup z Multisimu lze vidět na obrázcích \ref{s:BIK1} a \ref{s:BIK2}. Uzlu označenému V1 odpovídá červený průběh (PP), uzlu V2 odpovídá modrý průběh (DP) a uzlu V3 zelený průbeh (HP). Zesilovače 1 a 2 na obrázku \ref{s:BIK} pracují jako invertující integrátory, zbývající zesilovače vytvářejí kladnou a zápornou zpětnou vazbu z výstupu integrátorů vedoucí na sčítací vstup. Znaménko vazby je určeno volbou vstupní svorky zesilovačů 3 a 4. Výstupy obvodu jsou napěťové (na výstupu sumačního zesilovače 5, resp. integrátoru 1 a 2). Buzení může být proudové (v obrázku \ref{s:BIK} na místě $V_1$ a $V_2$) nebo napěťové s využitím vstupních svorek transkonduktančních zesilovačů. Uvažováním napětí $V_a, V_b, V_c$ na obrázku \ref{s:BIK} jako vstupy byly obdrženy výstupní napětí
+\noindent Zapojení podle literatury \cite{18} je popsáno na obrázku \ref{s:BIK}. Výstup z Multisimu lze vidět na obrázcích \ref{s:BIK1} a \ref{s:BIK2}. Uzlu označenému V1 odpovídá červený průběh (PP), uzlu V2 odpovídá modrý průběh (DP) a uzlu V3 zelený průbeh (HP). Zesilovače 1 a 2 na obrázku \ref{s:BIK} pracují jako invertující integrátory, zbývající zesilovače vytvářejí kladnou a zápornou zpětnou vazbu z výstupu integrátorů vedoucí na sčítací vstup. Znaménko vazby je určeno volbou vstupní svorky zesilovačů 3 a 4. Výstupy obvodu jsou napěťové (na výstupu sumačního zesilovače 5, resp. integrátoru 1 a 2). Buzení může být proudové (v obrázku \ref{s:BIK} na místě $V_1$ a $V_2$) nebo napěťové s využitím vstupních svorek transkonduktančních zesilovačů. Uvažováním napětí $V_a, V_b, V_c$ na obrázku \ref{s:BIK} jako vstupy byly obdrženy výstupní napětí
 \begin{align}
 V_1 &= \frac{pC_2g_{m1}(g_{m5}V_a - g_{m4}V_c) + g_{m1}g_{m2}g_{m4}V_b}{D(s)}\\
 V_2 &= \frac{(pC_1g_{m2}g_{m5} + g_{m1}g_{m2}g_{m3})V_b + g_{m1}g_{m2}(g_{m4}V_c - g_{m5}V_a)}{D(s)}\\
@@ -57,7 +47,7 @@ U_P(p) &= \frac{pC_2g_{m1}U_1 + g_{m1}(g_{m3}U_1 + g_{m2} - g_{m3}U_3)}{p^2C_1C_
 \end{align}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.075]{biquad1.png}
+\includegraphics[scale=0.45]{biquad1.png}
 \caption[Zjednodušená verze bikvadu OTA-C]{Zjednodušená verze bikvadu OTA-C \cite{10} \label{s:BIK2}}
 \end{figure}
 \noindent K sestavení dolní propusti 4. řádu bylo použito kaskádní zapojení sestávající ze sériově zapojených bloků. Přenosové funkce jednotlivých bloků se násobí

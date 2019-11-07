@@ -53,7 +53,7 @@ v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-).\label{s:OTA-INT1}
 Podle literatury \cite{15} je jeden z nejzákladnějších bloků v oblasti analogových obvodů v proudovém módu proudový konvejor (\textit{current conveyor (CC)}). Princip CC první generace byl popsán v roce 1968 (K. C. Smith, A. S. Sedra \cite{13}). \textit{CCI} byl následně nahrazen univerzálnější druhou generací v roce 1970 (\textit{CCII})\cite{14}. Obvody s CC se používaly především v zapojeních s bipolárními tranzistory kvůli jejich vysoké transkonduktanci (v porovnání s CMOS). Jsou to operační zesilovače s proudovou zpětnou vazbou (např. MAX477, MAX4112). Proudové konvejory (\textit{Current conveyors}) jsou používány ve vysokofrekvenčních obvodech, kde je problematické použití běžných operačních zesilovačů, protože jsou limitovány násobkem šířky pásma a zesílení (\textit{gain-bandwidth product}). Je to struktura s třemi vstupy.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{ccii.png}
+\includegraphics[scale=0.35]{ccii.png}
 \caption[CCII symbol]{CCII symbol \cite{15}}
 \end{figure}
 \noindent Proudovým konvejorem lze také jednoduše realizovat integrátor. Pro výstupní napětí $u_0$ obvodu a z něj odvozenou přenosovou funkci platí
@@ -64,7 +64,7 @@ H(p) &= \frac{U_2}{U_1} = \frac{1}{pCR}.
 \noindent Konvejorový integrátor pracuje jako invertující nebo neinvertující.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.075]{ccii_int1.png}
+\includegraphics[scale=0.065]{ccii_int1.png}
 \caption[Integrátor s CCII a OTA]{Integrátor s CCII a OTA \cite{10}}
 \end{figure}
 \noindent Vstupní impedance na vstupu Y je nekonečná (tedy proud tekoucí skrz Y je nulový) a impedance na vstupu X je nulová ($R_Y = \infty, I_Y = 0, R_X = 0$). Napětí na vstupu X je ekvivalentní k napětí na vstupu Y ($V_X = V_Y$). Proud procházející vstupem X je ekvivalentní k proudu vstupem Z ($I_Z = I_X$). Výstupní impedance vstupu Z je nekonečná ($R_Z = \infty$).
