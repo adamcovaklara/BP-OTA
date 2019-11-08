@@ -62,11 +62,11 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC 
 \end{figure}
 \newpage
 \subsection{Gyrátory}\label{s:GYR}
-\noindent K převodu induktoru na zapojení s kapacitorem byla použita struktura označovaná jako gyrátor. Jde o náhradu původního obvodu s induktorem vhodným uspořádáním rezistorů a kapacitorů tak, že výsledná impedance vypadá jako induktor. Jelikož po této substituci v obvodu zůstanou jen R,C prvky, jedná se o ARC syntézu. Podle literatury \cite{18} nelze gyrátor dobře realizovat s obyčejnými operačními zesilovači, běžně se používají /textit{General Impedance Converters (GIC)}. Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. V návrhu intehrovaných obvodů se také většinou nepoužívají rezistory kvůli místu na čipu, které zabírají. Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku \ref{s:GO} jsou znázorněny dva gyrátory s kapacitorem. 
+\noindent K převodu induktoru na zapojení s kapacitorem byla použita struktura označovaná jako gyrátor. Jde o náhradu původního obvodu s induktorem vhodným uspořádáním rezistorů a kapacitorů tak, že výsledná impedance vypadá jako induktor. Jelikož po této substituci v obvodu zůstanou jen R,C prvky, jedná se o ARC syntézu. Podle literatury \cite{18} nelze gyrátor dobře realizovat s obyčejnými operačními zesilovači, běžně se používají /textit{General Impedance Converters (GIC)}. Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. V návrhu intehrovaných obvodů se také většinou nepoužívají rezistory kvůli místu na čipu, které zabírají. Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku \ref{s:GO} jsou podle literatury \cite{18} znázorněny dva gyrátory s kapacitorem. 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{gyrator.png}
-\caption[Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory]{Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory \cite{17} \label{s:GO}}
+\caption[Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory]{Neuzemněný induktor realizovaný kapacitorem a dvěma gyrátory \label{s:GO}}
 \end{figure}
 Obvodovou analýzou v uzlu V byla obdržena rovnice
 \begin{align}
@@ -87,12 +87,6 @@ Z rovnice lze snadno odvodit, že kapacita kondenzátoru použitého při zapoje
 \MapleOutput{block (2), [orientation = shunt, elements = {C1 = 2.4732}, Z = \frac{1}{pC1}]}
 \MapleOutput{block (3), [orientation = direct, elements = {C1 = 0.0081309, L1 = 0.96591}, Z = \frac{1}{\frac{1}{pL1} + pC1}]}
 \MapleOutput{block (4), [orientation = shunt, elements = {C1 = 1.5489}, Z = \frac{1}{pC1}]}
-Vygenerovaná struktura je popsána na obrázku \ref{s:SCHEM}.
-\begin{figure}[h]
-\centering
-\figppp{Circuit(1)}{5.566}{2.075}{}{}
-\caption{Schéma LC příčkové struktury \label{s:SCHEM}}
-\end{figure}
 \noindent Přenosová funkce pasivních a aktivních struktur filtru byla spočtena funkcí $MakeH$. Byl spočten  napěťový i výkonový přenos. Z rozložení pólů je patrné, že všechny přenosové funkce jsou stabilní.
 \MapleOutput{H\_NLPV := \frac{p^2  + 127.329}{-193.159 p^4  + 352.072 p^3  + 286.065 p^2  + 582.791 p + 253.653}   }
 \MapleOutput{H\_NLP := \frac{p^2  + 127.330}{-96.9631 p^4  + 176.735 p^3  + 143.601 p^2  + 292.553 p + 127.330}}
@@ -108,6 +102,12 @@ Byla provedena transformace hodnot prvků normované dolní propusti (NDP) na p�
 \MapleOutput{block (3), [Z = \frac{1}{pC1 + \frac{1}{pL1}+\frac{1}{pL2 + \frac{1}{pC2}}} orientation = direct, elements = { C1 = 6.4704*10^{-9} ,}}
 \MapleOutput{C2 = 3.2954*10^{-6}, L1 = 3.9148*10^{-4}, L2 = 7.6864*10^{-7}]}
 \MapleOutput{block (4), [Z = \frac{1}{\frac{1}{pL1}+pC1}, orientation = shunt, elements = { C1 = 1.2326 *10^{-6}, L1 = 2.0551*10^{-6}}]}
+\noindent Vygenerovaná struktura je popsána na obrázku \ref{s:SCHEM}.
+\begin{figure}[h]
+\centering
+\figppp{Circuit(1)}{5.566}{2.075}{}{}
+\caption{Schéma LC příčkové struktury \label{s:SCHEM}}
+\end{figure}
 \noindent Byly nastaveny jakosti cívek v LC příčkové struktuře na konečnou hodnotu. Funkce $MakeRealL$ zařadí do výsledné LC příčkové struktury sériově rezistory k induktorům podle zadaného činitele jakosti $Q$ a zadaného kmitočtu (ten odpovídá u pásmové propusti geometrickému středu propustného pásma - nebo je možno zadat obě hranice propustného pásma). Výpočet sériového odporu je proveden podle předpisu $R_s =L1 \cdot 2 \pi f/Q$.
 \MapleOutput{block (1), [Z = p L1 + Rs1 + \frac{1}{pC1}, orientation = direct, elements = { C1 = -7.8301 *10^{-6}, L1 = -3.2350*10^{-7},}}
 \MapleOutput{Rs1 = -0.57490*10^{-2}]}

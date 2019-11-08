@@ -1,0 +1,9 @@
+Bill of Material for OTA.PrjPCB
+On 11/8/2019 at 3:57:33 PM
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+ Cap                 RAD-0.3          4    C1, C2, C3, C4               Capacitor            
+ Header 2H           HDR1X2H          3    P1, P2, P3                   Header, 2-Pin, Right Angle 
+ LM13700M            LM13700LM13700MLM13700LM13700MLM13700PrimaryLM13700    3    U1, U2, U3                   Dual Operational Transconductance Amplifier with Linearizing Diodes and Buffers 16-SOIC 0 to 70 
+ RPot                VR5              6    R1, R2, R3, R4, R5, R6       Potentiometer        

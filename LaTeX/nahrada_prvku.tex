@@ -1,4 +1,4 @@
-\noindent Podle literatury \cite{19} je pro ideální OTA zesilovač (vstupní i výstupní impedance nulové) možno odpor nahradit obvodem s uzemněným neinvertujícím vstupem a zpětnou vazbou z invertujícího vstupu na výstup a to hodnotou
+\noindent Podle literatury \cite{18} je pro ideální OTA zesilovač (vstupní i výstupní impedance nulové) možno odpor nahradit obvodem s uzemněným neinvertujícím vstupem a zpětnou vazbou z invertujícího vstupu na výstup a to hodnotou
 \begin{align}
 R_{in} = \frac{1}{g_{m}},
 \end{align}
@@ -6,9 +6,9 @@ kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{image10.png}
-\caption[Náhradní obvod pro uzemněný rezistor]{Náhradní obvod pro uzemněný rezistor \cite{18}}
+\caption[Náhradní obvod pro uzemněný rezistor]{Náhradní obvod pro uzemněný rezistor}
 \end{figure}
-\noindent Dále lze dle literatury \cite{18} pro nahrazení indukčnosti o impedanci $Z_L = 1/(sC)$ použít obvod s třemi OTA. Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
+\noindent Dále lze dle literatury \cite{18} pro nahrazení indukčnosti o impedanci $Z_L = 1/(sC)$ použít obvod s třemi OTA (obrázek  \label{s:IND0}). Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
 Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}\label{s:vzt2}
 V_C &= \frac{g_{m1}}{sC}V_1 \\
@@ -24,8 +24,13 @@ L = \frac{C}{g_{m1}g_{m2}}.
 \end{align}
 \begin{figure}[h]
 \centering
+\includegraphics[scale=0.45]{image12.png}
+\caption[Náhradní obvod pro neuzemněnou indukčnost]{Náhradní obvod pro neuzemněnou indukčnost pro $g_{m1} = g_{m2}$  \label{s:IND0}}
+\end{figure}
+\begin{figure}[h]
+\centering
 \includegraphics[scale=0.45]{image13.png}
-\caption[Náhradní obvod pro indukčnost]{Náhradní obvod pro indukčnost \cite{18} \label{s:IND}}
+\caption[Náhradní obvod pro indukčnost]{Náhradní obvod pro indukčnost \label{s:IND}}
 \end{figure}
 \noindent Pro uzemněnou indukčnosti o impedanci $Z_L = 1/(sC)$ byl podle literatury \cite{18} použit obvod na obrázku \ref{s:IND}. Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}
@@ -36,16 +41,11 @@ Výsledná indukčnost - impedance vstupu byla vyjádřena vztahem
 \begin{align}
 Z_{in}(s) = \frac{V_1}{I_1} = s\frac{C}{g_{m1}g_{m2}}.
 \end{align}
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.45]{image12.png}
-\caption[Náhradní obvod pro neuzemněnou indukčnost]{Náhradní obvod pro neuzemněnou indukčnost pro $g_{m1} = g_{m2}$\cite{18}}
-\end{figure}
 \subsection{Základní bloky}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{otos.png}
-\caption[Základní bloky s OTA]{Základní bloky s OTA a) integrující b) škálující c) sčítací \cite{18} \label{s:BLO}}
+\caption[Základní bloky s OTA]{Základní bloky s OTA a) integrující b) škálující c) sčítací \label{s:BLO}}
 \end{figure}
 \noindent Podle lieratury \cite{18} blok a) na obrázku \ref{s:BLO} slouží k realizaci invertujícího/neinvertujícího integrátoru s výsledným napětím
 \begin{equation}
