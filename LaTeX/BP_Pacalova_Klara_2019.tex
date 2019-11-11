@@ -1,45 +1,48 @@
- %
+%
 % Author:  Klára Pacalová
 % E-mail:  pacalkla@fel.cvut.cz
-% Date:    24.02.2018 11:03
 %
 \documentclass[twoside]{article}
 \usepackage[a4paper]{geometry}
 \geometry{verbose,tmargin=2.5cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\usepackage{dirtree} %directory tree visualisation
+\usepackage{fancyhdr} % layout
+\pagestyle{fancy} % layout
+\usepackage{dirtree} % vizualizace adresare
+\usepackage{siunitx} % SI jednotky
+\usepackage{listings} % seznamy
+\usepackage{graphicx} % importovani grafickych souboru
+\usepackage{amsmath} % matematicke konstanty
+\usepackage{amssymb} % matematicke symboly
+\usepackage[gen]{eurosym} % znak eura se stejnym fontem
+% nastavení pisma a cestiny
 \usepackage[utf8]{inputenc}
 \usepackage[czech]{babel}
-\usepackage{siunitx}
-\usepackage{listings}
-\usepackage{graphicx} %graphics files inclusion
-\usepackage{amsmath} %advanced maths
-\usepackage{amssymb} %additional math symbols
-% nastavení pisma a češtiny
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{float}
 \usepackage{xcolor}
 \usepackage{authblk}
-\graphicspath{{../Images/}}
 \usepackage{titling}
+\usepackage{csquotes} % ceske uvozovky
+
+% adresar s obrazky
+\graphicspath{{../Images/}}
 
 % odkazy
 \usepackage{url}
 
-% vícesloupcové tabulky
+% vicesloupcove tabulky
 \usepackage{multirow}
 
 % automatická konverze schematu
 \usepackage{pppfig}
 
-% odkazy a záložky
+% odkazy a zalozky
 \usepackage[unicode=true, bookmarks=true,bookmarksnumbered=true,
 bookmarksopen=false, breaklinks=false,pdfborder={0 0 0},
 pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 
-% smaz aktualni page layout
+% smaze aktualni page layout
 \fancyhf{}
 
  %zapati
@@ -49,14 +52,14 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \newcommand{\sekce}[1]{\clearpage \section{#1}}
 \newcommand{\nadpis}[1]{\newpage \section*{#1}}
 
-% Maple Output
+% Maple output
 \definecolor{MapleBlue}{rgb}{0,0,1}
 \def\MapleOutput#1{{\begin{center}\begin{math}\color{MapleBlue}{#1}\end{math}\end{center}}}
 
 % titulni strana
 \begin{document}
 
-% údaje o autorovi
+% udaje o autorovi
 \title{Analogový přeladitelný filtr se zesilovači OTA}
 \author{Klára Pacalová}
 

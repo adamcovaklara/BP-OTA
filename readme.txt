@@ -3,14 +3,14 @@ Ceske vysoke uceni technicke v Praze, Fakulta elektrotechnicka, 2019.
 
 Obsah CD:
 
+Slozka Altium:
+Obsahuje schema DPS.
+
 Slozka Doc:
 Obsahuje dokumentaci k LM13700.
 
 Slozka Images:
 Obsahuje obrazky pouzite v textu.
-
-Slozka KiCad:
-Obsahuje schema DPS.
 
 Slozka LaTeX:
 Obsahuje LaTeX zdrojove kody.

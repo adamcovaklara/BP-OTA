@@ -2,11 +2,13 @@ Mezní kmitočet navrhovaného filtru byl zvolen v řádu stovek kHz, což umož
 Kmitočet zvolený pro návrh filtru v řádu stovek kHz odpovídá dlouhým a středním vlnám. Dlouhé vlny (30 -- 300~kHz, čemuž odpovídá délka vlny 1 -- 10~km) obtékají nerovnosti a jdou za obzor bez nutnosti odrazu. Dnes na dlouhých vlnách vysílá jen několik národních rozhlasových vysílačů velkých států a pásmo se hlavně využívá pro takové účely, kde je na prvním místě spolehlivost a výhody pozemní vlny. To jsou například frekvenční a časové standardy (DCF77 --  rádiová stanice vysílající dlouhovlnný tzv. frankfurtský časový signál), radiomajáky, případně i komunikace s ponorkami (literatura \cite{2}). Střední vlny (525 -- 1705 khz, což odpovídá vlnovým délkám 186 -- 577 m) mají menší dosah a často u nich dochází k jednomu odrazu od atmosféry. Lépe se ohýbají za přírodními překážkami a jsou vhodné pro vysílání v okruhu stovek kilometrů (literatura \cite{3}). \\
 Po zvýšení mezního kmitočtu, aby odpovídal standardu ZigBee, možné využití ve \textit{WSN} (\textit{Wireless Sensor Network}) pro monitorování dat z environmentálních senzorů v dané lokalitě. 
 \textit{WSN} běžně používá standard ZigBee s frekvencemi 868 MHz, 902–928 MHz a 2,4 GHz. ZigBee patří do skupiny bezdrátových sítí \textit{PAN (Personal Area Networks)} a je určena pro spojení nízkovýkonových zařízení v těchto sítích na malé vzdálenosti (do 75 metrů). Umožňuje komunikaci i na větší vzdálenosti bez přímé radiové viditelnosti jednotlivých zařízení. Do této skupiny sítí patří i velmi rozšířený IEEE 802.15.1 – Bluetooth (literatura \cite{4}). Také je možné použití pro vysokorychlostí širokopásmové RF filtry (frekvenční pásmo v řádech Mhz -- GHz). Toto pásmo se používá např. pro televizní a rádiové vysílání a bezdrátovou komunikaci (mobilní telefony, Wi-Fi). \\
-Mezní kmitočet a zesílení lze pomocí vstupního proudu tekoucího do zesilovače a pomocí změny transkonduktance $g_m$ měnit v rozsahu několika dekád. Při návrhu filtru s OTA není použita zpětná vazba -- její absence je výhodná z hlediska stability a kmitočtového rozsahu. Nevýhodou je nízké stejnosměrné zesílení, vysoký šum a také nelinearity, které závisí na vstupním externím proudu. Vstupní a výstupní impedance, SR (\textit{slew rate} - rychlost přeběhu OZ) a maximální proud na výstupu jsou také závislé na vstupním proudu.
+Další možnost použití je pro zesilovače řízené proudem, audio zesilovače (stereo), proudem řízené filtry a oscilátory, multiplexery, časovače a SaH obvody.
+Mezní kmitočet a zesílení lze pomocí vstupního proudu tekoucího do zesilovače a pomocí změny transkonduktance $g_m$ měnit v rozsahu 6 dekád. Při návrhu filtru s OTA není použita zpětná vazba -- její absence je výhodná z hlediska stability a kmitočtového rozsahu. Nevýhodou je nízké stejnosměrné zesílení, vysoký šum a také nelinearity, které závisí na vstupním externím proudu. Zesilovač LM13700M použitý v této práci má podle dokumentace výbornou linearitu. Vstupní a výstupní impedance, SR (\textit{slew rate} - rychlost přeběhu OZ) a maximální proud na výstupu jsou také závislé na vstupním proudu.
 \subsection{Analogové filtry}
 Filtry jsou určeny k potlačení nebo zvýraznění určité části kmitočtového spektra signálu. Jsou to obvody s kmitočtově závislou přenosovou funkcí (pro napěťový přenos $H_s(p) = U_{out}(p)/U_{in}(p)$). Základní rozdělení je na dolní propust (DP, anglicky \textit{low-pass} - LP), horní propust (HP, \textit{high-pass} - HP), pásmovou propust (PP, \textit{band-pass} - BP) a pásmovou zádrž (PZ, \textit{band-stop} - BS). \\
 Filtry patří mezi základní stavební bloky pro zpracování přijímaných signálů. V radiotechnice je časté použití pásmových propustí pro výběr přijímaných signálů  a redukci nežádoucích frekvencí (vstupní obvody přijímačů, mezifrekvenční filtry), dolních propustí a horních propustí jako výhybek pro rozdělení kmitočtových pásem v anténních obvodech a předzesilovačích, pásmových zádrží pro potlačení rušících signálů -- vysílače blokují harmonické frekvence, které interferují, dolní propustí pro různé typy demodulátorů apod. Podobné použití filtrů můžeme hledat i v oblasti telekomunikace (literatura \cite{5}). V elektroakustice se používají hojně korekční filtry pro efektivní reprodukci zvuku reproduktory (korektory hloubek, výšek, pásmové korektory apod.), filtry se systémem omezení šumu (Dolby).\\
-Zvláštní skupinu aplikací tvoří filtry dolní propust v systémech pro převod analogového signálu na číslicový. Aby byl splněn vzorkovací teorém, je nutné požít antialiasingový filtr, který omezí vniknutí rušivého spektra do užitečného signálu a na výstupu se používá rekonstrukční filtr (literatura \cite{6}). Také je možné použití pro předvzorkování u A/D převodníku.\\\\
+Zvláštní skupinu aplikací tvoří filtry dolní propust v systémech pro převod analogového signálu na číslicový. Aby byl splněn vzorkovací teorém, je nutné požít antialiasingový filtr, který omezí vniknutí rušivého spektra do užitečného signálu a na výstupu se používá rekonstrukční filtr (literatura \cite{6}). Také je možné použití pro předvzorkování u A/D převodníku.\\
+\subsection{Základní typy filtrů}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{tolerancnischemata.png}
@@ -45,7 +47,8 @@ H(p) = \frac{H_{B} \frac{\omega _c}{Q} (p) }{(p)^2 + \frac{\omega _c}{Q}(p) + \o
 \end{equation}
 \\
 Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty. Pasivní zapojení je složeno ze dvou rezistorů a kapacitorů. Má vždy ztrátový přenos. Ideální pásmová zádrž má přenosovou funkci v nule stejnou jako v nekonečnu. \\
-Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Koeficienty filtru $a_i, b_i$ (viz rovnice \ref{r:FTR}, \ref{r:FTR2}) určují zesílení v propustném pásmu. Činitel jakosti udává míru ztrát v rezonančním obvodu a je definován jako $Q = \sqrt{b_i}/a_i$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní. U cívek je nositelem ztrát zejména odpor vodiče, kterým jsou navinuty. U kondenzátorů určují Q hlavně dielektrické ztráty použitého dielektrika (literatura \cite{6}).\\
+\subsection{Aproximace}
+Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Úlohou aproximace je nalézt k zadanému tolerančními schématu přenosovou funkci. Koeficienty filtru $a_i, b_i$ (viz rovnice \ref{r:FTR}, \ref{r:FTR2}) určují zesílení v propustném pásmu. Činitel jakosti udává míru ztrát v rezonančním obvodu a je definován jako $Q = \sqrt{b_i}/a_i$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní. U cívek je nositelem ztrát zejména odpor vodiče, kterým jsou navinuty. U kondenzátorů určují Q hlavně dielektrické ztráty použitého dielektrika (literatura \cite{6}).\\
 Pro následující charakteristiky také zadefinujeme fázový posuv a skupinové zpoždění. Fázový posuv výstupního napětí filtru vzhledem k jeho vstupnímu napětí je úměrný řádu filtru a kmitočtu.
 \begin{equation}
 \phi _n(\omega) \approx arctg(n \frac{\omega}{\omega _0} \approx n \frac{\omega}{\omega _0} \label{s:ROV}
@@ -61,25 +64,25 @@ T _{DPn}(\omega) = \frac{d\phi}{d\omega} = - \frac{n}{\omega _0}
 \caption[Typy aproximací (DP)]{Typy aproximací (DP)\cite{9}}
 \end{figure}
 \subsection{Butterworthova aproximace}
-Podle literatury \cite{7} má Butterworthova aproximace maximálně plochou amplitudovou charakteristiku v propustném pásmu. Frekvenční charakteristika má sklon daný počtem pólů a pro její posouzení je užíváno skupinové zpoždění (derivace fáze podle frekvence). Pro Butterworthovu aproximaci je skupinové zpoždění nezvlněné v propustném pásmu. Přechodová charakteristika má mírný překmit, zvyšující se s řádem filtru. Zesílení $G(\omega)$ je kmitočtově závislé a odpovídá absolutní hodnotě přenosové funkce $H(p)$.
+Podle literatury \cite{7} má Butterworthova aproximace maximálně plochou amplitudovou charakteristiku v propustném pásmu. Má monotónní průběh v propustném i nepropustném pásmu. Frekvenční charakteristika má sklon daný počtem pólů a pro její posouzení je užíváno skupinové zpoždění (derivace fáze podle frekvence). Pro Butterworthovu aproximaci je skupinové zpoždění nezvlněné v propustném pásmu. Přechodová charakteristika má mírný překmit, zvyšující se s řádem filtru. Zesílení $G(\omega)$ je kmitočtově závislé a odpovídá absolutní hodnotě přenosové funkce $H(p)$.
 \begin{equation}
 G(\omega) = |H(p)| = \frac{1}{\sqrt{1 + \epsilon ^2 \frac{\omega}{\omega _c}^{2n}}},
 \end{equation}
 kde $\epsilon$ je poměrné zvlnění kmitočtové charakteristiky v propustném pásmu (\textit{faktor zvlnění}), $n$ je řád filtru a $\omega _c$ mezní kmitočet (nastává při útlumu -3 dB). Pro $\omega _c = 1$ je faktor zvlnění $\epsilon = 1$. 
 \subsection{Čebyševova aproximace}
-Čebyševova aproximace má strmější pokles, což vede k užití nižšího řádu filtru. Zato má ale zvlněnou frekvenční charakteristiku v propustném pásmu. 
+Čebyševova aproximace má strmější pokles útlumové charakteristiky v přechodovém pásmu, což vede na nižší stupeň přenosové funkce a užití nižšího řádu filtru než u Butterworthovy aproximace. Zato má ale zvlněnou frekvenční charakteristiku v propustném pásmu. Oproti Butterworthově aproximaci má tedy vlastnosti z hlediska průběhu fázové charakteristiky a skupinového zpoždění horší.
 \subsubsection{Typ I}
 Vyjádření modulové charakteristiky pro tuto aproximaci je dáno jako
 \begin{align}
 G(\omega) = |H(p)| = \frac{1}{\sqrt{1 + \epsilon ^2 T_n ^2 \frac{\omega}{\omega _c}^{2n}}},
 \end{align}
-kde $T_n$ je Čebyševův polynom, $\epsilon$ je poměrné zvlnění, $n$ je řád filtru a $\omega _c$ mezní kmitočet. Čebyševův polynom je definován vztahem $2 \omega ^2 - 1$ pro $n = 2$. Obecně jsou to kořeny Chebyshevových diferenciálních rovnic
+kde $T_n$ je Čebyševův polynom, $\epsilon$ je poměrné zvlnění, $n$ je řád filtru a $\omega _c$ mezní kmitočet. Čebyševův polynom je definován vztahem $2 \omega ^2 - 1$ pro $n = 2$. Obecně jsou to kořeny Čebyševových diferenciálních rovnic
 \begin{align}
 (1 - x^2)y" - xy' + n^2y &= 0\\
 (1 - x^2)y" - 3xy' + n(n+2)y &= 0.
 \end{align}
 \subsubsection{Typ II}
-Typ II je nazýván také jako inverzní Čebeševova aproximace. V praxi není příliš používaný, jelikož nemá tak rychlý pokles jako typ I a k jeho realizaci je třeba více prvků. Nemá zvlnění v propustném pásmu, zato v zádržném ano. Zesílení je definováno jako
+Typ II je nazýván také jako inverzní Čebeševova aproximace. V praxi není příliš používaný, jelikož nemá tak rychlý pokles jako typ I a k jeho realizaci je třeba více prvků. Nemá zvlnění v propustném pásmu (monotónní průběh), zato v zádržném ano. Zesílení je definováno jako
 \begin{equation}
 G(\omega, \omega _c) = \frac{1}{\sqrt{1 + \frac{1}{\epsilon ^2 T_n ^2 \frac{\omega _c}{\omega}^{2n}}}},
 \end{equation}
@@ -107,7 +110,7 @@ Protože se, podobně jako u Čebyševovy aproximace, liší odvození pro lich�
 \subsubsection{Cauerova (eliptická) aproximace typu A}
 Má stejný počet pólů a nul aproximující funkce. Je realizována jako LC filtr (Sekce \ref{s:LC}) pouze s vázanými induktory.
 \subsubsection{Cauerova (eliptická) aproximace typu B}
-Jedná se o posun útlumového pólu z konečného kmitočtu k nekonečnu, tedy dále od propustného pásma. Tato úprava vede ke snížení strmosti přechodu od propustného k nepropustnému pásmu. Je to obdoba postupu u inverzní Čebyševovy aproximace.
+Jedná se o posun útlumového pólu z konečného kmitočtu k nekonečnu, tedy dále od propustného pásma. Tato úprava vede ke snížení strmosti přechodu od propustného k nepropustnému pásmu. Je to obdoba postupu u inverzní Čebyševovy aproximace. Tento typ je nejčastěji používaný.
 \subsubsection{Cauerova (eliptická) aproximace typu C}
 Vhodnou transformací, která vede na nulovou hodnotu přenosu v nulovém kmitočtu, získáme navíc proti variantám A, B i shodné zakončovací odpory v případě LC realizace (Sekce \ref{s:LC}). Je to obdoba postupu u Čebyševovy aproximace.
 \subsection{Srovnání typů aproximací}
