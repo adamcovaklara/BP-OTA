@@ -1,9 +1,9 @@
 "Bill of Material for OTA.PrjPCB"
-"On 11/8/2019 at 3:57:33 PM"
+"On 11/14/2019 at 4:00:03 PM"
 
 "Comment","Pattern","Quantity","Components"
 
-"Cap","RAD-0.3","4","C1, C2, C3, C4","Capacitor"
-"Header 2H","HDR1X2H","3","P1, P2, P3","Header, 2-Pin, Right Angle"
+"","HDR1X2H","3","P1, P2, P3","Header, 2-Pin, Right Angle"
+"10p","_C*CAPC1005X55N_CC0402C100K5GACAUTO_CPrimary_C","4","C1, C2, C3, C4","CAPACITOR CERAMIC 10 PF 10% TOL 50V C0G 0402"
+"1M","PCBComponent_1","6","T1, T2, T3, T4, T5, T6",""
 "LM13700M","LM13700LM13700MLM13700LM13700MLM13700PrimaryLM13700","3","U1, U2, U3","Dual Operational Transconductance Amplifier with Linearizing Diodes and Buffers 16-SOIC 0 to 70"
-"RPot","VR5","6","R1, R2, R3, R4, R5, R6","Potentiometer"
