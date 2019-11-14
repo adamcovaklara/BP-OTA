@@ -1,9 +1,9 @@
 Mezní kmitočet navrhovaného filtru byl zvolen v řádu stovek kHz, což umožňuje využití např. pro přenos rozhlasového vysílání v atmosféře, nebo monitorování EKG přenosným zařízením (literatura \cite{1}). \\ 
-Kmitočet zvolený pro návrh filtru v řádu stovek kHz odpovídá dlouhým a středním vlnám. Dlouhé vlny (30 -- 300~kHz, čemuž odpovídá délka vlny 1 -- 10~km) obtékají nerovnosti a jdou za obzor bez nutnosti odrazu. Dnes na dlouhých vlnách vysílá jen několik národních rozhlasových vysílačů velkých států a pásmo se hlavně využívá pro takové účely, kde je na prvním místě spolehlivost a výhody pozemní vlny. To jsou například frekvenční a časové standardy (DCF77 --  rádiová stanice vysílající dlouhovlnný tzv. frankfurtský časový signál), radiomajáky, případně i komunikace s ponorkami (literatura \cite{2}). Střední vlny (525 -- 1705 khz, což odpovídá vlnovým délkám 186 -- 577 m) mají menší dosah a často u nich dochází k jednomu odrazu od atmosféry. Lépe se ohýbají za přírodními překážkami a jsou vhodné pro vysílání v okruhu stovek kilometrů (literatura \cite{3}). \\
+Kmitočet zvolený pro návrh filtru v řádu stovek kHz odpovídá dlouhým a středním vlnám. Dlouhé vlny (30 -- 300~kHz, čemuž odpovídá délka vlny 1 -- 10~km) obtékají nerovnosti a jdou za obzor bez nutnosti odrazu. Dnes na dlouhých vlnách vysílá jen několik národních rozhlasových vysílačů velkých států a pásmo se hlavně využívá pro takové účely, kde je na prvním místě spolehlivost a výhody pozemní vlny. To jsou například frekvenční a časové standardy (DCF77 --  rádiová stanice vysílající dlouhovlnný tzv. frankfurtský časový signál), radiomajáky, případně i komunikace s ponorkami (literatura \cite{2}). Střední vlny (525 -- 1705~kHz, což odpovídá vlnovým délkám 186 -- 577 m) mají menší dosah a často u nich dochází k jednomu odrazu od atmosféry. Lépe se ohýbají za přírodními překážkami a jsou vhodné pro vysílání v okruhu stovek kilometrů (literatura \cite{3}). \\
 Po zvýšení mezního kmitočtu, aby odpovídal standardu ZigBee, možné využití ve \textit{WSN} (\textit{Wireless Sensor Network}) pro monitorování dat z environmentálních senzorů v dané lokalitě. 
-\textit{WSN} běžně používá standard ZigBee s frekvencemi 868 MHz, 902–928 MHz a 2,4 GHz. ZigBee patří do skupiny bezdrátových sítí \textit{PAN (Personal Area Networks)} a je určena pro spojení nízkovýkonových zařízení v těchto sítích na malé vzdálenosti (do 75 metrů). Umožňuje komunikaci i na větší vzdálenosti bez přímé radiové viditelnosti jednotlivých zařízení. Do této skupiny sítí patří i velmi rozšířený IEEE 802.15.1 – Bluetooth (literatura \cite{4}). Také je možné použití pro vysokorychlostí širokopásmové RF filtry (frekvenční pásmo v řádech Mhz -- GHz). Toto pásmo se používá např. pro televizní a rádiové vysílání a bezdrátovou komunikaci (mobilní telefony, Wi-Fi). \\
+\textit{WSN} běžně používá standard ZigBee s frekvencemi 868~MHz, 902–928~MHz a 2.4~GHz. ZigBee patří do skupiny bezdrátových sítí \textit{PAN (Personal Area Networks)} a je určena pro spojení nízkovýkonových zařízení v těchto sítích na malé vzdálenosti (do 75~metrů). Umožňuje komunikaci i na větší vzdálenosti bez přímé radiové viditelnosti jednotlivých zařízení. Do této skupiny sítí patří i velmi rozšířený IEEE 802.15.1 – Bluetooth (literatura \cite{4}). Také je možné použití pro vysokorychlostí širokopásmové RF filtry (frekvenční pásmo v řádech MHz -- GHz). Toto pásmo se používá např. pro televizní a rádiové vysílání a bezdrátovou komunikaci (mobilní telefony, Wi-Fi). \\
 Další možnost použití je pro zesilovače řízené proudem, audio zesilovače (stereo), proudem řízené filtry a oscilátory, multiplexery, časovače a SaH obvody.
-Mezní kmitočet a zesílení lze pomocí vstupního proudu tekoucího do zesilovače a pomocí změny transkonduktance $g_m$ měnit v rozsahu 6 dekád. Při návrhu filtru s OTA není použita zpětná vazba -- její absence je výhodná z hlediska stability a kmitočtového rozsahu. Nevýhodou je nízké stejnosměrné zesílení, vysoký šum a také nelinearity, které závisí na klidovém stejnosměrném pracovním proudu. Zesilovač LM13700M použitý v této práci má podle dokumentace výbornou linearitu. Vstupní a výstupní impedance, SR (\textit{slew rate} - rychlost přeběhu OZ) a maximální proud na výstupu jsou také závislé na vstupním proudu.
+Mezní kmitočet a zesílení lze pomocí vstupního proudu tekoucího do zesilovače a pomocí změny transkonduktance $g_m$ měnit v rozsahu 6 dekád. Při návrhu filtru s OTA není použita zpětná vazba -- její absence je výhodná z hlediska stability a kmitočtového rozsahu. Nevýhodou je nízké stejnosměrné zesílení, vysoký šum a také nelinearity, které závisí na klidovém stejnosměrném pracovním proudu. Vstupní a výstupní impedance, SR (\textit{slew rate} - rychlost přeběhu OZ) a maximální proud na výstupu jsou také závislé na klidovém stejnosměrném pracovním proudu. Transkonduktanční zesilovač LM13700M použitý v této práci má podle dokumentace výbornou linearitu.
 \subsection{Analogové filtry}
 Filtry jsou určeny k potlačení nebo zvýraznění určité části kmitočtového spektra signálu. Jsou to obvody s kmitočtově závislou přenosovou funkcí (pro napěťový přenos $H_s(p) = U_{out}(p)/U_{in}(p)$). Základní rozdělení je na dolní propust (DP, anglicky \textit{low-pass} - LP), horní propust (HP, \textit{high-pass} - HP), pásmovou propust (PP, \textit{band-pass} - BP) a pásmovou zádrž (PZ, \textit{band-stop} - BS). \\
 Filtry patří mezi základní stavební bloky pro zpracování přijímaných signálů. V radiotechnice je časté použití pásmových propustí pro výběr přijímaných signálů  a redukci nežádoucích frekvencí (vstupní obvody přijímačů, mezifrekvenční filtry), dolních propustí a horních propustí jako výhybek pro rozdělení kmitočtových pásem v anténních obvodech a předzesilovačích, pásmových zádrží pro potlačení rušících signálů -- vysílače blokují harmonické frekvence, které interferují, dolní propustí pro různé typy demodulátorů apod. Podobné použití filtrů můžeme hledat i v oblasti telekomunikace (literatura \cite{5}). V elektroakustice se používají hojně korekční filtry pro efektivní reprodukci zvuku reproduktory (korektory hloubek, výšek, pásmové korektory apod.), filtry se systémem omezení šumu (Dolby).\\
@@ -14,39 +14,30 @@ Zvláštní skupinu aplikací tvoří filtry dolní propust v systémech pro př
 \includegraphics[scale=0.55]{tolerancnischemata.png}
 \caption[Toleranční schéma dolní propusti (DP), horní propusti (HP), pásmové propusti (PP) a pásmové zádrže]{Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)\cite{7}}
 \end{figure}
-\noindent Dolní propust nepropouští na výstup vstupní signál nad frekvencí $f_s$, signál v propustném pásmu zůstává beze změny nebo zesílený. Základní pasivní dvojbranné zapojení je ke vstupu sériově zapojený rezistor a k této větvi paralelně kapacitor. Tento RC člen (integrační článek) se zvyšující se frekvencí snižuje svou vstupní impedanci. Přenosová funkce v nekonečnu je nulová. \\
+\noindent Dolní propust nepropouští na výstup vstupní signál nad frekvencí $f_s$, signál v propustném pásmu zůstává beze změny nebo zesílený. Základní pasivní dvojbranné zapojení je ke vstupu sériově zapojený rezistor a k této větvi paralelně kapacitor. Tento RC člen -- integrační článek se zvyšující se frekvencí snižuje svou vstupní impedanci. Přenosová funkce v nekonečnu je nulová. \\
 Obecná přenosová funkce filtru typu dolní propust je
 \begin{equation}
 H(p) = \frac{H_0}{\prod_{i=1}^{\frac{n}{2}} (1 + a_i s + b_i s^2)} \label{r:FTR},
 \end{equation}
 kde $n$ je řád filtru.\\
-Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. Přenosová funkce je
-\begin{equation}
-H(p) = \frac{H_0 \omega_c ^2}{(p)^2 + \frac{\omega _c}{Q}(p) + \omega _c ^2}.
-\end{equation}
-Horní propust nepropouští signály o nízkých frekvencích. Nejjednodušší zapojení je RC člen (derivační článek), kdy kapacitor je zapojen sériově se zdrojem a k této větvi paralelně rezistor. Pro toto zapojení reaktance kapacitoru se zvyšující se frekvencí klesá. Přenosová funkce ideálního derivačního článku je v nule nulová. \\
+Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. \\
+Horní propust nepropouští signály o nízkých frekvencích. Nejjednodušší zapojení je RC člen -- derivační článek, kde kapacitor je zapojen sériově se zdrojem a k této větvi paralelně rezistor. Pro toto zapojení reaktance kapacitoru se zvyšující se frekvencí klesá. Přenosová funkce ideálního derivačního článku je v nule nulová. \\
 Obecná přenosová funkce filtru typu horní propust je
 \begin{equation}
 H(p) = \frac{H_{\infty}}{\prod_{i=1}^{\frac{n}{2}} (1 + \frac{a_i}{s} + \frac{b_i}{s^2})} \label{r:FTR2},
 \end{equation}
 kde $n$ je řád filtru.\\
-Horní propust druhého řádu (s každým řádem s pokles mění o 20 dB/dek) má přenos v nule nulový $H_{0} = 0$. Přenosová funkce je
-\begin{equation}
-H(p) = \frac{H_{\infty} (p) ^2}{(p)^2 + \frac{\omega _c}{Q}(p) + \omega _c ^2}.
-\end{equation}
-\\
-Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC - dolní propust) a derivačního článku (CR - horní propust). Ideální pásmová propust má přenos v nule i nekonečnu nulový. \\
+Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC - dolní propust) a derivačního článku (CR - horní propust) zapojených v sérii - viz obrázek \ref{s:BPBS}. Ideální pásmová propust má přenos v nule i nekonečnu nulový. \\
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{bpbs.png}
-\caption[A) Násobení přenosů - pásmová propust, B) Sčítání přenosů - pásmová zádrž]{A) Násobení přenosů - pásmová propust, B) Sčítání přenosů - pásmová zádrž \cite{8}}
+\caption[A) Násobení přenosů - pásmová propust, B) Sčítání přenosů - pásmová zádrž]{A) Násobení přenosů - pásmová propust, B) Sčítání přenosů - pásmová zádrž \cite{8} \label{s:BPBS}}
 \end{figure}
-\noindent Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Přenosová funkce je
+\noindent Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Její přenosová funkce je
 \begin{equation}
 H(p) = \frac{H_{B} \frac{\omega _c}{Q} (p) }{(p)^2 + \frac{\omega _c}{Q}(p) + \omega _c ^2}.
 \end{equation}
-\\
-Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty. Pasivní zapojení je složeno ze dvou rezistorů a kapacitorů. Má vždy ztrátový přenos. Ideální pásmová zádrž má přenosovou funkci v nule stejnou jako v nekonečnu. \\
+Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty. Pasivní zapojení je složeno ze dvou rezistorů a kapacitorů. Má vždy ztrátový přenos. Ideální pásmová zádrž má přenosovou funkci v nule stejnou jako v nekonečnu. Lze ji složit sečtením přenosů horní a dolní propusti - viz obrázek \ref{s:BPBS}. \\
 \subsection{Aproximace}
 Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Úlohou aproximace je nalézt k zadanému tolerančními schématu přenosovou funkci. Koeficienty filtru $a_i, b_i$ (viz rovnice \ref{r:FTR}, \ref{r:FTR2}) určují zesílení v propustném pásmu. Činitel jakosti udává míru ztrát v rezonančním obvodu a je definován jako $Q = \sqrt{b_i}/a_i$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní. U cívek je nositelem ztrát zejména odpor vodiče, kterým jsou navinuty. U kondenzátorů určují Q hlavně dielektrické ztráty použitého dielektrika (literatura \cite{6}).\\
 Pro následující charakteristiky také zadefinujeme fázový posuv a skupinové zpoždění. Fázový posuv výstupního napětí filtru vzhledem k jeho vstupnímu napětí je úměrný řádu filtru a kmitočtu.

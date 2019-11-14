@@ -13,19 +13,19 @@ f\_p &= \frac{\sqrt{\Delta{fp}^2+4f\_m ^2}-\Delta{fp}}{2}\\
 fp &= \frac{\sqrt{\Delta{fp}^2+4f\_m ^2}+\Delta{fp}}{2}\\
 fs &= \frac{\sqrt{\Delta{fs}^2+4f\_m ^2}+\Delta{fs}}{2}
 \end{align}
-Funkcí $BP2NLP$ byla provedena transformace tolerančního schematu nesymetrické pásmové propusti (PP) na toleranční schema normované dolní propusti (NDP). Byl spočítán nový kmitočet pro horní hranici nepropustného pásma $f_s$. Byl spočten geometrický střed propustného pásma $fm$ [Hz], šířka propustného pásma $\Delta{fp}$ [Hz] a šířka nepropustného pásma $\Delta{fs} $[Hz].
+Funkcí $BP2NLP$ byla provedena transformace tolerančního schematu nesymetrické pásmové propusti (PP) na toleranční schema normované dolní propusti (NDP). Byl spočítán nový kmitočet pro horní hranici nepropustného pásma $f_s$. Byl spočten geometrický střed propustného pásma $fm$ [Hz], šířka propustného pásma $\Delta{fp}$ [Hz] a šířka nepropustného pásma $\Delta{fs}$ [Hz].
 \MapleOutput{f\_s = 101785.714 Hz}
 \MapleOutput{fm = 168819.43 Hz}
 \MapleOutput{\Delta{fp} = 40000 Hz}
 \MapleOutput{\Delta{fs} = 178214.286 Hz}
 \noindent Byl obdržen kmitočet hranice nepropustného pásma normované dolní propusti (NDP) $Os$ [1/s].
-\MapleOutput{Os = 4.455 1/s}.
+\MapleOutput{Os = 4.455 1/s}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{tolsch2.png}
 \caption{Toleranční schéma navrhované pásmové propusti}
 \end{figure}
-\noindent Stupeň Cauerovy aproximace normované dolní propusti byl určen jako $order = 4$. Pro sudý stupeň Cauerovy aproximace jsou definovány tři typy - A,B,C. Tyto typy se od sebe liší průběhem aproximační funkce. Byla zvolena aproximace typu C se shodnými zakončovacími odpory.
+\noindent Stupeň Cauerovy aproximace normované dolní propusti byl určen jako $order = 4$. Pro sudý stupeň Cauerovy aproximace jsou definovány tři typy - A, B, C. Tyto typy se od sebe liší průběhem aproximační funkce. Byla zvolena aproximace typu C se shodnými zakončovacími odpory.
 \noindent Dále byla funkcí $Cauer\_asnew$ určena nová hodnota útlumu v nepropustném pásmu NDP.
 \MapleOutput{asnew := 81.719 dB}
 \begin{align}
@@ -51,7 +51,7 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \noindent Charakteristika byla vykreslena z přenosu funkcí $MagnitudeHdB$, která vypočte modul přenosu podle předpisu |H(j$\omega)$| a výsledek převede na $20 \cdot log{10} |H(j\omega)|)$.
 \subsection{Příčkové LC filtry}\label{s:LC}
 Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
-K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Podle literatury \cite{18} musí být při návrhu filtru zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. Pro LC filtry se používá kmitočtová oblast $10^{3} Hz -- 10^{2} MHz$.\\
+K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T články s LC prvky. Podle literatury \cite{18} musí být při návrhu filtru zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _c = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. Pro LC filtry se používá kmitočtová oblast $10^{3}$~Hz -- $10^{2}$~MHz.\\
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.13]{piclanky.png}
@@ -72,7 +72,8 @@ Pokud jsou parametry $a_{12}, a_{21}$ reálné a kladné, hovoříme o gyrátoru
 \includegraphics[scale=0.1]{gyr.png}
 \caption{Definice gyrátoru \label{s:G}}
 \end{figure}
-Podle literatury \cite{18} nelze gyrátor dobře realizovat s obyčejnými operačními zesilovači, běžně se používají /textit{General Impedance Converters (GIC)}. Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. V návrhu intehrovaných obvodů se také většinou nepoužívají rezistory kvůli místu na čipu, které zabírají. Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku \ref{s:GO} jsou podle literatury \cite{18} znázorněny dva gyrátory s kapacitorem. 
+Podle literatury \cite{18} nelze gyrátor dobře realizovat s obyčejnými operačními zesilovači, běžně se používají /textit{General Impedance Converters (GIC)}. Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. Navíc se induktory musí složitě vyrábět na danou hodnotu. V návrhu integrovaných obvodů se také většinou nepoužívají rezistory kvůli místu na čipu, které zabírají. \\
+Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku \ref{s:GO} jsou podle literatury \cite{18} znázorněny dva gyrátory s kapacitorem. 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{gyrator.png}
@@ -90,7 +91,7 @@ Zkombinování rovnic a eliminace V vede k rovnici neuzemněného induktoru mezi
 \begin{align}
 I_1 = I_2 = \frac{g_m^2}{pC}(V_1 - V_2) = \frac{1}{pL}(V_1 - V_2)
 \end{align}
-Z rovnice lze snadno odvodit, že kapacita kondenzátoru použitého při zapojení induktoru s OTA je rovna $C_L = L g_m ^2$. \\
+Z rovnice lze snadno odvodit, že kapacita kondenzátoru použitého jako náhrada zapojení induktoru v zapojení s OTA je rovna $C_L = L g_m ^2$. \\
 \subsection{Výpočet prvků LC filtru a přenosových funkcí}\label{s:VYP}
 \noindent Funkcí $DroppNLP$ byly vypočteny prvky LC příčkového filtru typu normovaná dolní propust (NDP). Zakončení bylo zvoleno standardní (common), odpory o hodnotě 1 $\Omega$, směr zpracování od posledního prvku (rear), s T strukturou (začíná zepředu podélným induktorem). Standardní (common) zakončení je oboustranné ($R_1 \neq 0, R_z \neq \infty$). Výstupem funkce je LC struktura s orientací prvků ve větvi podélně (direct) nebo příčně (shunt).
 \MapleOutput{block (1), [orientation = direct, elements = {L1 = 1.571}, Z = p L1]}
@@ -154,10 +155,6 @@ Zatím neodnormované prvky byly vyčísleny následovně
 \MapleOutput{C1 = 1.191*10^{-13}, C2 = 5.139*10^{-12}, C3 = 1.23*10^{-13}, C4 = 6.727*10^{-14}, C5 = 5.151*10^{-12}}
 \noindent Frekvenčně a impedančně odnormované odpory byly vypočteny podělením kmitočtem $fp \cdot 2 \pi$ a přibližnou hodnotou kapacity pro mikroelektronickou realizaci $C = 2 pF$.
 \MapleOutput{R1 = Rz = 418828.797}
-\noindent Odpory lze také získat převrácenou hodnotou minimální transkonduktance z datasheetu LM13700 (gm = 9600 $\mu$S)
-\begin{equation}
-R_N = R_1 = R_z = \frac{1}{g_m} = 104.167 \ \Omega.
-\end{equation}
 \noindent Využitím poznatků ze sekce \ref{s:GYR} byly dosazením do vztahu $C = L \cdot g_m^2$ s uvažováním minimální transkonduktance z datasheetu LM13700 (gm = 9600 $\mu$S) získány kapacity 
 \MapleOutput{CL1 = 5.762*10^{-10}, CL2 = 1.335*10^{-11}, CL3 = 5.58*10^{-10}, CL4 = 1.02*10^{-15}, CL5 = 1.332*10^{-11}}
 \noindent Výsledné hodnoty všech součástek s přesností na dvě desetinná místa jsou $C1 = 11.91$ pF, $C2 = 5.14$ pF, $C3 = 12.3$ pF, $C4 = 672.74$ pF, $C5 = 5.15$ pF, $C_{L1} = 57.62 $ nF, $C_{L2} = 133.52$ nF, $C_{L3} = 55.8$ nF, $C_{L4} = 1019.9$ pF, $C_{L5} = 133.21$ nF, $R1 = Rz = 418.83\ k\Omega$.
@@ -186,8 +183,9 @@ H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
 \end{align}
 \noindent Uvedené přenosy budou použity v analýze Pracanem.
 \subsection{Simulace obvodu}
-\noindent  Zapojení s OTA vychází z již uvedených principů v sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:VYP} pomocí kaskádní syntézy. Mezní kmitočet lze přeladit změnou vstupního proudu, nebo transkonduktance.
-\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann (2001) str. 639) a nahrazení odporů bloky OTA. Výsledné napětí bylo odebíráno z uzlu $V_{22}$ označeného na obrázku \ref{s:V1}. Šířka propustného pásma byla odečtena jako 110.75 kHz. Geometrický střed propustného pásma je 100 kHz.
+\noindent  Zapojení s OTA vychází z již uvedených principů v sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:ARC}. \\
+\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - literatura \cite{18} str. 639) a nahrazení odporů bloky OTA. Výsledné napětí bylo odebíráno z uzlu $V_{22}$ označeného na obrázku \ref{s:V1}. Šířka propustného pásma byla pro klidový stejnosměrný pracovní proud $I_{ABC} = 50$ $\mu$~A odečtena jako 110.75~kHz. Geometrický střed propustného pásma odpovídá 100~kHz. Přeladěním filtru změnou klidového stejnosměrného pracovního proudu na $I_{ABC} = 100$ $\mu$~A byla obdržena šířka pásma 225.88~kHz a geometrický střed propustného pásma 200~kHz. \\
+Pro obdržení geometrického středu propustného pásma $fm = 168.819$~kHz je třeba zvolit klidový stejnosměrný pracovní proud $I_{ABC} = 84.4$ $\mu$~A. Byla odečtena šířka pásma 202.78~kHz. 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.425]{maple.png}
@@ -196,7 +194,17 @@ H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{output1.png}
-\caption{Amplitudová a fázová charakteristika PP 4. řádu}
+\caption{Amplitudová a fázová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\mu$A}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{Capture.png}
+\caption{Amplitudová a fázová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\mu$A}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{capture2.png}
+\caption{Amplitudová a fázová charakteristika PP 4. řádu s $I_{ABC} = 84.4$ $\mu$A}
 \end{figure}
 \subsection{Vliv zátěže na funkci obvodu}
 \noindent V simulaci se samozřejmě předpokládá, že všechny OTA zesilovače jsou ideální. Chování filtru ve výsledku ovlivní nedokonalosti reálných OTA (ztráty, parazitní chyby). Další nevýhodou jsou kondenzátory a jejich odchylka od jmenovité hodnoty -- oproti tomu rezistory mají obecně minimální odchylku od jmenovité hodnoty. Z literatury \cite{18} také víme, že reálné transkonduktance nejsou idální zdroje proudu (s nulovou výstupní admitancí) a že většina $gm$-C bloků použitých v obvodu má nenulové výstupní admitance. Jejich chování bude tedy extrémně závislé na zátěži, což může úplně změnit zamýšlenou funkci obvodu. Například ve sčítacím obvodu na obrázku \ref{s:BLO}, popsaným rovnicí \ref{s:BLO3}, zátěžová admitance $Y_L$ změní $g_{m3}$ na $g_{m3} + Y_L$. Podobně zátěž $Y_L$ na ztrátovém integrátoru na obrázku \ref{s:OTA-INT} (popsaný rovnicí \ref{s:OTA-INT1}) způsobí změnu $g_m$ na $g_m + Y_L$ v přenosové funkci integrátoru. Proto by transkonduktanční obvody obecně měly být navrženy tak, aby základní bloky řídily vysoko-impedanční uzly (např. vstupy jiných OTA). Pokud mají být řízeny velké zátěže, obvod s OTA musí být řízen \textit{bufferem} (v pinoutu LM13700 na obrázku \ref{s:PIN} pin 7,8 pro první OTA zesilovač a 9,10 pro druhý OTA zesilovač). Případně lze jako \textit{buffer} použít operační zesilovač s jednotkovým zesílením.\\
@@ -221,8 +229,8 @@ Hlavním problémem ladění je přesné nalezení časové konstanty $C_U/g_m$,
 Dalšími problémy obecně u OTA, které mohou ovlivnit funkci obvodu, je nízké stejnosměrné zesílení, nízké \textit{UGBW} a vysoký šum. Tyto problémy se dají částečně vyřešit zvýšením transkonduktance. Zvýšením výstupní impedance se zvýší i stejnosměrné zesílení.
 \subsection{Zhodnocení funkčnosti}
 \noindent Pro návrh filtru ve spojitém časovém  pásmu se pro zhodnocení funkčnosti používá THD (\textit{total harmonic distortion}) a SNR (\textit{signal-to-noise ratio}). Hlavní vliv na THD má linearita transkonduktance, protože do systému filtru indukuje harmonické zkreslení (HD - \textit{harmonic distortion}). Pro nízké frekvence má na SNR vliv tepelný šum - ten může vzniknout vlivem nerovnoměrností struktury, teplotními kmity krystalové mřížky náhodným, či tepelným pohybem nabitých částic (zpravidla elektronů) v rámci elektrických vodičů. Teoreticky se dá říci, že tepelný šum není generován jen ve vodičích, jejichž teplota je rovna nebo téměř rovná absolutní nule. Jakákoliv vyšší teplota již znamená náhodný pohyb elektronů a tedy vznik šumu (literatura \cite{20}, \cite{21}). Vliv tepelného šumu ovlivňuje hlavně funkčnost OTA s menšími hodnotami transkonduktance. Tepelný šum je také znám jako 1/f šum, protože jeho spektrální hustota výkonu je inverzní k frekvenci (literatura \cite{2}). Ztráty způsobené šumem mohou být vzhledem ke konečnému zesílení kompenzovány předzesilovačem. \\
-Některá zmíněná zapojení s nekonečnou vstupní imepedancí mají poměrně vysokou výstupní impedanci. Kaskádní zapojení lze kompenzovat  \textit{bufferem}, což ale sníží šířku pásma celé struktury.\\
-Analýzou obvodu z obrázku \ref{s:PP4} a obvodu s hodnotami komponent z Maplu bylo obdrženo bylo určeno THD a šum. Šum zde byl počítán jako výkon signálu ve zvoleném uzlu vydělený celkovým výkonem tepelného šumu na standardní teplotě (27 $^{\circ}$C). Je to tedy poměr vstupního SNR k výstupnímu SNR. Jak lze vidět z tabulek \ref{s:THD1} a \ref{s:THD2}, odstup signál šum je nejmenší pro frekvenci 100 kHz odpovídající geometrickému středu propustného pásma.
+Některá zapojení s nekonečnou vstupní imepedancí mají poměrně vysokou výstupní impedanci. Kaskádní zapojení lze rovněž kompenzovat \textit{bufferem}, což ale sníží šířku pásma celé struktury.\\
+Analýzou obvodu z obrázku \ref{s:PP4} a obvodu s hodnotami komponent z Maplu bylo obdrženo bylo určeno THD a šum. Byl použit klidový stejnosměrný pracovní proud $I_{ABC} = 50$ $\mu$A odpovídající geometrickému středu propustného pásma 100~kHz. Šum zde byl počítán jako výkon signálu ve zvoleném uzlu vydělený celkovým výkonem tepelného šumu na standardní teplotě (27 $^{\circ}$C). Je to tedy poměr vstupního SNR k výstupnímu SNR. Jak lze vidět z tabulek \ref{s:THD1} a \ref{s:THD2}, odstup signál šum je nejmenší pro frekvenci 100~kHz odpovídající geometrickému středu propustného pásma.
 \begin{table}[h]
 \centering
   \begin{tabular}{ | c | c | c |}
@@ -247,7 +255,7 @@ Analýzou obvodu z obrázku \ref{s:PP4} a obvodu s hodnotami komponent z Maplu b
   \end{tabular}
 \caption[Šum pro PP 4. řádu]{Šum pro PP 4. řádu (zapojení \ref{s:PP4}) \label{s:THD2}}
 \end{table}
-\noindent Také bylo změřeno THD pro různé frekvence zdroje se základní frekvenci 100 kHz - viz tabulka \ref{s:THD3} a \ref{s:THD4}. Dle očekávání je nejnižší pro 100 kHz a co nejnižší zvolený počet harmonických frekvencí.
+\noindent Také bylo změřeno THD pro různé frekvence zdroje se základní frekvenci 100~kHz - viz tabulka \ref{s:THD3} a \ref{s:THD4}. Byly zvoleny různé frekvence zdroje - 1 a 100~kHz. Dle očekávání je nejnižší pro 100~kHz a co nejnižší zvolený počet harmonických frekvencí.
 \begin{table}[h]
 \centering
 \renewcommand{\arraystretch}{1.15}
