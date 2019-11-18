@@ -1,22 +1,22 @@
-\noindent Podle literatury \cite{18} je pro ideální OTA zesilovač (vstupní i výstupní impedance nulové) možno odpor nahradit obvodem s uzemněným neinvertujícím vstupem a zpětnou vazbou z invertujícího vstupu na výstup a to hodnotou
+\noindent Podle Schaumanna a Valkenburga \cite{18} je pro ideální OTA zesilovač (vstupní i výstupní impedance nulové) možno odpor nahradit obvodem s uzemněným neinvertujícím vstupem a zpětnou vazbou z invertujícího vstupu na výstup a to hodnotou
 \begin{align}
 R_{in} = \frac{1}{g_{m}},
 \end{align}
-kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu. Tato konfigurace jako odpor je užitečná např. k návrhu monolitických $g_m$-RC filtrů pouze s transkonduktancemi a kapacitami ($g_m$-C filtry - viz \ref{s:OTA}, \ref{s:GM-C}), také k náhradě velmi velkých odporů.
+kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu. Tato konfigurace jako odpor je užitečná např. k návrhu monolitických $g_m$-RC filtrů pouze s transkonduktancemi a kapacitami ($g_m$-C filtry, viz \ref{s:OTA}, \ref{s:GM-C}), také k náhradě velmi velkých odporů.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{image10.png}
 \caption[Náhradní obvod pro uzemněný rezistor]{Náhradní obvod pro uzemněný rezistor}
 \end{figure}
-\noindent Dále lze dle literatury \cite{18} pro nahrazení indukčnosti o impedanci $Z_L = 1/(sC)$ použít obvod s třemi OTA (obrázek \ref{s:IND0}). Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
+\noindent Dále lze dle Schaumanna a Valkenburga~\cite{18} pro nahrazení indukčnosti o impedanci $Z_L = 1/(pC)$ použít obvod s třemi OTA (obrázek~\ref{s:IND0}). Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
 Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}\label{s:vzt2}
-V_C &= \frac{g_{m1}}{sC}V_1 \\
-I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{sC}V_1.
+V_C &= \frac{g_{m1}}{sC}V_1, \\
+I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{pC}V_1.
 \end{align}
 Výsledná indukčnost - impedance vstupu byla vyjádřena vztahem \ref{s:vzt2}.
 \begin{align}
-Z_{in}(s) = \frac{V_1}{I_1} = s\frac{C}{g_{m1}g_{m2}}
+Z_{in}(p) = \frac{V_1}{I_1} = p\frac{C}{g_{m1}g_{m2}}
 \end{align}
 \noindent Byl obdržen induktor o hodnotě
 \begin{align}
@@ -32,14 +32,15 @@ L = \frac{C}{g_{m1}g_{m2}}.
 \includegraphics[scale=0.45]{image13.png}
 \caption[Náhradní obvod pro indukčnost]{Náhradní obvod pro indukčnost \label{s:IND}}
 \end{figure}
-\noindent Pro uzemněnou indukčnost o impedanci $Z_L = 1/(sC)$ byl podle literatury \cite{18} použit obvod na obrázku \ref{s:IND}. Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
+\\
+\noindent Pro uzemněnou indukčnost o impedanci $Z_L = 1/(pC)$ byl podle Schaumanna a Valkenburga \cite{18} použit obvod na obrázku \ref{s:IND}. Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}
-V_C &= \frac{g_{m1}}{sC}V_1 \\
-I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{sC}V_1.
+V_C &= \frac{g_{m1}}{pC}V_1, \\
+I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{pC}V_1.
 \end{align}
 Výsledná indukčnost - impedance vstupu byla vyjádřena vztahem
 \begin{align}
-Z_{in}(s) = \frac{V_1}{I_1} = s\frac{C}{g_{m1}g_{m2}}.
+Z_{in}(p) = \frac{V_1}{I_1} = p\frac{C}{g_{m1}g_{m2}}.
 \end{align}
 \subsection{Základní bloky}
 \begin{figure}[h]
@@ -47,7 +48,7 @@ Z_{in}(s) = \frac{V_1}{I_1} = s\frac{C}{g_{m1}g_{m2}}.
 \includegraphics[scale=0.45]{otos.png}
 \caption[Základní bloky s OTA]{Základní bloky s OTA a) integrující b) škálující c) sčítací \label{s:BLO}}
 \end{figure}
-\noindent Podle lieratury \cite{18} blok a) na obrázku \ref{s:BLO} slouží k realizaci invertujícího/neinvertujícího integrátoru s výsledným napětím
+\noindent Podle Schaumanna a Valkenburga \cite{18} blok a) na obrázku \ref{s:BLO} slouží k realizaci invertujícího nebo neinvertujícího integrátoru s~výsledným napětím
 \begin{equation}
 V_O = \frac{g_{m1}}{pC}(V_1 - V_2).
 \end{equation}
@@ -60,9 +61,9 @@ Blok c) na obrázku \ref{s:BLO} realizuje sčítací nebo rozdílový obvod s na
 V_O = -\frac{g_{m1}}{g_{m3}}V_1 + \frac{g_{m2}}{g_{m3}}V_2.\label{s:BLO3}
 \end{equation}
 \noindent Spojením těchto základních stavebních bloků se správnými znaménky lze získat různé funkční bloky.\\
-Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20 -- 20 000~Hz) lze chyby způsobené parazitními součástkami zanedbat, rovněž lze zanedbat chyby způsobené konečnou šířkou pásma.
+Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20--20 000~Hz) lze chyby způsobené parazitními součástkami zanedbat, rovněž lze zanedbat chyby způsobené konečnou šířkou pásma.
 \subsection{Odvození DP 2. řádu}\label{s:ODV}
-\noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje obrázek \ref{s:DPO}.
+\noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje obrázek~\ref{s:DPO}.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{circuit(2).png}
@@ -70,36 +71,36 @@ Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a
 \end{figure}
 \noindent Přenos obvodu byl vyjádřen jako
 \begin{align}
-H(s) = \frac{U_{out}}{U_{in}} = \frac{Z_2}{Z_1}, \quad Z_1 = sL,\quad Z_2 = \frac{\frac{R}{pC}}{R + \frac{1}{pC}}.
+H(p) = \frac{U_{out}}{U_{in}} = \frac{Z_2}{Z_1}, \quad Z_1 = pL,\quad Z_2 = \frac{\frac{R}{pC}}{R + \frac{1}{pC}}.
 \end{align}
 Výsledný přenos je roven 
 \begin{align}
-H(s) = \frac{\frac{\frac{R}{pC}}{R + \frac{1}{pC}}}{pL + \frac{\frac{R}{pC}}{R + \frac{1}{pC}}}.
+H(p) = \frac{\frac{\frac{R}{pC}}{R + \frac{1}{pC}}}{pL + \frac{\frac{R}{pC}}{R + \frac{1}{pC}}}.
 \end{align}
 Elementárními algebraickými úpravami a následným vynásobením členem $1/(LRC)$ byl získán výsledný přenos.
 \begin{align}\label{s:vzt4}
-H(s) = \frac{R}{p^2LRC + sL + R} = \frac{\frac{1}{LC}}{p^2 + \frac{p}{RC} + \frac{1}{LC}}.
+H(p) = \frac{R}{p^2LRC + pL + R} = \frac{\frac{1}{LC}}{p^2 + \frac{p}{RC} + \frac{1}{LC}}.
 \end{align}
-\noindent Využitím poznatků ze Sekce \ref{s:NAH} je možno za odpor a indukčnost dosadit do vztahu \ref{s:vzt4}. Byly uvažovány kapacitory o stejné hodnotě C.
+\noindent Využitím poznatků ze sekce \ref{s:NAH} je možno za odpor a indukčnost dosadit do vztahu \ref{s:vzt4}. Byly uvažovány kapacitory o stejné hodnotě C.
 \begin{align}
-H(s) = \frac{\frac{1}{\frac{C^2}{g_{m1}g_{m2}}}}{p^2 + \frac{p}{\frac{C}{g_{m2}}} + \frac{1}{\frac{C^2}{g_{m1}g_{m2}}}} = \frac{\frac{g_{m1}g_{m2}}{C^2}}{p^2 + \frac{pg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}} = \frac{g_{m1}g_{m2}}{p^2C^2 + pg_{m2}C + g_{m1}g_{m2}}.
+H(p) = \frac{\frac{1}{\frac{C^2}{g_{m1}g_{m2}}}}{p^2 + \frac{p}{\frac{C}{g_{m2}}} + \frac{1}{\frac{C^2}{g_{m1}g_{m2}}}} = \frac{\frac{g_{m1}g_{m2}}{C^2}}{p^2 + \frac{pg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}} = \frac{g_{m1}g_{m2}}{p^2C^2 + pg_{m2}C + g_{m1}g_{m2}}.
 \end{align}
 Porovnáním jmenovatele se jmenovatelem přenosu filtru 2. řádu byl obdržen vztah
 \begin{align}
-p^2 + p\frac{\omega _c}{Q} + \omega _c^2 &= p^2C^2 + pg_{m2}C + g_{m1}g_{m2}\\
-p^2 + p\frac{\omega _c}{Q} + \omega _c^2 &= p^2 + \frac{pg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}.
+p^2 + p\frac{\omega _0}{Q} + \omega _0^2 &= p^2C^2 + pg_{m2}C + g_{m1}g_{m2},\\
+p^2 + p\frac{\omega _0}{Q} + \omega _0^2 &= p^2 + \frac{pg_{m2}}{C} + \frac{g_{m1}g_{m2}}{C^2}.
 \end{align}
 Z tohoto vztahu byl vyjádřen mezní kmitočet jako 
 \begin{align}
-\omega _c^2 &= \frac{g_{m1}g_{m2}}{C^2} \\
-\omega _c &= \sqrt{\frac{g_{m1}g_{m2}}{C^2}}
+\omega _0^2 &= \frac{g_{m1}g_{m2}}{C^2}, \\
+\omega _0 &= \sqrt{\frac{g_{m1}g_{m2}}{C^2}}
 \end{align}
-a činitel jakosti dosazením za $\omega _c$
+a činitel jakosti dosazením za $\omega _0$
 \begin{align}
-Q = \frac{\omega _c}{\frac{g_{m2}}{C}} = \sqrt{\frac{g_{m1}}{g_{m2}}}.
+Q = \frac{\omega _0}{\frac{g_{m2}}{C}} = \sqrt{\frac{g_{m1}}{g_{m2}}}.
 \end{align}
 Pokud navíc byly uvažovány stejné transkonduktance $g_{m1}, \ g_{m2} = g_m$, byl obdržen výsledek
 \begin{align}
-\omega _c &= \sqrt{\frac{g_m^2}{C^2}},\\
+\omega _0 &= \sqrt{\frac{g_m^2}{C^2}},\\
 Q &= \sqrt{1} = 1.
 \end{align}
