@@ -5,7 +5,7 @@ Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitoč
 \\
 \noindent Podle dokumentace k bloku LM13700M je v simulaci přeladitelný přes 6 dekád a má skvělou linearitu transkonduktance. Doporučení napájení pro simulaci tohoto bloku je $\pm$~2~V až $\pm$~22~V. Je uvedeno, že zvětšuje šířku pásma střídavého proudu (\textit{AC Bandwidth}) a fázovou bezpečnost (\textit{Phase Margin}) více než 2x. Klidový stejnosměrný pracovní proud je podle dokumentace polovinou proudu reálného.\\
 \\
-\noindent Diferenciální stupeň je podle není zcela lineární a lze tedy připustit maximální vstupní rozdílové napětí v řádech stovek~mV. Překročení této meze vede k výraznému zkreslení signálu.\\
+\noindent Diferenciální stupeň je podle není zcela lineární a lze tedy připustit maximální vstupní rozdílové napětí v~řádech stovek~mV. Překročení této meze vede k výraznému zkreslení signálu.\\
 \\
 \noindent Bylo použito zapojení s paralelně řazeným uzemněným kapacitorem, odporem a indukčností (RLC rezonanční obvod), kde $R~=~1/g_m$ a $L~=~C/(g_{m1}g_{m2})$ a vstupní proud $I~=~g_mV$. Podobně jako v sekci \ref{s:ODV} bylo obrženo analogií k pasivnímu obvodu
 \begin{align}
@@ -71,10 +71,10 @@ H_{1 \rightarrow k}(p) = \frac{U_k (p)}{U_{in}(p)} = \prod _{n=1}^{k} H_n(p).
 \caption[Kaskádní zapojení]{Kaskádní zapojení \cite{9}}
 \end{figure}
 \\
-\noindent Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s poklesem 80~dB/dek a zároveň byla obdržena pásmová propust 2. řádu s poklesem 40~dB/dek. Mezní kmitočet pro dolní propust byl odečten jako 69.841~kHz. Šířka pásma pro PP byla 32.533~kHz. Výsledná napětí byla odebírána z uzlu V2 pro dolní propust a V1 pro pásmovou propust (obrázek \ref{s:DP4}). \\
+\noindent Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s poklesem 80~dB/dek a zároveň byla obdržena pásmová propust 2. řádu s poklesem 40~dB/dek. Mezní kmitočet pro dolní propust byl odečten jako 69.841~kHz. Šířka pásma pro PP byla 32.533~kHz. Výsledná napětí byla odebírána z~uzlu V2 pro dolní propust a V1 pro pásmovou propust (obrázek \ref{s:DP4}). \\
 \\
 \noindent Kaskádním zapojením dvou PP 2. řádu byla obdržena PP 4. řádu s poklesem 80~dB/dek. Šířka pásma byla odečtena jako 15.801~kHz.\\ 
 \\
-Zapojení spočívá ve spojení dvou integrátorů, přičemž jeden z nich je neinvertující ztrátový a druhý invertující bezeztrátový. Výsledné napětí je odebíráno z uzlu V1 označeného na obrázku \ref{s:PP4}.\\
+Zapojení spočívá ve spojení dvou integrátorů, přičemž jeden z nich je neinvertující ztrátový a druhý invertující bezeztrátový. Výsledné napětí je odebíráno z~uzlu V1 označeného na obrázku \ref{s:PP4}.\\
 \\
 \noindent Přeladěním vstupního proudu na 3 $\mu$A byly pro ta samá zapojení obdrženy průběhy na obrázcích \ref{s:O1}, \ref{s:O2} a  \ref{s:O3}. Mezní kmitočet je pro DP 2. řádu 531.574~kHz a pro DP 4. řádu 420.012~kHz. Šířka pásma je pro PP 1. řádu 249.932~kHz, pro PP 2. řádu 202.051~kHz a pro PP 4. řádu 92.893~kHz.
