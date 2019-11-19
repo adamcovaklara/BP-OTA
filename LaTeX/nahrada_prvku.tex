@@ -2,7 +2,7 @@
 \begin{align}
 R_{in} = \frac{1}{g_{m}},
 \end{align}
-kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu. Tato konfigurace jako odpor je užitečná např. k návrhu monolitických $g_m$-RC filtrů pouze s transkonduktancemi a kapacitami ($g_m$-C filtry, viz \ref{s:OTA}, \ref{s:GM-C}), také k náhradě velmi velkých odporů.
+kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu. Tato konfigurace jako odpor je užitečná např. k návrhu monolitických $g_m$-C filtrů pouze s transkonduktancemi a kapacitami ($g_m$-C filtry, viz \ref{s:OTA}, \ref{s:GM-C}), také k náhradě velmi velkých odporů.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{image10.png}
@@ -14,7 +14,7 @@ Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru 
 V_C &= \frac{g_{m1}}{sC}V_1, \\
 I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{pC}V_1.
 \end{align}
-Výsledná indukčnost - impedance vstupu byla vyjádřena vztahem \ref{s:vzt2}.
+Výsledná indukčnost --- impedance vstupu byla vyjádřena vztahem \ref{s:vzt2}.
 \begin{align}
 Z_{in}(p) = \frac{V_1}{I_1} = p\frac{C}{g_{m1}g_{m2}}
 \end{align}
@@ -38,7 +38,7 @@ L = \frac{C}{g_{m1}g_{m2}}.
 V_C &= \frac{g_{m1}}{pC}V_1, \\
 I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{pC}V_1.
 \end{align}
-Výsledná indukčnost - impedance vstupu byla vyjádřena vztahem
+Výsledná indukčnost --- impedance vstupu byla vyjádřena vztahem
 \begin{align}
 Z_{in}(p) = \frac{V_1}{I_1} = p\frac{C}{g_{m1}g_{m2}}.
 \end{align}
@@ -61,7 +61,7 @@ Blok c) na obrázku \ref{s:BLO} realizuje sčítací nebo rozdílový obvod s na
 V_O = -\frac{g_{m1}}{g_{m3}}V_1 + \frac{g_{m2}}{g_{m3}}V_2.\label{s:BLO3}
 \end{equation}
 \noindent Spojením těchto základních stavebních bloků se správnými znaménky lze získat různé funkční bloky.\\
-Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20--20 000~Hz) lze chyby způsobené parazitními součástkami zanedbat, rovněž lze zanedbat chyby způsobené konečnou šířkou pásma.
+Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20--20 000~Hz) naopak lze chyby způsobené parazitními součástkami i~chyby způsobené konečnou šířkou pásma zanedbat.
 \subsection{Odvození DP 2. řádu}\label{s:ODV}
 \noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje obrázek~\ref{s:DPO}.
 \begin{figure}[h]

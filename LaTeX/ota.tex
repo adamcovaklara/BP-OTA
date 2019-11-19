@@ -1,10 +1,10 @@
-Podle Schaumanna a Valkenburga \cite{13} se v telekomunikacích používají filtry v rozsahu kmitočtů desítek až stovek MHz, v bezdrátové komunikaci až v řádu GHz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5--10 $\%$ $\omega _0$ ($\omega _0 = f_m \cdot 2 \pi$, kde $f_m$ je mezní kmitočet) - tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
+Podle Schaumanna a Valkenburga \cite{13} se v~telekomunikacích používají filtry v rozsahu kmitočtů desítek až stovek MHz, v bezdrátové komunikaci až v řádu GHz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5--10 $\%$ $\omega _0$ ($\omega _0 = f_m \cdot 2 \pi$, kde $f_m$ je mezní kmitočet) --- tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
 \\
 Pro nízké frekvence se ke splnění těchto požadavků používají obvody se spínanými kapacitory (SC). Přepínaný kapacitor se chová jako rezistor, tudíž časová konstanta RC je definována poměrem kapacitorů a hodinovou (CLK) frekvencí, se kterou jsou přepínány. Pro vysokofrekvenční aplikace (v řádu GHz) se používají MOSFET-C filtry.\\
 \\
 Další z možných prvků, které jsou dostupné jak pro nízkofrekvenční aplikace, tak pro kmitočtový rozsah stovek megahertz, jsou transkonduktanční zesilovače. Jejich kmitočtové vlastnosti umožňují využití při konstrukci ARC (\textit{Active RC}) filtrů v pracovním kmitočtovém pásmu do cca 10 MHz a se speciálně konstruovanými OTA až do 100 MHz. Kmitočet dominantního pólu je běžně v oblasti stovek kHz až jednotek MHz (Martinek, Boreš, Hospodka \cite{12}).\\
 \\
-Transkonduktanční zesilovače (označují se též jako OTA (\textit{Operational Transconductance Amplifiers}) jsou napětím řízené zesilovače s proudovým výstupem - zdroje proudu
+Transkonduktanční zesilovače (označují se též jako OTA (\textit{Operational Transconductance Amplifiers}) jsou napětím řízené zesilovače s proudovým výstupem --- zdroje proudu
 \begin{equation}
 i_{out} = g_m(u_+ - u_-),
 \end{equation}
@@ -12,7 +12,7 @@ kde $u_+$ a $u_-$ jsou napětí invertujícího a neinvertujícího vstupu. Tran
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{image7.png}
-\caption[OTA - schematické značky]{OTA - schematické značky \cite{14}}
+\caption[OTA --- schematické značky]{OTA --- schematické značky \cite{14}}
 \end{figure}
 \begin{figure}[h]
 \centering
@@ -39,7 +39,7 @@ v_0(t) = \frac{1}{C}\int i(t)dt = \frac{1}{C}\int g_mv_1(t)dt.
 \end{figure}
 \noindent Toto zapojení integrátoru s uzemněným kondenzátorem se označuje jako OTA-C.\\
 \\
-Ztrátový integrátor lze utvořit sériovým zapojením dalšího OTA jako odporu se zápornou zpětnou vazbou. Rozdíl mezi ideálním a ztrátovým integrátorem lze pozorovat v modulové charakteristice - pro ztrátový je konstantní a pak teprve lineárně klesá se sklonem -20~dB/dek.\\
+Ztrátový integrátor lze utvořit sériovým zapojením dalšího OTA jako odporu se zápornou zpětnou vazbou. Rozdíl mezi ideálním a ztrátovým integrátorem lze pozorovat v modulové charakteristice --- pro ztrátový je konstantní a pak teprve lineárně klesá se sklonem 20~dB/dek.\\
 Po doplnění ztrátové vodivosti, kterou zde simuluje druhý zesilovač, paralelně k integrační kapacitě, byl obdržen vztah pro výstupní napětí
 \begin{equation}
 v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-).\label{s:OTA-INT1}
@@ -115,13 +115,13 @@ OTA bývá nejčastěji implementován v unipolární monolitické technologii (
 \begin{equation}
 f_m = \frac{GBP}{G}.
 \end{equation}
-\noindent Pro jednotkové zesílení je hodnota mezního kmitočtu rovna GBP. Někdy se místo GBP udává parametr UGB (\textit{Unity Gain Bandwidth} - šířka pásma při jednotkovém zesílení), který má shodný význam, nebo tranzitní kmitočet $f_T$. Tranzitní kmitočet $f_T$ je kmitočet, na kterém klesne zesílení OZ na 0 dB, tj. na kterém přestává OZ zesilovat. Šířka pásma s útlumem 3 dB je funkcí klidového stejnosměrného pracovního proudu a pro proudy pod 100 $\mu$A je platí přibližně 3~dB\ BW = $3 \cdot 10^{11} I_{ABC}$.
+\noindent Pro jednotkové zesílení je hodnota mezního kmitočtu rovna GBP. Někdy se místo GBP udává parametr UGB (\textit{Unity Gain Bandwidth} --- šířka pásma při jednotkovém zesílení), který má shodný význam, nebo tranzitní kmitočet $f_T$. Tranzitní kmitočet $f_T$ je kmitočet, na kterém klesne zesílení OZ na 0 dB, tj. na kterém přestává OZ zesilovat. Šířka pásma s útlumem 3 dB je funkcí klidového stejnosměrného pracovního proudu a pro proudy pod 100 $\mu$A je platí přibližně 3~dB\ BW = $3 \cdot 10^{11} I_{ABC}$.
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h]
 \scalebox{0.9}{%
   \begin{tabular}{ | c | >{\centering\arraybackslash}p{1.25cm}| >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.2cm} | >{\centering\arraybackslash}p{1.35cm} |>{\centering\arraybackslash}p{1.2cm} |>{\centering\arraybackslash}p{1cm} |}
     \hline
-      & GBP & SR & Výstupní proud na kanál & $I_b$ - vstupní klidový proud & $V_{os}$ - vstupní napěťová nesymetrie & Provozní napájecí proud & Minimální transkonduktance & Napájecí napětí &  Šířka pásma 3 dB & Cena \\ \hline
+      & GBP & SR & Výstupní proud na kanál & $I_b$ --- vstupní klidový proud & $V_{os}$ --- vstupní napěťová nesymetrie & Provozní napájecí proud & Minimální transkonduktance & Napájecí napětí &  Šířka pásma 3 dB & Cena \\ \hline
     OPA615ID & 710 MHz & 2.5 kV/$\mu$s & 5 mA & 3 $\mu$A & 40 mV & 13 mA & 65 mA/V & 8--12.4 V & 710 MHz & 285.22 Kč Kč\\ \hline
     OPA860ID & 470 MHz & 3.5 kV/$\mu$s & 15 mA & 5 $\mu$A & 12 mV & 11.2 mA & 80 mA/V & 5--13 V & 470 MHz & 168.22 Kč\\ \hline
     OPA861ID & 400 MHz & 900 V/$\mu$s & 15 mA & 1 $\mu$A & 12 mV & 5.4 mA & 65 mA/V & 4--12.6 V & 80 MHz & 82.68 Kč\\ \hline
@@ -135,7 +135,7 @@ f_m = \frac{GBP}{G}.
 \scalebox{0.9}{%
   \begin{tabular}{ | c | >{\centering\arraybackslash}p{1.25cm}| >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1.3cm} | >{\centering\arraybackslash}p{1.4cm} | >{\centering\arraybackslash}p{1.25cm} |>{\centering\arraybackslash}p{1.25cm} |>{\centering\arraybackslash}p{1cm} |}
     \hline
-      & GBP & SR & Výstupní proud na kanál & $I_b$ - vstupní klidový proud & $I_{os}$ - vstupní proudová nesymetrie & Provozní napájecí proud & Minimální transkonduktance & Napájecí napětí & CMMR & Cena \\ \hline
+      & GBP & SR & Výstupní proud na kanál & $I_b$ --- vstupní klidový proud & $I_{os}$ --- vstupní proudová nesymetrie & Provozní napájecí proud & Minimální transkonduktance & Napájecí napětí & CMMR & Cena \\ \hline
     LM13700M & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 1.3 mA & 6700 $\mu$S & 10--36 V & 80--110 dB & 32.50 Kč \\ \hline
     NE5517DG & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V & 80 dB & 43.42 Kč \\ \hline
     AU5517DR2G & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V & 80 dB & 64.48 Kč \\ \hline
@@ -145,7 +145,7 @@ f_m = \frac{GBP}{G}.
   \caption[Porovnání integrovaných obvodů se dvěma OTA]{\label{tab:Porovnání IC se dvěma OTA}Porovnání IC se dvěma OTA \cite{18}}
   \end{table}
 \end{center}
-\noindent Pro realizaci přeladitelného filtru byl zvolen LM13700M kvůli provoznímu napájecímu proudu (1.3 mA), rozpětí napájecího napětí (10 –- 36 V) a cenové dostupnosti (32.50\ Kč). Součástky NJM13700, NJM13600 a LM13600 se dají zakoupit, ale mají plánované vyřazení z výroby kvůli zastarání. \\
+\noindent Pro realizaci přeladitelného filtru byl zvolen LM13700M kvůli provoznímu napájecímu proudu (1.3 mA), rozpětí napájecího napětí (10–-36 V) a cenové dostupnosti (32.50\ Kč). Součástky NJM13700, NJM13600 a LM13600 se dají zakoupit, ale mají plánované vyřazení z výroby kvůli zastarání. \\
 \\
 LM13700 má linearizující diody a buffery s diferenciálním vstupem a push-pull výstupem. Dva zesilovače na čipu mají stejné napájení, ale jinak fungují nezávisle na sobě. Linearizační diody snižují zkreslení, a tak umožňují vyšší hodnoty amplitudy vstupního signálu. Výsledkem je zesílení odstupu signál-šum o 10 dB (0.5~\% THD). Když analogový signál prochází nelineárním zařízením, k původnímu signálu jsou přimíchány další frekvence. THD je způsobem posouzení rozsahu zkreslení.\\
 \\
@@ -173,7 +173,7 @@ Porovnání ceny typů LM13700 je uvedeno v tabulce níže. Parametry jsou stejn
 \includegraphics[scale=0.55]{image6.png}
 \caption[Pinout LM13700M]{Pinout LM13700M \cite{20} \label{s:PIN}}
 \end{figure}
-\noindent Vnitřní zapojení LM13700 na obrázku \ref{s:OTA} obsahuje symetrický rozdílový zesilovací stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Tento diferenční stupeň pracuje jako měnič vstupního rozdílového napětí na diferenční proudový signál, který je převeden proudovými zrcadly (\textit{Current Mirror}) na výstupní svorky obvodu. Proudová zrcadla zde tvoří dvojice diod a tranzistorů - referenční proud tekoucí v jedné větvi obvodu se \uv{zrcadlí} ~v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem (viz Motchenbacher, Connelly \cite{21}).
+\noindent Vnitřní zapojení LM13700 na obrázku \ref{s:OTA} obsahuje symetrický rozdílový zesilovací stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Tento diferenční stupeň pracuje jako měnič vstupního rozdílového napětí na diferenční proudový signál, který je převeden proudovými zrcadly (\textit{Current Mirror}) na výstupní svorky obvodu. Proudová zrcadla zde tvoří dvojice diod a tranzistorů --- referenční proud tekoucí v jedné větvi obvodu se \uv{zrcadlí} ~v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem (viz Motchenbacher, Connelly \cite{21}).
 \\
 \\noindent Významnou vlastností OTA je možnost změny transkonduktance $g_m$ změnou klidového stejnosměrného pracovního proudu vstupního diferenčního stupně. Řízení může být buď napěťové nebo proudové.
 \begin{figure}[h]
