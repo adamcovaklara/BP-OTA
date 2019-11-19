@@ -34,10 +34,8 @@ asnew&= 10 \cdot log_{10}\left(1 + \left( \frac{\epsilon}{kl\_new}\right)^2\righ
 k &= \frac{1}{Os}\\
 kl\_new &= k^{order}\left(\prod_{i=1}^{n}JacobiCD\left(\frac{(2i - 1 + m)EllipticK(k)}{order},k\right)\right)^4,
 \end{align}
-\noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Jakobiho eliptických funkcí je 12 a vycházejí ze škálování na jednotkové elipse (cos $\phi$, sin $\phi$ se neváží k jednotkovému kruhu, ale k elipse). $JacobiCD$ funkce je definována jako podíl cosinu Jakobiho funkce s dvěma parametry ($JacobiAM(z,k)$) a derivace této funkce podle prvního parametru z.
-\begin{align}
-EllipticK(k) = \int _0 ^1\left(\frac{1}{\sqrt{(-\_ \alpha _1^2+1)}\sqrt{(-k^2 \_ \alpha _1^2+1})}\right)d \_ \alpha _1
-\end{align}
+\noindent kde $m$ je celočíselný zbytek po dělení řádu 2 a $n$ celočíselný výsledek dělení. Jakobiho eliptických funkcí je 12 a vycházejí ze škálování na jednotkové elipse (cos $\phi$, sin $\phi$ se neváží k jednotkovému kruhu, ale k elipse). \\
+\\
 Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli přenosové funkce $Gc$, póly a nuly přenosové funkce $poles, zeros$ pomocí funkce $CauerCPolesZeros$. Počet pólů je dán řádem filtru $order$ a počet nul pro aproximaci typu C je roven $order = 2$. Dále byla spočtena Caurerova aproximace typu C - provozní činitel přenosu $G$ jako racionální lomená funkce $G(p) = 1/H(p)$, charakteristická funkce $chf$ jako $\Phi(p)$ s nulami a póly na imaginární ose a nuly přenosu. Charakteristická funcke má shodný jmenovatel s $G(p)$.
 \MapleOutput{Gc, poles, zeros := 94.811,}
 \MapleOutput{[-0.478 + 0.343 I, -0.478 - 0.343 I, -0.161 + 0.983 I, -0.161 - 0.983 I]),}
@@ -52,22 +50,22 @@ Následně byl spočten koeficient nejvyšší mocniny polynomu ve jmenovateli p
 \subsection{Příčkové LC filtry}\label{s:LC}
 Pasivní dolní propust je realizována zapojením induktoru ke vstupnímu napětí a k této větvi je následně zapojen paralelně rezistor. Pasivní horní propust má ke vstupu připojený sériově rezistor a poté k této větvi paralelně induktor. \\
 \\
-K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T~články s LC prvky. Podle Vedrala a Svatoše \cite{19} musí být při návrhu filtru zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _0 = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. Pro LC filtry se používá kmitočtová oblast $10^{3}$~Hz--$10^{2}$~MHz.\\
+K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T~články s LC prvky. Podle Vedrala a Svatoše \cite{8} musí být při návrhu filtru zohledněn vnitřní odpor zdroje $R_s$ a zatěžovací odpor $R_L$. LC filtry jsou tedy dvojitě zakončeny. Indukčnosti a kapacity prvků se určí z rovnic pro normované kapacity a indukčnosti. Normované hodnoty budou vypočteny pro mezní kmitočet $\omega _0 = 1/\sqrt{LC}$ a pro zatěžovací odpor $R_L$. Hodnoty prvků lze pro požadovanou aproximaci odečíst z tabulek. Pro LC filtry se používá kmitočtová oblast $10^{3}$~Hz--$10^{2}$~MHz.\\
 \\
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.13]{piclanky.png}
-\caption[Pasivní dolní propust n-tého řády s $\pi$ články]{Pasivní dolní propust n-tého řády s $\pi$ články \cite{18}}
+\caption[Pasivní dolní propust n-tého řády s $\pi$ články]{Pasivní dolní propust n-tého řády s $\pi$ články \cite{8}}
 \end{figure}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.08]{tclanky.png}
-\caption[Pasivní dolní propust n-tého řády s T články]{Pasivní dolní propust n-tého řády s T články \cite{18}}
+\caption[Pasivní dolní propust n-tého řády s T články]{Pasivní dolní propust n-tého řády s T články \cite{8}}
 \end{figure}
 \subsection{Gyrátory}\label{s:GYR}
 \noindent K převodu induktoru na zapojení s kapacitorem byla použita struktura označovaná jako gyrátor. Jde o náhradu původního obvodu s induktorem vhodným uspořádáním rezistorů a kapacitorů tak, že výsledná impedance vypadá jako induktor. Jelikož po této substituci v obvodu zůstanou jen R,C prvky, jedná se o ARC syntézu. \\
 \\
- Gyrátor je podle Martinka, Boreše a Hospodky \cite{10} typ invertoru. Pro invertory platí, že jejich vstupní impedanci lze napsat ve tvaru\begin{equation}
+ Gyrátor je podle Martinka, Boreše a Hospodky \cite{12} typ invertoru. Pro invertory platí, že jejich vstupní impedanci lze napsat ve tvaru\begin{equation}
 Z_{vst} = \frac{a_{12}}{a_{21}}\frac{1}{Z_L} = \frac{a_{12}}{a_{21}}Y_L.
 \end{equation}
 Pokud jsou parametry $a_{12}, a_{21}$ reálné a kladné, hovoříme o gyrátoru. Symbol gyrátoru je na obrázku \ref{s:G}. Gyrátor se nejúspěšněji dá realizovat paralelním spojením dvou napětím řízených zdrojů proudu s opačným znaménkem. Zapojení s OTA odpovídá dvěma zesilovačům, jeden s uzemněnou zápornou a druhý s uzemněnou kladnou svorkou vstupu. Výstup prvního ze zesilovačů je propojen s volnou vstupní svorkou druhého a naopak.
@@ -76,9 +74,9 @@ Pokud jsou parametry $a_{12}, a_{21}$ reálné a kladné, hovoříme o gyrátoru
 \includegraphics[scale=0.1]{gyr.png}
 \caption{Definice gyrátoru \label{s:G}}
 \end{figure}
-Podle Schaumanna a Valkenburga \cite{18} nelze gyrátor dobře realizovat s obyčejnými operačními zesilovači, běžně se používají \textit{General Impedance Converters} (GIC). Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. Navíc se induktory musí složitě vyrábět na danou hodnotu. V návrhu integrovaných obvodů se také většinou nepoužívají rezistory kvůli místu na čipu, které zabírají. \\
+Podle Schaumanna a Valkenburga \cite{13} nelze gyrátor dobře realizovat s obyčejnými operačními zesilovači, běžně se používají \textit{General Impedance Converters} (GIC). Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. Navíc se induktory musí složitě vyrábět na danou hodnotu. V návrhu integrovaných obvodů se také většinou nepoužívají rezistory kvůli místu na čipu, které zabírají. \\
 \\
-Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku \ref{s:GO} jsou podle Schaumanna a Valkenburga \cite{18} znázorněny dva gyrátory s kapacitorem. 
+Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku \ref{s:GO} jsou podle Schaumanna a Valkenburga \cite{13} znázorněny dva gyrátory s kapacitorem. 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{gyrator.png}
@@ -197,7 +195,7 @@ H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}.
 \subsection{Simulace obvodu}
 \noindent  Zapojení s OTA vychází z již uvedených principů v sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:ARC}. \\
 \\
-\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann, Valkenburg \cite{18} str. 639) a nahrazení odporů bloky OTA. Výsledné napětí bylo odebíráno z uzlu $V_{22}$ označeného na obrázku \ref{s:V1}. Šířka propustného pásma byla pro klidový stejnosměrný pracovní proud $I_{ABC} = 50$ $\mu$A odečtena jako 110.75~kHz. Geometrický střed propustného pásma odpovídá 100~kHz. Přeladěním filtru změnou klidového stejnosměrného pracovního proudu na $I_{ABC} = 100$ $\mu$A byla obdržena šířka pásma 225.88~kHz a geometrický střed propustného pásma 200~kHz. \\
+\noindent Bylo použito zapojení se vstupním odporem $R_0$ řazeným paralelně ke zdroji (vhodnější pro funkční simulaci - Schaumann, Valkenburg \cite{13} str. 639) a nahrazení odporů bloky OTA. Výsledné napětí bylo odebíráno z uzlu $V_{22}$ označeného na obrázku \ref{s:V1}. Šířka propustného pásma byla pro klidový stejnosměrný pracovní proud $I_{ABC} = 50$ $\mu$A odečtena jako 110.75~kHz. Geometrický střed propustného pásma odpovídá 100~kHz. Přeladěním filtru změnou klidového stejnosměrného pracovního proudu na $I_{ABC} = 100$ $\mu$A byla obdržena šířka pásma 225.88~kHz a geometrický střed propustného pásma 200~kHz. \\
 \\
 Pro obdržení geometrického středu propustného pásma $f_m = 168.819$~kHz je třeba zvolit klidový stejnosměrný pracovní proud $I_{ABC} = 84.4$ $\mu$A. Byla odečtena šířka pásma 202.78~kHz. 
 \begin{figure}[h]
@@ -221,9 +219,9 @@ Pro obdržení geometrického středu propustného pásma $f_m = 168.819$~kHz je
 \caption{Amplitudová a fázová charakteristika PP 4. řádu s $I_{ABC} = 84.4$ $\mu$A}
 \end{figure}
 \subsection{Vliv zátěže na funkci obvodu}
-\noindent V simulaci se samozřejmě předpokládá, že všechny OTA zesilovače jsou ideální. Chování filtru ve výsledku ovlivní nedokonalosti reálných OTA (ztráty, parazitní chyby). Další nevýhodou jsou kondenzátory a jejich odchylka od jmenovité hodnoty - oproti tomu rezistory mají obecně minimální odchylku od jmenovité hodnoty. Z literatury podle Schaumanna a Valkenburga \cite{18} také víme, že reálné transkonduktance nejsou idální zdroje proudu (s nulovou výstupní admitancí) a že většina $gm$-C bloků použitých v obvodu má nenulové výstupní admitance. Jejich chování bude tedy extrémně závislé na zátěži, což může úplně změnit zamýšlenou funkci obvodu. Například ve sčítacím obvodu na obrázku \ref{s:BLO}, popsaným rovnicí \ref{s:BLO3}, zátěžová admitance $Y_L$ změní $g_{m3}$ na $g_{m3} + Y_L$. Podobně zátěž $Y_L$ na ztrátovém integrátoru na obrázku \ref{s:OTA-INT} (popsaný rovnicí \ref{s:OTA-INT1}) způsobí změnu $g_m$ na $g_m + Y_L$ v přenosové funkci integrátoru. Proto by transkonduktanční obvody obecně měly být navrženy tak, aby základní bloky řídily vysoko-impedanční uzly (např. vstupy jiných OTA). Pokud mají být řízeny velké zátěže, obvod s OTA musí být řízen \textit{bufferem} (v~pinoutu LM13700 na obrázku \ref{s:PIN} pin 7, 8 pro první OTA zesilovač a 9,10 pro druhý OTA zesilovač). Případně lze jako \textit{buffer} použít operační zesilovač s jednotkovým zesílením.\\
+\noindent V simulaci se samozřejmě předpokládá, že všechny OTA zesilovače jsou ideální. Chování filtru ve výsledku ovlivní nedokonalosti reálných OTA (ztráty, parazitní chyby). Další nevýhodou jsou kondenzátory a jejich odchylka od jmenovité hodnoty - oproti tomu rezistory mají obecně minimální odchylku od jmenovité hodnoty. Z literatury podle Schaumanna a Valkenburga \cite{13} také víme, že reálné transkonduktance nejsou idální zdroje proudu (s nulovou výstupní admitancí) a že většina $gm$-C bloků použitých v obvodu má nenulové výstupní admitance. Jejich chování bude tedy extrémně závislé na zátěži, což může úplně změnit zamýšlenou funkci obvodu. Například ve sčítacím obvodu na obrázku \ref{s:BLO}, popsaným rovnicí \ref{s:BLO3}, zátěžová admitance $Y_L$ změní $g_{m3}$ na $g_{m3} + Y_L$. Podobně zátěž $Y_L$ na ztrátovém integrátoru na obrázku \ref{s:OTA-INT} (popsaný rovnicí \ref{s:OTA-INT1}) způsobí změnu $g_m$ na $g_m + Y_L$ v přenosové funkci integrátoru. Proto by transkonduktanční obvody obecně měly být navrženy tak, aby základní bloky řídily vysoko-impedanční uzly (např. vstupy jiných OTA). Pokud mají být řízeny velké zátěže, obvod s OTA musí být řízen \textit{bufferem} (v~pinoutu LM13700 na obrázku \ref{s:PIN} pin 7, 8 pro první OTA zesilovač a 9,10 pro druhý OTA zesilovač). Případně lze jako \textit{buffer} použít operační zesilovač s jednotkovým zesílením.\\
 \\
-\noindent K určení chování obvodu musíme mít podle Schaumanna a Valkenburga \cite{18} na paměti, že parazitní admitance $y_p = y_i + y_o$ je přítomna na každém uzlu spojujícím dva OTA zesilovače. Pokud pro jednoduchost předpokládáme, že všechny OTA jsou stejné a výstup $V_{out}$ je zatížen $Y_L$, dostaneme vztah
+\noindent K určení chování obvodu musíme mít podle Schaumanna a Valkenburga \cite{13} na paměti, že parazitní admitance $y_p = y_i + y_o$ je přítomna na každém uzlu spojujícím dva OTA zesilovače. Pokud pro jednoduchost předpokládáme, že všechny OTA jsou stejné a výstup $V_{out}$ je zatížen $Y_L$, dostaneme vztah
 \begin{equation}
 V_{out} = \frac{g_{m1}}{y_p}\frac{g_{m2}}{y_p}\frac{g_{m3}}{y_p} \ldots \frac{g_{mn}}{Y_L + y_p}(V_{in} - V_{out}).
 \end{equation}
@@ -239,17 +237,17 @@ Z_{out}(p) &= \frac{\frac{1}{y_p}}{1 + (\frac{g_m}{y_p})^n} \simeq \frac{1}{y_p}
 \end{align}
 \noindent Navrhnout transkonduktance tak, aby platilo $g_m \gg \lvert y_p \rvert$, $\lvert V_{out}/V_{in} \rvert  \simeq 1$ a $\lvert Z_{out} \rvert \simeq \lvert 1/y_p \rvert$ pro dostatečně velká n, je poměrně snadné. Obvykle se volí $n = 2$ nebo $n = 3$.
 \subsection{Ladění filtru}
-\noindent Pokud se analogový filtr má chovat podle specifikací, musí být navržen s přesnými hodnotami komponent. Podle Schaumanna a Valkenburga \cite{18} přenosová funkce závisí na frekvencích nul a pólů, Q faktoru pólů (Q faktor definuje, jak moc je systém podtlumený), zesílení - tyto parametry zase závisí na přesné hodnotě součástek. Kritické frekvence s jednotkami 1/čas jsou určeny absolutními hodnotami kapacitorů a rezistorů. Zesílení a Q faktor je určen poměrem kapacitorů a rezistorů. V diskrétních obvodech můžou být problémy vyřešeny laděním - buď před, nebo po dokončení návrhu. Pokud například máme časovou konstantu $T = RC$, můžeme změřit T a přizpůsobit rezistor (trimmerem), dokud neobdržíme požadovanou časovou konstantu $T_0$.\\
+\noindent Pokud se analogový filtr má chovat podle specifikací, musí být navržen s přesnými hodnotami komponent. Podle Schaumanna a Valkenburga \cite{13} přenosová funkce závisí na frekvencích nul a pólů, Q faktoru pólů (Q faktor definuje, jak moc je systém podtlumený), zesílení - tyto parametry zase závisí na přesné hodnotě součástek. Kritické frekvence s jednotkami 1/čas jsou určeny absolutními hodnotami kapacitorů a rezistorů. Zesílení a Q faktor je určen poměrem kapacitorů a rezistorů. V diskrétních obvodech můžou být problémy vyřešeny laděním - buď před, nebo po dokončení návrhu. Pokud například máme časovou konstantu $T = RC$, můžeme změřit T a přizpůsobit rezistor (trimmerem), dokud neobdržíme požadovanou časovou konstantu $T_0$.\\
 \\
 Hlavním problémem ladění je přesné nalezení časové konstanty $C_U/g_m$, která mění mezní kmitočet. Časovou konstanta může být obdržena změnou $g_m$. Pokud je zesílení integrátoru jednotkové, časová konstanta bude nastavena na $1/\omega _{ref}$. Pokud bude referenční signál poslán na vstup integrátoru a oba vstupní a výstupní signály přes dva indentické špičkové detektory, naladíme $g_m$ dokud jednotkové zesílení frekvence integrátoru nebude $f_{ref}$. Tomuto zapojení se říká \textit{Master-Slave Tuning}. Také lze použít ladění pomocí Q-faktoru. \\
 \\
 Dalšími problémy obecně u OTA, které mohou ovlivnit funkci obvodu, je nízké stejnosměrné zesílení, nízké UGBW a vysoký šum. Tyto problémy se dají částečně vyřešit zvýšením transkonduktance. Zvýšením výstupní impedance se zvýší i stejnosměrné zesílení.
 \subsection{Zhodnocení funkčnosti}
-\noindent Pro návrh filtru ve spojitém časovém  pásmu se pro zhodnocení funkčnosti používá THD (\textit{Total Harmonic Distortion}) a SNR (\textit{Signal-to-Noise Ratio}). SNR lze definovat jako poměr mezi přijatým signálem a šumem spojeným se získáním tohoto signálu. Hodnota SNR roste s rostoucí velikostí signálu. Maximální hodnoty SNR je dosaženo při zaznamenání maximálního signálu (tzn. při dosažení úrovně saturace) \cite{24}. Poměr větší než 1 (0 dB) znamená, že amplituda signálu je větší než šumu. Definice je podle \cite{25}
+\noindent Pro návrh filtru ve spojitém časovém  pásmu se pro zhodnocení funkčnosti používá THD (\textit{Total Harmonic Distortion}) a SNR (\textit{Signal-to-Noise Ratio}). SNR lze definovat jako poměr mezi přijatým signálem a šumem spojeným se získáním tohoto signálu. Hodnota SNR roste s rostoucí velikostí signálu. Maximální hodnoty SNR je dosaženo při zaznamenání maximálního signálu (tzn. při dosažení úrovně saturace) \cite{21}. Poměr větší než 1 (0 dB) znamená, že amplituda signálu je větší než šumu. Definice je podle \cite{22}
 \begin{equation}
 SNR_{dB} = 10 \cdot log_{10}\left(\frac{P_{signal}}{P_{noise}}\right).
 \end{equation}
- Hlavní vliv na THD má linearita transkonduktance, protože do systému filtru indukuje harmonické zkreslení (HD - \textit{Harmonic Distortion}). Pro nízké frekvence má na SNR vliv tepelný šum - ten může vzniknout vlivem nerovnoměrností struktury, teplotními kmity krystalové mřížky náhodným, či tepelným pohybem nabitých částic (zpravidla elektronů) v rámci elektrických vodičů. Teoreticky se dá říci, že tepelný šum není generován jen ve vodičích, jejichž teplota je rovna nebo téměř rovná absolutní nule. Jakákoliv vyšší teplota již znamená náhodný pohyb elektronů a tedy vznik šumu (Motchenbacher \cite{20}, \cite{21}). Vliv tepelného šumu ovlivňuje hlavně funkčnost OTA s menšími hodnotami transkonduktance. Tepelný šum je také znám jako 1/f šum, protože jeho spektrální hustota výkonu je inverzní k frekvenci \cite{2}. Ztráty způsobené šumem mohou být vzhledem ke konečnému zesílení kompenzovány předzesilovačem. \\
+ Hlavní vliv na THD má linearita transkonduktance, protože do systému filtru indukuje harmonické zkreslení (HD - \textit{Harmonic Distortion}). Pro nízké frekvence má na SNR vliv tepelný šum - ten může vzniknout vlivem nerovnoměrností struktury, teplotními kmity krystalové mřížky náhodným, či tepelným pohybem nabitých částic (zpravidla elektronů) v rámci elektrických vodičů. Teoreticky se dá říci, že tepelný šum není generován jen ve vodičích, jejichž teplota je rovna nebo téměř rovná absolutní nule. Jakákoliv vyšší teplota již znamená náhodný pohyb elektronů a tedy vznik šumu (Motchenbacher \cite{23}, \cite{24}). Vliv tepelného šumu ovlivňuje hlavně funkčnost OTA s menšími hodnotami transkonduktance. Tepelný šum je také znám jako 1/f šum, protože jeho spektrální hustota výkonu je inverzní k frekvenci \cite{1}. Ztráty způsobené šumem mohou být vzhledem ke konečnému zesílení kompenzovány předzesilovačem. \\
 \\
 Některá zapojení s nekonečnou vstupní imepedancí mají poměrně vysokou výstupní impedanci. Kaskádní zapojení lze rovněž kompenzovat \textit{bufferem}, což ale sníží šířku pásma celé struktury.\\
 \\
