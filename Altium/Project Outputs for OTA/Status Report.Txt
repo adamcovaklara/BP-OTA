@@ -1,6 +1,11 @@
-   Printed Document[OTA.PcbDoc]
+Output: Simple BOM
+Type  : SimpleBOM
+From  : Project [OTA.PrjPCB]
+   Generated File[OTA.BOM]
+   Generated File[OTA.CSV]
 
-Files Generated   : 0
-Documents Printed : 1
 
-Finished Output Generation At 6:05:12 PM On 11/21/2019
+Files Generated   : 2
+Documents Printed : 0
+
+Finished Output Generation At 5:03:08 PM On 11/26/2019

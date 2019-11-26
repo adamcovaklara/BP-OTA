@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------
-NCDrill File Report For: OTA.PcbDoc   11/21/2019  6:02:35 PM
+NCDrill File Report For: OTA.PcbDoc   11/26/2019  5:03:01 PM
 ---------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -8,9 +8,9 @@ EIA File   : OTA.DRL
 
 Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
 ---------------------------------------------------------------------------
-T1        28mil (0.7112mm)         Round          11               9.92 Inch (252.04 mm)
-T2        35mil (0.889mm)          Round          6                7.88 Inch (200.15 mm)
+T1        28mil (0.7112mm)         Round          7                7.12 Inch (180.95 mm)
+T2        35mil (0.889mm)          Round          6                6.85 Inch (174.03 mm)
 ---------------------------------------------------------------------------
-Totals                                            17               17.80 Inch (452.19 mm)
+Totals                                            13               13.98 Inch (354.98 mm)
 
 Total Processing Time (hh:mm:ss) : 00:00:00

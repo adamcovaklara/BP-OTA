@@ -1,24 +1,24 @@
 Protel Design System Design Rule Check
-PCB File : C:\Users\klara pacalova\Desktop\ota\OTA.PcbDoc
-Date     : 11/21/2019
-Time     : 5:56:07 PM
+PCB File : C:\Users\klara pacalova\Downloads\BP-OTA-master\Altium\OTA.PcbDoc
+Date     : 11/26/2019
+Time     : 5:03:36 PM
 
-Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
-Rule Violations :0
-
-Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
-Rule Violations :0
-
-Processing Rule : Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (All)
-Rule Violations :0
-
-Processing Rule : Clearance Constraint (Gap=10mil) (All),(All)
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
 Rule Violations :0
 
 Processing Rule : Broken-Net Constraint ( (All) )
 Rule Violations :0
 
-Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Processing Rule : Clearance Constraint (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
 Rule Violations :0
 
 

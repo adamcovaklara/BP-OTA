@@ -37,34 +37,6 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 
 [Document2]
-DocumentPath=..\..\Downloads\Imported C0402C100K5GACAUTO.lia\C0402C100K5GACAUTO.LOG
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-
-[Document3]
-DocumentPath=..\..\Downloads\Imported C0402C100K5GACAUTO.lia\C0402C100K5GACAUTO.PCBLIB
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-
-[Document4]
 DocumentPath=OTA.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -82,33 +54,30 @@ ClassGenNCAutoScope=None
 DocumentPath=ProjectOutputs\Design Rule Check - OTA.html
 
 [GeneratedDocument2]
-DocumentPath=..\STPMIC1\Luftburg_1.0.PcbDoc.htm
-
-[GeneratedDocument3]
 DocumentPath=Project Outputs for OTA\OTA.BOM
 
-[GeneratedDocument4]
+[GeneratedDocument3]
 DocumentPath=Project Outputs for OTA\OTA.CSV
 
-[GeneratedDocument5]
+[GeneratedDocument4]
 DocumentPath=Project Outputs for OTA\OTA.DRL
 
-[GeneratedDocument6]
+[GeneratedDocument5]
 DocumentPath=Project Outputs for OTA\OTA.DRR
 
-[GeneratedDocument7]
+[GeneratedDocument6]
 DocumentPath=Project Outputs for OTA\OTA.EXTREP
 
-[GeneratedDocument8]
+[GeneratedDocument7]
 DocumentPath=Project Outputs for OTA\OTA.LDP
 
-[GeneratedDocument9]
+[GeneratedDocument8]
 DocumentPath=Project Outputs for OTA\OTA.REP
 
-[GeneratedDocument10]
+[GeneratedDocument9]
 DocumentPath=Project Outputs for OTA\OTA.RUL
 
-[GeneratedDocument11]
+[GeneratedDocument10]
 DocumentPath=Project Outputs for OTA\OTA.TXT
 
 [OutputGroup1]
@@ -293,7 +262,7 @@ TargetPrinter=PDFCreator
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=BOM_PartType
 OutputName1=Bill of Materials
-OutputDocumentPath1=
+OutputDocumentPath1=C:\Users\klara pacalova\Downloads\BP-OTA-master\Altium\OTA.PcbDoc
 OutputEnabled1=1
 OutputDefault1=0
 OutputType2=ComponentCrossReference
