@@ -111,21 +111,21 @@ Využitím zapojení na obrázku \ref{s:OTA} a principů CCII lze získat modifi
 \end{figure}
 \newpage
 \subsection{IC s OTA}
-OTA bývá nejčastěji implementován v unipolární monolitické technologii (CMOS) a v případě, že se jedná o~reálný prvek, má převážně kapacitní charakter (vstupní impedance se stává kapacitou). Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 85--290~Kč. IC s dvěma zesilovači v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\mu$s), mnohem menší výstupní proud (650 $\mu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí pro pouzdro čipu s 2 OTA je 35--65~Kč. Ceny v tabulce jsou uváděny pro jednu součástku k 10. 11. 2019. Pokud se vyrábí více verzí součástky, je vždy pro přehlednost uvedena pouze jedna. GBP (\textit{Gain-Bandwidth Product}) v tabulce je získán vynásobením hodnoty kmitočtu dominantního pólu celkovým zesílením. Například, podle Michala \cite{14}, je-li navrhován zesilovač se zesílením G, je hodnota mezního kmitočtu pro pokles 3 dB dána vztahem
+OTA bývá nejčastěji implementován v unipolární monolitické technologii (CMOS) a v případě, že se jedná o~reálný prvek, má převážně kapacitní charakter (vstupní impedance se stává kapacitou). Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 85--290~Kč. IC s dvěma zesilovači v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\upmu$s), mnohem menší výstupní proud (650 $\upmu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí pro pouzdro čipu s 2 OTA je 35--65~Kč. Ceny v tabulce jsou uváděny pro jednu součástku k 10. 11. 2019. Pokud se vyrábí více verzí součástky, je vždy pro přehlednost uvedena pouze jedna. GBP (\textit{Gain-Bandwidth Product}) v tabulce je získán vynásobením hodnoty kmitočtu dominantního pólu celkovým zesílením. Například, podle Michala \cite{14}, je-li navrhován zesilovač se zesílením G, je hodnota mezního kmitočtu pro pokles 3 dB dána vztahem
 \begin{equation}
 f_m = \frac{GBP}{G}.
 \end{equation}
-\noindent Pro jednotkové zesílení je hodnota mezního kmitočtu rovna GBP. Někdy se místo GBP udává parametr UGB (\textit{Unity Gain Bandwidth} --- šířka pásma při jednotkovém zesílení), který má shodný význam, nebo tranzitní kmitočet $f_T$. Tranzitní kmitočet $f_T$ je kmitočet, na kterém klesne zesílení OZ na 0 dB, tj. na kterém přestává OZ zesilovat. Šířka pásma s útlumem 3 dB je funkcí klidového stejnosměrného pracovního proudu a pro proudy pod 100 $\mu$A je platí přibližně 3~dB\ BW = $3 \cdot 10^{11} I_{ABC}$.
+\noindent Pro jednotkové zesílení je hodnota mezního kmitočtu rovna GBP. Někdy se místo GBP udává parametr UGB (\textit{Unity Gain Bandwidth} --- šířka pásma při jednotkovém zesílení), který má shodný význam, nebo tranzitní kmitočet $f_T$. Tranzitní kmitočet $f_T$ je kmitočet, na kterém klesne zesílení OZ na 0 dB, tj. na kterém přestává OZ zesilovat. Šířka pásma s útlumem 3 dB je funkcí klidového stejnosměrného pracovního proudu a pro proudy pod 100 $\upmu$A je platí přibližně 3~dB\ BW = $3 \cdot 10^{11} I_{ABC}$.
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h]
 \scalebox{0.9}{%
   \begin{tabular}{ | c | >{\centering\arraybackslash}p{1.25cm}| >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.2cm} | >{\centering\arraybackslash}p{1.35cm} |>{\centering\arraybackslash}p{1.2cm} |>{\centering\arraybackslash}p{1cm} |}
     \hline
       & GBP & SR & Výstupní proud na kanál & $I_b$ --- vstupní klidový proud & $V_{os}$ --- vstupní napěťová nesymetrie & Provozní napájecí proud & Minimální transkonduktance & Napájecí napětí &  Šířka pásma 3 dB & Cena \\ \hline
-    OPA615ID & 710 MHz & 2.5 kV/$\mu$s & 5 mA & 3 $\mu$A & 40 mV & 13 mA & 65 mA/V & 8--12.4 V & 710 MHz & 285.22 Kč Kč\\ \hline
-    OPA860ID & 470 MHz & 3.5 kV/$\mu$s & 15 mA & 5 $\mu$A & 12 mV & 11.2 mA & 80 mA/V & 5--13 V & 470 MHz & 168.22 Kč\\ \hline
-    OPA861ID & 400 MHz & 900 V/$\mu$s & 15 mA & 1 $\mu$A & 12 mV & 5.4 mA & 65 mA/V & 4--12.6 V & 80 MHz & 82.68 Kč\\ \hline
-     LT1228CS8\#PBF & 100 MHz & 500 V/$\mu$s & 65 mA & 0.4$\mu$A  & 3 mV & 9 mA  & 0.75 mA/V & 4--36 V & 80 MHz &  210.34 Kč\\
+    OPA615ID & 710 MHz & 2.5 kV/$\upmu$s & 5 mA & 3 $\upmu$A & 40 mV & 13 mA & 65 mA/V & 8--12.4 V & 710 MHz & 285.22 Kč Kč\\ \hline
+    OPA860ID & 470 MHz & 3.5 kV/$\upmu$s & 15 mA & 5 $\upmu$A & 12 mV & 11.2 mA & 80 mA/V & 5--13 V & 470 MHz & 168.22 Kč\\ \hline
+    OPA861ID & 400 MHz & 900 V/$\upmu$s & 15 mA & 1 $\upmu$A & 12 mV & 5.4 mA & 65 mA/V & 4--12.6 V & 80 MHz & 82.68 Kč\\ \hline
+     LT1228CS8\#PBF & 100 MHz & 500 V/$\upmu$s & 65 mA & 0.4$\upmu$A  & 3 mV & 9 mA  & 0.75 mA/V & 4--36 V & 80 MHz &  210.34 Kč\\
     \hline
   \end{tabular}}
   \caption[Porovnání integrovaných obvodů s jedním OTA]{\label{tab:Porovnání IC s jedním OTA}Porovnání IC s jedním OTA \cite{18}}
@@ -136,11 +136,11 @@ f_m = \frac{GBP}{G}.
   \begin{tabular}{ | c | >{\centering\arraybackslash}p{1.25cm}| >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1.3cm} | >{\centering\arraybackslash}p{1.4cm} | >{\centering\arraybackslash}p{1.25cm} |>{\centering\arraybackslash}p{1.25cm} |>{\centering\arraybackslash}p{1cm} |}
     \hline
       & GBP & SR & Výstupní proud na kanál & $I_b$ --- vstupní klidový proud & $I_{os}$ --- vstupní proudová nesymetrie & Provozní napájecí proud & Minimální transkonduktance & Napájecí napětí & CMMR & Cena \\ \hline
-    LM13700M & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 1.3 mA & 6700 $\mu$S & 10--36 V & 80--110 dB & 32.50 Kč \\ \hline
-    NE5517DG & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V & 80 dB & 43.42 Kč \\ \hline
-    AU5517DR2G & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 5400 $\mu$S & 4--44 V & 80 dB & 64.48 Kč \\ \hline
-    NJM13600M & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 5 mV & 2.6 mA & 6700 $\mu$S & 36 V & 80 dB & 36.92 Kč \\ \hline
-    NJM13700M & 2 MHz & 50 V/$\mu$s & 650 $\mu$A & 5 $\mu$A & 4 mV & 2.6 mA & 6700 $\mu$S & 36 V & 80 dB & 37.70 Kč \\ \hline
+    LM13700M & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 4 mV & 1.3 mA & 6700 $\upmu$S & 10--36 V & 80--110 dB & 32.50 Kč \\ \hline
+    NE5517DG & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 5 mV & 2.6 mA & 5400 $\upmu$S & 4--44 V & 80 dB & 43.42 Kč \\ \hline
+    AU5517DR2G & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 5 mV & 2.6 mA & 5400 $\upmu$S & 4--44 V & 80 dB & 64.48 Kč \\ \hline
+    NJM13600M & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 5 mV & 2.6 mA & 6700 $\upmu$S & 36 V & 80 dB & 36.92 Kč \\ \hline
+    NJM13700M & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 4 mV & 2.6 mA & 6700 $\upmu$S & 36 V & 80 dB & 37.70 Kč \\ \hline
   \end{tabular}}
   \caption[Porovnání integrovaných obvodů se dvěma OTA]{\label{tab:Porovnání IC se dvěma OTA}Porovnání IC se dvěma OTA \cite{18}}
   \end{table}
