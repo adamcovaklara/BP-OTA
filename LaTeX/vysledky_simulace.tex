@@ -1,65 +1,780 @@
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.7]{bplphp.png}
-\caption{Obecná OTA struktura pro bikvad\label{s:BIK1}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=1000, xmax=10000000,
+    ymin=-90, ymax=10,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika DP 2. řádu \label{s:PET}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.7]{bplphp2.png}
-\caption{Amplitudová a fázová charakteristika DP,PP,HP\label{s:BIK2}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=1000, xmax=10000000,
+    ymin=-30, ymax=200,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP22.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika DP 2. řádu \label{s:PET}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.3]{bplp.png}
-\caption{Schéma zapojení DP 2. řádu, PP 1. řádu}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=1000, xmax=10000000,
+    ymin=-60, ymax=5,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP1.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 1. řádu \label{s:PET}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{bplp2.png}
-\caption{Amplitudová a fázová charakteristika DP 2. řádu, PP 1. řádu\label{s:PET}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=1000, xmax=10000000,
+    ymin=-100, ymax=100,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP12.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 1. řádu \label{s:PET}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.65]{bias.png}
-\caption{Amplitudová a fázová charakteristika DP 2. řádu, PP 1. řádu\label{s:PET1}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=1000, xmax=1000000,
+    ymin=-90, ymax=10,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP2-0.05u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika DP 2. řádu s $I_{ABC} = 0.05$ $\upmu$A \label{s:PET1}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{PP2O.png}
-\caption{Schéma zapojení DP 4. řádu, PP 2. řádu \label{s:DP4}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=1000, xmax=1000000,
+    ymin=-30, ymax=200,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP22-0.05u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika DP 2. řádu s $I_{ABC} = 0.05$ $\upmu$A \label{s:PET1}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{bplp3.png}
-\caption{Amplitudová a fázová charakteristika DP 4. řádu}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=1000, xmax=100000,
+    ymin=-30, ymax=5,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP1-0.05u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 1. řádu s $I_{ABC} = 0.05$ $\upmu$A \label{s:PET1}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.65]{PP2O2.png}
-\caption{Amplitudová a fázová charakteristika PP 2. řádu}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=1000, xmax=100000,
+    ymin=-100, ymax=100,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP12-0.05u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 1. řádu s $I_{ABC} = 0.05$ $\upmu$A \label{s:PET1}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{PP4O.png}
-\caption{Schéma zapojení PP 4. řádu \label{s:PP4}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=1000, xmax=10000000,
+    ymin=-200, ymax=20,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP4.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika DP 4. řádu}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.65]{PP4O2.png}
-\caption{Amplitudová a fázová charakteristika PP 4. řádu}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=1000, xmax=10000000,
+    ymin=-400, ymax=50,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP42.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika DP 4. řádu}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.65]{3mikro.png}
-\caption{Amplitudová a fázová charakteristika DP 2. řádu, PP 1. řádu \label{s:O1}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=1000, xmax=3500000,
+    ymin=-100, ymax=10,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 2. řádu}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{3mikro3.png}
-\caption{Amplitudová a fázová charakteristika DP 4. řádu, PP 2. řádu \label{s:O2}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=1000, xmax=3500000,
+    ymin=-200, ymax=200,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP22.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 2. řádu}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.65]{3mikro2.png}
-\caption{Amplitudová a fázová charakteristika PP 4. řádu \label{s:O3}}
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=1000, xmax=3500000,
+    ymin=-200, ymax=10,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP4.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 4. řádu}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=1000, xmax=3500000,
+    ymin=-800, ymax=0,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP42.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 4. řádu}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=10000000,
+    ymin=-60, ymax=10,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP2-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika DP 2. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O1}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=10000000,
+    ymin=-30, ymax=200,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP22-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika DP 2. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O1}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=10000000,
+    ymin=-40, ymax=5,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP1-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 1. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O1}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=10000000,
+    ymin=-100, ymax=100,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP12-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 1. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O1}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=10000000,
+    ymin=-120, ymax=10,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP4-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika DP 4. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O2}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=10000000,
+    ymin=-400, ymax=50,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {LP42-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika DP 4. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O2}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=10000000,
+    ymin=-90, ymax=10,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP2-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 2. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O2}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=10000000,
+    ymin=-500, ymax=-50,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP22-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 2. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O2}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=10000000,
+    ymin=-140, ymax=5,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP4-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O3}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=10000000,
+    ymin=-800, ymax=0,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {BP42-3u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 4. řádu s $I_{ABC} = 3$ $\upmu$A \label{s:O3}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=1000000,
+    ymin=-55, ymax=-5,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {50u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\upmu$A}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=1000000,
+    ymin=-200, ymax=200,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {50u2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\upmu$A}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=10000000,
+    ymin=-70, ymax=0,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {84u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 84.4$ $\upmu$A}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=10000000,
+    ymin=-200, ymax=200,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {84u2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 4. řádu s $I_{ABC} = 84.4$ $\upmu$A}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=10000000,
+    ymin=-70, ymax=0,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {100u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\upmu$A}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=10000000,
+    ymin=-200, ymax=200,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {100u2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption{Fázová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\upmu$A}
 \end{figure}

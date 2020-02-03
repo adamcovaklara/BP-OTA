@@ -4,14 +4,18 @@
 %
 \documentclass[twoside]{article}
 \usepackage[a4paper]{geometry}
-\geometry{verbose,tmargin=2.5cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\geometry{verbose,tmargin=4.5cm,bmargin=4cm,lmargin=4cm,rmargin=4cm}
 \usepackage{fancyhdr} % layout
+\usepackage[toc,page]{appendix} % prilohy
+\usepackage{afterpage} % prilohy
 \pagestyle{fancy} % layout
 \usepackage{dirtree} % vizualizace adresare
 \usepackage{siunitx} % SI jednotky
 \usepackage{upgreek}
 \usepackage{listings} % seznamy
 \usepackage{graphicx} % importovani grafickych souboru
+\usepackage{pgfplots}
+\usepackage{filecontents}
 \usepackage{amsmath} % matematicke konstanty
 \usepackage{amssymb} % matematicke symboly
 \usepackage[gen]{eurosym} % znak eura se stejnym fontem
@@ -96,6 +100,8 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \listoftables
 }
 
+\clearpage
+\setcounter{page}{1}
 \sekce{Úvod}
 \pagenumbering{arabic}
 \input{uvod.tex}
@@ -105,8 +111,6 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \input{nahrada_prvku.tex}
 \sekce{Simulace}
 \input{simulace.tex}
-\sekce{Výsledky simulace}
-\input{vysledky_simulace.tex}
 \sekce{Návrh v Maple}\label{s:MAPLE}
 \input{navrh.tex}
 \sekce{Praktická část}\label{s:PRAK}
@@ -116,6 +120,19 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \input{bibliografie.tex}
 \renewcommand{\headrulewidth}{0pt}
 \fancyhf{}
-\nadpis{Seznam přiložených souborů na CD}
+\newpage
+\section*{Příloha A: \\Seznam přiložených souborů na CD}
 \input{priloha.tex}
+\clearpage
+\section*{Příloha B: \\Výsledky simulace} 
+\input{vysledky_simulace.tex}
+\clearpage
+\section*{Příloha C: \\Schémata} 
+\input{schemata.tex}
+\clearpage
+\section*{Příloha D: \\Schémata a DPS pro bikvady} 
+\input{bikvady.tex}
+\clearpage
+\section*{Příloha E: \\Schéma a DPS přípravku} 
+\input{DPS.tex}
 \end{document}
