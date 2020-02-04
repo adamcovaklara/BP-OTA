@@ -17,7 +17,7 @@ Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitoč
 \includegraphics[scale=0.45]{biquad.png}
 \caption[Obecná OTA struktura pro bikvad]{Obecná OTA struktura pro bikvad \label{s:BIK}}
 \end{figure}
-\noindent Zapojení podle Schaumanna a Valkenburga \cite{13} je popsáno na obrázku \ref{s:BIK}. Zapojení v Multisimu a amplitudovou a fázovou charakteristiku PP, DP a HP lze vidět na obrázcích \ref{s:BIK1} a \ref{s:BIK2}. Uzlu označenému V1 odpovídá červený průběh (PP), uzlu V2 odpovídá modrý průběh (DP) a uzlu V3 zelený průbeh (HP). Zesilovače 1 a 2 na obrázku \ref{s:BIK} pracují jako invertující integrátory, zbývající zesilovače vytvářejí kladnou a zápornou zpětnou vazbu z výstupu integrátorů vedoucí na sčítací vstup. Znaménko vazby je určeno volbou vstupní svorky zesilovačů 3 a 4. Výstupy obvodu jsou napěťové (na výstupu sumačního zesilovače 5, resp. integrátoru 1 a 2). Buzení může být proudové (v obrázku \ref{s:BIK} na místě $V_1$ a $V_2$) nebo napěťové s využitím vstupních svorek transkonduktančních zesilovačů. Uvažováním napětí $V_a, V_b, V_c$ na obrázku \ref{s:BIK} jako vstupy byly obdrženy výstupní napětí
+\noindent Zapojení podle Schaumanna a Valkenburga \cite{13} je popsáno na obrázku \ref{s:BIK}. Zesilovače 1 a 2 na obrázku \ref{s:BIK} pracují jako invertující integrátory, zbývající zesilovače vytvářejí kladnou a zápornou zpětnou vazbu z výstupu integrátorů vedoucí na sčítací vstup. Znaménko vazby je určeno volbou vstupní svorky zesilovačů 3 a 4. Výstupy obvodu jsou napěťové (na výstupu sumačního zesilovače 5, resp. integrátoru 1 a 2). Buzení může být proudové (v obrázku \ref{s:BIK} na místě $V_1$ a $V_2$) nebo napěťové s využitím vstupních svorek transkonduktančních zesilovačů. Uvažováním napětí $V_a, V_b, V_c$ na obrázku \ref{s:BIK} jako vstupy byly obdrženy výstupní napětí
 \begin{align}
 V_1 &= \frac{pC_2g_{m1}(g_{m5}V_a - g_{m4}V_c) + g_{m1}g_{m2}g_{m4}V_b}{D(p)},\\
 V_2 &= \frac{(pC_1g_{m2}g_{m5} + g_{m1}g_{m2}g_{m3})V_b + g_{m1}g_{m2}(g_{m4}V_c - g_{m5}V_a)}{D(p)},\\
@@ -57,7 +57,7 @@ U_P(p) &= \frac{pC_2g_{m1}U_1 + g_{m1}(g_{m3}U_1 + g_{m2} - g_{m3}U_3)}{p^2C_1C_
 \caption[Zjednodušená verze bikvadu OTA-C]{Zjednodušená verze bikvadu OTA-C \label{s:BIK2}}
 \end{figure}
 \\
-\noindent K sestavení dolní propusti 4. řádu bylo použito kaskádní zapojení sestávající ze sériově zapojených bloků. Přenosové funkce jednotlivých bloků se násobí a pro k bloků platí
+\noindent K sestavení dolní propusti 4. řádu bylo použito kaskádní zapojení sestávající ze sériově zapojených bloků (viz základní blok na obrázku \ref{s:V1} -- z uzlu V1 je odbírán přenos pro PP, z uzlu V2 pro DP a pro 4. řád analogicky). Přenosové funkce jednotlivých bloků se násobí a pro k bloků platí
 \begin{equation}
 H_k(p) = \frac{U_k (p)}{U_{k-1}(p)}.
 \end{equation}
@@ -71,10 +71,8 @@ H_{1 \rightarrow k}(p) = \frac{U_k (p)}{U_{in}(p)} = \prod _{n=1}^{k} H_n(p).
 \caption[Kaskádní zapojení]{Kaskádní zapojení \cite{9}}
 \end{figure}
 \\
-\noindent Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s poklesem 80~dB/dek a zároveň byla obdržena pásmová propust 2. řádu s poklesem 40~dB/dek. Mezní kmitočet pro dolní propust byl odečten jako 69.841~kHz. Šířka propustného pásma pro PP byla 32.533~kHz. Výsledná napětí byla odebírána z~uzlu V2 pro dolní propust a V1 pro pásmovou propust (obrázek \ref{s:DP4}). \\
+\noindent Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s poklesem 80~dB/dek a zároveň byla obdržena pásmová propust 2. řádu s poklesem 40~dB/dek. Mezní kmitočet pro dolní propust byl odečten jako 69.841~kHz. Šířka propustného pásma pro PP byla 32.533~kHz. \\
 \\
-\noindent Kaskádním zapojením dvou PP 2. řádu byla obdržena PP 4. řádu s poklesem 80~dB/dek. Šířka propustného pásma byla odečtena jako 15.801~kHz.\\ 
-\\
-Zapojení spočívá ve spojení dvou integrátorů, přičemž jeden z nich je neinvertující ztrátový a druhý invertující bezeztrátový. Výsledné napětí je odebíráno z~uzlu V1 označeného na obrázku \ref{s:PP4}.\\
+\noindent Kaskádním zapojením dvou PP 2. řádu byla obdržena PP 4. řádu s poklesem 80~dB/dek. Šířka propustného pásma byla odečtena jako 15.801~kHz. Zapojení spočívá ve spojení dvou integrátorů, přičemž jeden z nich je neinvertující ztrátový a druhý invertující bezeztrátový. \\
 \\
 \noindent Přeladěním vstupního proudu na 3 $\upmu$A byly pro ta samá zapojení obdrženy průběhy na obrázcích \ref{s:O1}, \ref{s:O2} a  \ref{s:O3}. Mezní kmitočet je pro DP 2. řádu 531.574~kHz a pro DP 4. řádu 420.012~kHz. Šířka propustného pásma je pro PP~1.~řádu 249.932~kHz, pro PP 2. řádu 202.051~kHz a pro PP 4. řádu 92.893~kHz.
