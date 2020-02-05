@@ -1,9 +1,9 @@
 \subsection{Dolní a pásmová propust 2. řádu, 4. řádu}\label{s:DP2}
-\noindent Obvodová simulace byla realizována v programu Multisim. Bylo zvoleno symetrické napájení (\textit{Dual-Supply}) $V_{DD},V_{SS}~=~\pm~15$ V. Pro symetrické napájení jsou výrobcem udávány hodnoty $V_{-}~\in$~$[-16$~V~;~-4.75~V] a $V_{+}~\in$~$[4.75$~V~;~16~V]. Pro nesymetrické napájení (\textit{Single-Supply}) je doporučeno napájení $V_{+}~\in$~$[9.5$~V~;~32~V]. Pokud by bylo cíleno na nižší napájecí napětí, bylo by to na úkor linearity, šumu, stejnosměrného zesílení v~otevřených smyčkách a jednotkového zesílení šířky pásma, tzv. UGBW (\textit{Unity Gain Bandwidth}), což je šířka pásma zesilovače při 0 dB (nezesiluje --- jednotkové zesílení).\\
+\noindent Obvodová simulace byla realizována v programu Multisim. Bylo zvoleno symetrické napájení (\textit{Dual-Supply}) $V_{DD},V_{SS}~=~\pm~15$\,V. Pro symetrické napájení jsou výrobcem udávány hodnoty $V_{-}~\in$~$[-16$\,V~;~-4.75\,V] a $V_{+}~\in$~$[4.75$\,V~;~16\,V]. Pro nesymetrické napájení (\textit{Single-Supply}) je doporučeno napájení $V_{+}~\in$~$[9.5$\,V~;~32\,V]. Pokud by bylo cíleno na nižší napájecí napětí, bylo by to na úkor linearity, šumu, stejnosměrného zesílení v~otevřených smyčkách a jednotkového zesílení šířky pásma, tzv. UGBW (\textit{Unity Gain Bandwidth}), což je šířka pásma zesilovače při 0 dB (nezesiluje --- jednotkové zesílení).\\
 \\
-Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Klidový stejnosměrný pracovní proud $I_{ABC}~=~0.5$~$\upmu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100~kHz. Maximální vstupní proud je 2~mA. Pracovním proudem $I_{ABC}~\in$~$[5$~$\upmu$A~;~500~$\upmu$A] je garantováno minimální výstupní napětí~$U_{OUT}~=~\pm~12$~V, standardně $V_{peak 1}~=~14.2$ V a $V_{peak 2}~=~-14.4$~V. Při výstupním napětí v tomto intervalu je šum vzhledem k~signálu zanedbatelný a nezkreslí výsledky simulace.\\
+Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitočet). Klidový stejnosměrný pracovní proud $I_{ABC}~=~0.5$\,$\upmu$A byl zvolen tak, aby byl obdržen mezní kmitočet cca 100\,kHz. Maximální vstupní proud je 2\,mA. Pracovním proudem $I_{ABC}~\in$~$[5$\,$\upmu$A~;~500\,$\upmu$A] je garantováno minimální výstupní napětí~$U_{OUT}~=~\pm~12$\,V, standardně $V_{peak 1}~=~14.2$\,V a $V_{peak 2}~=~-14.4$\,V. Při výstupním napětí v tomto intervalu je šum vzhledem k~signálu zanedbatelný a nezkreslí výsledky simulace.\\
 \\
-\noindent Podle dokumentace k bloku LM13700M je v simulaci přeladitelný přes 6 dekád a má skvělou linearitu transkonduktance. Doporučení napájení pro simulaci tohoto bloku je $\pm$~2~V až $\pm$~22~V. Je uvedeno, že zvětšuje šířku pásma střídavého proudu (\textit{AC Bandwidth}) a fázovou bezpečnost (\textit{Phase Margin}) více než 2x. Klidový stejnosměrný pracovní proud je podle dokumentace polovinou proudu reálného.\\
+\noindent Podle dokumentace k bloku LM13700M je v simulaci přeladitelný přes 6 dekád a má skvělou linearitu transkonduktance. Doporučení napájení pro simulaci tohoto bloku je $\pm$~2\,V až $\pm$~22\,V. Je uvedeno, že zvětšuje šířku pásma střídavého proudu (\textit{AC Bandwidth}) a fázovou bezpečnost (\textit{Phase Margin}) více než 2x. Klidový stejnosměrný pracovní proud je podle dokumentace polovinou proudu reálného.\\
 \\
 \noindent Diferenciální stupeň je podle není zcela lineární a lze tedy připustit maximální vstupní rozdílové napětí v~řádech stovek~mV. Překročení této meze vede k výraznému zkreslení signálu.\\
 \\
@@ -14,7 +14,7 @@ Regulací vstupního proudu je ovlivňován pracovní bod obvodu (mezní kmitoč
 \end{align}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.45]{biquad.png}
+\includegraphics[scale=0.4]{biquad.png}
 \caption[Obecná OTA struktura pro bikvad]{Obecná OTA struktura pro bikvad \label{s:BIK}}
 \end{figure}
 \noindent Zapojení podle Schaumanna a Valkenburga \cite{13} je popsáno na obrázku \ref{s:BIK}. Zesilovače 1 a 2 na obrázku \ref{s:BIK} pracují jako invertující integrátory, zbývající zesilovače vytvářejí kladnou a zápornou zpětnou vazbu z výstupu integrátorů vedoucí na sčítací vstup. Znaménko vazby je určeno volbou vstupní svorky zesilovačů 3 a 4. Výstupy obvodu jsou napěťové (na výstupu sumačního zesilovače 5, resp. integrátoru 1 a 2). Buzení může být proudové (v obrázku \ref{s:BIK} na místě $V_1$ a $V_2$) nebo napěťové s využitím vstupních svorek transkonduktančních zesilovačů. Uvažováním napětí $V_a, V_b, V_c$ na obrázku \ref{s:BIK} jako vstupy byly obdrženy výstupní napětí
@@ -39,9 +39,9 @@ Obecná přenosová funkce bikvadu může být obdržena položením $V_a = V_b 
 \frac{V_3}{V_i} = \frac{p^2C_1C_2g_{m4} + p(C_2g_{m1}g_{m3} - C_1g_{m2}g_{m4}) + g_{m1}g_{m2}g_{m4}}{D(p)}.
 \end{equation}
 \noindent 
-V simulaci byl dle výše popsaných poznatků na výstupu 2. OTA (V1) obdržen filtr typu PP 1.~řádu s poklesem 20~dB/dek a na výstupu 3. OTA (V2) DP 2. řádu s poklesem 40 dB/dek. Mezní kmitočet pro dolní propust byl určen jako 88.359~kHz --- obrázek \ref{s:PET}. Šířka propustného pásma pro pásmovou propust byla odečtena jako 48.291~kHz. Změnou klidového stejnosměrného pracovního proudu $I_{ABC}$ na desetinu původní hodnoty, tedy $0.05$~$\upmu$A, došlo k posunutí mezního kmitočtu na 8.769~kHz --- obrázek \ref{s:PET1}. Šířka propustného pásma u PP v~tomto případě byla 4.779~kHz.\\
+V simulaci byl dle výše popsaných poznatků na výstupu 2. OTA (V1) obdržen filtr typu PP 1.~řádu s~poklesem 20\,dB/dek a na výstupu 3. OTA (V2) DP 2. řádu s~poklesem 40\,dB/dek. Mezní kmitočet pro dolní propust byl určen jako 88.359\,kHz --- obrázek \ref{s:PET}. Šířka propustného pásma pro pásmovou propust byla odečtena jako 48.291\,kHz. Změnou klidového stejnosměrného pracovního proudu $I_{ABC}$ na desetinu původní hodnoty, tedy $0.05$\,$\upmu$A, došlo k posunutí mezního kmitočtu na 8.769\,kHz --- obrázek \ref{s:PET1}. Šířka propustného pásma u PP v~tomto případě byla 4.779\,kHz.\\
 \\
-\noindent Podle Martinka, Boreše a Hospodky \cite{12} lze v případě realizace těchto základních přenosů (PP, DP) zapojení dále zjednodušit až na obvod obsahující pouze 3 zesilovače, viz obrázek \ref{s:BIK2}. Toto zapojení však v simulaci neprokázalo dobré výsledky --- jednak docházelo k překmitu a jednak neměla pásmová propust symetrický průběh. Proto bylo zvoleno jiné zapojení. Přenos obvodu z obrázku \ref{s:BIK2} s výstupem pořadě v bodu D a P je dán rovnicemi
+\noindent Podle Martinka, Boreše a Hospodky \cite{12} lze v případě realizace těchto základních přenosů (PP, DP) zapojení dále zjednodušit až na obvod obsahující pouze 3 zesilovače, viz obrázek \ref{s:BIK2}. Toto zapojení však v simulaci neprokázalo dobré výsledky --- jednak docházelo k překmitu a jednak neměla pásmová propust symetrický průběh. Proto bylo zvoleno jiné zapojení. Přenos obvodu z obrázku \ref{s:BIK2} s výstupem pořadě v~bodech D a P je dán rovnicemi
 \begin{align}
 U_D(p) &= \frac{p\frac{g_{m3}U_3-g_{m2}U_2}{C_2}+\frac{g_{m1}g_{m2}}{C_1C_2}U_1}{p^2 + p\frac{g_{m3}}{C_2} + \frac{g_{m1}g_{m2}}{C_1C_2}},\\
 U_P(p) &= \frac{p\frac{g_{m1}}{C_1}U_1 + \frac{g_{m1}}{C_1C_2}(g_{m3}U_1+g_{m2}-g_{m3}U_3)}{p^2 + p\frac{g_{m3}}{C_2} + \frac{g_{m1}g_{m2}}{C_1C_2}}.
@@ -53,7 +53,7 @@ U_P(p) &= \frac{pC_2g_{m1}U_1 + g_{m1}(g_{m3}U_1 + g_{m2} - g_{m3}U_3)}{p^2C_1C_
 \end{align}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.45]{biquad1.png}
+\includegraphics[scale=0.4]{biquad1.png}
 \caption[Zjednodušená verze bikvadu OTA-C]{Zjednodušená verze bikvadu OTA-C \label{s:BIK2}}
 \end{figure}
 \\
@@ -67,12 +67,12 @@ H_{1 \rightarrow k}(p) = \frac{U_k (p)}{U_{in}(p)} = \prod _{n=1}^{k} H_n(p).
 \end{equation}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{schemata.png}
+\includegraphics[scale=0.35]{schemata.png}
 \caption[Kaskádní zapojení]{Kaskádní zapojení \cite{9}}
 \end{figure}
 \\
-\noindent Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s poklesem 80~dB/dek a zároveň byla obdržena pásmová propust 2. řádu s poklesem 40~dB/dek. Mezní kmitočet pro dolní propust byl odečten jako 69.841~kHz. Šířka propustného pásma pro PP byla 32.533~kHz. \\
+\noindent Kaskádním zapojením dvou dolních propusti ze sekce \ref{s:DP2} byl obdržen filtr 4. řádu s~poklesem 80\,dB/dek a zároveň byla obdržena pásmová propust 2. řádu s~poklesem 40\,dB/dek. Mezní kmitočet pro dolní propust byl odečten jako 69.841\,kHz. Šířka propustného pásma pro PP byla 32.533\,kHz. \\
 \\
-\noindent Kaskádním zapojením dvou PP 2. řádu byla obdržena PP 4. řádu s poklesem 80~dB/dek. Šířka propustného pásma byla odečtena jako 15.801~kHz. Zapojení spočívá ve spojení dvou integrátorů, přičemž jeden z nich je neinvertující ztrátový a druhý invertující bezeztrátový. \\
+\noindent Kaskádním zapojením dvou PP 2. řádu byla obdržena PP 4. řádu s~poklesem 80\,dB/dek. Šířka propustného pásma byla odečtena jako 15.801\,kHz. Zapojení spočívá ve spojení dvou integrátorů, přičemž jeden z nich je neinvertující ztrátový a druhý invertující bezeztrátový. \\
 \\
-\noindent Přeladěním vstupního proudu na 3 $\upmu$A byly pro ta samá zapojení obdrženy průběhy na obrázcích \ref{s:O1}, \ref{s:O2} a  \ref{s:O3}. Mezní kmitočet je pro DP 2. řádu 531.574~kHz a pro DP 4. řádu 420.012~kHz. Šířka propustného pásma je pro PP~1.~řádu 249.932~kHz, pro PP 2. řádu 202.051~kHz a pro PP 4. řádu 92.893~kHz.
+\noindent Přeladěním vstupního proudu na 3\,$\upmu$A byly pro ta samá zapojení obdrženy průběhy na obrázcích \ref{s:O1}, \ref{s:O2} a  \ref{s:O3}. Mezní kmitočet je pro DP 2. řádu 531.574\,kHz a pro DP 4.~řádu 420.012\,kHz. Šířka propustného pásma je pro PP~1.~řádu 249.932\,kHz, pro PP 2. řádu 202.051\,kHz a pro PP 4. řádu 92.893\,kHz.

@@ -35,6 +35,8 @@
 
 % odkazy
 \usepackage{url}
+\usepackage{etoolbox}
+\gappto{\UrlBreaks}{\UrlOrds}
 
 % vicesloupcove tabulky
 \usepackage{multirow}
@@ -63,7 +65,6 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 
 % titulni strana
 \begin{document}
-
 % udaje o autorovi
 \title{Analogový přeladitelný filtr se zesilovači OTA}
 \author{Klára Pacalová}
@@ -117,6 +118,7 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \input{prakticka.tex}
 \sekce{Závěr}
 \input{zaver.tex}
+\newpage
 \input{bibliografie.tex}
 \renewcommand{\headrulewidth}{0pt}
 \fancyhf{}

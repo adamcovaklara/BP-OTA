@@ -5,10 +5,10 @@ R_{in} = \frac{1}{g_{m}},
 kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a neinvertujícího vstupu vede na opačnou polaritu. Tato konfigurace jako odpor je užitečná např. k návrhu monolitických $g_m$-C filtrů pouze s transkonduktancemi a kapacitami ($g_m$-C filtry, viz \ref{s:OTA}, \ref{s:GM-C}), také k náhradě velmi velkých odporů.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.45]{image10.png}
+\includegraphics[scale=0.4]{image10.png}
 \caption[Náhradní obvod pro uzemněný rezistor]{Náhradní obvod pro uzemněný rezistor}
 \end{figure}
-\noindent Dále lze dle Schaumanna a Valkenburga~\cite{13} pro nahrazení indukčnosti o impedanci $Z_L = 1/(pC)$ použít obvod s třemi OTA (obrázek~\ref{s:IND0}). Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
+\noindent Dále lze dle Schaumanna a Valkenburga~\cite{13} pro nahrazení indukčnosti o impedanci $Z_L = 1/(pC)$ použít obvod se~třemi OTA (obrázek~\ref{s:IND0}). Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
 Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}\label{s:vzt2}
 V_C &= \frac{g_{m1}}{sC}V_1, \\
@@ -24,12 +24,12 @@ L = \frac{C}{g_{m1}g_{m2}}.
 \end{align}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.45]{image12.png}
+\includegraphics[scale=0.4]{image12.png}
 \caption[Náhradní obvod pro neuzemněnou indukčnost]{Náhradní obvod pro neuzemněnou indukčnost pro $g_{m1} = g_{m2}$ \label{s:IND0}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.45]{image13.png}
+\includegraphics[scale=0.4]{image13.png}
 \caption[Náhradní obvod pro indukčnost]{Náhradní obvod pro indukčnost \label{s:IND}}
 \end{figure}
 \\
@@ -45,7 +45,7 @@ Z_{in}(p) = \frac{V_1}{I_1} = p\frac{C}{g_{m1}g_{m2}}.
 \subsection{Základní bloky}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.45]{otos.png}
+\includegraphics[scale=0.4]{otos.png}
 \caption[Základní bloky s OTA]{Základní bloky s OTA a) integrující b) škálující c) sčítací \label{s:BLO}}
 \end{figure}
 \noindent Podle Schaumanna a Valkenburga \cite{13} blok a) na obrázku \ref{s:BLO} slouží k realizaci invertujícího nebo neinvertujícího integrátoru s~výsledným napětím
@@ -61,12 +61,12 @@ Blok c) na obrázku \ref{s:BLO} realizuje sčítací nebo rozdílový obvod s na
 V_O = -\frac{g_{m1}}{g_{m3}}V_1 + \frac{g_{m2}}{g_{m3}}V_2.\label{s:BLO3}
 \end{equation}
 \noindent Spojením těchto základních stavebních bloků se správnými znaménky lze získat různé funkční bloky.\\
-Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20--20 000~Hz) naopak lze chyby způsobené parazitními součástkami i~chyby způsobené konečnou šířkou pásma zanedbat.
+Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20--20 000\,Hz) naopak lze chyby způsobené parazitními součástkami i~chyby způsobené konečnou šířkou pásma zanedbat.
 \subsection{Odvození DP 2. řádu}\label{s:ODV}
 \noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje obrázek~\ref{s:DPO}.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{circuit(2).png}
+\includegraphics[scale=0.3]{circuit(2).png}
 \caption{Dolní propust 2. řádu \label{s:DPO}} 
 \end{figure}
 \noindent Přenos obvodu byl vyjádřen jako

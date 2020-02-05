@@ -2,7 +2,7 @@ Podle Schaumanna a Valkenburga \cite{13} se v~telekomunikacích používají fil
 \\
 Pro nízké frekvence se ke splnění těchto požadavků používají obvody se spínanými kapacitory (SC). Přepínaný kapacitor se chová jako rezistor, tudíž časová konstanta RC je definována poměrem kapacitorů a hodinovou (CLK) frekvencí, se kterou jsou přepínány. Pro vysokofrekvenční aplikace (v řádu GHz) se používají \newline MOSFET-C filtry.\\
 \\
-Další z možných prvků, které jsou dostupné jak pro nízkofrekvenční aplikace, tak pro kmitočtový rozsah stovek megahertz, jsou transkonduktanční zesilovače. Jejich kmitočtové vlastnosti umožňují využití při konstrukci ARC (\textit{Active RC}) filtrů v pracovním kmitočtovém pásmu do cca 10 MHz a se speciálně konstruovanými OTA až do 100 MHz. Kmitočet dominantního pólu je běžně v oblasti stovek kHz až jednotek MHz (Martinek, Boreš, Hospodka \cite{12}).\\
+Další z možných prvků, které jsou dostupné jak pro nízkofrekvenční aplikace, tak pro kmitočtový rozsah stovek megahertz, jsou transkonduktanční zesilovače. Jejich kmitočtové vlastnosti umožňují využití při konstrukci ARC (\textit{Active RC}) filtrů v pracovním kmitočtovém pásmu do cca 10\,MHz a se speciálně konstruovanými OTA až do 100\,MHz. Kmitočet dominantního pólu je běžně v oblasti stovek kHz až jednotek MHz (Martinek, Boreš, Hospodka \cite{12}).\\
 \\
 Transkonduktanční zesilovače (označují se též jako OTA (\textit{Operational Transconductance Amplifiers}) jsou napětím řízené zesilovače s proudovým výstupem --- zdroje proudu
 \begin{equation}
@@ -16,7 +16,7 @@ kde $u_+$ a $u_-$ jsou napětí invertujícího a neinvertujícího vstupu. Tran
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{gmrc.png}
+\includegraphics[scale=0.55]{gmrc.png}
 \caption[Linearizovaný model reálného OTA]{Linearizovaný model reálného OTA \cite{9}}
 \end{figure}
 \noindent Připojením zátěže $R_z$ na výstup bylo získáno napětí naprázdno
@@ -34,26 +34,26 @@ v_0(t) = \frac{1}{C}\int i(t)dt = \frac{1}{C}\int g_mv_1(t)dt.
 \end{equation}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{otaintegrator.png}
+\includegraphics[scale=0.45]{otaintegrator.png}
 \caption[OTA-C]{OTA-C \cite{9} \label{s:GM-C}}
 \end{figure}
 \noindent Toto zapojení integrátoru s uzemněným kondenzátorem se označuje jako OTA-C.\\
 \\
-Ztrátový integrátor lze utvořit sériovým zapojením dalšího OTA jako odporu se zápornou zpětnou vazbou. Rozdíl mezi ideálním a ztrátovým integrátorem lze pozorovat v modulové charakteristice --- pro ztrátový je konstantní a pak teprve lineárně klesá se sklonem 20~dB/dek.\\
+Ztrátový integrátor lze utvořit sériovým zapojením dalšího OTA jako odporu se zápornou zpětnou vazbou. Rozdíl mezi ideálním a ztrátovým integrátorem lze pozorovat v modulové charakteristice --- pro ztrátový je konstantní a pak teprve lineárně klesá se sklonem 20\,dB/dek.\\
 Po doplnění ztrátové vodivosti, kterou zde simuluje druhý zesilovač, paralelně k integrační kapacitě, byl obdržen vztah pro výstupní napětí
 \begin{equation}
 v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-).\label{s:OTA-INT1}
 \end{equation}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{damp.png}
+\includegraphics[scale=0.45]{damp.png}
 \caption[Ztrátový OTA-C]{Ztrátový OTA-C \cite{9} \label{s:OTA-INT}}
 \end{figure}
 \subsection{Proudový konvejor druhé generace s OTA}
-Podle Shaktoura \cite{15} je jeden z nejzákladnějších bloků v oblasti analogových obvodů v proudovém módu proudový konvejor CC (\textit{Current Conveyor}). Princip CC první generace byl popsán v roce 1968 (K. C. Smith, A. S. Sedra \cite{16}). CCI byl následně nahrazen univerzálnější druhou generací v roce 1970 (CCII)\cite{17}. Obvody s CC se používaly především v zapojeních s bipolárními tranzistory kvůli jejich vysoké transkonduktanci (v porovnání s CMOS). Jsou to operační zesilovače s proudovou zpětnou vazbou (např. MAX477, MAX4112). Proudové konvejory (\textit{Current Conveyors}) jsou používány ve vysokofrekvenčních obvodech, kde je problematické použití běžných operačních zesilovačů, protože jsou limitovány násobkem šířky pásma a zesílení GBP (\textit{Gain-Bandwidth Product}). Je to struktura s třemi vstupy.
+Podle Shaktoura \cite{15} je jeden z nejzákladnějších bloků v oblasti analogových obvodů v~proudovém módu proudový konvejor CC (\textit{Current Conveyor}). Princip CC první generace byl popsán v roce 1968 (K. C. Smith, A. S. Sedra \cite{16}). CCI byl následně nahrazen univerzálnější druhou generací v roce 1970 (CCII)\cite{17}. Obvody s CC se používaly především v zapojeních s bipolárními tranzistory kvůli jejich vysoké transkonduktanci (v~porovnání s CMOS). Jsou to operační zesilovače s proudovou zpětnou vazbou (např. MAX477, MAX4112). Proudové konvejory (\textit{Current Conveyors}) jsou používány ve~vysokofrekvenčních obvodech, kde je problematické použití běžných operačních zesilovačů, protože jsou limitovány násobkem šířky pásma a zesílení GBP (\textit{Gain-Bandwidth Product}). Je to struktura s třemi vstupy.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{ccii.png}
+\includegraphics[scale=0.3]{ccii.png}
 \caption[CCII symbol]{CCII symbol \cite{15}}
 \end{figure}
 \noindent Proudovým konvejorem lze také jednoduše realizovat integrátor. Pro výstupní napětí $u_0$ obvodu a z něj odvozenou přenosovou funkci platí
@@ -64,7 +64,7 @@ H(p) &= \frac{U_2}{U_1} = \frac{1}{pCR}.
 \noindent Konvejorový integrátor pracuje jako invertující nebo neinvertující.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.065]{ccii_int1.png}
+\includegraphics[scale=0.062]{ccii_int1.png}
 \caption[Integrátor s CCII a OTA]{Integrátor s CCII a OTA \cite{12}}
 \end{figure}
 \noindent Vstupní impedance na vstupu Y je nekonečná (tedy proud tekoucí skrz Y je nulový) a impedance na vstupu X je nulová ($R_Y = \infty, I_Y = 0, R_X = 0$). Napětí na vstupu X je ekvivalentní k napětí na vstupu Y ($V_X = V_Y$). Proud procházející vstupem X je ekvivalentní k~proudu vstupem Z ($I_Z = I_X$). Výstupní impedance vstupu Z je nekonečná ($R_Z = \infty$).
@@ -93,10 +93,10 @@ V_Z
 \newline
 V analogových IC je preferováno diferenční zpracování signálů, protože redukuje zkreslení a šum (diferenční stupeň vyruší kladné a záporné výchylky napětí/proudu např. na zdroji a také vyruší nelinearity způsobené zesilovačem).\\
 \\
-Využitím zapojení na obrázku \ref{s:OTA} a principů CCII lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu). Provodení diferenčního stupně na výstupu je znázorněno na obrázku \ref{s:CMOS}. Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma. Také má menší transkonduktanci, protože každou polovinou diferenčního obvodu teče jen polovina klidového stejnosměrného pracovního proudu. Problémem je také relativně nízké stejnosměrné zesílení, proto se v~praxi se zapojením s OTA nepoužívá. \\
+Využitím zapojení na obrázku \ref{s:OTA} a principů CCII lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu). Provodení diferenčního stupně na výstupu je znázorněno na obrázku \ref{s:CMOS}. Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma. Také má menší transkonduktanci, protože každou polovinou diferenčního obvodu teče jen polovina klidového stejnosměrného pracovního proudu. Problémem je také relativně nízké stejnosměrné zesílení, proto se v~praxi se~zapojením s OTA nepoužívá. \\
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{diff.png}
+\includegraphics[scale=0.4]{diff.png}
 \caption[Základní CMOS transkonduktance a) jeden výstup b) diferenční výstup]{Základní CMOS transkonduktance a) jeden výstup b) diferenční výstup \cite{13} \label{s:CMOS}}
 \end{figure}
 \begin{figure}[h]
@@ -106,20 +106,20 @@ Využitím zapojení na obrázku \ref{s:OTA} a principů CCII lze získat modifi
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{dido.png}
+\includegraphics[scale=0.55]{dido.png}
 \caption[\textit{Fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu]{\textit{Fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu \cite{15}}
 \end{figure}
 \newpage
 \subsection{IC s OTA}
-OTA bývá nejčastěji implementován v unipolární monolitické technologii (CMOS) a v případě, že se jedná o~reálný prvek, má převážně kapacitní charakter (vstupní impedance se stává kapacitou). Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 85--290~Kč. IC s dvěma zesilovači v pouzdře mají užší šířku pásma (2 MHz), menší rychlost přeběhu (50 V/$\upmu$s), mnohem menší výstupní proud (650 $\upmu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí pro pouzdro čipu s 2 OTA je 35--65~Kč. Ceny v tabulce jsou uváděny pro jednu součástku k 10. 11. 2019. Pokud se vyrábí více verzí součástky, je vždy pro přehlednost uvedena pouze jedna. GBP (\textit{Gain-Bandwidth Product}) v tabulce je získán vynásobením hodnoty kmitočtu dominantního pólu celkovým zesílením. Například, podle Michala \cite{14}, je-li navrhován zesilovač se zesílením G, je hodnota mezního kmitočtu pro pokles 3 dB dána vztahem
+OTA bývá nejčastěji implementován v unipolární monolitické technologii (CMOS) a v případě, že se jedná o~reálný prvek, má převážně kapacitní charakter (vstupní impedance se stává kapacitou). Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 85--290\,Kč. IC s dvěma zesilovači v pouzdře mají užší šířku pásma (2\,MHz), menší rychlost přeběhu (50\,V/$\upmu$s), mnohem menší výstupní proud (650\,$\upmu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí pro pouzdro čipu s 2 OTA je 35--65\,Kč. Ceny v tabulce jsou uváděny pro jednu součástku k 10. 11. 2019. Pokud se vyrábí více verzí součástky, je vždy pro přehlednost uvedena pouze jedna. GBP (\textit{Gain-Bandwidth Product}) v tabulce je získán vynásobením hodnoty kmitočtu dominantního pólu celkovým zesílením. Například, podle Michala \cite{14}, je-li navrhován zesilovač se zesílením G, je hodnota mezního kmitočtu pro pokles 3\,dB dána vztahem
 \begin{equation}
 f_m = \frac{GBP}{G}.
 \end{equation}
-\noindent Pro jednotkové zesílení je hodnota mezního kmitočtu rovna GBP. Někdy se místo GBP udává parametr UGB (\textit{Unity Gain Bandwidth} --- šířka pásma při jednotkovém zesílení), který má shodný význam, nebo tranzitní kmitočet $f_T$. Tranzitní kmitočet $f_T$ je kmitočet, na kterém klesne zesílení OZ na 0 dB, tj. na kterém přestává OZ zesilovat. Šířka pásma s útlumem 3 dB je funkcí klidového stejnosměrného pracovního proudu a pro proudy pod 100 $\upmu$A je platí přibližně 3~dB\ BW = $3 \cdot 10^{11} I_{ABC}$.
+\noindent Pro jednotkové zesílení je hodnota mezního kmitočtu rovna GBP. Někdy se místo GBP udává parametr UGB (\textit{Unity Gain Bandwidth} --- šířka pásma při jednotkovém zesílení), který má shodný význam, nebo tranzitní kmitočet $f_T$. Tranzitní kmitočet $f_T$ je kmitočet, na kterém klesne zesílení OZ na 0\,dB, tj. na kterém přestává OZ zesilovat. Šířka pásma s útlumem 3\,dB je funkcí klidového stejnosměrného pracovního proudu a pro proudy pod 100 $\upmu$A je platí přibližně 3\,dB\ BW = $3 \cdot 10^{11} I_{ABC}$.
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h]
-\scalebox{0.9}{%
-  \begin{tabular}{ | c | >{\centering\arraybackslash}p{0.65cm}| >{\centering\arraybackslash}p{0.8cm} | >{\centering\arraybackslash}p{1.1cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{0.9cm} | >{\centering\arraybackslash}p{1.15cm} | >{\centering\arraybackslash}p{1.3cm} | >{\centering\arraybackslash}p{1.15cm} |>{\centering\arraybackslash}p{0.9cm} |>{\centering\arraybackslash}p{0.85cm} |}
+\scalebox{0.75}{%
+  \begin{tabular}{ | c | >{\centering\arraybackslash}p{0.8cm}| >{\centering\arraybackslash}p{1.0cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1.0cm} | >{\centering\arraybackslash}p{1.2cm} | >{\centering\arraybackslash}p{1.4cm} | >{\centering\arraybackslash}p{1.2cm} |>{\centering\arraybackslash}p{0.9cm} |>{\centering\arraybackslash}p{0.85cm} |}
     \hline
       & GBP [MHz] & SR [kV/$\upmu$s] & Výstupní proud na kanál [mA] & $I_b$ --- vstupní klidový proud [$\upmu$A] & $V_{os}$ --- vstupní napěťová nesymetrie [mV] & Provozní napájecí proud [mA] & Minimální transkonduktance [mA/V] & Napájecí napětí [V] &  Šířka pásma 3 dB [MHz] & Cena [Kč] \\ \hline
     OPA615ID & 710 & 2.5 & 5 & 3 & 40 & 13 & 65 & 8--12.4 & 710 & 285.22\\ \hline
@@ -132,39 +132,39 @@ f_m = \frac{GBP}{G}.
   \end{table}
 \begin{center}
 \begin{table}[h]
-\scalebox{0.9}{%
-  \begin{tabular}{ | c | >{\centering\arraybackslash}p{1.25cm}| >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1cm} | >{\centering\arraybackslash}p{1.3cm} | >{\centering\arraybackslash}p{1.4cm} | >{\centering\arraybackslash}p{1.25cm} |>{\centering\arraybackslash}p{1.25cm} |>{\centering\arraybackslash}p{1cm} |}
+\scalebox{0.75}{%
+  \begin{tabular}{ | c | >{\centering\arraybackslash}p{0.8cm}| >{\centering\arraybackslash}p{0.85cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.0cm} | >{\centering\arraybackslash}p{1.0cm} | >{\centering\arraybackslash}p{1.25cm} | >{\centering\arraybackslash}p{1.45cm} | >{\centering\arraybackslash}p{1.25cm} |>{\centering\arraybackslash}p{1.0cm} |>{\centering\arraybackslash}p{0.75cm} |}
     \hline
-      & GBP & SR & Výstupní proud na kanál & $I_b$ --- vstupní klidový proud & $I_{os}$ --- vstupní proudová nesymetrie & Provozní napájecí proud & Minimální transkonduktance & Napájecí napětí & CMMR & Cena \\ \hline
-    LM13700M & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 4 mV & 1.3 mA & 6700 $\upmu$S & 10--36 V & 80--110 dB & 32.50 Kč \\ \hline
-    NE5517DG & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 5 mV & 2.6 mA & 5400 $\upmu$S & 4--44 V & 80 dB & 43.42 Kč \\ \hline
-    AU5517DR2G & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 5 mV & 2.6 mA & 5400 $\upmu$S & 4--44 V & 80 dB & 64.48 Kč \\ \hline
-    NJM13600M & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 5 mV & 2.6 mA & 6700 $\upmu$S & 36 V & 80 dB & 36.92 Kč \\ \hline
-    NJM13700M & 2 MHz & 50 V/$\upmu$s & 650 $\upmu$A & 5 $\upmu$A & 4 mV & 2.6 mA & 6700 $\upmu$S & 36 V & 80 dB & 37.70 Kč \\ \hline
+      & GBP [MHz] & SR [V/$\upmu$s] & Výstupní proud na kanál [$\upmu$A] & $I_b$ --- vstupní klidový proud [$\upmu$A] & $I_{os}$ --- vstupní proudová nesymetrie [mV] & Provozní napájecí proud [mA] & Minimální transkonduktance [$\upmu$S] & Napájecí napětí [V] & CMMR [dB] & Cena [Kč] \\ \hline
+    LM13700M & 2 & 50 & 650 & 5 & 4 & 1.3 & 6700 & 10--36 & 80--110 & 32.50 \\ \hline
+    NE5517DG & 2 & 50 & 650 & 5 & 5 & 2.6 & 5400 & 4--44 & 80 & 43.42 \\ \hline
+    AU5517DR2G & 2 & 50 & 650 & 5 & 5 & 2.6 & 5400 & 4--44 & 80 & 64.48 \\ \hline
+    NJM13600M & 2 & 50 & 650 & 5 & 5 & 2.6 & 6700 & 36 & 80 & 36.92 \\ \hline
+    NJM13700M & 2 & 50 & 650  & 5 & 4 & 2.6 & 6700 & 36 & 80 & 37.70 \\ \hline
   \end{tabular}}
   \caption[Porovnání integrovaných obvodů se dvěma OTA]{\label{tab:Porovnání IC se dvěma OTA}Porovnání IC se dvěma OTA \cite{18}}
   \end{table}
 \end{center}
-\noindent Pro realizaci přeladitelného filtru byl zvolen LM13700M kvůli provoznímu napájecímu proudu (1.3 mA), rozpětí napájecího napětí (10–-36 V) a cenové dostupnosti (32.50\ Kč). Součástky NJM13700, NJM13600 a LM13600 se dají zakoupit, ale mají plánované vyřazení z výroby kvůli zastarání. \\
+\noindent Pro realizaci přeladitelného filtru byl zvolen LM13700M kvůli provoznímu napájecímu proudu (1.3\,mA), rozpětí napájecího napětí (10–-36\,V) a cenové dostupnosti (32.50\,Kč). Součástky NJM13700, NJM13600 a LM13600 se dají zakoupit, ale mají plánované vyřazení z výroby kvůli zastarání. \\
 \\
-LM13700 má linearizující diody a buffery s diferenciálním vstupem a push-pull výstupem. Dva zesilovače na čipu mají stejné napájení, ale jinak fungují nezávisle na sobě. Linearizační diody snižují zkreslení, a tak umožňují vyšší hodnoty amplitudy vstupního signálu. Výsledkem je zesílení odstupu signál-šum o 10 dB (0.5~\% THD). Když analogový signál prochází nelineárním zařízením, k původnímu signálu jsou přimíchány další frekvence. THD je způsobem posouzení rozsahu zkreslení.\\
+LM13700 má linearizující diody a buffery s diferenciálním vstupem a push-pull výstupem. Dva zesilovače na čipu mají stejné napájení, ale jinak fungují nezávisle na sobě. Linearizační diody snižují zkreslení, a tak umožňují vyšší hodnoty amplitudy vstupního signálu. Výsledkem je zesílení odstupu signál-šum o 10\,dB (0.5\,\% THD). Když analogový signál prochází nelineárním zařízením, k původnímu signálu jsou přimíchány další frekvence. THD je způsobem posouzení rozsahu zkreslení.\\
 \\
 Výpočet THD vychází z rozkladu periodického signálu na harmonické složky pomocí Fourierovy řady v amplitudově-fázovém zápisu. Nejčastěji se definuje jako podíl součtu výkonů všech harmonických frekvencí nad základní harmonickou k základní harmonické. Čím nižší je THD, tím věrnější je signál zachycený nebo předávaný pomocí mikrofonu, reproduktoru nebo zesilovače \cite{19}. \\
 \\
 \begin{equation}
 THD = \frac{\sum{výkon\ vyšších\ harmonických}}{výkon\ základní\ harmonické} = \frac{P_2 + P_3 + \cdots + P_n}{P_1} \cdot 100 \%
 \end{equation}
-Vysokoimpedanční buffery doplňují dynamický rozsah zesilovače. Výstupní buffery LM13700 se liší od předchozí, již nevyráběné, řady 13600 v tom, že jejich vstupní klidové proudy $I_b$ (a tedy jejich výstupní stejnosměrné úrovně) jsou nezávislé na klidovém stejnosměrném pracovním proudu $I_{ABC}$. To má za následek např. vyšší výkon ve zvukových aplikacích než s LM13600. LM13700 je přeladitelný přes 6 dekád a má výbornou linearitu transkonduktance $g_m$. LM13700 má na výstupu vysokou hodnotu odstupu signál od šumu. Je ekologicky nezávadný a neobsahuje brom (Br) ani antimon (Sb). Nemá vestavěnou ochranu komponentů citlivých na elektrostatický náboj (ESD). Během skladování nebo manipulace by elektrody měly být zkratovány k sobě nebo by se zařízení mělo umístit do vodivé pěny, aby se zabránilo elektrostatickému poškození bran MOS \cite{20}.\\
+Vysokoimpedanční buffery doplňují dynamický rozsah zesilovače. Výstupní buffery LM13700 se liší od předchozí, již nevyráběné, řady 13600 v tom, že jejich vstupní klidové proudy $I_b$ (a tedy jejich výstupní stejnosměrné úrovně) jsou nezávislé na klidovém stejnosměrném pracovním proudu $I_{ABC}$. To má za následek např. vyšší výkon ve zvukových aplikacích než s LM13600. LM13700 je přeladitelný přes 6 dekád a má výbornou linearitu transkonduktance $g_m$. LM13700 má na výstupu vysokou hodnotu odstupu signál od šumu \cite{20}.\\
 \\
 Porovnání ceny typů LM13700 je uvedeno v tabulce níže. Parametry jsou stejné, typy se od sebe liší počtem kusů v balení a typem pouzdra (SOIC/PDIP).
 \begin{table}[h]
 \centering
   \begin{tabular}{ | c | >{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
     \hline
-      & Typ pouzdra & Ks v balení & Cena \\ \hline
-    LM13700M/NOPB & SOIC & 48 & 32.50 Kč\\ \hline
-    LM13700MX/NOPB & SOIC & 2500 & 27.04 Kč\\ \hline
-    LM13700N/NOPB & PDIP & 25 & 48.62 Kč\\ \hline
+      & Typ pouzdra & Ks v balení & Cena [Kč] \\ \hline
+    LM13700M/NOPB & SOIC & 48 & 32.50\\ \hline
+    LM13700MX/NOPB & SOIC & 2500 & 27.04\\ \hline
+    LM13700N/NOPB & PDIP & 25 & 48.62\\ \hline
   \end{tabular}
   \caption[Porovnání typů LM13700]{\label{tab:Porovnání typů LM13700}Porovnání typů LM13700 \cite{18}}
   \end{table}

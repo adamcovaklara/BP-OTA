@@ -1,10 +1,10 @@
 Mezní kmitočet navrhovaného filtru byl zvolen v řádu stovek kHz, což umožňuje využití např. pro přenos rozhlasového vysílání v atmosféře, nebo monitorování EKG přenosným zařízením (Shueen-Yuh, Chih-Jen \cite{1}). \\ 
 \\
-Kmitočet v řádu stovek kHz odpovídá dlouhým a středním vlnám. Dlouhé vlny (30--300~kHz, čemuž odpovídá délka vlny 1--10~km) obtékají nerovnosti a jdou za obzor bez nutnosti odrazu. Dnes na dlouhých vlnách vysílá jen několik národních rozhlasových vysílačů velkých států a pásmo se hlavně využívá pro takové účely, kde je na prvním místě spolehlivost a výhody pozemní vlny. To jsou například frekvenční a časové standardy (DCF77 --- rádiová stanice vysílající dlouhovlnný tzv. frankfurtský časový signál), radiomajáky, případně i komunikace s ponorkami \cite{2}. \\
+Kmitočet v řádu stovek kHz odpovídá dlouhým a středním vlnám. Dlouhé vlny (30--300\,kHz, čemuž odpovídá délka vlny 1--10\,km) obtékají nerovnosti a jdou za obzor bez nutnosti odrazu. Dnes na dlouhých vlnách vysílá jen několik národních rozhlasových vysílačů velkých států a pásmo se hlavně využívá pro takové účely, kde je na prvním místě spolehlivost a výhody pozemní vlny. To jsou například frekvenční a časové standardy (DCF77 --- rádiová stanice vysílající dlouhovlnný tzv. frankfurtský časový signál), radiomajáky, případně i komunikace s ponorkami \cite{2}. \\
 \\
-Střední vlny (525--1705~kHz, což odpovídá vlnovým délkám 186--577 m) mají menší dosah a často u nich dochází k jednomu odrazu od atmosféry. Lépe se ohýbají za přírodními překážkami a jsou vhodné pro vysílání v okruhu stovek kilometrů \cite{3}. \\
+Střední vlny (525--1705\,kHz, což odpovídá vlnovým délkám 186--577\,m) mají menší dosah a často u nich dochází k jednomu odrazu od atmosféry. Lépe se ohýbají za přírodními překážkami a jsou vhodné pro vysílání v okruhu stovek kilometrů \cite{3}. \\
 \\
-Po zvýšení mezního kmitočtu, aby odpovídal standardu ZigBee, je možné využití ve WSN (\textit{Wireless Sensor Network}) pro monitorování dat z environmentálních senzorů v dané lokalitě. WSN běžně používá standard ZigBee s frekvencemi 868~MHz, 902–928~MHz a 2.4~GHz. ZigBee patří do skupiny bezdrátových sítí PAN \textit{(Personal Area Networks)} a je určena pro spojení nízkovýkonových zařízení v těchto sítích na malé vzdálenosti (do 75~metrů). Umožňuje komunikaci i na větší vzdálenosti bez přímé radiové viditelnosti jednotlivých zařízení. Do této skupiny sítí patří i velmi rozšířený IEEE 802.15.1 – Bluetooth \cite{4}. Také je možné použití pro vysokorychlostí širokopásmové RF filtry (frekvenční pásmo v řádech MHz--GHz). Toto pásmo se používá např. pro televizní a rádiové vysílání a bezdrátovou komunikaci (mobilní telefony, Wi-Fi). \\
+Po zvýšení mezního kmitočtu, aby odpovídal standardu ZigBee, je možné využití ve WSN (\textit{Wireless Sensor Network}) pro monitorování dat z environmentálních senzorů v dané lokalitě. WSN běžně používá standard ZigBee s frekvencemi 868\,MHz, 902–928\,MHz a 2.4\,GHz. ZigBee patří do skupiny bezdrátových sítí PAN \textit{(Personal Area Networks)} a je určena pro spojení nízkovýkonových zařízení v těchto sítích na malé vzdálenosti (do 75\,m). Umožňuje komunikaci i na větší vzdálenosti bez přímé radiové viditelnosti jednotlivých zařízení. Do této skupiny sítí patří i velmi rozšířený IEEE 802.15.1 – Bluetooth \cite{4}. Také je možné použití pro vysokorychlostí širokopásmové RF filtry (frekvenční pásmo v řádech MHz--GHz). Toto pásmo se používá např. pro televizní a rádiové vysílání a bezdrátovou komunikaci (mobilní telefony, Wi-Fi). \\
 \\
 Další možnost použití je pro zesilovače řízené proudem, audio zesilovače (stereo), proudem řízené filtry a oscilátory, multiplexery, časovače a SaH obvody.\\
 \\
@@ -18,7 +18,7 @@ Zvláštní skupinu aplikací tvoří filtry dolní propust v systémech pro př
 \subsection{Základní typy filtrů}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{tolerancnischemata.png}
+\includegraphics[scale=0.45]{tolerancnischemata.png}
 \caption[Toleranční schéma dolní propusti (DP), horní propusti (HP), pásmové propusti (PP) a pásmové zádrže]{Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)\cite{7}}
 \end{figure}
 \noindent Dolní propust nepropouští na výstup vstupní signál nad frekvencí $f_s$, signál v propustném pásmu zůstává beze změny nebo zesílený. Základní pasivní dvojbranné zapojení je ke vstupu sériově zapojený rezistor a k této větvi paralelně kapacitor. Tento RC člen --- integrační článek se zvyšující se frekvencí snižuje svou vstupní impedanci. Přenosová funkce v nekonečnu je nulová. \\
@@ -39,7 +39,7 @@ kde $n$ je řád filtru a $H_{\infty}$ přenos filtru pro $\omega \gg \omega_0$.
 \noindent Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC --- dolní propust) a derivačního článku (CR --- horní propust) zapojených v sérii, viz obrázek \ref{s:BPBS}. Ideální pásmová propust má přenos v nule i nekonečnu nulový. \\
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{bpbs.png}
+\includegraphics[scale=0.55]{bpbs.png}
 \caption[A) Násobení přenosů --- pásmová propust, B) Sčítání přenosů --- pásmová zádrž]{A) Násobení přenosů --- pásmová propust, B) Sčítání přenosů --- pásmová zádrž \cite{10} \label{s:BPBS}}
 \end{figure}
 \noindent Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Její přenosová funkce je~\cite{9}
@@ -72,7 +72,7 @@ Podle Kašpera \cite{7} má Butterworthova aproximace maximálně plochou amplit
 \begin{equation}
 |H(p)| = \frac{1}{\sqrt{1 + \epsilon ^2 \frac{\omega}{\omega _0}^{2n}}},
 \end{equation}
-kde $\epsilon$ je poměrné zvlnění kmitočtové charakteristiky v propustném pásmu (faktor zvlnění), $n$ je řád filtru a $\omega _0$ mezní kruhový kmitočet (nastává při útlumu 3 dB). Pro $\omega _0 = 1$ je faktor zvlnění $\epsilon = 1$. 
+kde $\epsilon$ je poměrné zvlnění kmitočtové charakteristiky v propustném pásmu (faktor zvlnění), $n$ je řád filtru a $\omega _0$ mezní kruhový kmitočet (nastává při útlumu 3\,dB). Pro $\omega _0 = 1$ je faktor zvlnění $\epsilon = 1$. 
 \subsection{Čebyševova aproximace}
 Podle Kašpera \cite{7} má Čebyševova aproximace strmější pokles útlumové charakteristiky v přechodovém pásmu, což vede na nižší stupeň přenosové funkce a užití nižšího řádu filtru než u Butterworthovy aproximace. Zato má ale zvlněnou frekvenční charakteristiku v propustném pásmu. Oproti Butterworthově aproximaci má tedy vlastnosti z hlediska průběhu fázové charakteristiky a skupinového zpoždění horší (Martinek, Boreš, Hospodka \cite{12}).
 \subsubsection{Typ I}
@@ -92,7 +92,7 @@ G(\omega, \omega _0) = \frac{1}{\sqrt{1 + \frac{1}{\epsilon ^2 T_n ^2 \frac{\ome
 \end{equation}
 kde $T_n$ je Čebyševův polynom, $\epsilon$ je poměrné zvlnění, $n$ je řád filtru a $\omega _0$ mezní kruhový kmitočet.
 \subsection{Besselova aproximace}
-Besselova aproximace se podle Kašpera \cite{7} používá v telekomunikační technice v případech, kdy je požadováno zachování tvaru signálu. Amplitudová charakteristika v nepropustném pásmu je velmi plochá. Koeficienty polynomu jsou zvoleny tak, aby fázová charakteristika v pásmu okolo kritické frekvence byla maximálně lineární. Nevýhodou je poměrně malá strmost modulové charakteristiky. Ta je pro Besselovu aproximaci dána vztahem
+Besselova aproximace se podle Kašpera \cite{7} používá v telekomunikační technice v případech, kdy je požadováno zachování tvaru signálu. Amplitudová charakteristika v~nepropustném pásmu je velmi plochá. Koeficienty polynomu jsou zvoleny tak, aby fázová charakteristika v pásmu okolo kritické frekvence byla maximálně lineární. Nevýhodou je poměrně malá strmost modulové charakteristiky. Ta je pro Besselovu aproximaci dána vztahem
 \begin{equation}
 |H(p)| = \frac{\Theta _n(0)}{\Theta _n(\frac{p}{\omega _0})},
 \end{equation}
@@ -120,9 +120,8 @@ Jedná se o posun útlumového pólu z konečného kmitočtu k nekonečnu, tedy 
 Vhodnou transformací, která vede na nulovou hodnotu přenosu v nulovém kmitočtu, získáme navíc proti variantám A, B i shodné zakončovací odpory v případě LC realizace (sekce \ref{s:LC}). Je to obdoba postupu u Čebyševovy aproximace.
 \subsection{Srovnání typů aproximací}
 Podle Martinka, Boreše a Hospodky \cite{12} není z hlediska zápisu přenosové funkce rozdíl mezi Butterworthovou a Čebyševovou aproximací, přestože jedna má v propustném pásmu hladký a druhá zvlněný průběh. Přenosová funkce má v čitateli konstantu a ve jmenovateli polynom (odtud společné označení polynomiální aproximace).\\
-Oproti tomu volba průběhu v nepropustném pásmu tvar přenosové funkce mění. Pokud je průběh monotónní (Butterworthova, Čebyševova aproximace), jedná se o podíl konstanty a polynomu. Je-li průběh v nepropustném pásmu zvlněný, tvoří přenosovou funkci podíl dvou polynomů. Pro běžné aproximace (Cauerova, inverzní Čebyševova) je v čitateli sudý polynom ve tvaru $\prod _{i} (p^2 + \omega_i^2)$.\\
+Oproti tomu volba průběhu v~nepropustném pásmu tvar přenosové funkce mění. Pokud je průběh monotónní (Butterworthova, Čebyševova aproximace), jedná se o podíl konstanty a polynomu. Je-li průběh v~nepropustném pásmu zvlněný, tvoří přenosovou funkci podíl dvou polynomů. Pro běžné aproximace (Cauerova, inverzní Čebyševova) je v čitateli sudý polynom ve tvaru $\prod _{i} (p^2 + \omega_i^2)$.\\
 Volbou kombinace hladkého a zvlěného průběhu v propustném a nepropustném pásmu získáme různé vlastnosti.\\
-\newpage
  \begin{table}[h]
  \caption[Přehled aproximací podle tvaru aproximační funkce v propustném i nepropustném pásmu]{\label{tab:Přehled aproximací podle tvaru aproximační funkce v propustném i nepropustném pásmu}Přehled aproximací podle tvaru aproximační funkce v propustném i nepropustném pásmu \cite{12}}
   \end{table}

@@ -6,6 +6,9 @@ Obsah CD:
 Slozka Altium:
 Obsahuje schema DPS.
 
+Slozka Altium Biquads:
+Obsahuje schema DPS pro bikvady.
+
 Slozka Doc:
 Obsahuje dokumentaci k LM13700.
 
