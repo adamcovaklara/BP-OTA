@@ -6,7 +6,7 @@ Obsah CD:
 Slozka Altium:
 Obsahuje schema DPS.
 
-Slozka Altium Biquads:
+Slozka Altium biquads:
 Obsahuje schema DPS pro bikvady.
 
 Slozka Doc:
