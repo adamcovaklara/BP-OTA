@@ -1,6 +1,6 @@
 Podle Schaumanna a Valkenburga \cite{13} se v~telekomunikacích používají filtry v rozsahu kmitočtů desítek až stovek MHz, v bezdrátové komunikaci až v řádu GHz. Běžné RC filtry by neměly být užívány ve frekvenčním rozsahu nad 5--10 $\%$ $\omega _0$ ($\omega _0 = f_m \cdot 2 \pi$, kde $f_m$ je mezní kmitočet) --- tedy v tomto rozsahu používaném v telekomunikačních technologiích nemají předvídatelné průběhy. Krom toho ve spínačích CMOS, kde rezistory běžně nejsou dostupné, jsou potřeba zesilovače s velkou šířkou pásma a zároveň vysokým zesílením. Dodržení těchto požadavků je náročné a drahé. Dalším extrémem pro analogové integrované filtry jsou telefonní linky, kde jsou kmitočtové rozsahy sice nízké, ale je požadována nízká cena a vysoká přesnost.\\
 \\
-Pro nízké frekvence se ke splnění těchto požadavků používají obvody se spínanými kapacitory (SC). Přepínaný kapacitor se chová jako rezistor, tudíž časová konstanta RC je definována poměrem kapacitorů a hodinovou (CLK) frekvencí, se kterou jsou přepínány. Pro vysokofrekvenční aplikace (v řádu GHz) se používají \newline MOSFET-C filtry.\\
+Pro nízké frekvence se ke splnění těchto požadavků používají obvody se spínanými kapacitory (SC). Přepínaný kapacitor se chová jako rezistor, tudíž časová konstanta RC je definována poměrem kapacitorů a hodinovou (CLK) frekvencí, se kterou jsou přepínány. Pro vysokofrekvenční aplikace (v řádu GHz) se používají MOSFET-C filtry.\\
 \\
 Další z možných prvků, které jsou dostupné jak pro nízkofrekvenční aplikace, tak pro kmitočtový rozsah stovek megahertz, jsou transkonduktanční zesilovače. Jejich kmitočtové vlastnosti umožňují využití při konstrukci ARC (\textit{Active RC}) filtrů v pracovním kmitočtovém pásmu do cca 10\,MHz a se speciálně konstruovanými OTA až do 100\,MHz. Kmitočet dominantního pólu je běžně v oblasti stovek kHz až jednotek MHz (Martinek, Boreš, Hospodka \cite{12}).\\
 \\
@@ -42,7 +42,7 @@ v_0(t) = \frac{1}{C}\int i(t)dt = \frac{1}{C}\int g_mv_1(t)dt.
 Ztrátový integrátor lze utvořit sériovým zapojením dalšího OTA jako odporu se zápornou zpětnou vazbou. Rozdíl mezi ideálním a ztrátovým integrátorem lze pozorovat v modulové charakteristice --- pro ztrátový je konstantní a pak teprve lineárně klesá se sklonem 20\,dB/dek.\\
 Po doplnění ztrátové vodivosti, kterou zde simuluje druhý zesilovač, paralelně k integrační kapacitě, byl obdržen vztah pro výstupní napětí
 \begin{equation}
-v_0(t) = \frac{g_{m1}}{sC + g_{m2}}(v_1^+ - v_{1}^-).\label{s:OTA-INT1}
+v_0(t) = \frac{g_{m1}}{pC + g_{m2}}(v_1^+ - v_{1}^-).\label{s:OTA-INT1}
 \end{equation}
 \begin{figure}[h]
 \centering
@@ -93,7 +93,7 @@ V_Z
 \newline
 V analogových IC je preferováno diferenční zpracování signálů, protože redukuje zkreslení a šum (diferenční stupeň vyruší kladné a záporné výchylky napětí/proudu např. na zdroji a také vyruší nelinearity způsobené zesilovačem).\\
 \\
-Využitím zapojení na obrázku \ref{s:OTA} a principů CCII lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu). Provodení diferenčního stupně na výstupu je znázorněno na obrázku \ref{s:CMOS}. Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma. Také má menší transkonduktanci, protože každou polovinou diferenčního obvodu teče jen polovina klidového stejnosměrného pracovního proudu. Problémem je také relativně nízké stejnosměrné zesílení, proto se v~praxi se~zapojením s OTA nepoužívá. \\
+Využitím zapojení na obrázku \ref{s:OTA} a principů CCII lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu). Provedení diferenčního stupně na výstupu je znázorněno na obrázku \ref{s:CMOS}. Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma. Také má menší transkonduktanci, protože každou polovinou diferenčního obvodu teče jen polovina klidového stejnosměrného pracovního proudu. Problémem je také relativně nízké stejnosměrné zesílení, proto se v~praxi se~zapojením s OTA nepoužívá. \\
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{diff.png}
@@ -154,9 +154,9 @@ Výpočet THD vychází z rozkladu periodického signálu na harmonické složky
 \begin{equation}
 THD = \frac{\sum{výkon\ vyšších\ harmonických}}{výkon\ základní\ harmonické} = \frac{P_2 + P_3 + \cdots + P_n}{P_1} \cdot 100 \%
 \end{equation}
-Vysokoimpedanční buffery doplňují dynamický rozsah zesilovače. Výstupní buffery LM13700 se liší od předchozí, již nevyráběné, řady 13600 v tom, že jejich vstupní klidové proudy $I_b$ (a tedy jejich výstupní stejnosměrné úrovně) jsou nezávislé na klidovém stejnosměrném pracovním proudu $I_{ABC}$. To má za následek např. vyšší výkon ve zvukových aplikacích než s LM13600. LM13700 je přeladitelný přes 6 dekád a má výbornou linearitu transkonduktance $g_m$. LM13700 má na výstupu vysokou hodnotu odstupu signál od šumu \cite{20}.\\
+Vysokoimpedanční buffery doplňují dynamický rozsah zesilovače. Výstupní buffery LM13700 se liší od předchozí, již nevyráběné, řady 13600 v tom, že jejich vstupní klidové proudy $I_b$ (a tedy jejich výstupní stejnosměrné úrovně) jsou nezávislé na klidovém stejnosměrném pracovním proudu $I_{ABC}$. To má za následek např. vyšší výkon ve zvukových aplikacích než s LM13600. LM13700 je přeladitelný přes 6 dekád a má výbornou linearitu transkonduktance $g_m$. LM13700 má na výstupu vysokou hodnotu odstupu signál od šumu (SNR) \cite{20}.\\
 \\
-Porovnání ceny typů LM13700 je uvedeno v tabulce níže. Parametry jsou stejné, typy se od sebe liší počtem kusů v balení a typem pouzdra (SOIC/PDIP).
+Porovnání ceny typů LM13700 je uvedeno v tabulce \ref{s:PRICE}. Parametry jsou stejné, typy se od sebe liší počtem kusů v balení a typem pouzdra (SOIC/PDIP).
 \begin{table}[h]
 \centering
   \begin{tabular}{ | c | >{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
@@ -166,16 +166,17 @@ Porovnání ceny typů LM13700 je uvedeno v tabulce níže. Parametry jsou stejn
     LM13700MX/NOPB & SOIC & 2500 & 27.04\\ \hline
     LM13700N/NOPB & PDIP & 25 & 48.62\\ \hline
   \end{tabular}
-  \caption[Porovnání typů LM13700]{\label{tab:Porovnání typů LM13700}Porovnání typů LM13700 \cite{18}}
+  \caption[Porovnání typů LM13700]{\label{tab:Porovnání typů LM13700}Porovnání typů LM13700 \cite{18} \label{s:PRICE}}
   \end{table}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{image6.png}
 \caption[Pinout LM13700M]{Pinout LM13700M \cite{20} \label{s:PIN}}
-\end{figure}
+\end{figure}\\
+\\
 \noindent Vnitřní zapojení LM13700 na obrázku \ref{s:OTA} obsahuje symetrický rozdílový zesilovací stupeň (tranzistory Q4, Q5), který je napájen řízeným zdrojem proudu s tranzistorem Q2. Tento diferenční stupeň pracuje jako měnič vstupního rozdílového napětí na diferenční proudový signál, který je převeden proudovými zrcadly (\textit{Current Mirror}) na výstupní svorky obvodu. Proudová zrcadla zde tvoří dvojice diod a tranzistorů --- referenční proud tekoucí v jedné větvi obvodu se \uv{zrcadlí} ~v jeho druhé větvi. Principiálně jsou to zdroje proudu řízené proudem (viz Motchenbacher, Connelly \cite{21}).
 \\
-\\noindent Významnou vlastností OTA je možnost změny transkonduktance $g_m$ změnou klidového stejnosměrného pracovního proudu vstupního diferenčního stupně. Řízení může být buď napěťové nebo proudové.
+\noindent Významnou vlastností OTA je možnost změny transkonduktance $g_m$ změnou klidového stejnosměrného pracovního proudu vstupního diferenčního stupně. Řízení může být buď napěťové nebo proudové.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.75]{image5.png}

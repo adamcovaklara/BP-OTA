@@ -11,7 +11,7 @@ kde $g_{m}$ označuje transkonduktanci zesilovače. Prohození invertujícího a
 \noindent Dále lze dle Schaumanna a Valkenburga~\cite{13} pro nahrazení indukčnosti o impedanci $Z_L = 1/(pC)$ použít obvod se~třemi OTA (obrázek~\ref{s:IND0}). Uzemněny jsou invertující vstup prvního OTA a neinvertující druhého. Použita je zpětná vazba z výstupu na neinvertující vstup prvního OTA. Propojení výstupu prvního OTA na invertující vstup druhého OTA je realizován přes uzemněný kapacitor. \\
 Vyjádřením napětí a proudů v obvodu bylo získáno napětí na kapacitoru a vstupní proud
 \begin{align}\label{s:vzt2}
-V_C &= \frac{g_{m1}}{sC}V_1, \\
+V_C &= \frac{g_{m1}}{pC}V_1, \\
 I_1 &= g_{m2}V_C = \frac{g_{m1}g_{m2}}{pC}V_1.
 \end{align}
 Výsledná indukčnost --- impedance vstupu byla vyjádřena vztahem \ref{s:vzt2}.
@@ -61,7 +61,7 @@ Blok c) na obrázku \ref{s:BLO} realizuje sčítací nebo rozdílový obvod s na
 V_O = -\frac{g_{m1}}{g_{m3}}V_1 + \frac{g_{m2}}{g_{m3}}V_2.\label{s:BLO3}
 \end{equation}
 \noindent Spojením těchto základních stavebních bloků se správnými znaménky lze získat různé funkční bloky.\\
-Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20--20 000\,Hz) naopak lze chyby způsobené parazitními součástkami i~chyby způsobené konečnou šířkou pásma zanedbat.
+Základním principem uplatňovaným při návrhu s OTA je použití pouze OTA a uzemněných kapacitorů, protože při návrhu IC jsou uzemněné kapacitory méně zatíženy parazitními chybami než neuzemněné kapacitory. Pro IC použití je vhodné volit shodné transkonduktance. Parazitní vstupní a především výstupní impedance způsobují chyby ve výstupu filtru, což může vést na parazitní póly, které při vysokofrekvenčním použití nelze zanedbat. Při použití filtru pro zvukové aplikace (20--20~000\,Hz) naopak lze chyby způsobené parazitními součástkami i~chyby způsobené konečnou šířkou pásma zanedbat, protože se jedná o nízký frekvenční rozsah.
 \subsection{Odvození DP 2. řádu}\label{s:ODV}
 \noindent Náhradní obvod, ze kterého bude spočítána přenosová funkce pro přenos filtru druhého řádu, popisuje obrázek~\ref{s:DPO}.
 \begin{figure}[h]

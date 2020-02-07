@@ -1,10 +1,10 @@
 V celé sekci je zvolena přesnost na 3 desetinná místa. Přesnější hodnoty jsou k nahlédnutí v přiloženém skriptu. Pro zachování přehlednosti nejsou v práci všechny výstupy z Maplu.\\
-Zadána byla spodní a horní hranice nepropustného pásma $f_{-s},fs$\,[Hz], spodní a horní hranice propustného pásma $f_{-p},f_p$\,[Hz], maximální útlum v propustném pásmu $a_p$\,[dB] a minimální útlum v~nepropustném pásmu $a_s$\,[dB]. Toleranční schéma definuje oblasti, do kterých nesmí charakteristika filtru zasáhnout. Pro návrh pásmové propusti 4. řádu s Cauerovou aproximací typu C byly zvoleny parametry tolerančního schématu $f_{-s} = 60$\,kHz, $f_{-p} = 150$\,kHz, $f_p = 190$\,kHz, $f_s = 280$\,kHz, $a_p = 1$\,dB a $a_s = 80$\,dB. Všechny parametry musí být kladná reálná čísla a $f_{-s}$ <  $f_{-p}$ < $f_p$ < $f_s$ a $a_p$ < $a_s$. 
+Zadána byla spodní a horní hranice nepropustného pásma $f_{-s},fs$\,[Hz], spodní a horní hranice propustného pásma $f_{-p},f_p$\,[Hz], maximální útlum v propustném pásmu $a_p$\,[dB] a minimální útlum v~nepropustném pásmu $a_s$\,[dB]. Toleranční schéma definuje oblasti, do kterých nesmí charakteristika filtru zasáhnout. Pro návrh pásmové propusti 4. řádu s Cauerovou aproximací typu C byly zvoleny parametry tolerančního schématu $f_{-s} = 60$\,kHz, $f_{-p} = 150$\,kHz, $f_p = 190$\,kHz, $f_s = 280$\,kHz, $a_p = 1$\,dB a $a_s = 80$\,dB. Všechny parametry musí být kladná reálná čísla a $f_{-s}$ <  $f_{-p}$ < $f_p$ < $f_s$ a $a_p$ < $a_s$, $f_m$ značí geometrický střed propustného pásma.
 \begin{align}
-f_{-s} &= \frac{\sqrt{\Delta{fs}^2+4f\_m ^2}-\Delta{fs}}{2}\\
-f_{-p} &= \frac{\sqrt{\Delta{fp}^2+4f\_m ^2}-\Delta{fp}}{2}\\
-f_p &= \frac{\sqrt{\Delta{fp}^2+4f\_m ^2}+\Delta{fp}}{2}\\
-f_s &= \frac{\sqrt{\Delta{fs}^2+4f\_m ^2}+\Delta{fs}}{2}
+f_{-s} &= \frac{\sqrt{\Delta{fs}^2+4f_m ^2}-\Delta{fs}}{2}\\
+f_{-p} &= \frac{\sqrt{\Delta{fp}^2+4f_m ^2}-\Delta{fp}}{2}\\
+f_p &= \frac{\sqrt{\Delta{fp}^2+4f_m ^2}+\Delta{fp}}{2}\\
+f_s &= \frac{\sqrt{\Delta{fs}^2+4f_m ^2}+\Delta{fs}}{2}
 \end{align}
 Funkcí $BP2NLP$ byla provedena transformace tolerančního schematu nesymetrické pásmové propusti (PP) na toleranční schema normované dolní propusti (NDP). Byl spočítán nový kmitočet pro horní hranici nepropustného pásma $f_s = 101.786$\,kHz, geometrický střed propustného pásma $f_m = 168.819$\,kHz, šířka propustného pásma $\Delta{f_p} = 40$\,kHz a šířka nepropustného pásma $\Delta{f_s} = 178.314$\,kHz. Byl obdržen kmitočet hranice nepropustného pásma normované dolní propusti (NDP) $Os = 4.455$\,1/s.
 \begin{figure}[h]
@@ -64,7 +64,7 @@ K realizaci filtrů vyšších řádů se užívají $\pi$ nebo T~články s LC 
  Gyrátor je podle Martinka, Boreše a Hospodky \cite{12} typ invertoru. Pro invertory platí, že jejich vstupní impedanci lze napsat ve tvaru\begin{equation}
 Z_{vst} = \frac{a_{12}}{a_{21}}\frac{1}{Z_L} = \frac{a_{12}}{a_{21}}Y_L.
 \end{equation}
-Pokud jsou parametry $a_{12}, a_{21}$ reálné a kladné, hovoříme o gyrátoru. Symbol gyrátoru je na obrázku \ref{s:G}. Gyrátor se nejúspěšněji dá realizovat paralelním spojením dvou napětím řízených zdrojů proudu s opačným znaménkem. Zapojení s OTA odpovídá dvěma zesilovačům, jeden s uzemněnou zápornou a druhý s uzemněnou kladnou svorkou vstupu. Výstup prvního ze zesilovačů je propojen s volnou vstupní svorkou druhého a naopak.
+Pokud jsou parametry $a_{12}, a_{21}$ reálné a kladné, hovoříme o gyrátoru. Symbol gyrátoru je na obrázku~\ref{s:G}. Gyrátor se nejúspěšněji dá realizovat paralelním spojením dvou napětím řízených zdrojů proudu s opačným znaménkem. Zapojení s OTA odpovídá dvěma zesilovačům, jeden s uzemněnou zápornou a druhý s uzemněnou kladnou svorkou vstupu. Výstup prvního ze zesilovačů je propojen s volnou vstupní svorkou druhého a naopak.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.095]{gyr.png}
@@ -72,7 +72,7 @@ Pokud jsou parametry $a_{12}, a_{21}$ reálné a kladné, hovoříme o gyrátoru
 \end{figure}
 Podle Schaumanna a Valkenburga \cite{13} nelze gyrátor dobře realizovat s obyčejnými operačními zesilovači, běžně se používají \textit{General Impedance Converters} (GIC). Převod induktoru na jiné zapojení s ekvivalentní impedancí má praktické využití v integrovaných obvodech, kde jsou kapacitory preferovány nad induktory kvůli malým rozměrům. Navíc se induktory musí složitě vyrábět na danou hodnotu. V návrhu integrovaných obvodů se také většinou nepoužívají rezistory kvůli místu na čipu, které zabírají. \\
 \\
-Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku \ref{s:GO} jsou podle Schaumanna a Valkenburga \cite{13} znázorněny dva gyrátory s kapacitorem. 
+Gyrátor je principielně spojení invertujícího a neinvertujícího napětím řízeného zdroje proudu, a proto ho lze realizovat snadno s transkonduktančními zesilovači. Na obrázku~\ref{s:GO} jsou podle Schaumanna a Valkenburga \cite{13} znázorněny dva gyrátory s kapacitorem. 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{gyrator.png}
@@ -139,12 +139,12 @@ Pro kmitočtové pásmo stovky kHz až jednotky MHz v závislosti na typu jádra
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{modul12.png}
-\caption{Modulová frekvenční charakteristika LC struktury (červená) a LC struktury s konečnou hodnotou jakostí cívek (zelená)}
+\caption[Modulová frekvenční charakteristika LC struktury a LC struktury s konečnou hodnotou jakostí cívek]{Modulová frekvenční charakteristika LC struktury (červená) a LC struktury s konečnou hodnotou jakostí cívek (zelená)}
 \end{figure}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{modul123.png}
-\caption{Přiblížená modulová frekvenční charakteristika LC struktury (červená) a LC struktury s konečnou hodnotou jakostí cívek (zelená)}
+\caption[Přiblížená modulová frekvenční charakteristika LC struktury a LC struktury s konečnou hodnotou jakostí cívek]{Přiblížená modulová frekvenční charakteristika LC struktury (červená) a LC struktury s konečnou hodnotou jakostí cívek (zelená)}
 \end{figure}
 \noindent Vyčíslením v $f_m \cdot 2 \pi$ Hz, kde $f_m$ je geometrický střed propustného pásma, bylo obdrženo zesílení 0.283\,dB.\\
 \\

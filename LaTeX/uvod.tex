@@ -19,24 +19,24 @@ Zvláštní skupinu aplikací tvoří filtry dolní propust v systémech pro př
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{tolerancnischemata.png}
-\caption[Toleranční schéma dolní propusti (DP), horní propusti (HP), pásmové propusti (PP) a pásmové zádrže]{Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)\cite{7}}
+\caption[Toleranční schéma dolní propusti (DP), horní propusti (HP), pásmové propusti (PP) a pásmové zádrže (PZ)]{Toleranční schéma pro a) dolní propust (DP), b) horní propust (HP), c) pásmovou propust (PP) a d) pásmovou zádrž (PZ)\cite{7}}
 \end{figure}
 \noindent Dolní propust nepropouští na výstup vstupní signál nad frekvencí $f_s$, signál v propustném pásmu zůstává beze změny nebo zesílený. Základní pasivní dvojbranné zapojení je ke vstupu sériově zapojený rezistor a k této větvi paralelně kapacitor. Tento RC člen --- integrační článek se zvyšující se frekvencí snižuje svou vstupní impedanci. Přenosová funkce v nekonečnu je nulová. \\
 Obecná přenosová funkce filtru typu dolní propust n-tého řádu je podle Vedrala a Svatoše~\cite{8}
 \begin{equation}
 H(p) = \frac{H_0}{\prod_{i=1}^{\frac{n}{2}} (1 + a_i p + b_i p^2)} \label{r:FTR},
 \end{equation}
-kde $n$ je řád filtru a $p = j\omega/omega_0$, $\omega_0$ je mezní kruhový kmitočet filtru, při kterém klesne jeho přenos o 3 dB vzhledem ke stejnosměrnému přenosu.\\
-\\
+kde $n$ je řád filtru a $p = j\omega/\omega_0$, $\omega_0$ je mezní kruhový kmitočet filtru, při kterém klesne jeho přenos o 3 dB vzhledem ke stejnosměrnému přenosu.
 Dolní propust druhého řádu má přenos v nekonečnu nulový $H_{\infty} = 0$. \\
-Horní propust nepropouští signály o nízkých frekvencích. Nejjednodušší zapojení je RC člen --- derivační článek, kde kapacitor je zapojen sériově se zdrojem a k této větvi paralelně rezistor. Pro toto zapojení reaktance kapacitoru se zvyšující se frekvencí klesá. Přenosová funkce ideálního derivačního článku je v nule nulová. \\
+\\
+Horní propust nepropouští signály o nízkých frekvencích. Nejjednodušší zapojení je CR člen --- derivační článek, kde kapacitor je zapojen sériově se zdrojem a k této větvi paralelně rezistor. Pro toto zapojení reaktance kapacitoru se zvyšující se frekvencí klesá. Přenosová funkce ideálního derivačního článku je v nule nulová. \\
 Obecná přenosová funkce filtru typu horní propust n-tého řádu je podle Vedrala a Svatoše~\cite{8}
 \begin{equation}
 H(p) = \frac{H_{\infty}}{\prod_{i=1}^{\frac{n}{2}} (1 + \frac{a_i}{p} + \frac{b_i}{p^2})} \label{r:FTR2},
 \end{equation}
 kde $n$ je řád filtru a $H_{\infty}$ přenos filtru pro $\omega \gg \omega_0$.\\
 \\
-\noindent Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC --- dolní propust) a derivačního článku (CR --- horní propust) zapojených v sérii, viz obrázek \ref{s:BPBS}. Ideální pásmová propust má přenos v nule i nekonečnu nulový. \\
+\noindent Pásmová propust propouští pásmo určené dvěma kmitočty. Pasivní pásmové propusti nedosahují účinnosti větší než 1. Jsou složeny z integračního článku (RC --- dolní propust) a derivačního článku (CR --- horní propust) zapojených v sérii, viz obrázek~\ref{s:BPBS}. Ideální pásmová propust má přenos v nule i nekonečnu nulový. \\
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{bpbs.png}
