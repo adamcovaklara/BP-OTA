@@ -91,7 +91,7 @@ V_Z
 \caption[CCII s $\pm$ výstupem založený na OTA]{CCII s $\pm$ výstupem založený na OTA \cite{15}}
 \end{figure}
 \newline
-V analogových IC je preferováno diferenční zpracování signálů, protože redukuje zkreslení a šum (diferenční stupeň vyruší kladné a záporné výchylky napětí/proudu např. na zdroji a také vyruší nelinearity způsobené zesilovačem).\\
+V analogových IO je preferováno diferenční zpracování signálů, protože redukuje zkreslení a šum (diferenční stupeň vyruší kladné a záporné výchylky napětí/proudu např. na zdroji a také vyruší nelinearity způsobené zesilovačem).\\
 \\
 Využitím zapojení na obrázku \ref{s:OTA} a principů CCII lze získat modifikace klasického transkonduktančního zesilovače (s rozdílovým stupněm na vstupu a jedním výstupem). Obdržené atypické struktury obsahují jeden vstup a jeden výstup a také dva rozdílové stupně (na vstupu i výstupu). Provedení diferenčního stupně na výstupu je znázorněno na obrázku \ref{s:CMOS}. Takovéto zapojení funguje jako dobrý sledovač napětí, ale zato má menší šířku pásma. Také má menší transkonduktanci, protože každou polovinou diferenčního obvodu teče jen polovina klidového stejnosměrného pracovního proudu. Problémem je také relativně nízké stejnosměrné zesílení, proto se v~praxi se~zapojením s OTA nepoužívá. \\
 \begin{figure}[h]
@@ -110,8 +110,8 @@ Využitím zapojení na obrázku \ref{s:OTA} a principů CCII lze získat modifi
 \caption[\textit{Fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu]{\textit{Fully differential} OTA (DIDO) založený na CCII a napěťovém bufferu \cite{15}}
 \end{figure}
 \newpage
-\subsection{IC s OTA}
-OTA bývá nejčastěji implementován v unipolární monolitické technologii (CMOS) a v případě, že se jedná o~reálný prvek, má převážně kapacitní charakter (vstupní impedance se stává kapacitou). Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 85--290\,Kč. IC s dvěma zesilovači v pouzdře mají užší šířku pásma (2\,MHz), menší rychlost přeběhu (50\,V/$\upmu$s), mnohem menší výstupní proud (650\,$\upmu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí pro pouzdro čipu s 2 OTA je 35--65\,Kč. Ceny v tabulce jsou uváděny pro jednu součástku k 10. 11. 2019. Pokud se vyrábí více verzí součástky, je vždy pro přehlednost uvedena pouze jedna. GBP (\textit{Gain-Bandwidth Product}) v tabulce je získán vynásobením hodnoty kmitočtu dominantního pólu celkovým zesílením. Například, podle Michala \cite{14}, je-li navrhován zesilovač se zesílením G, je hodnota mezního kmitočtu pro pokles 3\,dB dána vztahem
+\subsection{IO s OTA}
+OTA bývá nejčastěji implementován v unipolární monolitické technologii (CMOS) a v případě, že se jedná o~reálný prvek, má převážně kapacitní charakter (vstupní impedance se stává kapacitou). Integrované obvody se vyrábí buď s jedním nebo dvěma zesilovači v pouzdře. Varianty s jedním operačním zesilovačem jsou např. OPA615, OPA860 a novější OPA861. Všechny součástky s jedním OTA mají velkou šířku pásma (v řádech stovek MHz), cenově vychází na 85--290\,Kč. IO s dvěma zesilovači v pouzdře mají užší šířku pásma (2\,MHz), menší rychlost přeběhu (50\,V/$\upmu$s), mnohem menší výstupní proud (650\,$\upmu$A) i offset vstupního napětí a operují při cca 4x nižších proudech. Cenové rozpětí pro pouzdro čipu s 2 OTA je 35--65\,Kč. Ceny v tabulce jsou uváděny pro jednu součástku k 10. 11. 2019. Pokud se vyrábí více verzí součástky, je vždy pro přehlednost uvedena pouze jedna. GBP (\textit{Gain-Bandwidth Product}) v tabulce je získán vynásobením hodnoty kmitočtu dominantního pólu celkovým zesílením. Například, podle Michala \cite{14}, je-li navrhován zesilovač se zesílením G, je hodnota mezního kmitočtu pro pokles 3\,dB dána vztahem
 \begin{equation}
 f_m = \frac{GBP}{G}.
 \end{equation}
@@ -128,7 +128,7 @@ f_m = \frac{GBP}{G}.
      LT1228CS8\#PBF & 100 & 0.5 & 65 & 0.4 & 3 & 9  & 0.75 & 4--36 & 80 &  210.34\\
     \hline
   \end{tabular}}
-  \caption[Porovnání integrovaných obvodů s jedním OTA]{\label{tab:Porovnání IC s jedním OTA}Porovnání IC s jedním OTA \cite{18}}
+  \caption[Porovnání integrovaných obvodů s jedním OTA]{\label{tab:Porovnání IO s jedním OTA}Porovnání IO s jedním OTA \cite{18}}
   \end{table}
 \begin{center}
 \begin{table}[h]
@@ -142,7 +142,7 @@ f_m = \frac{GBP}{G}.
     NJM13600M & 2 & 50 & 650 & 5 & 5 & 2.6 & 6700 & 36 & 80 & 36.92 \\ \hline
     NJM13700M & 2 & 50 & 650  & 5 & 4 & 2.6 & 6700 & 36 & 80 & 37.70 \\ \hline
   \end{tabular}}
-  \caption[Porovnání integrovaných obvodů se dvěma OTA]{\label{tab:Porovnání IC se dvěma OTA}Porovnání IC se dvěma OTA \cite{18}}
+  \caption[Porovnání integrovaných obvodů se dvěma OTA]{\label{tab:Porovnání IO se dvěma OTA}Porovnání IO se dvěma OTA \cite{18}}
   \end{table}
 \end{center}
 \noindent Pro realizaci přeladitelného filtru byl zvolen LM13700M kvůli provoznímu napájecímu proudu (1.3\,mA), rozpětí napájecího napětí (10–-36\,V) a cenové dostupnosti (32.50\,Kč). Součástky NJM13700, NJM13600 a LM13600 se dají zakoupit, ale mají plánované vyřazení z výroby kvůli zastarání. \\

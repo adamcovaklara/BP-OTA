@@ -19,7 +19,7 @@ Slozka LaTeX:
 Obsahuje LaTeX zdrojove kody.
 
 Slozka Maple:
-Obsahuje Maple skript.
+Obsahuje Maple skripty.
 
 Slozka Multisim:
 Obsahuje soubory se schematy v Multisimu.

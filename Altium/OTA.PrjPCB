@@ -54,43 +54,13 @@ ClassGenNCAutoScope=None
 DocumentPath=ProjectOutputs\Design Rule Check - OTA1.html
 
 [GeneratedDocument2]
-DocumentPath=ProjectOutputs\Design Rule Check - OTA.html
-
-[GeneratedDocument3]
 DocumentPath=Project Outputs for OTA\OTA1.EXTREP
 
-[GeneratedDocument4]
+[GeneratedDocument3]
 DocumentPath=Project Outputs for OTA\OTA1.REP
 
-[GeneratedDocument5]
+[GeneratedDocument4]
 DocumentPath=Project Outputs for OTA\OTA1.RUL
-
-[GeneratedDocument6]
-DocumentPath=Project Outputs for OTA\OTA.BOM
-
-[GeneratedDocument7]
-DocumentPath=Project Outputs for OTA\OTA.CSV
-
-[GeneratedDocument8]
-DocumentPath=Project Outputs for OTA\OTA.DRL
-
-[GeneratedDocument9]
-DocumentPath=Project Outputs for OTA\OTA.DRR
-
-[GeneratedDocument10]
-DocumentPath=Project Outputs for OTA\OTA.EXTREP
-
-[GeneratedDocument11]
-DocumentPath=Project Outputs for OTA\OTA.LDP
-
-[GeneratedDocument12]
-DocumentPath=Project Outputs for OTA\OTA.REP
-
-[GeneratedDocument13]
-DocumentPath=Project Outputs for OTA\OTA.RUL
-
-[GeneratedDocument14]
-DocumentPath=Project Outputs for OTA\OTA.TXT
 
 [OutputGroup1]
 Name=Netlist Outputs

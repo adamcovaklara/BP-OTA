@@ -34,6 +34,7 @@
 \usepackage{titling}
 \usepackage{csquotes} % ceske uvozovky
 \usepackage{caption}
+\usepackage{comment} % komentare
 
 % adresar s obrazky
 \graphicspath{{../Images/}}
@@ -117,8 +118,12 @@ pdfpagemode=UseNone,backref=false,colorlinks=true] {hyperref}
 \input{nahrada_prvku.tex}
 \sekce{Simulace}
 \input{simulace.tex}
-\sekce{Návrh v Maple}\label{s:MAPLE}
+\sekce{Návrh obvodu}
 \input{navrh.tex}
+\sekce{Příklad Butterworthovy aproximace}
+\input{butterworth.tex}
+\sekce{Příklad Cauerovy aproximace}\label{s:MAPLE}
+\input{cauer.tex}
 \sekce{Praktická část}\label{s:PRAK}
 \input{prakticka.tex}
 \sekce{Závěr}

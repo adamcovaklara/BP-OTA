@@ -44,11 +44,11 @@ kde $n$ je řád filtru a $H_{\infty}$ přenos filtru pro $\omega \gg \omega_0$.
 \end{figure}
 \noindent Pásmová propust má přenos v nule i nekonečnu nulový $H_{0} = H_{\infty} = 0$. Její přenosová funkce je~\cite{9}
 \begin{equation}
-H(p) = \frac{H_{B} \frac{\omega _0}{Q} (p) }{p^2 + \frac{\omega _0}{Q}(p) + \omega _0 ^2}.
+H(p) = \frac{H_{B} \frac{\omega _0}{Q} (p) }{p^2 + p\frac{\omega _0}{Q} + \omega _0 ^2}.
 \end{equation}
 Pásmová zádrž nepropouští kmitočty pásma definovaného dvěma kmitočty. Pasivní zapojení je složeno ze dvou rezistorů a kapacitorů. Má vždy ztrátový přenos. Ideální pásmová zádrž má přenosovou funkci v nule stejnou jako v nekonečnu. Lze ji složit sečtením přenosů horní a dolní propusti, viz obrázek \ref{s:BPBS}. Její přenosová funkce je~\cite{9}
 \begin{equation}
-H(p) = \frac{H_{0} (p^2 + \omega_0^2)}{p^2 + \frac{\omega _0}{Q}(p) + \omega _0 ^2}.
+H(p) = \frac{H_{0} (p^2 + \omega_0^2)}{p^2 + p\frac{\omega _0}{Q} + \omega _0 ^2}.
 \end{equation}
 \subsection{Aproximace}
 Podle rozložení nul a pólů jmenovatele rozlišujeme různé aproximace. Úlohou aproximace je nalézt k zadanému tolerančními schématu přenosovou funkci. Koeficienty filtru $a_i, b_i$ (viz rovnice \ref{r:FTR}, \ref{r:FTR2}) určují zesílení v propustném pásmu. Činitel jakosti udává míru ztrát v rezonančním obvodu a je definován jako $Q = \sqrt{b_i}/a_i$. Čím větší $Q$ je obdrženo, tím spíš bude filtr nestabilní. U cívek je nositelem ztrát zejména odpor vodiče, kterým jsou navinuty. U kondenzátorů určují Q hlavně dielektrické ztráty použitého dielektrika (Suchánek \cite{6}).\\

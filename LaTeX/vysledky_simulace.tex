@@ -634,7 +634,7 @@
     xlabel={Frekvence [Hz]},
     ylabel={Amplituda [dB]},
     xmin=3000, xmax=7000000,
-    ymin=-90, ymax=0,
+    ymin=-130, ymax=-50,
     xmode = log,
     legend pos=north west,
     ymajorgrids=true,
@@ -643,10 +643,10 @@
     grid style=dashed,
     y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
 ]
-      \addplot table {50u.txt};
+      \addplot table {butterworth3989u.txt};
   \end{axis}
 \end{tikzpicture}
-\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\upmu$A}
+\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 39.89$ $\upmu$A \newline(Butterworthova aproximace) \label{s:BUT01}}
 \end{figure}
 \begin{figure}[h]
 \centering
@@ -660,7 +660,215 @@
     xlabel={Frekvence [Hz]},
     ylabel={Fáze [$^{\circ}$]},
     xmin=3000, xmax=7000000,
-    ymin=-200, ymax=200,
+    ymin=-180, ymax=150,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {butterworth3989u2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 39.89$ $\upmu$A \newline(Butterworthova aproximace) \label{s:BUT02}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=3000, xmax=10000000,
+    ymin=-130, ymax=-50,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {butterworth50u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\upmu$A \newline(Butterworthova aproximace) \label{s:BUT11}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=3000, xmax=10000000,
+    ymin=-180, ymax=150,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {butterworth50u2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\upmu$A \newline(Butterworthova aproximace) \label{s:BUT12}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=3000, xmax=10000000,
+    ymin=-130, ymax=-50,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {butterworth5982u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 59.82$ $\upmu$A \newline(Butterworthova aproximace) \label{s:BUT21}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=3000, xmax=10000000,
+    ymin=-180, ymax=150,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {butterworth5982u2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 59.82$ $\upmu$A \newline(Butterworthova aproximace) \label{s:BUT22}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=10000, xmax=10000000,
+    ymin=-130, ymax=-50,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {butterworth100u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\upmu$A \newline(Butterworthova aproximace)\label{s:BUT31}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=10000, xmax=10000000,
+    ymin=-180, ymax=150,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    %y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {butterworth100u2.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\upmu$A \newline(Butterworthova aproximace) \label{s:BUT32}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Amplituda [dB]},
+    xmin=3000, xmax=7000000,
+    ymin=-90, ymax=0,
+    xmode = log,
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid=both,
+    grid style=dashed,
+    y filter/.code={\pgfmathparse{20*log10(\pgfmathresult)}}
+]
+      \addplot table {50u.txt};
+  \end{axis}
+\end{tikzpicture}
+\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\upmu$A \newline(Cauerova aproximace) \label{s:OTAPP}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}%[transform canvas={scale=2}]
+\pgfplotsset{%
+    width=1.0\textwidth,
+    height=0.4\textwidth
+} 
+  \begin{axis}
+  [
+    xlabel={Frekvence [Hz]},
+    ylabel={Fáze [$^{\circ}$]},
+    xmin=3000, xmax=7000000,
+    ymin=-180, ymax=200,
     xmode = log,
     legend pos=north west,
     ymajorgrids=true,
@@ -672,7 +880,7 @@
       \addplot table {50u2.txt};
   \end{axis}
 \end{tikzpicture}
-\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\upmu$A}
+\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 50$ $\upmu$A \newline(Cauerova aproximace) \label{s:OTAPP1}}
 \end{figure}
 \begin{figure}[h]
 \centering
@@ -698,7 +906,7 @@
       \addplot table {84u.txt};
   \end{axis}
 \end{tikzpicture}
-\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 84.4$ $\upmu$A}
+\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 84.4$ $\upmu$A \newline(Cauerova aproximace) \label{s:OTAPP2}}
 \end{figure}
 \begin{figure}[h]
 \centering
@@ -712,7 +920,7 @@
     xlabel={Frekvence [Hz]},
     ylabel={Fáze [$^{\circ}$]},
     xmin=10000, xmax=10000000,
-    ymin=-200, ymax=200,
+    ymin=-180, ymax=200,
     xmode = log,
     legend pos=north west,
     ymajorgrids=true,
@@ -724,7 +932,7 @@
       \addplot table {84u2.txt};
   \end{axis}
 \end{tikzpicture}
-\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 84.4$ $\upmu$A}
+\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 84.4$ $\upmu$A \newline(Cauerova aproximace) \label{s:OTAPP22}}
 \end{figure}
 \begin{figure}[h]
 \centering
@@ -750,7 +958,7 @@
       \addplot table {100u.txt};
   \end{axis}
 \end{tikzpicture}
-\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\upmu$A}
+\caption[]{Amplitudová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\upmu$A \newline(Cauerova aproximace) \label{s:OTAPP3}}
 \end{figure}
 \begin{figure}[h]
 \centering
@@ -764,7 +972,7 @@
     xlabel={Frekvence [Hz]},
     ylabel={Fáze [$^{\circ}$]},
     xmin=10000, xmax=10000000,
-    ymin=-200, ymax=200,
+    ymin=-180, ymax=200,
     xmode = log,
     legend pos=north west,
     ymajorgrids=true,
@@ -776,5 +984,5 @@
       \addplot table {100u2.txt};
   \end{axis}
 \end{tikzpicture}
-\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\upmu$A}
+\caption[]{Fázová charakteristika PP 4. řádu s $I_{ABC} = 100$ $\upmu$A \newline(Cauerova aproximace) \label{s:OTAPP33}}
 \end{figure}
