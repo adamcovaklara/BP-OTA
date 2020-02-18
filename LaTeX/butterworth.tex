@@ -103,20 +103,179 @@ Zatím neodnormované prvky byly vyčísleny jako $C_1 = 2.198$e-7\,F, $C_2 = 1.
 \begin{align}
 I_1 &= \frac{1}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_1)\\
 v_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_1)\\
-U_1 &= \frac{1}{\frac{1}{pL_2} + pC_2}(I_1 - I_{3})\\
-U_1 &= \frac{1}{\frac{R}{pL_2} + RpC_2}(v_1 - v_{3})\\
+v_2 &= \frac{1}{\frac{1}{pL_2} + pC_2}(I_1 - I_{3})\\
+v_2 &= \frac{1}{\frac{R}{pL_2} + RpC_2}(v_1 - v_{3})\\
 I_{3} &= \frac{1}{pL_3 + \frac{1}{pC_3}}(U_1 - U_2)\\
 v_{3} &= \frac{R}{pL_3 + \frac{1}{pC_3}}(U_2 - U_3)\\
-U_3 &= U_2 = \frac{1}{\frac{1}{R_z}+pC_4 + \frac{1}{pL_4}}(I_1 - I_{L2} - pC_2U_2)\\
-U_3 &= U_2 = \frac{1}{\frac{R}{R_z}+RpC_4 + \frac{R}{pL_4}}(v_1 - U_2 - RpC_2 U_2)
+v_4 &= U_3 = U_2 = \frac{1}{\frac{1}{R_z}+pC_4 + \frac{1}{pL_4}}(I_1 - I_{L2} - pC_2U_2)\\
+v_4 &= \frac{1}{\frac{R}{R_z}+RpC_4 + \frac{R}{pL_4}}(v_1 - U_2 - RpC_2 U_2)
 \end{align}
-\noindent To odpovídá realizační struktuře se čtyřmi bloky o přenosech $H_1, \ldots,H_4$.
+\noindent To odpovídá realizační struktuře se čtyřmi bloky o přenosech $H_1, \ldots,H_4$. Výsledná struktura se zesilovači OTA je na obrázku \ref{s:OBR}.
 \begin{align}
 H_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}\\
 H_2 &= \frac{1}{\frac{R}{pL_2} + RpC_2}\\
 H_3 &= \frac{R}{pL_3 + \frac{1}{pC_3}}\\
 H_4 &= \frac{1}{\frac{R}{R_z}+RpC_4 + \frac{R}{pL_4}}
 \end{align}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{h1234.png}
+\caption{Bloková realizační struktura PP}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.45]{butterworth_bandpass.png}
+\caption{Zapojení s OTA pro PP\label{s:OBR}}
+\end{figure}
+\newpage
+\subsection{Funkční simulace LC prototypu - PP jako kaskádní zapojení DP, HP}
+\noindent Kaskádním zapojením DP a HP byl vytvořen filtr typu PP.
+\subsubsection{Funkční simulace dolní propusti}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{LP.png}
+\caption{Schéma obvodu DP \label{s:LP12}}
+\end{figure}
+Byly sestaveny rovnice pro obvod z obrázku \ref{s:LP12}.
+\begin{align}
+I_4 &= I_3\\
+I_4 &= I_{41} + I_{42} \\
+\end{align}
+\begin{equation}
+\begin{split}
+U_1 &= V_1 - U_2 \\
+I_2 &= I_1 - I_3 \\
+U_3 &= U_2 - U_4\\
+I_4 &= I_3
+\end{split}
+\quad \quad
+\begin{split}
+I_1 &= \frac{1}{R_1 + pL_1}U_1 \\
+U_2 &= I_2\frac{1}{pC_2}\\
+I_3 &= \frac{U_3}{pL_3}\\
+U_4 &= \frac{1}{pC_4 + \frac{1}{R_z}}I_4
+\end{split}
+\end{equation}
+Tyto rovnice dále převedeme na tvar, kde R značí volitelný fiktivní rezistor
+\begin{align}
+v_1 &= \frac{R}{R_1 + pL_1}(V_1 - U_2) = \frac{1}{r_1 + pl_1}(V_1 - U_2),
+\end{align}
+kde $R_1/R = r_1$ a $L_1/R = l_1$,
+\begin{align}
+v_2 = \frac{1}{pC_2R}(v_1 - v_3) = \frac{1}{pc_2}(v_1 - v_3),
+\end{align}
+kde $C_2R = c_2$,
+\begin{align}
+v_3 = I_3R = \frac{R}{pL_3}(U_2 - U_4) = \frac{1}{pl_3}(U_2 - U_4),
+\end{align}
+kde $L_3/R = l_3$ a navíc $U_2 - U_4 = U_3$
+\begin{align}
+v_3 = I_3R = \frac{R}{pL_3}U_3 = \frac{1}{pl_3}U_3,
+\end{align}
+\begin{align}
+v_4 = \frac{1}{R(pC_4 + \frac{1}{R_z})}I_3R = \frac{1}{R(pC_4 + \frac{1}{R_z})}v_3 = \frac{1}{pc_4 + \frac{1}{r_z}}v_3,
+\end{align}
+kde $C_4R = c_4$ a $R/R_z = 1/r_z$.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{h1234sum.png}
+\caption{Bloková realizační struktura pro DP}
+\end{figure}
+Podle odvození a z blokové struktury bylo sestaveno schéma s OTA (obrázek \ref{s:OTADP}). Zbývá vypočítat hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$.
+\begin{align}
+v_1 &= \frac{R}{R_1 + pL_1}(V_1 - U_2) = \frac{gm_1}{gm_5 + pC_{1L}}(V_1 - U_2)\\
+v_1 &= \frac{1}{\frac{R_1}{R} + \frac{pL_1}{R}}(V_1 - U_2) = \frac{1}{\frac{gm_5}{gm_1} + \frac{pC_{1L}}{gm_1}}(V_1 - U_2)
+\end{align}
+Zde platí $R_1/R = r_1 = gm5/gm1$ a $L_1/R = l_1 = C_{1L}/gm_1$.
+\begin{align}
+v_2 &= \frac{1}{pC_2R}(v_1 - v_3) = \frac{gm_2}{pC_{2L}}(v_1 - v_3)
+\end{align}
+Zde platí substituce $C_2R = c_2 = C_{2L}/gm_2$.
+\begin{align}
+v_3 = \frac{R}{pL_3}(v_2 - v_4) = \frac{gm_3}{pC_{3L}}(v_2 - v_4)
+\end{align}
+Opět lze použít substituci $L_3/R = l_3 = C_{3L}/gm_3$.
+\begin{align}
+u_4 = \frac{1}{R(pC_4 + \frac{1}{R_z})}v_3 = \frac{gm_4}{pC_{4L} + gm_6}
+\end{align}
+Zde lze nahradit $C_4R = c_4 = C_{4L}/gm_4$ a $R_z/R = r_z$, $r_z = gm_4/gm_6$.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.45]{butterworth.png}
+\caption{Zapojení s OTA pro DP \label{s:OTADP}}
+\end{figure}
+\noindent Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maplu obdobně jako pro pásmovou propust v sekci \ref{s:ARC123}. Celý postup je k nahlédnutí v přiloženém skriptu. Hodnoty s přesností na dvě desetinná místa jsou $C_{L1} = 1.76$\,pF, $C_{L2} = 73.1$\,pF, $C_{L3} = 677.25$\,nF, $C_{L4} = 16.35$\,nF.
+\subsubsection{Funkční simulace horní propusti}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{HP.png}
+\caption{Schéma obvodu pro HP \label{s:HP12}}
+\end{figure}
+Schéma z obrázku \ref{s:HP12} bylo popsáno rovnicemi.
+\begin{align}
+I_4 &= I_3 \\
+I_4 &= I_{41} + I_{42}
+\end{align}
+\begin{equation}
+\begin{split}
+U_1 &= V_1 - U_2 \\
+I_2 &= I_1 - I_3 \\
+U_3 &= U_2 - U_4 \\
+I_4 &= I_3
+\end{split}
+\quad \quad
+\begin{split}
+I_1 &= \frac{1}{R_1 + \frac{1}{pC_1}}U_1\\
+U_2 &= I_2pL_2 \\
+I_3 &= U_3pC_3\\
+U_4 &= \frac{1}{\frac{1}{pC_4} + \frac{1}{R_z}}I_4
+\end{split}
+\end{equation}
+\begin{align}
+v_1 &= \frac{R}{R_z + \frac{1}{pC_1}}(V_1 - U_2) = \frac{1}{r_z + \frac{1}{pc_1}}(V_1 - U_2),
+\end{align}
+kde $R_z/R = r_z$ a $C_1R = c_1$,
+\begin{align}
+v_2 &= \frac{pL_2}{R}(v_1 - v_3) = pl_2(v_1 - v_3),
+\end{align}
+kde $l_2 = L_2/R$,
+\begin{align}
+v_3 &= I_3R = pC_3R(v_2 - v_4) = pc_3(U_2 - U_4),
+\end{align}
+kde $C_3R = c_3$,
+\begin{align}
+v_4 &= \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}I_3R = \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}v_3.
+\end{align}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{h1234sum.png}
+\caption{Bloková realizační struktura pro HP}
+\end{figure}
+Podobně jako u dolní propusti sestavíme z blokové struktury schéma se zesilovači OTA (obrázek \ref{s:OTAHP}). Nyní zbývá dopočítat hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$. 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.45]{butterworth.png}
+\caption{Zapojení s OTA pro HP \label{s:OTAHP}}
+\end{figure}
+\begin{align}
+v_1 &= \frac{R}{R_1 + \frac{1}{pC_1}}(V_1 - U_2) = \frac{gm_1}{gm_5 + pC_{1L}}(V_1 - U_2)\\
+v_1 &= \frac{1}{\frac{R_1}{R} + \frac{1}{pC_1R}}(V_1 - U_2)
+\end{align}
+Zde lze použít substituci $R_1/R = r_1 = gm_5/gm_1$ a $C_1R = c_1 = gm_1/C_{1L}$.
+\begin{align}
+v_2 &= \frac{pL_2}{R}(v_1 - v_3) = pl_2(v_1 - v_3) = \frac{gm_2}{pC_{2L}}(v_1 - v_3)
+\end{align}
+Byla použita substituce $L_2/R = l_2 = gm_2/C_{2L}$.
+\begin{align}
+v_3 &= I_3R = pC_3R(U_2 - U_4) = \frac{gm_3}{pC_{3L}}(U_2 - U_4)
+\end{align}
+V tomto vztahu lze nahradit $C_3R = c_3 = gm_3/C_{3L}$.
+\begin{align}
+v_4 &= \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}I_3R = \frac{gm_4}{pC_{4L} + gm_6}v_3
+\end{align}
+Zde lze nahradit $R_z/R = r_z = gm_4/gm_6$ a $L_4/R = l_4 = gm_4/C_{4L}$.\\
+\\
+Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maplu obdobně jako pro pásmovou propust v sekci \ref{s:ARC123}. Celý postup je k nahlédnutí v přiloženém skriptu. Hodnoty s přesností na dvě desetinná místa jsou $C_{L1} = 1.75$\,pF, $C_{L2} = 72.46$\,pF, $C_{L3} = 671.34$\,nF, $C_{L4} = 16.21$\,nF.
 \subsection{Simulace obvodu}
 \noindent  Zapojení s OTA vychází z již uvedených principů v sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:ARC123}. \\
 \\
