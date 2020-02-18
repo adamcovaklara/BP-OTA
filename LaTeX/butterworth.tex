@@ -1,4 +1,4 @@
-V celé sekci je zvolena přesnost na 3 desetinná místa. Přesnější hodnoty jsou k nahlédnutí v přiloženém skriptu. Pro zachování přehlednosti nejsou v práci všechny výstupy z Maplu.\\
+V celé sekci je zvolena přesnost na 3 desetinná místa. Přesnější hodnoty jsou k nahlédnutí v přiloženém skriptu. Pro zachování přehlednosti nejsou v práci všechny výstupy z Maple.\\
 Zadána byla spodní a horní hranice nepropustného pásma $f_{-s},fs$\,[Hz], spodní a horní hranice propustného pásma $f_{-p},f_p$\,[Hz], maximální útlum v propustném pásmu $a_p$\,[dB] a minimální útlum v~nepropustném pásmu $a_s$\,[dB]. Toleranční schéma definuje oblasti, do kterých nesmí charakteristika filtru zasáhnout. Pro návrh pásmové propusti 4. řádu s Butterworthovou aproximací byly zvoleny parametry tolerančního schématu $f_{-s} = 100$\,kHz, $f_{-p} = 140$\,kHz, $f_p = 160$\,kHz, $f_s = 200$\,kHz, $a_p = 1$\,dB a $a_s = 40$\,dB. Všechny parametry musí být kladná reálná čísla a $f_{-s}$ <  $f_{-p}$ < $f_p$ < $f_s$ a $a_p$ < $a_s$, $f_m$ značí geometrický střed propustného pásma.
 \begin{align}
 f_{-s} &= \frac{\sqrt{\Delta{fs}^2+4f_m ^2}-\Delta{fs}}{2}\\
@@ -99,7 +99,7 @@ Zatím neodnormované prvky byly vyčísleny jako $C_1 = 2.198$e-7\,F, $C_2 = 1.
 \subsection{Funkční simulace LC prototypu}\label{s:KASK2}
 \noindent Základní myšlenka funkční simulace LC prototypu vychází z popisu příčkové struktury grafem signálových toků a simulací tohoto grafu vhodným elektronickým obvodem. Z~aproximace bylo kaskádní syntézou získáno rozložení výsledné přenosové funkce filtru na funkce jednotlivých kaskádně řazených bloků. Kaskádně spojené dvojbrany se~vzájemně neovlivňují --- v napěťovém módu mají charakter napětím řízených zdrojů napětí a v~proudovém módu proudem řízených zdrojů proudu. Přenos celé kaskády je dán součinem přenosů jednotlivých bloků. Na jeho základě se realizuje návrh filtru jako návrh jednotlivých bloků. Návrh je proveden s bloky s~jedním OTA a po realizaci lze jednotlivé bloky modifikovat jak z hlediska struktury, tak z hlediska hodnot jednotlivých prvků vybrané struktury. Například změnou transkonduktance jednotlivých bloků pak lze variabilně modifikovat mezní kmitočet.\\
 \newpage
-\noindent Analýzou LC struktury z Maplu byly obdrženy obvodové rovnice, kde R~je~volitelný~(fiktivní)~rezistor.
+\noindent Analýzou LC struktury z Maple byly obdrženy obvodové rovnice, kde R~je~volitelný~(fiktivní)~rezistor.
 \begin{align}
 I_1 &= \frac{1}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_1)\\
 v_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_1)\\
@@ -204,7 +204,7 @@ Zde lze nahradit $C_4R = c_4 = C_{4L}/gm_4$ a $R_z/R = r_z$, $r_z = gm_4/gm_6$.
 \includegraphics[scale=0.45]{butterworth.png}
 \caption{Zapojení s OTA pro DP \label{s:OTADP}}
 \end{figure}
-\noindent Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maplu obdobně jako pro pásmovou propust v sekci \ref{s:ARC123}. Celý postup je k nahlédnutí v přiloženém skriptu. Hodnoty s přesností na dvě desetinná místa jsou $C_{L1} = 1.76$\,pF, $C_{L2} = 73.1$\,pF, $C_{L3} = 677.25$\,nF, $C_{L4} = 16.35$\,nF.
+\noindent Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maple obdobně jako pro pásmovou propust v sekci \ref{s:ARC123}. Celý postup je k nahlédnutí v přiloženém skriptu. Hodnoty s přesností na dvě desetinná místa jsou $C_{L1} = 1.76$\,pF, $C_{L2} = 73.1$\,pF, $C_{L3} = 677.25$\,nF, $C_{L4} = 16.35$\,nF.
 \subsubsection{Funkční simulace horní propusti}
 \begin{figure}[h]
 \centering
@@ -275,7 +275,7 @@ v_4 &= \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}I_3R = \frac{gm_4}{pC_{4L} + g
 \end{align}
 Zde lze nahradit $R_z/R = r_z = gm_4/gm_6$ a $L_4/R = l_4 = gm_4/C_{4L}$.\\
 \\
-Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maplu obdobně jako pro pásmovou propust v sekci \ref{s:ARC123}. Celý postup je k nahlédnutí v přiloženém skriptu. Hodnoty s přesností na dvě desetinná místa jsou $C_{L1} = 1.75$\,pF, $C_{L2} = 72.46$\,pF, $C_{L3} = 671.34$\,nF, $C_{L4} = 16.21$\,nF.
+Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maple obdobně jako pro pásmovou propust v sekci \ref{s:ARC123}. Celý postup je k nahlédnutí v přiloženém skriptu. Hodnoty s přesností na dvě desetinná místa jsou $C_{L1} = 1.75$\,pF, $C_{L2} = 72.46$\,pF, $C_{L3} = 671.34$\,nF, $C_{L4} = 16.21$\,nF.
 \subsection{Simulace obvodu}
 \noindent  Zapojení s OTA vychází z již uvedených principů v sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:ARC123}. \\
 \\
@@ -284,7 +284,7 @@ Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maplu obdo
 Pro obdržení geometrického středu propustného pásma $f_m = 150$\,kHz je třeba zvolit klidový stejnosměrný pracovní proud $I_{ABC} = 59.82$\,$\upmu$A (obrázek \ref{s:BUT21} a \ref{s:BUT22}). Byla odečtena šířka propustného pásma 50.72\,kHz a útlum v propustném pásmu 56\,dB. \\
 Pro obdržení geometrického středu propustného pásma $f_m = 100$\,kHz je třeba zvolit klidový stejnosměrný pracovní proud $I_{ABC} = 39.89$\,$\upmu$A. Byla odečtena šířka propustného pásma 20.18\,kHz a útlum v propustném pásmu 53.7--56.7\,dB (obrázek \ref{s:BUT01} a \ref{s:BUT02}).\\
 \\
-Analýzou obvodu s hodnotami komponent z Maplu bylo obdrženo bylo určeno THD a šum. Byl použit klidový stejnosměrný pracovní proud $I_{ABC} = 39.89$\,$\upmu$A odpovídající geometrickému středu propustného pásma 100~kHz. Šum zde byl počítán jako výkon signálu ve zvoleném uzlu vydělený celkovým výkonem tepelného šumu na standardní teplotě (27\,$^{\circ}$C). Je to tedy poměr vstupního SNR k~výstupnímu SNR. Jak lze vidět z tabulky \ref{s:THD111}, odstup signál šum je nejmenší pro frekvenci 100\,kHz odpovídající geometrickému středu propustného pásma.
+Analýzou obvodu s hodnotami komponent z Maple bylo obdrženo bylo určeno THD a šum. Byl použit klidový stejnosměrný pracovní proud $I_{ABC} = 39.89$\,$\upmu$A odpovídající geometrickému středu propustného pásma 100~kHz. Šum zde byl počítán jako výkon signálu ve zvoleném uzlu vydělený celkovým výkonem tepelného šumu na standardní teplotě (27\,$^{\circ}$C). Je to tedy poměr vstupního SNR k~výstupnímu SNR. Jak lze vidět z tabulky \ref{s:THD111}, odstup signál šum je nejmenší pro frekvenci 100\,kHz odpovídající geometrickému středu propustného pásma.
 \begin{table}[h]
 \centering
   \begin{tabular}{ | c | c | c |}
@@ -295,7 +295,7 @@ Analýzou obvodu s hodnotami komponent z Maplu bylo obdrženo bylo určeno THD a
     100 & 53.665 \\ \hline
     1000 & 108.486 \\ \hline
   \end{tabular}
-  \caption[Šum pro PP 4. řádu (Maple)]{Šum pro PP 4. řádu s výsledky z Maplu \label{s:THD111}}
+  \caption[Šum pro PP 4. řádu (Maple)]{Šum pro PP 4. řádu s výsledky z Maple \label{s:THD111}}
 \end{table}
 \noindent Také bylo změřeno THD se základní frekvenci 100\,kHz, viz tabulka \ref{s:THD333}. Dle očekávání je nejnižší pro nejmenší počet harmonických frekvencí.
 \begin{table}[h]
@@ -306,5 +306,5 @@ Analýzou obvodu s hodnotami komponent z Maplu bylo obdrženo bylo určeno THD a
     Frekvence zdroje [kHz] & Počet harmonických frekvencí & THD [\%] \\ \hline
 	\multirow{3}{*}{100} & 3 & 2.161\\& 5 & 2.946 \\& 10 & 3.222 \\ \hline
   \end{tabular}
-  \caption[THD pro PP 4. řádu (Maple)]{THD pro PP 4. řádu s výsledky z Maplu \label{s:THD333}}
+  \caption[THD pro PP 4. řádu (Maple)]{THD pro PP 4. řádu s výsledky z Maple \label{s:THD333}}
 \end{table}

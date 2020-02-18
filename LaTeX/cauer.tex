@@ -91,7 +91,7 @@ Zatím neodnormované prvky byly vyčísleny jako $C_1 = 1.422$e-7\,F, $C_2 = 6.
 \\
 \noindent Výsledné hodnoty všech součástek s přesností na dvě desetinná místa jsou\\ $C1 = 11.91$\,pF, $C2 = 5.14$\,pF, $C3 = 12.3$\,pF, $C4 = 672.74$\,pF, $C5 = 5.15$\,pF, $C_{L1} = 57.62$\,nF, $C_{L2} = 133.52$\,nF, $C_{L3} = 55.8$\,nF, $C_{L4} = 1019.9$\,pF, $C_{L5} = 133.21$\,nF, $R1 = Rz = 418.83$\,k$\Omega$.
 \subsection{Funkční simulace LC prototypu}\label{s:KASK}
-\noindent Analýzou LC struktury z Maplu byly obdrženy obvodové rovnice, kde R je volitelný (fiktivní) rezistor.
+\noindent Analýzou LC struktury z Maple byly obdrženy obvodové rovnice, kde R je volitelný (fiktivní) rezistor.
 \begin{align}
 I_1 &= \frac{1}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_2)\\
 v_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_2)\\
@@ -120,7 +120,7 @@ H_5 &= \frac{1}{\frac{R}{R_z}+RpC_5 + \frac{R}{pL_5}}
 \\
 Pro obdržení geometrického středu propustného pásma $f_m = 168.819$\,kHz je třeba zvolit klidový stejnosměrný pracovní proud $I_{ABC} = 84.4$\,$\upmu$A. Byla odečtena šířka propustného pásma 202.78\,kHz a útlum v propustném pásmu 6-9\,dB (viz obrázek \ref{s:OTAPP3} a \ref{s:OTAPP33}). \\
 \\
-Analýzou obvodu se zapojením PP 4. řádu (kaskádní zapojení obvodu z obrázku \ref{s:V1}) a obvodu s hodnotami komponent z Maplu bylo obdrženo bylo určeno THD a šum. Byl použit klidový stejnosměrný pracovní proud $I_{ABC} = 50$\,$\upmu$A odpovídající geometrickému středu propustného pásma 100~kHz. Šum zde byl počítán jako výkon signálu ve zvoleném uzlu vydělený celkovým výkonem tepelného šumu na standardní teplotě (27\,$^{\circ}$C). Jak lze vidět z tabulek \ref{s:THD1} a \ref{s:THD2}, odstup signál šum je nejmenší pro frekvenci 100\,kHz odpovídající geometrickému středu propustného pásma.
+Analýzou obvodu se zapojením PP 4. řádu (kaskádní zapojení obvodu z obrázku \ref{s:V1}) a obvodu s hodnotami komponent z Maple bylo obdrženo bylo určeno THD a šum. Byl použit klidový stejnosměrný pracovní proud $I_{ABC} = 50$\,$\upmu$A odpovídající geometrickému středu propustného pásma 100~kHz. Šum zde byl počítán jako výkon signálu ve zvoleném uzlu vydělený celkovým výkonem tepelného šumu na standardní teplotě (27\,$^{\circ}$C). Jak lze vidět z tabulek \ref{s:THD1} a \ref{s:THD2}, odstup signál šum je nejmenší pro frekvenci 100\,kHz odpovídající geometrickému středu propustného pásma.
 \begin{table}[h]
 \centering
   \begin{tabular}{ | c | c | c |}
@@ -131,7 +131,7 @@ Analýzou obvodu se zapojením PP 4. řádu (kaskádní zapojení obvodu z obrá
     100 & 9.514 \\ \hline
     1000 & 45.341 \\ \hline
   \end{tabular}
-  \caption[Šum pro PP 4. řádu (Maple)]{Šum pro PP 4. řádu s výsledky z Maplu \label{s:THD1}}
+  \caption[Šum pro PP 4. řádu (Maple)]{Šum pro PP 4. řádu s výsledky z Maple \label{s:THD1}}
 \end{table}
   \begin{table}[h]
 \centering
@@ -154,7 +154,7 @@ Analýzou obvodu se zapojením PP 4. řádu (kaskádní zapojení obvodu z obrá
     Frekvence zdroje [kHz] & Počet harmonických frekvencí & THD [\%] \\ \hline
 	\multirow{3}{*}{100} & 3 & 2.969\\& 5 & 3.102 \\& 10 & 3.125 \\ \hline
   \end{tabular}
-  \caption[THD pro PP 4. řádu (Maple)]{THD pro PP 4. řádu s výsledky z Maplu \label{s:THD3}}
+  \caption[THD pro PP 4. řádu (Maple)]{THD pro PP 4. řádu s výsledky z Maple \label{s:THD3}}
 \end{table}
 \begin{table}[h]
 \centering
