@@ -95,18 +95,18 @@ Zatím neodnormované prvky byly vyčísleny jako $C_1 = 2.198$e-7\,F, $C_2 = 1.
 \noindent Frekvenčně a impedančně odnormované odpory byly vypočteny podělením kmitočtem $fp \cdot 2 \pi$ a přibližnou hodnotou kapacity pro mikroelektronickou realizaci $C = 2$\,pF. Výsledné hodnoty jsou $R_1 = R_z = 497.359$\,k$\Omega$.\\
 \noindent Využitím poznatků ze sekce \ref{s:GYR} byly dosazením do vztahu $C = L \cdot g_m^2$ s uvažováním minimální transkonduktance z datasheetu LM13700 ($g_m$ = 9600\,$\upmu$S) získány kapacity $C_{L1} = 4.741$e-10\,F, $C_{L2} = 8.392$e-12\,F, $C_{L3} = 1.145$e-9\,F, $C_{L4} = 2.026$e-11\,F.\\
 \\
-\noindent Výsledné hodnoty všech součástek s přesností na dvě desetinná místa jsou\\ $C1 = 21.87$\,pF, $C2 = 123.53$\,nF, $C3 = 905.75$\,pF, $C4 = 5.12$\,pF, $C_{L1} = 47.41$\,nF, $C_{L2} = 8.39$\,pF, $C_{L3} = 1.15$\,nF, $C_{L4} = 202.59$\,nF, $R1 = Rz = 497.36$\,k$\Omega$.
+\noindent Výsledné hodnoty všech součástek s přesností na dvě desetinná místa jsou\\ $C_1 = 21.87$\,pF, $C_2 = 123.53$\,nF, $C_3 = 905.75$\,pF, $C_4 = 5.12$\,pF, $C_{L1} = 47.41$\,nF, $C_{L2} = 8.39$\,pF, $C_{L3} = 1.15$\,nF, $C_{L4} = 202.59$\,nF, $R1 = Rz = 497.36$\,k$\Omega$.
 \subsection{Funkční simulace LC prototypu}\label{s:KASK2}
 \noindent Základní myšlenka funkční simulace LC prototypu vychází z popisu příčkové struktury grafem signálových toků a simulací tohoto grafu vhodným elektronickým obvodem. Z~aproximace bylo kaskádní syntézou získáno rozložení výsledné přenosové funkce filtru na funkce jednotlivých kaskádně řazených bloků. Kaskádně spojené dvojbrany se~vzájemně neovlivňují --- v napěťovém módu mají charakter napětím řízených zdrojů napětí a v~proudovém módu proudem řízených zdrojů proudu. Přenos celé kaskády je dán součinem přenosů jednotlivých bloků. Na jeho základě se realizuje návrh filtru jako návrh jednotlivých bloků. Návrh je proveden s bloky s~jedním OTA a po realizaci lze jednotlivé bloky modifikovat jak z hlediska struktury, tak z hlediska hodnot jednotlivých prvků vybrané struktury. Například změnou transkonduktance jednotlivých bloků pak lze variabilně modifikovat mezní kmitočet.\\
 \newpage
 \noindent Analýzou LC struktury z Maple byly obdrženy obvodové rovnice, kde R~je~volitelný~(fiktivní)~rezistor.
 \begin{align}
-I_1 &= \frac{1}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_1)\\
-v_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}(U_G - U_1)\\
+I_1 &= \frac{1}{R_1 + pL_1 + \frac{1}{pC_1}}(V_1 - U_1)\\
+v_1 & = \frac{R}{R_1 + pL_1 + \frac{1}{pC_1}}(V_1 - U_1)\\
 v_2 &= \frac{1}{\frac{1}{pL_2} + pC_2}(I_1 - I_{3})\\
 v_2 &= \frac{1}{\frac{R}{pL_2} + RpC_2}(v_1 - v_{3})\\
 I_{3} &= \frac{1}{pL_3 + \frac{1}{pC_3}}(U_1 - U_2)\\
-v_{3} &= \frac{R}{pL_3 + \frac{1}{pC_3}}(U_2 - U_3)\\
+v_{3} &= \frac{R}{pL_3 + \frac{1}{pC_3}}(U_1 - U_2)\\
 v_4 &= U_3 = U_2 = \frac{1}{\frac{1}{R_z}+pC_4 + \frac{1}{pL_4}}(I_1 - I_{L2} - pC_2U_2)\\
 v_4 &= \frac{1}{\frac{R}{R_z}+RpC_4 + \frac{R}{pL_4}}(v_1 - U_2 - RpC_2 U_2)
 \end{align}
@@ -127,9 +127,14 @@ H_4 &= \frac{1}{\frac{R}{R_z}+RpC_4 + \frac{R}{pL_4}}
 \includegraphics[scale=0.45]{butterworth_bandpass.png}
 \caption{Zapojení s OTA pro PP\label{s:OBR}}
 \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.25]{testik.png}
+\caption{Zapojení s OTA pro PP\label{s:TESTIK}}
+\end{figure}
 \newpage
 \subsection{Funkční simulace LC prototypu - PP jako kaskádní zapojení DP, HP}
-\noindent Kaskádním zapojením DP a HP byl vytvořen filtr typu PP.
+\noindent Kaskádním zapojením DP a HP lze vytvořit filtr typu PP. I při použití Butterworthovy aproximace, která je v propustném pásmu nezvlněná, se meze propustného pásma složením přenosových funkcí DP a HP mírně posunou. Proto tento postup nebyl použit k návrhu.
 \subsubsection{Funkční simulace dolní propusti}
 \begin{figure}[h]
 \centering
@@ -181,7 +186,16 @@ kde $C_4R = c_4$ a $R/R_z = 1/r_z$.
 \includegraphics[scale=0.4]{h1234sum.png}
 \caption{Bloková realizační struktura pro DP}
 \end{figure}
-Podle odvození a z blokové struktury bylo sestaveno schéma s OTA (obrázek \ref{s:OTADP}). Zbývá vypočítat hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$.
+\\
+\\
+\noindent To odpovídá realizační struktuře se čtyřmi bloky o přenosech $H_1, \ldots,H_4$.
+\begin{align}
+H_1 & = \frac{R}{R_1 + pL_1} = \frac{1}{r_1 + pl_1}\\
+H_2 &= \frac{1}{pC_2R} = \frac{1}{pc_2}\\
+H_3 &= \frac{R}{pL_3} = \frac{1}{pl_3}\\
+H_4 &= \frac{1}{R(pC_4 + \frac{1}{R_z})} = \frac{1}{pc_4 + \frac{1}{r_z}}
+\end{align}
+Podle odvození a z blokové struktury bylo sestaveno schéma s OTA (obrázek \ref{s:OTADP}).
 \begin{align}
 v_1 &= \frac{R}{R_1 + pL_1}(V_1 - U_2) = \frac{gm_1}{gm_5 + pC_{1L}}(V_1 - U_2)\\
 v_1 &= \frac{1}{\frac{R_1}{R} + \frac{pL_1}{R}}(V_1 - U_2) = \frac{1}{\frac{gm_5}{gm_1} + \frac{pC_{1L}}{gm_1}}(V_1 - U_2)
@@ -196,7 +210,7 @@ v_3 = \frac{R}{pL_3}(v_2 - v_4) = \frac{gm_3}{pC_{3L}}(v_2 - v_4)
 \end{align}
 Opět lze použít substituci $L_3/R = l_3 = C_{3L}/gm_3$.
 \begin{align}
-u_4 = \frac{1}{R(pC_4 + \frac{1}{R_z})}v_3 = \frac{gm_4}{pC_{4L} + gm_6}
+v_4 = \frac{1}{R(pC_4 + \frac{1}{R_z})}v_3 = \frac{gm_4}{pC_{4L} + gm_6}
 \end{align}
 Zde lze nahradit $C_4R = c_4 = C_{4L}/gm_4$ a $R_z/R = r_z$, $r_z = gm_4/gm_6$.
 \begin{figure}[H]
@@ -204,7 +218,6 @@ Zde lze nahradit $C_4R = c_4 = C_{4L}/gm_4$ a $R_z/R = r_z$, $r_z = gm_4/gm_6$.
 \includegraphics[scale=0.45]{butterworth.png}
 \caption{Zapojení s OTA pro DP \label{s:OTADP}}
 \end{figure}
-\noindent Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maple obdobně jako pro pásmovou propust v sekci \ref{s:ARC123}. Celý postup je k nahlédnutí v přiloženém skriptu. Hodnoty s přesností na dvě desetinná místa jsou $C_{L1} = 1.76$\,pF, $C_{L2} = 73.1$\,pF, $C_{L3} = 677.25$\,nF, $C_{L4} = 16.35$\,nF.
 \subsubsection{Funkční simulace horní propusti}
 \begin{figure}[h]
 \centering
@@ -238,20 +251,30 @@ kde $R_z/R = r_z$ a $C_1R = c_1$,
 \begin{align}
 v_2 &= \frac{pL_2}{R}(v_1 - v_3) = pl_2(v_1 - v_3),
 \end{align}
-kde $l_2 = L_2/R$,
+kde $L_2/R = l_2$,
 \begin{align}
 v_3 &= I_3R = pC_3R(v_2 - v_4) = pc_3(U_2 - U_4),
 \end{align}
 kde $C_3R = c_3$,
 \begin{align}
-v_4 &= \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}I_3R = \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}v_3.
+v_4 &= \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}I_3R = \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}v_3 = \frac{1}{l_4 + r_z},
 \end{align}
+kde $R/pL_4 = l_4$ a $R/R_z = r_z$.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{h1234sum.png}
 \caption{Bloková realizační struktura pro HP}
 \end{figure}
-Podobně jako u dolní propusti sestavíme z blokové struktury schéma se zesilovači OTA (obrázek \ref{s:OTAHP}). Nyní zbývá dopočítat hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$. 
+\\
+\\
+\noindent To odpovídá realizační struktuře se čtyřmi bloky o přenosech $H_1, \ldots,H_4$.
+\begin{align}
+H_1 & = \frac{R}{R_z + \frac{1}{pC_1}} = \frac{1}{r_z + \frac{1}{pc_1}}\\
+H_2 &= \frac{pL_2}{R} = pl_2\\
+H_3 &= pC_3R = pc_3\\
+H_4 &= \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}
+\end{align}
+Podobně jako u dolní propusti sestavíme z blokové struktury schéma se zesilovači OTA (obrázek \ref{s:OTAHP}).
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.45]{butterworth.png}
@@ -275,7 +298,8 @@ v_4 &= \frac{1}{R(\frac{1}{pL_4} + \frac{1}{R_z})}I_3R = \frac{gm_4}{pC_{4L} + g
 \end{align}
 Zde lze nahradit $R_z/R = r_z = gm_4/gm_6$ a $L_4/R = l_4 = gm_4/C_{4L}$.\\
 \\
-Hodnoty kapacitorů $C_{1L}, C_{2L}, C_{3L}, C_{4L}$ byly obdrženy v Maple obdobně jako pro pásmovou propust v sekci \ref{s:ARC123}. Celý postup je k nahlédnutí v přiloženém skriptu. Hodnoty s přesností na dvě desetinná místa jsou $C_{L1} = 1.75$\,pF, $C_{L2} = 72.46$\,pF, $C_{L3} = 671.34$\,nF, $C_{L4} = 16.21$\,nF.
+Výsledky simulace tohoto zapojení HP lze vidět na obrázcích \ref{s:highpass1}, \ref{s:highpass2}, \ref{s:highpass3} a \ref{s:highpass4}.\\
+Pro simulaci HP lze také použít CR články - na obrázku \ref{s:highpass5} a \ref{s:highpass6} jsou výsledky simulace HP 1. řádu a na obrázku \ref{s:highpass7} a \ref{s:highpass8} HP 2. řádu.
 \subsection{Simulace obvodu}
 \noindent  Zapojení s OTA vychází z již uvedených principů v sekci \ref{s:NAH}. K simulaci byly použity vypočtené hodnoty ze sekce \ref{s:ARC123}. \\
 \\
@@ -307,4 +331,19 @@ Analýzou obvodu s hodnotami komponent z Maple bylo obdrženo bylo určeno THD a
 	\multirow{3}{*}{100} & 3 & 2.161\\& 5 & 2.946 \\& 10 & 3.222 \\ \hline
   \end{tabular}
   \caption[THD pro PP 4. řádu (Maple)]{THD pro PP 4. řádu s výsledky z Maple \label{s:THD333}}
+\end{table}
+\\
+\\
+Pro obvod z obrázku \ref{s:TESTIK} a pro klidový stejnosměrný pracovní proud $I_{ABC} = 50$\,$\upmu$A byla odečtena šířka propustného pásma 43.3\,kHz (obrázek \ref{s:TEST1} a \ref{s:TEST2}). Geometrický střed propustného pásma odpovídá 99.98\,kHz a útlum v propustném pásmu je 30.83--33.83\,dB. Přeladěním filtru změnou klidového stejnosměrného pracovního proudu na $I_{ABC} = 100$\,$\upmu$A byla obdržena šířka propustného pásma 82.46\,kHz a geometrický střed propustného pásma 199.77\,kHz (obrázek \ref{s:TEST3} a \ref{s:TEST4}). \\
+\\
+Bylo odečteno THD se základní frekvenci 100\,kHz, viz tabulka \ref{s:THD334}. Byl použit klidový stejnosměrný pracovní proud $I_{ABC} = 50$\,$\upmu$A odpovídající geometrickému středu propustného pásma 100~kHz.
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{ | c | c | c |}
+    \hline
+    Frekvence zdroje [kHz] & Počet harmonických frekvencí & THD [\%] \\ \hline
+	\multirow{3}{*}{100} & 3 & 8.325\\& 5 & 8.765 \\& 10 & 8.943 \\ \hline
+  \end{tabular}
+  \caption[THD pro PP 4. řádu (Maple)]{THD pro PP 4. řádu s výsledky z Maple \label{s:THD334}}
 \end{table}
